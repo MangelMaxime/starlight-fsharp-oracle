@@ -417,7 +417,18 @@ let loadXmlDocFile (dllPath: string) : Map<string, string> =
     if not (System.IO.File.Exists xmlPath) then
         Map.empty
     else
-        let xmlText = System.IO.File.ReadAllText(xmlPath)
+        let rawXmlText = System.IO.File.ReadAllText(xmlPath)
+
+        // The F# compiler can emit unescaped `<`/`>` in member IDs (e.g. `<>f__AnonymousType...`),
+        // breaking XML parsing. Escape them inside `name="..."`; XDocument decodes them back unchanged.
+        let xmlText =
+            System.Text.RegularExpressions.Regex.Replace(
+                rawXmlText,
+                "name=\"([^\"]*)\"",
+                fun m ->
+                    let escaped = m.Groups.[1].Value.Replace("<", "&lt;").Replace(">", "&gt;")
+                    $"name=\"{escaped}\""
+            )
 
         let doc =
             try
