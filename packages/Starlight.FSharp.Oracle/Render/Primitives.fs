@@ -16,6 +16,15 @@ module Primitives =
             .Replace("{", "&#123;")
             .Replace("}", "&#125;")
 
+    /// Escape text destined for an inline element such as `<dd>`. A blank line in
+    /// the source would be parsed by MDX as a paragraph break and close the
+    /// element early, so all whitespace runs are collapsed to single spaces first.
+    let escapeMdxInline (text: string) : string =
+        let collapsed =
+            System.Text.RegularExpressions.Regex.Replace(text, @"\s+", " ").Trim()
+
+        escapeMdxText collapsed
+
     let h2 (sb: StringBuilder) (toc: ResizeArray<TocEntry>) (slug: string) (text: string) =
         toc.Add(
             {

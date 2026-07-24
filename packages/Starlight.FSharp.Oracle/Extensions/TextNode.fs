@@ -4,8 +4,21 @@ open FSharp.Oracle.Schema
 
 /// Escape characters that have special meaning in JSX expression context.
 /// MDX parses HTML as JSX, so `{` and `}` inside tag content must be escaped.
+/// Used for content that may itself contain intentional HTML (e.g. anchors),
+/// so angle brackets are deliberately left untouched here.
 let private escapeJsx (s: string) =
     s.Replace("{", "&#123;").Replace("}", "&#125;")
+
+/// Escape plain text for embedding as HTML/JSX content. Unlike `escapeJsx`,
+/// this also escapes angle brackets, which MDX would otherwise parse as JSX
+/// tags (e.g. the `<Struct>` in a `[<Struct>]` attribute).
+let private escapeText (s: string) =
+    s
+        .Replace("&", "&amp;")
+        .Replace("<", "&lt;")
+        .Replace(">", "&gt;")
+        .Replace("{", "&#123;")
+        .Replace("}", "&#125;")
 
 let wrapWithClass cls (text: string) =
     $"""<span class="{cls}">{escapeJsx text}</span>"""
@@ -20,7 +33,7 @@ type TextNode with
 
     member this.Html =
         match this with
-        | TextNode.Text s -> escapeJsx s
+        | TextNode.Text s -> escapeText s
         | TextNode.Colon -> wrapInKeyword ":"
         | TextNode.Arrow -> wrapInKeyword "->"
         | TextNode.Dot -> wrapInKeyword "."
@@ -36,7 +49,9 @@ type TextNode with
         | TextNode.RightParen -> wrapInKeyword ")"
         | TextNode.Node node -> node |> List.map (fun node -> node.Html) |> String.concat ""
         | TextNode.Keyword text -> wrapInKeyword text
-        | TextNode.Star -> wrapInKeyword "*"
+        // Emit the asterisk as an HTML entity so MDX's markdown parser does not
+        // treat it as emphasis and pair it with a `*` from a neighbouring node.
+        | TextNode.Star -> wrapInKeyword "&#42;"
         | TextNode.TypeRef(name, _, url) ->
             wrapWithClass "fsharp-doc-type" $"""<a href="{url}">{name}</a>"""
         | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name

@@ -26,7 +26,7 @@ module Pages =
                 )
 
                 match m.XmlDoc with
-                | Some doc -> sb.WriteLine($"<dd>{escapeMdxText doc}</dd>")
+                | Some doc -> sb.WriteLine($"<dd>{escapeMdxInline doc}</dd>")
                 | None -> ()
 
             sb.WriteLine("</dl>")
@@ -145,7 +145,7 @@ module Pages =
                 )
 
                 match e.XmlDoc.Summary with
-                | Some summary -> sb.WriteLine($"<dd>{escapeMdxText summary}</dd>")
+                | Some summary -> sb.WriteLine($"<dd>{escapeMdxInline summary}</dd>")
                 | None -> ()
 
             sb.WriteLine("</dl>")
@@ -183,7 +183,7 @@ module Pages =
                 )
 
                 match e.XmlDoc.Summary with
-                | Some summary -> sb.WriteLine($"<dd>{escapeMdxText summary}</dd>")
+                | Some summary -> sb.WriteLine($"<dd>{escapeMdxInline summary}</dd>")
                 | None -> ()
 
             sb.WriteLine("</dl>")
@@ -237,7 +237,7 @@ module Pages =
                 )
 
                 match m.XmlDoc with
-                | Some doc -> sb.WriteLine($"<dd>{escapeMdxText doc}</dd>")
+                | Some doc -> sb.WriteLine($"<dd>{escapeMdxInline doc}</dd>")
                 | None -> ()
 
             sb.WriteLine("</dl>")
