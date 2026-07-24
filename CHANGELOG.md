@@ -1,5 +1,5 @@
 ---
-last_commit_released: f566ab34e39f9ea2fbeb2aeddda2428d5d27dfb0
+last_commit_released: 1b716c695b7f73a88a6ebd13af6637880f9c0325
 name: starlight-fsharp-oracle
 updaters:
   - package.json:
@@ -15,6 +15,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 This changelog is generated using [EasyBuild.ShipIt](https://github.com/easybuild-org/EasyBuild.ShipIt).
 
 ⚠ Only edit the front matter metadata at the top of this file. All other changes will be overwritten when a new release is created.
+
+## 0.1.2 - 2026-07-24
+
+### 🐞 Bug Fixes
+
+* *(render)* Escape MDX-hostile constructs in signatures and inline summaries ([1b716c6](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/1b716c695b7f73a88a6ebd13af6637880f9c0325))
+
+<strong><small>[View changes on Github](https://github.com/MangelMaxime/starlight-fsharp-doc/compare/f566ab34e39f9ea2fbeb2aeddda2428d5d27dfb0..1b716c695b7f73a88a6ebd13af6637880f9c0325)</small></strong>
 
 ## 0.1.1 - 2026-05-14
 
