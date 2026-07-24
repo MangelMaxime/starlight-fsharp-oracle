@@ -1,2 +1,9 @@
 packages:
   - 'docs'
+
+# Allow these dependencies to run install scripts. The plugin's postinstall
+# publishes the F# extractor (oracle-bin) that the release build launches.
+onlyBuiltDependencies:
+  - starlight-fsharp-oracle
+  - esbuild
+  - sharp

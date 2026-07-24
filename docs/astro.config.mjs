@@ -16,13 +16,7 @@ export default defineConfig({
             plugins: [
                 starlightFSharpDoc({
                     assemblies: [
-                        // resolve(__dirname, '../tests/Reference/bin/Debug/net10.0/Reference.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Ink/bin/Release/netstandard2.1/publish/Fable.Ink.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Parchment/bin/Release/netstandard2.1/publish/Fable.Parchment.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Nib/bin/Release/netstandard2.1/publish/Fable.Nib.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Quill/bin/Release/netstandard2.1/publish/Fable.Quill.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Nib.Snapshot/bin/Release/net10.0/publish/Fable.Nib.Snapshot.dll'),
-                        resolve(__dirname, '../reproduction/src/Fable.Nib.Dom/bin/Release/netstandard2.1/publish/Fable.Nib.Dom.dll'),
+                        resolve(__dirname, '../tests/Reference/bin/Debug/net10.0/Reference.dll'),
                     ],
                     output: 'api',
                     sidebar: { label: 'API Reference' },
