@@ -16,14 +16,18 @@ module Primitives =
             .Replace("{", "&#123;")
             .Replace("}", "&#125;")
 
-    /// Escape text destined for an inline element such as `<dd>`. A blank line in
-    /// the source would be parsed by MDX as a paragraph break and close the
-    /// element early, so all whitespace runs are collapsed to single spaces first.
+    /// Collapse whitespace runs before escaping, so a blank line can't be read as
+    /// a paragraph break that closes an inline element like `<dd>` early.
     let escapeMdxInline (text: string) : string =
         let collapsed =
             System.Text.RegularExpressions.Regex.Replace(text, @"\s+", " ").Trim()
 
         escapeMdxText collapsed
+
+    /// MDX reflows multi-line raw HTML as a markdown paragraph, collapsing layout.
+    /// Convert newlines to <br/> so the signature block renders verbatim.
+    let inlineSignatureHtml (html: string) : string =
+        html.Replace("\n", "<br/>")
 
     let h2 (sb: StringBuilder) (toc: ResizeArray<TocEntry>) (slug: string) (text: string) =
         toc.Add(
@@ -63,7 +67,7 @@ module Primitives =
 
         sb.WriteLine($"<DocEntry name=\"{name}\"{obsoleteAttr}{obsoleteMessageAttr}>")
         sb.Write("<div class=\"fsharp-doc-sig\" slot=\"signature\">")
-        sb.Write(signatureHtml)
+        sb.Write(inlineSignatureHtml signatureHtml)
         sb.WriteLine("</div>")
         sb.NewLine()
 

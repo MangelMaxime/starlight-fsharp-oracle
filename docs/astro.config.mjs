@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
+    server: { host: true },
     integrations: [
         starlight({
             title: 'My Docs',
@@ -32,7 +33,7 @@ export default defineConfig({
                 },
                 {
                     label: 'Reference',
-                    autogenerate: { directory: 'reference' },
+                    items: [{ autogenerate: { directory: 'reference' } }],
                 }
             ],
         }),

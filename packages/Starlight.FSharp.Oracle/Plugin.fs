@@ -128,7 +128,14 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                 let updateConfig: obj -> unit = hookOptions?updateConfig
 
                                 let! ecRenderer = createEcRenderer {| |}
-                                let themesCss = Themes.generateCss ecRenderer
+
+                                // Declare Starlight's cascade-layer order first (before any
+                                // component style registers a layer) so content styles beat its
+                                // reset; in dev Vite otherwise inverts the order on our pages.
+                                let layerOrder =
+                                    "@layer starlight.base, starlight.reset, starlight.core, starlight.content, starlight.components, starlight.utils;\n"
+
+                                let themesCss = layerOrder + Themes.generateCss ecRenderer
 
                                 let outputBase: string =
                                     pluginOptions.output |> Option.defaultValue "api"

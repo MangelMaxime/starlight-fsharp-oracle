@@ -52,9 +52,8 @@ module Pages =
         renderObsoleteBanner sb entity.ObsoleteInfo
 
         sb.WriteLine("<div class=\"not-content\">")
-        sb.WriteLine("<div class=\"fsharp-doc-sig\">")
-        sb.Write(entity.Declaration.Html)
-        sb.NewLine()
+        sb.Write("<div class=\"fsharp-doc-sig\">")
+        sb.Write(inlineSignatureHtml entity.Declaration.Html)
         sb.WriteLine("</div>")
         sb.WriteLine("</div>")
         sb.NewLine()

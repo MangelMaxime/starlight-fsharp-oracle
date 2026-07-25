@@ -31,8 +31,8 @@
   },
   "devDependencies": {
     "@hideoo/tsconfig": "^2.0.3",
-    "@types/node": "^25.6.0",
-    "astro-expressive-code": "^0.41.7",
-    "typescript": "^5.8.0"
+    "@types/node": "^26.1.1",
+    "astro-expressive-code": "^0.44.1",
+    "typescript": "^7.0.2"
   }
 }

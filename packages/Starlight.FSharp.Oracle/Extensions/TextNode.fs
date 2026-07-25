@@ -2,16 +2,13 @@ module TextNode.Extensions
 
 open FSharp.Oracle.Schema
 
-/// Escape characters that have special meaning in JSX expression context.
-/// MDX parses HTML as JSX, so `{` and `}` inside tag content must be escaped.
-/// Used for content that may itself contain intentional HTML (e.g. anchors),
-/// so angle brackets are deliberately left untouched here.
+/// Escape `{`/`}` which MDX parses as JSX expressions. Angle brackets are left
+/// untouched since callers may pass intentional HTML (e.g. anchors).
 let private escapeJsx (s: string) =
     s.Replace("{", "&#123;").Replace("}", "&#125;")
 
-/// Escape plain text for embedding as HTML/JSX content. Unlike `escapeJsx`,
-/// this also escapes angle brackets, which MDX would otherwise parse as JSX
-/// tags (e.g. the `<Struct>` in a `[<Struct>]` attribute).
+/// Like `escapeJsx` but also escapes angle brackets, which MDX would parse as
+/// JSX tags (e.g. the `<Struct>` in a `[<Struct>]` attribute).
 let private escapeText (s: string) =
     s
         .Replace("&", "&amp;")
@@ -38,7 +35,11 @@ type TextNode with
         | TextNode.Arrow -> wrapInKeyword "->"
         | TextNode.Dot -> wrapInKeyword "."
         | TextNode.Comma -> wrapInKeyword ","
-        | TextNode.Space -> "&nbsp;"
+        // MDX strips whitespace-only text nodes (mashing adjacent signature
+        // tokens together), but keeps text that is not purely whitespace. Pair the
+        // non-breaking space with an (invisible) zero-width non-joiner so the node
+        // survives while still rendering - and copying - as a single space.
+        | TextNode.Space -> "&nbsp;&zwnj;"
         | TextNode.GreaterThan -> wrapInKeyword "&gt;"
         | TextNode.LessThan -> wrapInKeyword "&lt;"
         | TextNode.LeftBrace -> wrapInKeyword "{"
@@ -71,5 +72,3 @@ type TextNode with
             ]
             |> TextNode.Node
             |> TextNode.ToHtml
-
-
