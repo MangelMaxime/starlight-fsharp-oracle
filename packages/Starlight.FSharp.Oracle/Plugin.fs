@@ -197,6 +197,13 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     raise (System.Exception(msg))
                                 | Ok() ->
 
+                                    // Everything in here is generated, so clear it
+                                    // first: otherwise a renamed or deleted type keeps
+                                    // its page, stale and unreachable but still built.
+                                    match Helpers.cleanSync outputDir ".mdx" with
+                                    | Error msg -> logger.warn msg
+                                    | Ok() -> ()
+
                                     match
                                         Helpers.writeSync
                                             (path.join (outputDir, ".gitignore"))

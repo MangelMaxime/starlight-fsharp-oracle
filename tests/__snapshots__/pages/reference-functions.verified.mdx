@@ -1,0 +1,378 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference.Functions"
+headings:
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "scale"
+    text: "scale"
+  - depth: 3
+    slug: "distance"
+    text: "distance"
+  - depth: 3
+    slug: "largest"
+    text: "largest"
+  - depth: 3
+    slug: "areEqual"
+    text: "areEqual"
+  - depth: 3
+    slug: "sizeOf"
+    text: "sizeOf"
+  - depth: 3
+    slug: "orDefault"
+    text: "orDefault"
+  - depth: 3
+    slug: "disposeAll"
+    text: "disposeAll"
+  - depth: 3
+    slug: "create"
+    text: "create"
+  - depth: 3
+    slug: "total"
+    text: "total"
+  - depth: 2
+    slug: "active-patterns"
+    text: "Active Patterns"
+  - depth: 3
+    slug: "Trimmed"
+    text: "(|Trimmed|)"
+  - depth: 3
+    slug: "Positive-Negative-Zero"
+    text: "(|Positive|Negative|Zero|)"
+  - depth: 3
+    slug: "Integer"
+    text: "(|Integer|_|)"
+  - depth: 3
+    slug: "DivisibleBy"
+    text: "(|DivisibleBy|_|)"
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "MaxRetries"
+    text: "MaxRetries"
+  - depth: 3
+    slug: "DefaultGreeting"
+    text: "DefaultGreeting"
+  - depth: 3
+    slug: "defaultPoint"
+    text: "defaultPoint"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/reference-functions-parser">Parser</a></dt>
+<dd>Optional and byref parameters.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="scale">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">scale</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">factor</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+Two curried parameter groups.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">factor</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+What to multiply by.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The value to scale.
+
+</div>
+<strong>Returns</strong>
+
+The scaled value.
+
+</DocEntry>
+
+<DocEntry name="distance">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">distance</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">x</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-param">y</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+A single tupled group, so its parameters are separated by `*`.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">x</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The x coordinate.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">y</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The y coordinate.
+
+</div>
+</DocEntry>
+
+<DocEntry name="largest">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">largest</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">comparison</span></div>
+
+Requires comparison.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The items to search.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
+
+</div>
+</DocEntry>
+
+<DocEntry name="areEqual">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">areEqual</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">a</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">b</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">equality</span></div>
+
+Requires equality.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">a</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>
+</div>
+
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">b</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>
+</div>
+
+</DocEntry>
+
+<DocEntry name="sizeOf">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">sizeOf</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">unmanaged</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">struct</span></div>
+
+Requires an unmanaged struct.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>
+</div>
+
+</DocEntry>
+
+<DocEntry name="orDefault">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">orDefault</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">fallback</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">null</span></div>
+
+Requires a nullable reference.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>
+</div>
+
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">fallback</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>
+</div>
+
+</DocEntry>
+
+<DocEntry name="disposeAll">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">disposeAll</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-op">:></span>&nbsp;&zwnj;<span class="fsharp-doc-type">IDisposable</span></div>
+
+Requires a subtype.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>
+</div>
+
+</DocEntry>
+
+<DocEntry name="create">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">create</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param"></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-kw">new</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-bracket">)</span></div>
+
+Requires a parameterless constructor.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-type">unit</span>
+</div>
+
+</DocEntry>
+
+<DocEntry name="total">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">inline</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">total</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property">op_Addition</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property">get_Zero</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span><span class="fsharp-doc-bracket">)</span></div>
+
+Requires the static members an SRTP constraint names.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">items</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">^T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>
+</div>
+
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+A type supporting addition and a zero.
+
+</div>
+</DocEntry>
+
+</div>
+
+<h2 id="active-patterns">Active Patterns</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Trimmed">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">(|Trimmed|)</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+
+A single-case active pattern.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The string to normalize.
+
+</div>
+<strong>Returns</strong>
+
+The trimmed string.
+
+</DocEntry>
+
+<DocEntry name="Positive-Negative-Zero">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">(|Positive|Negative|Zero|)</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">unit</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><span class="fsharp-doc-op">&gt;</span></div>
+
+A multi-case active pattern.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to classify.
+
+</div>
+<strong>Returns</strong>
+
+Its sign.
+
+</DocEntry>
+
+<DocEntry name="Integer">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">(|Integer|_|)</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-type">option</span></div>
+
+A partial active pattern.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The text to parse.
+
+</div>
+<strong>Returns</strong>
+
+The integer, when the text is one.
+
+</DocEntry>
+
+<DocEntry name="DivisibleBy">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">(|DivisibleBy|_|)</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">divisor</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-type">option</span></div>
+
+A parameterised partial pattern, so it takes two curried groups.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">divisor</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to divide by.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to test.
+
+</div>
+<strong>Returns</strong>
+
+The quotient, when it divides exactly.
+
+</DocEntry>
+
+</div>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="MaxRetries">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">MaxRetries</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">3</span></div>
+
+The maximum number of retry attempts.
+
+</DocEntry>
+
+<DocEntry name="DefaultGreeting">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">DefaultGreeting</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">"hello"</span></div>
+
+The greeting used when none is supplied.
+
+</DocEntry>
+
+<DocEntry name="defaultPoint">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">defaultPoint</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+A plain value, not a function.
+
+</DocEntry>
+
+</div>
+

@@ -1,0 +1,58 @@
+entity: record                                 6
+entity: union                                  3
+entity: class                                  9
+entity: interface                              1
+entity: enum                                   1
+entity: abbreviation                           1
+entity: measure                                1
+entity: exception                              1
+entity: delegate                               1
+entity: struct                                 2
+entity: generic                                4
+entity: with attributes                        2
+entity: obsolete                               1
+entity: base type                              1
+entity: implements interface                   1
+member: constructor                            10
+member: method                                 10
+member: property                               14
+member: operator                               1
+member: event                                  1
+member: static                                 13
+member: abstract                               3
+member: inline                                 1
+member: settable                               3
+member: overloaded                             2
+member: extension                              1
+function: plain                                16
+function: active pattern                       4
+function: inline                               1
+function: curried (2+ groups)                  6
+function: tupled group                         6
+parameter: optional                            1
+parameter: unit                                2
+value: plain                                   4
+value: literal                                 2
+constraint: comparison                         1
+constraint: equality                           1
+constraint: unmanaged                          1
+constraint: struct                             1
+constraint: null                               1
+constraint: subtype                            1
+constraint: srtp member                        1
+constraint: default constructor                1
+doc: summary                                   74
+doc: remarks                                   1
+doc: returns                                   11
+doc: param                                     18
+doc: typeparam                                 3
+doc: exception                                 1
+doc: value                                     1
+doc: seealso                                   1
+doc: example                                   1
+doc: cref link                                 3
+structure: module                              9
+structure: nested module                       3
+structure: root module (no namespace)          1
+structure: namespace-level types (synthetic)   1
+structure: obsolete module                     1

@@ -1,0 +1,31 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference.Members"
+headings:
+  - depth: 2
+    slug: "declared-modules"
+    text: "Declared Modules"
+  - depth: 2
+    slug: "types"
+    text: "Types"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="declared-modules">Declared Modules</h2>
+
+<dl>
+<dt><a href="/api/reference-members-stringextensions">StringExtensions</a></dt>
+<dd>Members added to a type declared elsewhere.</dd>
+</dl>
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/reference-members-counter">Counter</a></dt>
+<dd>Overloads, accessors, statics and operators.</dd>
+<dt><a href="/api/reference-members-row">Row</a></dt>
+<dd>An indexed property and an inline member.</dd>
+</dl>
+

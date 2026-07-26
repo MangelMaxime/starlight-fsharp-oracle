@@ -5,17 +5,25 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <!--
+    A fixture covering the F# language surface the generator has to render, kept as
+    small as it can be while still exercising every construct. `./build.sh test` snapshots
+    a per-construct coverage report, so anything cut from here shows up as MISSING.
+
+    Global      root module with no namespace, nested module, obsolete module
+    Namespaces  namespace-level types, sub-modules, a type merged with its companion module
+    Types       every kind of type declaration
+    Members     every kind of type member
+    Functions   parameter shapes, generic constraints, active patterns, values
+    Docs        every XML documentation tag, plus a deliberate slug collision
+  -->
   <ItemGroup>
     <Compile Include="Global.fs" />
-    <Compile Include="Shapes.fs" />
-    <Compile Include="Geometry.fs" />
-    <Compile Include="Text.fs" />
-    <Compile Include="Objects.fs" />
-    <Compile Include="Generics.fs" />
-    <Compile Include="Reactive.fs" />
-    <Compile Include="ActivePatterns.fs" />
-    <Compile Include="MissingSyntaxes.fs" />
-    <Compile Include="Coverage.fs" />
+    <Compile Include="Namespaces.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="Members.fs" />
+    <Compile Include="Functions.fs" />
+    <Compile Include="Docs.fs" />
   </ItemGroup>
 
   <!--

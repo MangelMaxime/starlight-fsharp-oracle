@@ -1,0 +1,68 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Point"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "fields"
+    text: "Fields"
+  - depth: 3
+    slug: "X"
+    text: "X"
+  - depth: 3
+    slug: "Y"
+    text: "Y"
+  - depth: 2
+    slug: "properties"
+    text: "Properties"
+  - depth: 3
+    slug: "Magnitude"
+    text: "Magnitude"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-types">Reference.Types</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Point</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#X">X</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Y">Y</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#125;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Magnitude">Magnitude</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A record with documented fields.
+
+<h2 id="fields">Fields</h2>
+
+<div class="collapsible-group">
+<DocEntry name="X">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">X</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+Distance along the x axis.
+
+</DocEntry>
+
+<DocEntry name="Y">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Y</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+Distance along the y axis.
+
+</DocEntry>
+
+</div>
+
+<h2 id="properties">Properties</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Magnitude">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Magnitude</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The distance from the origin.
+
+</DocEntry>
+
+</div>
+

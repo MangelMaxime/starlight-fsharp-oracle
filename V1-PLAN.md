@@ -581,6 +581,34 @@ Verified by sweeping every signature block in all 57 snapshots for text outside 
 Type parameters intentionally still share the type colour: most themes define no
 separate scope for them, and falling back says so honestly rather than inventing one.
 
+## Fixture consolidation (done alongside phase 7)
+
+The fixture had grown to 1407 lines across 10 files, organised by theme rather than by
+what it covers - 22 active patterns where 4 shapes suffice, and the same tree helpers
+rewritten in several files.
+
+- [x] **A construct-coverage report, snapshotted.** `tests/Oracle.Tests/Coverage.fs`
+      counts every construct the generator handles - entity kinds, member kinds,
+      parameter shapes, each generic constraint, each XML doc tag, each page-structure
+      case - and the result is a snapshot. Cutting the fixture down cannot silently drop
+      a construct, because the count reaching zero is a visible diff. A count of zero
+      also fails the run outright, so `--update` cannot accept the loss quietly.
+- [x] **Rewrote the fixture around what it covers**: `Global`, `Namespaces`, `Types`,
+      `Members`, `Functions`, `Docs`, with the fsproj naming what each one is for.
+      **1407 lines -> 429**, 10 files -> 6, 60 pages -> 35, with **no construct lost**.
+- [x] The report found a real gap on its first run: nothing exercised
+      `when 'T : (new : unit -> 'T)`. Now covered.
+
+### Found while consolidating: generated pages were never cleaned
+
+Removing fixture modules left their pages behind in `docs/src/pages/api`, and the site
+kept building them - 86 pages on disk for 35 generated. The plugin only ever wrote
+files, so a renamed or deleted type kept its page forever: stale, unreachable from the
+sidebar, and still published.
+
+- [x] The output directory is cleared of `.mdx` before writing. 35 pages generated, 35
+      on disk.
+
 ## Phase 7 - Ship
 
 - [ ] **README `## Usage` currently says `TODO`.** Write a getting-started that
@@ -599,16 +627,15 @@ separate scope for them, and falling back says so honestly rather than inventing
       Pick one.
 - [ ] `XmlDoc.fs` sits at the Oracle project root while every other extraction file
       is under `Extractor/`. Move it in.
-- [ ] Rename `Extractor/Assembly.fs` -> `Extractor/Extract.fs` (it is the entry
-      point, not a peer of the other extractors).
-- [ ] Split `EntityExtractor.fs` (639 lines, a nine-branch `if/elif` chain). It is
-      where base types, attributes and extension members all had to land in phase 4 -
-      one file per entity kind, or at minimum one named function per branch.
-- [ ] `Render.fs` is a 19-line re-export shim over `Render/*`. Either drop it, or make
-      it the sole public surface and mark the rest `internal`.
-- [ ] Remove stray artifacts: tracked `starlight-fsharp-oracle-0.1.0.tgz`, leftover
-      `docs/src/pages/prototype.astro` and `docs/src/pages/test/api.astro`, empty
-      `guides/`.
+- [x] Renamed `Extractor/Assembly.fs` -> `Extractor/Extract.fs`.
+- [x] Split `EntityExtractor.fs`: one named `extract*` function per entity kind,
+      dispatched from a chain that now reads as a list of kinds. A `Common` record
+      carries the parts every kind shares, so each function holds only what is specific
+      to it. (Phase 3 had already taken the file from 639 lines to 206.)
+- [x] Dropped `Render.fs`. It forwarded four functions and three types within a single
+      assembly, adding a hop without hiding anything.
+- [x] Removed the tracked `.tgz` (and gitignored `*.tgz`), `prototype.astro`,
+      `test/api.astro`, and the empty `guides/`.
 
 ---
 

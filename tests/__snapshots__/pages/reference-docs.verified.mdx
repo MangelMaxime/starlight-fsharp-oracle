@@ -1,0 +1,101 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference.Docs"
+headings:
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "divide"
+    text: "divide"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/reference-docs-tally">Tally</a></dt>
+<dd>A counter whose value can be read and written.</dd>
+<dt><a href="/api/reference-docs-oldtally">OldTally</a> <span class="fsharp-doc-obsolete-inline" title="Use Tally instead.">Deprecated</span></dt>
+<dd>Superseded by [`Tally`](/api/reference-docs-tally).</dd>
+<dt><a href="/api/reference-docs-casing-2">Casing</a></dt>
+<dd>Collides with `CASING` once slugged to a URL.</dd>
+<dt><a href="/api/reference-docs-casing">CASING</a></dt>
+<dd>Collides with `Casing` once slugged to a URL.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="divide">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">divide</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">numerator</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">denominator</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+
+Divides one number by another.
+
+Behaviour by input:
+ 
+- A zero denominator throws.
+- Any other denominator divides normally.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">numerator</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to divide.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">denominator</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to divide by.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Unused; present so a type parameter is documented.
+
+</div>
+<strong>Returns</strong>
+
+The quotient.
+
+<strong>Exceptions</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-type">DivideByZeroException</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Thrown when `denominator` is zero.
+
+</div>
+<strong>Example</strong>
+
+```fsharp
+ let half = divide 10 2
+```
+
+<strong>See also</strong>
+
+<a href="/api/reference-docs-tally">Tally</a>
+
+</DocEntry>
+
+</div>
+

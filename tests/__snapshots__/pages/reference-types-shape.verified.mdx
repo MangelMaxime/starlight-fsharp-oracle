@@ -1,0 +1,112 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Shape"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 3
+    slug: "Circle"
+    text: "Circle"
+  - depth: 3
+    slug: "Rectangle"
+    text: "Rectangle"
+  - depth: 3
+    slug: "Empty"
+    text: "Empty"
+  - depth: 2
+    slug: "properties"
+    text: "Properties"
+  - depth: 3
+    slug: "Area"
+    text: "Area"
+  - depth: 3
+    slug: "Nothing"
+    text: "Nothing"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-types">Reference.Types</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Shape</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Circle">Circle</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">radius</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Rectangle">Rectangle</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-property">height</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Empty">Empty</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Area">Area</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Nothing">Nothing</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-types-shape">Shape</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A union whose cases carry named and unnamed fields, plus members.
+
+<div class="collapsible-group">
+<DocEntry name="Circle">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Circle</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">radius</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+A circle of the given radius.
+
+<strong>Fields</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-property">radius</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+A circle of the given radius.
+
+</div>
+</DocEntry>
+
+<DocEntry name="Rectangle">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Rectangle</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-property">height</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span></div>
+
+A rectangle.
+
+<strong>Fields</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-property">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+A rectangle.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-property">height</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+A rectangle.
+
+</div>
+</DocEntry>
+
+<DocEntry name="Empty">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Empty</span></div>
+
+A shape with no extent.
+
+</DocEntry>
+
+</div>
+
+<h2 id="properties">Properties</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Area">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Area</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The area covered.
+
+</DocEntry>
+
+<DocEntry name="Nothing">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Nothing</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-types-shape">Shape</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The shape covering nothing.
+
+</DocEntry>
+
+</div>
+

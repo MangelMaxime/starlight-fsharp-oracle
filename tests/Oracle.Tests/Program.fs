@@ -79,6 +79,36 @@ let main argv =
     let irResult =
         Snapshot.verify update (Path.Combine(snapshotDirectory, "reference.ir.verified.json")) irJson
 
+    // ---- Construct coverage -------------------------------------------------
+
+    // Snapshotted so cutting the fixture down cannot quietly drop a construct: a
+    // count reaching zero shows up as a failing diff.
+    let coverageReport =
+        Coverage.report root
+        |> List.map (fun (name, count) ->
+            let status =
+                if count = 0 then
+                    "MISSING"
+                else
+                    string count
+
+            $"%-46s{name} %s{status}"
+        )
+        |> String.concat "\n"
+
+    let coverageResult =
+        Snapshot.verify
+            update
+            (Path.Combine(snapshotDirectory, "coverage.verified.txt"))
+            coverageReport
+
+    // A construct dropping to zero is a failure in its own right, not just a diff:
+    // --update would otherwise accept the loss without comment.
+    let uncovered = Coverage.report root |> List.filter (fun (_, count) -> count = 0)
+
+    for name, _ in uncovered do
+        eprintfn "error: no fixture covers %s" name
+
     // ---- Page snapshots ----------------------------------------------------
 
     let pagesDirectory = Path.Combine(snapshotDirectory, "pages")
@@ -108,8 +138,16 @@ let main argv =
     let results =
         [
             "reference.ir.json", irResult
+            "coverage", coverageResult
             yield! pageResults |> List.map snd
             yield! orphanResults
         ]
 
-    Snapshot.report "snapshots" results
+    let exitCode = Snapshot.report "snapshots" results
+
+    if uncovered.IsEmpty then
+        exitCode
+    else
+        printfn ""
+        printfn "%i construct(s) have no fixture." uncovered.Length
+        1

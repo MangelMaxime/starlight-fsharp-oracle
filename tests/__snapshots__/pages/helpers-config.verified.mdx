@@ -9,11 +9,11 @@ headings:
     slug: "fields"
     text: "Fields"
   - depth: 3
-    slug: "Name"
-    text: "Name"
+    slug: "Retries"
+    text: "Retries"
   - depth: 3
-    slug: "Value"
-    text: "Value"
+    slug: "Verbose"
+    text: "Verbose"
 ---
 
 import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
@@ -21,26 +21,28 @@ import { Aside } from '@astrojs/starlight/components';
 
 <p><strong>Parent:</strong> <a href="/api/helpers">Helpers</a></p>
 
-<Aside type="caution" title="Deprecated">Use ConfigV2 instead.</Aside>
-
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Config</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Name">Name</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Value">Value</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#125;</span></div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Config</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Retries">Retries</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Verbose">Verbose</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#125;</span></div>
 </div>
 
 <h2 id="description">Description</h2>
 
-Legacy configuration format. Use ConfigV2 instead.
+Settings for the helpers.
 
 <h2 id="fields">Fields</h2>
 
 <div class="collapsible-group">
-<DocEntry name="Name">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Name</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+<DocEntry name="Retries">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Retries</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+
+How many times to retry.
 
 </DocEntry>
 
-<DocEntry name="Value">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+<DocEntry name="Verbose">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Verbose</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span></div>
+
+Whether to log verbosely.
 
 </DocEntry>
 

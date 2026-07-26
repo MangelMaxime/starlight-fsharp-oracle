@@ -12,17 +12,11 @@ headings:
     slug: "functions"
     text: "Functions"
   - depth: 3
-    slug: "isNonEmpty"
-    text: "isNonEmpty"
+    slug: "padLeft"
+    text: "padLeft"
   - depth: 3
     slug: "timestamp"
     text: "timestamp"
-  - depth: 3
-    slug: "epoch"
-    text: "epoch"
-  - depth: 3
-    slug: "padLeft"
-    text: "padLeft"
   - depth: 2
     slug: "values"
     text: "Values"
@@ -37,97 +31,58 @@ import { Aside } from '@astrojs/starlight/components';
 <h2 id="declared-modules">Declared Modules</h2>
 
 <dl>
-<dt><a href="/api/helpers-legacyhelpers">LegacyHelpers</a> <span class="fsharp-doc-obsolete-inline" title="Use HelpersV2 instead.">Deprecated</span></dt>
-<dd>Legacy helper module. Use HelpersV2 instead.</dd>
+<dt><a href="/api/helpers-legacyhelpers">LegacyHelpers</a> <span class="fsharp-doc-obsolete-inline" title="Use Helpers instead.">Deprecated</span></dt>
+<dd>Superseded by the members above.</dd>
 </dl>
 
 <h2 id="types">Types</h2>
 
 <dl>
-<dt><a href="/api/helpers-config">Config</a> <span class="fsharp-doc-obsolete-inline" title="Use ConfigV2 instead.">Deprecated</span></dt>
-<dd>Legacy configuration format. Use ConfigV2 instead.</dd>
+<dt><a href="/api/helpers-config">Config</a></dt>
+<dd>Settings for the helpers.</dd>
 </dl>
 
 <h2 id="functions">Functions</h2>
 
 <div class="collapsible-group">
-<DocEntry name="isNonEmpty">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">isNonEmpty</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">s</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span></div>
+<DocEntry name="padLeft">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">padLeft</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
 
-Returns true if the given string is non-empty.
-
-<strong>Parameters</strong>
-<div class="fs-parameter__signature">
-<span class="fsharp-doc-param">s</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
-</div>
-
-<strong>Example 1</strong>
-
-Check a non-empty string:
- ```fsharp
- isNonEmpty "hello" // true
-```
-
-<strong>Example 2</strong>
-
-Check an empty string:
- ```fsharp
- isNonEmpty "" // false
-```
-
-</DocEntry>
-
-<DocEntry name="timestamp">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">timestamp</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param"></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
-
-Returns the current UTC time as an ISO-8601 string.
-
-<strong>Parameters</strong>
-<div class="fs-parameter__signature">
-<span class="fsharp-doc-type">unit</span>
-</div>
-
-<strong>Returns</strong>
-
-A formatted date-time string, e.g. `"2025-01-01T00:00:00Z"`.
-
-<strong>Example</strong>
-
-```fsharp
- let now = timestamp ()
- printfn "Current time: %s" now
-```
-
-</DocEntry>
-
-<DocEntry name="epoch" obsolete obsoleteMessage="Use `timestamp ()` instead.">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">epoch</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param"></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int64</span></div>
-
-Returns the current UTC time as a Unix epoch timestamp.
-
-<strong>Parameters</strong>
-<div class="fs-parameter__signature">
-<span class="fsharp-doc-type">unit</span>
-</div>
-
-<strong>Returns</strong>
-
-Seconds since 1970-01-01T00:00:00Z.
-
-</DocEntry>
-
-<DocEntry name="padLeft" obsolete>
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">padLeft</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">s</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
-
-Pads a string on the left to a given width.
+Pads a string on the left.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
 <span class="fsharp-doc-param">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
 </div>
 
+<div class='fs-parameter__documentation'>
+
+The target width.
+
+</div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-param">s</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The string to pad.
+
+</div>
+<strong>Returns</strong>
+
+The padded string.
+
+</DocEntry>
+
+<DocEntry name="timestamp">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">timestamp</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param"></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span></div>
+
+Takes no arguments, so its unit parameter is explicit.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-type">unit</span>
 </div>
 
 </DocEntry>
@@ -140,7 +95,7 @@ Pads a string on the left to a given width.
 <DocEntry name="version">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">version</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
 
-Returns the version string of the library.
+The library version.
 
 </DocEntry>
 
