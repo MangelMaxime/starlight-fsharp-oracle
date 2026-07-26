@@ -34,3 +34,4 @@ oracle-bin/
 
 # snapshot test output - transient, only *.verified.* is committed
 *.received.*
+*.tgz

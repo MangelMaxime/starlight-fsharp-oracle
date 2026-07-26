@@ -2,6 +2,7 @@ module Starlight.FSharp.Generate
 
 open Fable.Core
 open FSharp.Oracle.Schema
+open Starlight.FSharp.RenderImpl
 
 // ---------------------------------------------------------------------------
 // Starlight sidebar POJO types
@@ -73,7 +74,7 @@ let private namespacesOf (modules: Module list) =
 let private escapeYaml (s: string) =
     s.Replace("\\", "\\\\").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "")
 
-let private toMdxPage (page: Render.RenderedPage) : string =
+let private toMdxPage (page: RenderedPage) : string =
     let headingsSection =
         if page.TocEntries.IsEmpty then
             "headings: []"
@@ -169,7 +170,7 @@ let slugWarnings (modules: Module list) : string list =
         yield! collisionsIn "modules" (realModules |> List.map (fun m -> m.FullName))
     ]
 
-let linkResolver (basePath: string) (outputBase: string) (modules: Module list) : Render.LinkResolver =
+let linkResolver (basePath: string) (outputBase: string) (modules: Module list) : LinkResolver =
     let documented = documentedNames modules
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
@@ -195,7 +196,7 @@ let linkResolver (basePath: string) (outputBase: string) (modules: Module list) 
         Slug = slugOf
     }
 
-let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
+let namespacePages (links: LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
     let allNamespaces = namespacesOf modules
 
@@ -222,7 +223,7 @@ let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string
             |> List.collect (fun m -> m.Entities)
 
         slug,
-        toMdxPage (Render.renderNamespacePage links ns subNamespaces entitiesInNs modulesInNs)
+        toMdxPage (Pages.renderNamespacePage links ns subNamespaces entitiesInNs modulesInNs)
     )
 
 /// Extension members targeting a given type, labelled with the module that declares
@@ -239,7 +240,7 @@ let private extensionsFor (modules: Module list) (entity: Entity) =
                 entity.Name, Some m.FullName, members
     ]
 
-let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
+let modulePages (links: LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
     realModules
@@ -258,10 +259,10 @@ let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * 
                 typeName, None, extensions |> List.map (fun e -> e.Member)
             )
 
-        links.Slug m.FullName, toMdxPage (Render.renderModulePage links m subModules orphans)
+        links.Slug m.FullName, toMdxPage (Pages.renderModulePage links m subModules orphans)
     )
 
-let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
+let entityPages (links: LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
     // A generic type and its companion module (e.g. `type Var<'T>` + `module Var`)
@@ -279,7 +280,7 @@ let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * 
             for e in m.Entities do
                 links.Slug e.FullName,
                 toMdxPage (
-                    Render.renderEntityPage links e m (companionOf e m) (extensionsFor modules e)
+                    Pages.renderEntityPage links e m (companionOf e m) (extensionsFor modules e)
                 )
     ]
 
@@ -296,7 +297,7 @@ let mergedModuleSlugs (modules: Module list) : string list =
     |> List.distinct
 
 let rootIndexPage
-    (links: Render.LinkResolver)
+    (links: LinkResolver)
     (assemblies: Assembly list)
     (modules: Module list)
     : string * string
@@ -304,7 +305,7 @@ let rootIndexPage
     let globalModules =
         modules |> List.filter (fun m -> not m.IsSynthetic && m.Namespace = "")
 
-    "index", toMdxPage (Render.renderRootIndexPage links assemblies globalModules)
+    "index", toMdxPage (Pages.renderRootIndexPage links assemblies globalModules)
 
 /// Every page the plugin writes, as (slug, mdx content).
 /// Shared by the plugin and the snapshot tests so the two cannot drift apart.

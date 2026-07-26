@@ -18,7 +18,6 @@
     <Compile Include="Render/Documentation.fs" />
     <Compile Include="Render/Entries.fs" />
     <Compile Include="Render/Pages.fs" />
-    <Compile Include="Render.fs" />
     <Compile Include="Generate.fs" />
     <Compile Include="Plugin.fs" />
   </ItemGroup>
