@@ -1,5 +1,5 @@
 ---
-last_commit_released: 004b2222784b8ccac32bf46e91832b4f92d55505
+last_commit_released: cec2951b273604c3a65edbdbd9874b007aaabbab
 name: starlight-fsharp-oracle
 updaters:
   - package.json:
@@ -15,6 +15,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 This changelog is generated using [EasyBuild.ShipIt](https://github.com/easybuild-org/EasyBuild.ShipIt).
 
 ⚠ Only edit the front matter metadata at the top of this file. All other changes will be overwritten when a new release is created.
+
+## 0.3.0 - 2026-07-26
+
+### 🚀 Features
+
+* Bump astro v7 and starlight 0.41 ([7bfb354](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/7bfb354a69169aaa8967d3a82c2709db0ffc2d75))
+
+### 🐞 Bug Fixes
+
+* Prefix in-content links with the Astro site base ([5095622](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/5095622ebb885a31f5aeb89384047e91012ce27a))
+* Merge companion module into its same-slug type page ([2b4dec1](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/2b4dec1b6393ecfddc2ebebe303a72e38cc41650))
+* *(render)* Preserve Markdown code spans in XML doc summaries ([cb677c0](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/cb677c0167ef76214af0b81f5bd77c5afe2a1248))
+* *(render)* Render enum cases with docs and colored names ([cec2951](https://github.com/MangelMaxime/starlight-fsharp-doc/commit/cec2951b273604c3a65edbdbd9874b007aaabbab))
+
+<strong><small>[View changes on Github](https://github.com/MangelMaxime/starlight-fsharp-doc/compare/004b2222784b8ccac32bf46e91832b4f92d55505..cec2951b273604c3a65edbdbd9874b007aaabbab)</small></strong>
 
 ## 0.1.2 - 2026-07-24
 
