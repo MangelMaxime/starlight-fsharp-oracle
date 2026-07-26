@@ -12,12 +12,27 @@ type XmlDocParam =
         Doc: string
     }
 
+type XmlDocException =
+    {
+        /// The exception type's cref target, e.g. "System.ArgumentException".
+        Type: string
+        Doc: string
+    }
+
 type XmlDoc =
     {
         Summary: string option
         Remarks: string option
         Returns: string option
         Params: XmlDocParam list
+        /// `<typeparam>` entries, keyed by generic parameter name.
+        TypeParams: XmlDocParam list
+        /// `<exception cref="...">` entries: what a caller has to be ready for.
+        Exceptions: XmlDocException list
+        /// `<value>`, describing what a property holds.
+        Value: string option
+        /// `<seealso cref="...">` targets, as cref strings the renderer resolves.
+        SeeAlso: string list
         Examples: string list
     }
 

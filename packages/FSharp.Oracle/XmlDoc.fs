@@ -52,6 +52,48 @@ let private extractMemberText (text: string) =
     else
         text
 
+/// The API a `cref` points at, as (target full name, text to display).
+///
+/// `T:Ns.Type` targets the type itself. `M:Ns.Type.Member(...)` targets a member, and
+/// since members do not have their own page, the type is the closest thing to link.
+let private crefTarget (cref: string) =
+    let prefix =
+        if cref.Length > 1 && cref.[1] = ':' then
+            cref.[0]
+        else
+            'T'
+
+    let stripped = extractMemberText cref
+
+    let withoutParameters =
+        let paren = stripped.IndexOf('(')
+
+        if paren >= 0 then
+            stripped.[.. paren - 1]
+        else
+            stripped
+
+    let target =
+        if prefix = 'T' then
+            withoutParameters
+        else
+            let lastDot = withoutParameters.LastIndexOf('.')
+
+            if lastDot > 0 then
+                withoutParameters.[.. lastDot - 1]
+            else
+                withoutParameters
+
+    let display =
+        let lastDot = stripped.LastIndexOf('.')
+
+        if lastDot >= 0 then
+            stripped.[lastDot + 1 ..]
+        else
+            stripped
+
+    target, display
+
 let private getAttributes (attributes: Group) =
     if attributes.Success then
         let pattern = """(?'key'\S+)=(?'value''[^']*'|"[^"]*")"""
@@ -189,7 +231,7 @@ let private see (config: FormatterConfig) =
             Formatter =
                 let fromAttrs (attrs: Map<string, string>) =
                     match Map.tryFind "cref" attrs with
-                    | Some cref -> Some(config.MemberRef(extractMemberText cref))
+                    | Some cref -> Some(config.MemberRef cref)
                     | None ->
                         match Map.tryFind "langword" attrs with
                         | Some langword -> Some(config.LangwordRef langword)
@@ -244,6 +286,61 @@ let private typeParamRef (config: FormatterConfig) =
                         Some(config.InlineCode innerText)
         |}
 
+/// `<list>` becomes a Markdown list. Bullet and number lists become bullets and
+/// numbers; a table-style list becomes `term - description` lines, which is as close
+/// as Markdown gets without building a table.
+let private list (config: FormatterConfig) =
+    applyFormatter
+        {|
+            TagName = "list"
+            Formatter =
+                function
+                | VoidElement _ -> None
+                | NonVoidElement(innerText, attributes) ->
+                    let listType =
+                        attributes |> Map.tryFind "type" |> Option.defaultValue "bullet"
+
+                    let itemPattern = tagPattern "item"
+
+                    let items =
+                        Regex.Matches(innerText, itemPattern, RegexOptions.IgnoreCase)
+                        |> Seq.cast<Match>
+                        |> Seq.filter (fun m -> m.Groups.["non_void_element"].Success)
+                        |> Seq.map (fun m -> m.Groups.["non_void_innerText"].Value)
+                        |> Seq.toList
+
+                    let innerTagText (tagName: string) (text: string) =
+                        match Regex.Match(text, tagPattern tagName, RegexOptions.IgnoreCase) with
+                        | m when m.Success && m.Groups.["non_void_element"].Success ->
+                            Some(m.Groups.["non_void_innerText"].Value.Trim())
+                        | _ -> None
+
+                    let rendered =
+                        items
+                        |> List.mapi (fun i item ->
+                            let term = innerTagText "term" item
+                            let description = innerTagText "description" item
+
+                            let body =
+                                match term, description with
+                                | Some term, Some description -> $"{term} - {description}"
+                                | Some term, None -> term
+                                | None, Some description -> description
+                                | None, None -> item.Trim()
+
+                            let marker =
+                                if listType = "number" then
+                                    $"{i + 1}."
+                                else
+                                    "-"
+
+                            $"{marker} {body}"
+                        )
+                        |> String.concat Environment.NewLine
+
+                    Some(Environment.NewLine + rendered + Environment.NewLine)
+        |}
+
 let private unescapeSpecialCharacters (text: string) =
     text
         .Replace("&lt;", "<")
@@ -273,7 +370,12 @@ let private markdownConfig =
                 + Environment.NewLine
                 + content
         Block = fun content -> Environment.NewLine + content + Environment.NewLine
-        MemberRef = fun name -> $"``{name}``"
+        // `fsharp-doc:` is resolved by the renderer, which is what knows whether the
+        // target has a page. Unresolved ones degrade to plain text there.
+        MemberRef =
+            fun cref ->
+                let target, display = crefTarget cref
+                $"[`{display}`](fsharp-doc:{target})"
         LangwordRef = fun word -> $"`{word}`"
         ExternalLink = fun href text -> $"[`{text}`]({href})"
     }
@@ -282,6 +384,7 @@ let private formatToMarkdown (text: string) =
     text
     |> markdownConfig.BeforeTransform
     |> paragraph markdownConfig
+    |> list markdownConfig
     |> example markdownConfig
     |> block markdownConfig
     |> codeInline markdownConfig
@@ -303,6 +406,10 @@ let private emptyXmlDoc =
         Remarks = None
         Returns = None
         Params = []
+        TypeParams = []
+        Exceptions = []
+        Value = None
+        SeeAlso = []
         Examples = []
     }
 
@@ -329,8 +436,9 @@ let private extractAll (tagName: string) (text: string) : string list =
     )
     |> Seq.toList
 
-let private extractParams (text: string) : XmlDocParam list =
-    Regex.Matches(text, tagPattern "param", RegexOptions.IgnoreCase)
+/// `<param>` and `<typeparam>` share a shape: a name attribute and a description.
+let private extractNamedDocs (tagName: string) (text: string) : XmlDocParam list =
+    Regex.Matches(text, tagPattern tagName, RegexOptions.IgnoreCase)
     |> Seq.cast<Match>
     |> Seq.choose (fun m ->
         if m.Groups.["non_void_element"].Success then
@@ -350,6 +458,43 @@ let private extractParams (text: string) : XmlDocParam list =
     )
     |> Seq.toList
 
+/// `<exception cref="T:System.ArgumentException">when the input is empty</exception>`
+let private extractExceptions (text: string) : XmlDocException list =
+    Regex.Matches(text, tagPattern "exception", RegexOptions.IgnoreCase)
+    |> Seq.cast<Match>
+    |> Seq.choose (fun m ->
+        if m.Groups.["non_void_element"].Success then
+            let attrs = getAttributes m.Groups.["non_void_attributes"]
+            let inner = m.Groups.["non_void_innerText"].Value
+
+            attrs
+            |> Map.tryFind "cref"
+            |> Option.map (fun cref ->
+                {
+                    Type = extractMemberText cref
+                    Doc = formatToMarkdown inner |> fun s -> s.Trim()
+                }
+            )
+        else
+            None
+    )
+    |> Seq.toList
+
+/// `<seealso cref="..."/>`, which is usually a void element.
+let private extractSeeAlso (text: string) : string list =
+    Regex.Matches(text, tagPattern "seealso", RegexOptions.IgnoreCase)
+    |> Seq.cast<Match>
+    |> Seq.choose (fun m ->
+        let attrs =
+            if m.Groups.["void_element"].Success then
+                getAttributes m.Groups.["void_attributes"]
+            else
+                getAttributes m.Groups.["non_void_attributes"]
+
+        attrs |> Map.tryFind "cref" |> Option.map extractMemberText
+    )
+    |> Seq.toList
+
 /// Parse the inner XML content of a <member> element into the structured
 /// XmlDoc IR type, with all inline tags converted to Markdown.
 let private parseXmlContent (text: string) : XmlDoc =
@@ -360,7 +505,11 @@ let private parseXmlContent (text: string) : XmlDoc =
             Summary = extractFirst "summary" text
             Remarks = extractFirst "remarks" text
             Returns = extractFirst "returns" text
-            Params = extractParams text
+            Params = extractNamedDocs "param" text
+            TypeParams = extractNamedDocs "typeparam" text
+            Exceptions = extractExceptions text
+            Value = extractFirst "value" text
+            SeeAlso = extractSeeAlso text
             Examples = extractAll "example" text
         }
 

@@ -13,6 +13,7 @@ module Pages =
     /// A `<dl>` of links with optional summaries - the shape every index-style
     /// section on every page uses.
     let private definitionList
+        (links: LinkResolver)
         (sb: StringBuilder)
         (entries: (string * string option) list)
         =
@@ -22,7 +23,9 @@ module Pages =
             sb.WriteLine($"<dt>{term}</dt>")
 
             match description with
-            | Some text -> sb.WriteLine($"<dd>{escapeMdxInline text}</dd>")
+            // Summaries carry cross-references too, and an unresolved one would reach
+            // the page as a literal `fsharp-doc:` href.
+            | Some text -> sb.WriteLine($"<dd>{escapeMdxInline (resolveCrefLinks links text)}</dd>")
             | None -> ()
 
         sb.WriteLine("</dl>")
@@ -79,7 +82,7 @@ module Pages =
             |> List.map (fun m ->
                 links.Link(m.Name, m.FullName) + obsoleteInlineHtml m.ObsoleteInfo, m.XmlDoc
             )
-            |> definitionList sb
+            |> definitionList links sb
 
     let private renderTypeList
         (links: LinkResolver)
@@ -95,7 +98,7 @@ module Pages =
                 links.Link(e.Name, e.FullName) + obsoleteInlineHtml e.ObsoleteInfo,
                 e.XmlDoc.Summary
             )
-            |> definitionList sb
+            |> definitionList links sb
 
     let private renderFields
         (links: LinkResolver)
@@ -157,7 +160,7 @@ module Pages =
         sb.WriteLine("</div>")
         sb.NewLine()
 
-        renderXmlDocSummaryAndRemarks sb toc entity.XmlDoc
+        renderXmlDocSummaryAndRemarks links sb toc entity.XmlDoc
 
         match entity with
         | Entity.Union e ->
@@ -222,7 +225,7 @@ module Pages =
 
                 links.Link(shortName, subNs), None
             )
-            |> definitionList sb
+            |> definitionList links sb
 
         renderTypeList links sb toc entities
         renderDeclaredModules links sb toc modules
@@ -271,14 +274,14 @@ module Pages =
             |> List.map (fun m ->
                 links.Link(m.Name, m.FullName) + obsoleteInlineHtml m.ObsoleteInfo, m.XmlDoc
             )
-            |> definitionList sb
+            |> definitionList links sb
 
         // Assemblies are listed for orientation only - there is no per-assembly page,
         // so these are deliberately plain text rather than links to nowhere.
         if not assemblies.IsEmpty then
             h2 sb toc "assemblies" "Assemblies"
 
-            assemblies |> List.map (fun a -> a.Name, None) |> definitionList sb
+            assemblies |> List.map (fun a -> a.Name, None) |> definitionList links sb
 
         {
             Title = "API Reference"

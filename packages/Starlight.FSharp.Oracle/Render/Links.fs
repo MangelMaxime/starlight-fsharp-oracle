@@ -25,6 +25,31 @@ type LinkResolver =
 
 /// Page-local anchors, which are a different problem from page URLs: they must be
 /// usable as an HTML id and a URL fragment, and unique within one page.
+module Cref =
+
+    /// The scheme the extractor uses for `<see cref="..."/>` targets in doc text. It
+    /// records what was referenced; only the renderer can say whether that has a page.
+    [<Literal>]
+    let Scheme = "fsharp-doc:"
+
+    /// The last segment of a fully-qualified name, without the generic arity suffix
+    /// F# appends: `Reference.Coverage.SortedBag\`1` reads as `SortedBag`.
+    let displayName (fullName: string) =
+        let withoutArity =
+            let backtick = fullName.LastIndexOf('`')
+
+            if backtick >= 0 then
+                fullName.Substring(0, backtick)
+            else
+                fullName
+
+        let lastDot = withoutArity.LastIndexOf('.')
+
+        if lastDot >= 0 then
+            withoutArity.Substring(lastDot + 1)
+        else
+            withoutArity
+
 module Anchor =
 
     /// Keep identifier characters and collapse everything else into a separator, so

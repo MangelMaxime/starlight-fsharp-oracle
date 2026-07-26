@@ -173,6 +173,33 @@ type Parser() =
 /// </remarks>
 let tryFirst (items: 'T seq) : 'T option = Seq.tryHead items
 
+/// <summary>Divides one number by another.</summary>
+/// <param name="numerator">The number to divide.</param>
+/// <param name="denominator">The number to divide by.</param>
+/// <returns>The quotient.</returns>
+/// <exception cref="T:System.DivideByZeroException">
+/// Thrown when <paramref name="denominator"/> is zero.
+/// </exception>
+/// <seealso cref="T:Reference.Coverage.SortedBag`1"/>
+let divide (numerator: int) (denominator: int) : int = numerator / denominator
+
+/// <summary>A counter whose value can be read and written.</summary>
+type Tally() =
+
+    let mutable total = 0
+
+    /// <summary>The running total.</summary>
+    /// <value>The number of increments recorded so far.</value>
+    member _.Total
+        with get () = total
+        and set value = total <- value
+
+    /// <summary>
+    /// Records one increment. See <see cref="T:System.Console"/>, which has no page
+    /// here and so must not be linked.
+    /// </summary>
+    member _.Record() = total <- total + 1
+
 /// <summary>Combines two values using a supplied function.</summary>
 /// <typeparam name="T">The input type.</typeparam>
 /// <typeparam name="U">The result type.</typeparam>

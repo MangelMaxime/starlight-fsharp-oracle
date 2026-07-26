@@ -12,6 +12,9 @@ headings:
     slug: "tryFirst"
     text: "tryFirst"
   - depth: 3
+    slug: "divide"
+    text: "divide"
+  - depth: 3
     slug: "combineWith"
     text: "combineWith"
   - depth: 2
@@ -40,13 +43,15 @@ import { Aside } from '@astrojs/starlight/components';
 <dt><a href="/api/reference-coverage-entitybase">EntityBase</a></dt>
 <dd>A base class carrying a unique identifier.</dd>
 <dt><a href="/api/reference-coverage-user">User</a></dt>
-<dd>A user, inheriting ``Reference.Coverage.EntityBase`` and implementing ``Reference.Coverage.INamed``.</dd>
+<dd>A user, inheriting [`EntityBase`](/api/reference-coverage-entitybase) and implementing [`INamed`](/api/reference-coverage-inamed).</dd>
 <dt><a href="/api/reference-coverage-sortedbag">SortedBag</a></dt>
 <dd>A bag that keeps its contents sorted. The constraint is part of the type's signature, so it belongs in the rendered type head.</dd>
 <dt><a href="/api/reference-coverage-formatter">Formatter</a></dt>
 <dd>Formats values in several ways.</dd>
 <dt><a href="/api/reference-coverage-parser">Parser</a></dt>
 <dd>Parses text into numbers.</dd>
+<dt><a href="/api/reference-coverage-tally">Tally</a></dt>
+<dd>A counter whose value can be read and written.</dd>
 </dl>
 
 <h2 id="functions">Functions</h2>
@@ -56,6 +61,11 @@ import { Aside } from '@astrojs/starlight/components';
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFirst&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
 
 Returns the first element of a sequence, if there is one.
+
+Behaviour by input:
+ 
+- An empty sequence yields `None`.
+- Any other sequence yields `Some first`.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
@@ -67,9 +77,63 @@ Returns the first element of a sequence, if there is one.
 The sequence to inspect.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
+
+</div>
 <strong>Returns</strong>
 
 The first element, or `None` when the sequence is empty.
+
+</DocEntry>
+
+<DocEntry name="divide">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;divide&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;numerator&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;denominator&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int</div>
+
+Divides one number by another.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">numerator</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to divide.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">denominator</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The number to divide by.
+
+</div>
+<strong>Returns</strong>
+
+The quotient.
+
+<strong>Exceptions</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-type">DivideByZeroException</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Thrown when `denominator` is zero.
+
+</div>
+<strong>See also</strong>
+
+<a href="/api/reference-coverage-sortedbag">SortedBag</a>
 
 </DocEntry>
 
@@ -104,6 +168,25 @@ The first value.
 <div class='fs-parameter__documentation'>
 
 The second value.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The input type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">U</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The result type.
 
 </div>
 <strong>Returns</strong>

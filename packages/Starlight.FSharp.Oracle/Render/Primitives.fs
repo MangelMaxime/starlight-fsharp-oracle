@@ -67,6 +67,51 @@ module Primitives =
     let inlineSignatureHtml (html: string) : string =
         html.Replace("\n", "<br/>")
 
+    /// Rewrite `[text](fsharp-doc:Ns.Type)` links the extractor left in doc text.
+    /// Documented targets become real links; the rest keep their text and lose the
+    /// link, for the same reason type references do.
+    let resolveCrefLinks (links: LinkResolver) (text: string) =
+        let scheme = "](" + Cref.Scheme
+
+        let rec loop (index: int) (acc: string) =
+            match text.IndexOf(scheme, index) with
+            | -1 -> acc + text.Substring(index)
+            | start ->
+                let targetStart = start + scheme.Length
+
+                match text.IndexOf(')', targetStart) with
+                | -1 -> acc + text.Substring(index)
+                | closing ->
+                    let target = text.Substring(targetStart, closing - targetStart)
+
+                    let replacement =
+                        if links.IsDocumented target then
+                            "](" + links.Href target + ")"
+                        else
+                            // Drop the link but keep the label: `[`Name`]` -> `` `Name` ``
+                            "]()"
+
+                    loop (closing + 1) (acc + text.Substring(index, start - index) + replacement)
+
+        let linked = loop 0 ""
+
+        // A markdown link with an empty target renders as a link to nowhere, so strip
+        // the brackets entirely for undocumented references.
+        let rec strip (s: string) =
+            match s.IndexOf("]()") with
+            | -1 -> s
+            | closing ->
+                match s.LastIndexOf('[', closing) with
+                | -1 -> s
+                | opening ->
+                    strip (
+                        s.Substring(0, opening)
+                        + s.Substring(opening + 1, closing - opening - 1)
+                        + s.Substring(closing + 3)
+                    )
+
+        strip linked
+
     /// The small boxed signature shown above a parameter's or case field's description.
     let signatureBlock (html: string) =
         "<div class=\"fs-parameter__signature\">\n" + html + "\n</div>\n"

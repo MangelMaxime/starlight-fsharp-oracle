@@ -134,6 +134,16 @@ Wraps a value in a Box.
 The value to wrap.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of the value.
+
+</div>
 <strong>Returns</strong>
 
 A Box containing the value.
@@ -153,6 +163,16 @@ Extracts the value from a Box.
 <div class='fs-parameter__documentation'>
 
 The box to unwrap.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of the value.
 
 </div>
 <strong>Returns</strong>
@@ -185,6 +205,25 @@ The mapping function.
 The box to map over.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The input type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">U</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The output type.
+
+</div>
 <strong>Returns</strong>
 
 A new Box with the mapped value.
@@ -204,6 +243,16 @@ Creates a singleton tree.
 <div class='fs-parameter__documentation'>
 
 The value for the leaf.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of the value.
 
 </div>
 <strong>Returns</strong>
@@ -236,6 +285,25 @@ The mapping function.
 The tree to map over.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The input type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">U</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The output type.
+
+</div>
 <strong>Returns</strong>
 
 A new Tree with mapped values.
@@ -255,6 +323,16 @@ Counts the number of leaves in a tree.
 <div class='fs-parameter__documentation'>
 
 The tree to count.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values in the tree (unused but required for type inference).
 
 </div>
 <strong>Returns</strong>
@@ -278,6 +356,16 @@ Finds the maximum value in a tree. Requires the type to be comparable.
 The tree to search.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values - must implement IComparable.
+
+</div>
 <strong>Returns</strong>
 
 The maximum value.
@@ -297,6 +385,16 @@ Sums all numeric values in a tree using generic math.
 <div class='fs-parameter__documentation'>
 
 The tree to sum.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The numeric type - must have static member (+).
 
 </div>
 <strong>Returns</strong>
@@ -329,6 +427,16 @@ The function to test items.
 The tree to search.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values in the tree.
+
+</div>
 <strong>Returns</strong>
 
 Some value if found, None otherwise.
@@ -350,6 +458,16 @@ Disposes all IDisposable values in a tree.
 The tree containing disposable values.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values - must implement IDisposable.
+
+</div>
 </DocEntry>
 
 <DocEntry name="formatTree">
@@ -365,6 +483,16 @@ Formats all values in a tree to strings.
 <div class='fs-parameter__documentation'>
 
 The tree to format.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values - must override ToString.
 
 </div>
 <strong>Returns</strong>
@@ -386,6 +514,16 @@ Clones a tree of cloneable items.
 <div class='fs-parameter__documentation'>
 
 The tree to clone.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type of values - must implement ICloneable.
 
 </div>
 <strong>Returns</strong>
@@ -418,6 +556,16 @@ First value.
 Second value.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type that must support equality.
+
+</div>
 <strong>Returns</strong>
 
 True if equal.
@@ -439,6 +587,16 @@ Unmanaged constraint for efficient copying.
 The value to work with.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The unmanaged struct type.
+
+</div>
 <strong>Returns</strong>
 
 The value unchanged (demonstration only).
@@ -458,6 +616,16 @@ Not null constraint demonstration.
 <div class='fs-parameter__documentation'>
 
 The value to check.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The type that must not be null.
 
 </div>
 <strong>Returns</strong>
@@ -490,6 +658,25 @@ The mapping function.
 The wrapper to map over.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The input element type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">U</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The output element type.
+
+</div>
 <strong>Returns</strong>
 
 A new wrapper with mapped items.
@@ -511,6 +698,16 @@ Flattens a tree of trees.
 The tree of trees.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The inner type.
+
+</div>
 <strong>Returns</strong>
 
 A flattened tree.
@@ -530,6 +727,16 @@ Creates a tree from a list.
 <div class='fs-parameter__documentation'>
 
 The items to organize into a tree.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
 
 </div>
 <strong>Returns</strong>
@@ -613,6 +820,16 @@ The predicate to test.
 The list to search.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
+
+</div>
 <strong>Returns</strong>
 
 The first matching item, or None.
@@ -643,6 +860,16 @@ The predicate to test.
 The sequence to filter.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
+
+</div>
 <strong>Returns</strong>
 
 A sequence of matching items.
@@ -662,6 +889,16 @@ Tries to get a value from a voption.
 <div class='fs-parameter__documentation'>
 
 The value option.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The value type.
 
 </div>
 <strong>Returns</strong>
@@ -685,6 +922,16 @@ Creates a reference cell.
 The initial value.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The value type.
+
+</div>
 <strong>Returns</strong>
 
 A reference cell.
@@ -704,6 +951,16 @@ Creates an array from a list.
 <div class='fs-parameter__documentation'>
 
 The items to convert.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
 
 </div>
 <strong>Returns</strong>
@@ -745,6 +1002,25 @@ The initial state.
 The tree to fold.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The tree element type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">S</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The accumulator type.
+
+</div>
 <strong>Returns</strong>
 
 The final accumulated value.
@@ -773,6 +1049,25 @@ The first tree.
 <div class='fs-parameter__documentation'>
 
 The second tree.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The first tree's element type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">U</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The second tree's element type.
 
 </div>
 <strong>Returns</strong>

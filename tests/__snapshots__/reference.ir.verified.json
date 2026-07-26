@@ -51,6 +51,9 @@
                                         "$value": "A log severity level. Callers must qualify the case names."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [
@@ -69,6 +72,9 @@
                                                 "$value": "Diagnostic detail, normally hidden."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -83,6 +89,9 @@
                                                 "$value": "Routine progress information."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -97,6 +106,9 @@
                                                 "$value": "Something unexpected but recoverable."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -117,6 +129,9 @@
                                                         "$value": "A failure, carrying its numeric code."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -128,6 +143,9 @@
                                                 "$value": "A failure, carrying its numeric code."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -149,6 +167,9 @@
                                         "$value": "A union carrying members. The type header links each member to an anchor on the\n page, so the page has to actually render those members."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -171,6 +192,9 @@
                                                         "$value": "Degrees Celsius."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -182,6 +206,9 @@
                                                 "$value": "Degrees Celsius."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -202,6 +229,9 @@
                                                         "$value": "Degrees Fahrenheit."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -213,6 +243,9 @@
                                                 "$value": "Degrees Fahrenheit."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -237,6 +270,9 @@
                                                 "$value": "The temperature expressed in Celsius."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -266,6 +302,9 @@
                                                 "$value": "Freezing point of water."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -292,6 +331,9 @@
                                         "$value": "A contract for things that carry a name."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -316,6 +358,9 @@
                                                 "$value": "The name of this object."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -342,6 +387,9 @@
                                         "$value": "A base class carrying a unique identifier."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [
@@ -381,6 +429,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -409,6 +460,9 @@
                                                 "$value": "Produces a human-readable description."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -437,6 +491,9 @@
                                                 "$value": "The unique identifier."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -460,9 +517,12 @@
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A user, inheriting ``Reference.Coverage.EntityBase`` and\n implementing ``Reference.Coverage.INamed``."
+                                        "$value": "A user, inheriting [`EntityBase`](fsharp-doc:Reference.Coverage.EntityBase) and\n implementing [`INamed`](fsharp-doc:Reference.Coverage.INamed)."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -515,6 +575,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -538,6 +601,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -566,6 +632,9 @@
                                                 "$value": "The display name. Settable."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -594,6 +663,9 @@
                                                 "$value": "Whether the user is currently active."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -620,6 +692,9 @@
                                         "$value": "A bag that keeps its contents sorted. The constraint is part of the type's\n signature, so it belongs in the rendered type head."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -739,6 +814,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -816,6 +894,9 @@
                                                     "Doc": "The second item."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -844,6 +925,9 @@
                                                 "$value": "The number of items."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -888,6 +972,9 @@
                                                 "$value": "The items, in ascending order."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -914,6 +1001,9 @@
                                         "$value": "Formats values in several ways."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -942,6 +1032,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -1001,6 +1094,9 @@
                                                     "Doc": "How many digits to keep."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1048,6 +1144,9 @@
                                                     "Doc": "The value to format."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1074,6 +1173,9 @@
                                         "$value": "Parses text into numbers."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1102,6 +1204,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -1161,6 +1266,9 @@
                                                     "Doc": "Value to use when parsing fails. Defaults to zero."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1237,6 +1345,9 @@
                                                     "Doc": "Receives the parsed value."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1244,6 +1355,133 @@
                                         "IsInline": false,
                                         "HasGetter": false,
                                         "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "Tally",
+                                "FullName": "Reference.Coverage.Tally",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A counter whose value can be read and written."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Constructor",
+                                        "Name": "new",
+                                        "FullName": "Reference.Coverage.Tally",
+                                        "CompiledName": ".ctor",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "Tally",
+                                            "Reference.Coverage.Tally"
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "Record",
+                                        "FullName": "Reference.Coverage.Tally.Record",
+                                        "CompiledName": "Record",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "unit"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Records one increment. See [`Console`](fsharp-doc:System.Console), which has no page\n here and so must not be linked."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Total",
+                                        "FullName": "Reference.Coverage.Tally.Total",
+                                        "CompiledName": "get_Total",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The running total."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "Value": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The number of increments recorded so far."
+                                            },
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": true,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -1338,7 +1576,7 @@
                                 "Remarks": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Behaviour by input:\n <list type=\"bullet\"><item><description>An empty sequence yields `None`.</description></item><item><description>Any other sequence yields `Some first`.</description></item></list>"
+                                    "$value": "Behaviour by input:\n \n- An empty sequence yields `None`.\n- Any other sequence yields `Some first`."
                                 },
                                 "Returns": {
                                     "$type": "option",
@@ -1350,6 +1588,81 @@
                                         "Name": "items",
                                         "Doc": "The sequence to inspect."
                                     }
+                                ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
+                                "Examples": []
+                            },
+                            "ObsoleteInfo": "Active"
+                        },
+                        {
+                            "Name": "divide",
+                            "FullName": "Reference.Coverage.divide",
+                            "Parameters": [
+                                [
+                                    {
+                                        "Name": "numerator",
+                                        "Type": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "IsOptional": false
+                                    }
+                                ],
+                                [
+                                    {
+                                        "Name": "denominator",
+                                        "Type": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "IsOptional": false
+                                    }
+                                ]
+                            ],
+                            "ReturnType": [
+                                "Text",
+                                "int"
+                            ],
+                            "IsInline": false,
+                            "IsMutable": false,
+                            "IsActivePattern": false,
+                            "XmlDoc": {
+                                "Summary": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "Divides one number by another."
+                                },
+                                "Returns": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "The quotient."
+                                },
+                                "Params": [
+                                    {
+                                        "Name": "numerator",
+                                        "Doc": "The number to divide."
+                                    },
+                                    {
+                                        "Name": "denominator",
+                                        "Doc": "The number to divide by."
+                                    }
+                                ],
+                                "TypeParams": [],
+                                "Exceptions": [
+                                    {
+                                        "Type": "System.DivideByZeroException",
+                                        "Doc": "Thrown when `denominator` is zero."
+                                    }
+                                ],
+                                "SeeAlso": [
+                                    "Reference.Coverage.SortedBag`1"
                                 ],
                                 "Examples": []
                             },
@@ -1536,6 +1849,18 @@
                                         "Doc": "The second value."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The input type."
+                                    },
+                                    {
+                                        "Name": "U",
+                                        "Doc": "The result type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -1563,6 +1888,9 @@
                                     "$value": "The maximum number of retry attempts."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -1588,6 +1916,9 @@
                                     "$value": "The greeting used when none is supplied."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -1618,6 +1949,9 @@
                                         "$value": "A unit of length."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1636,6 +1970,9 @@
                                         "$value": "A unit of time."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1654,6 +1991,9 @@
                                         "$value": "A unit of velocity (metres per second)."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1672,6 +2012,9 @@
                                         "$value": "A lightweight 2D point stored on the stack."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1685,6 +2028,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -1696,6 +2042,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -1738,6 +2087,9 @@
                                                 "$value": "Translates the point by a given offset."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1766,6 +2118,9 @@
                                                 "$value": "Computes the Euclidean distance from the origin."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -1792,6 +2147,9 @@
                                         "$value": "A lightweight discriminated union stored on the stack."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1837,12 +2195,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -1852,6 +2216,9 @@
                                         "Fields": [],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -1873,6 +2240,9 @@
                                         "$value": "Raised when a parsing operation fails."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1885,6 +2255,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -1896,6 +2269,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -1915,6 +2291,9 @@
                                         "$value": "Raised when a required resource is not found."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1927,6 +2306,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -1946,6 +2328,9 @@
                                         "$value": "A callback that transforms an integer."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -1974,6 +2359,9 @@
                                         "$value": "A callback that combines two values."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -2112,6 +2500,9 @@
                                     "$value": "Converts a raw float to a metres value."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2192,6 +2583,9 @@
                                     "$value": "Converts a raw float to a seconds value."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2375,6 +2769,9 @@
                                     "$value": "Computes velocity from distance and time."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2462,9 +2859,12 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Uses ``Reference.MissingSyntaxes.StructPoint`` and\n ``Reference.MissingSyntaxes.velocity`` to demonstrate\n cross-linking in XML documentation."
+                                    "$value": "Uses [`StructPoint`](fsharp-doc:Reference.MissingSyntaxes.StructPoint) and\n [`velocity`](fsharp-doc:Reference.MissingSyntaxes) to demonstrate\n cross-linking in XML documentation."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2506,6 +2906,14 @@
                                             "Doc": "The tree to decompose."
                                         }
                                     ],
+                                    "TypeParams": [
+                                        {
+                                            "Name": "T",
+                                            "Doc": "The tree element type."
+                                        }
+                                    ],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -2539,6 +2947,9 @@
                                         "Fields": [],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -2560,12 +2971,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -2605,6 +3022,9 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             },
@@ -2640,12 +3060,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -2706,6 +3132,9 @@
                                         "Doc": "The string to parse."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2749,6 +3178,9 @@
                                         "Doc": "The input string."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2828,6 +3260,9 @@
                                         "Doc": "The number to classify."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2899,6 +3334,9 @@
                                         "Doc": "The date to classify."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -2987,6 +3425,9 @@
                                         "Doc": "The string to analyze."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3101,6 +3542,14 @@
                                         "Doc": "The option to classify."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The option's value type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3254,6 +3703,18 @@
                                         "Doc": "The result to decompose."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The success type."
+                                    },
+                                    {
+                                        "Name": "E",
+                                        "Doc": "The error type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3307,6 +3768,9 @@
                                         "Doc": "The string to parse."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3360,6 +3824,9 @@
                                         "Doc": "The string to parse."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3413,6 +3880,9 @@
                                         "Doc": "The string to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3466,6 +3936,9 @@
                                         "Doc": "The string to validate."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3519,6 +3992,9 @@
                                         "Doc": "The string to validate."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3587,6 +4063,9 @@
                                         "Doc": "The string like \"key=value\"."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3654,6 +4133,9 @@
                                         "Doc": "The number to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3721,6 +4203,9 @@
                                         "Doc": "The string to match."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3788,6 +4273,9 @@
                                         "Doc": "The string to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3855,6 +4343,9 @@
                                         "Doc": "The string to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -3934,6 +4425,9 @@
                                         "Doc": "The number to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4055,6 +4549,9 @@
                                         "Doc": "The list to check."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4134,6 +4631,9 @@
                                         "Doc": "The string to classify."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4277,6 +4777,9 @@
                             "IsActivePattern": true,
                             "XmlDoc": {
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4400,6 +4903,9 @@
                                         "Doc": "The sequence to analyze."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4491,6 +4997,9 @@
                                         "Doc": "The value to return."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4606,6 +5115,9 @@
                                         "Doc": "The function to time."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4622,7 +5134,7 @@
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
-                        "$value": "Operations for creating and updating ``Reference.Reactive.Var`1`` nodes."
+                        "$value": "Operations for creating and updating [`Var`1`](fsharp-doc:Reference.Reactive.Var`1) nodes."
                     },
                     "Entities": [],
                     "Functions": [
@@ -4712,6 +5224,9 @@
                                         "Doc": "The starting value of the node."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4797,6 +5312,9 @@
                                     "$value": "Read the current value of a node."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -4828,6 +5346,14 @@
                                         "$value": "A generic box that holds any type."
                                     },
                                     "Params": [],
+                                    "TypeParams": [
+                                        {
+                                            "Name": "T",
+                                            "Doc": "The type of the contained value."
+                                        }
+                                    ],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -4874,6 +5400,9 @@
                                                 "$value": "The value inside the box."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -4895,6 +5424,18 @@
                                         "$value": "A generic result type that can hold either a value or an error."
                                     },
                                     "Params": [],
+                                    "TypeParams": [
+                                        {
+                                            "Name": "T",
+                                            "Doc": "The type of the success value."
+                                        },
+                                        {
+                                            "Name": "E",
+                                            "Doc": "The type of the error value."
+                                        }
+                                    ],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -4950,12 +5491,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -4977,12 +5524,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -5004,6 +5557,14 @@
                                         "$value": "A generic tree structure with values at the leaves."
                                     },
                                     "Params": [],
+                                    "TypeParams": [
+                                        {
+                                            "Name": "T",
+                                            "Doc": "The type of values stored in the tree."
+                                        }
+                                    ],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -5049,12 +5610,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -5094,6 +5661,9 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             },
@@ -5129,12 +5699,18 @@
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -5156,6 +5732,14 @@
                                         "$value": "A generic wrapper around a list."
                                     },
                                     "Params": [],
+                                    "TypeParams": [
+                                        {
+                                            "Name": "T",
+                                            "Doc": "The element type."
+                                        }
+                                    ],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -5212,6 +5796,9 @@
                                                 "$value": "The wrapped list."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -5314,6 +5901,14 @@
                                         "Doc": "The value to wrap."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of the value."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -5409,6 +6004,14 @@
                                         "Doc": "The box to unwrap."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of the value."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -5581,6 +6184,18 @@
                                         "Doc": "The box to map over."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The input type."
+                                    },
+                                    {
+                                        "Name": "U",
+                                        "Doc": "The output type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -5676,6 +6291,14 @@
                                         "Doc": "The value for the leaf."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of the value."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -5848,6 +6471,18 @@
                                         "Doc": "The tree to map over."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The input type."
+                                    },
+                                    {
+                                        "Name": "U",
+                                        "Doc": "The output type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -5937,6 +6572,14 @@
                                         "Doc": "The tree to count."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values in the tree (unused but required for type inference)."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6053,6 +6696,14 @@
                                         "Doc": "The tree to search."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values - must implement IComparable."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6307,6 +6958,14 @@
                                         "Doc": "The tree to sum."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The numeric type - must have static member (+)."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6455,6 +7114,14 @@
                                         "Doc": "The tree to search."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values in the tree."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6561,6 +7228,14 @@
                                         "Doc": "The tree containing disposable values."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values - must implement IDisposable."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6668,6 +7343,14 @@
                                         "Doc": "The tree to format."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values - must override ToString."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6803,6 +7486,14 @@
                                         "Doc": "The tree to clone."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type of values - must implement ICloneable."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -6915,6 +7606,14 @@
                                         "Doc": "Second value."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type that must support equality."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7034,6 +7733,14 @@
                                         "Doc": "The value to work with."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The unmanaged struct type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7132,6 +7839,14 @@
                                         "Doc": "The value to check."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The type that must not be null."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7304,6 +8019,18 @@
                                         "Doc": "The wrapper to map over."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The input element type."
+                                    },
+                                    {
+                                        "Name": "U",
+                                        "Doc": "The output element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7435,6 +8162,14 @@
                                         "Doc": "The tree of trees."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The inner type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7540,6 +8275,14 @@
                                         "Doc": "The items to organize into a tree."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7651,6 +8394,9 @@
                                         "Doc": "The person's age."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7748,6 +8494,9 @@
                                         "Doc": "The person record."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -7888,6 +8637,14 @@
                                         "Doc": "The list to search."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8028,6 +8785,14 @@
                                         "Doc": "The sequence to filter."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8125,6 +8890,14 @@
                                         "Doc": "The value option."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The value type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8212,6 +8985,14 @@
                                         "Doc": "The initial value."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The value type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8308,6 +9089,14 @@
                                         "Doc": "The items to convert."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8511,6 +9300,18 @@
                                         "Doc": "The tree to fold."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The tree element type."
+                                    },
+                                    {
+                                        "Name": "S",
+                                        "Doc": "The accumulator type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8693,6 +9494,18 @@
                                         "Doc": "The second tree."
                                     }
                                 ],
+                                "TypeParams": [
+                                    {
+                                        "Name": "T",
+                                        "Doc": "The first tree's element type."
+                                    },
+                                    {
+                                        "Name": "U",
+                                        "Doc": "The second tree's element type."
+                                    }
+                                ],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8715,6 +9528,9 @@
                                     "$value": "A mutable counter for demonstration."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8735,6 +9551,9 @@
                                     "$value": "A mutable configuration string."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -8765,6 +9584,9 @@
                                         "$value": "Defines a contract for types that can describe themselves."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -8794,6 +9616,9 @@
                                                 "$value": "A plain-text description string."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -8822,6 +9647,9 @@
                                                 "$value": "The short label used to identify this object."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -8848,6 +9676,9 @@
                                         "$value": "A named counter that tracks a running total."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -8881,6 +9712,9 @@
                                                 "$value": "Creates a counter with the label `\"default\"`."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -8914,6 +9748,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -8947,6 +9784,9 @@
                                                 "$value": "A string of the form `\"label: N\"`."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -8975,6 +9815,9 @@
                                                 "$value": "Increments the counter by one."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9017,6 +9860,9 @@
                                                     "Doc": "The amount to add."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9045,6 +9891,9 @@
                                                 "$value": "The current value of the counter."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9073,6 +9922,9 @@
                                                 "$value": "The label identifying this counter."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9102,6 +9954,9 @@
                                                 "$value": "A counter pre-labelled `\"global\"`."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -9128,6 +9983,9 @@
                                         "$value": "A two-dimensional vector with operator overloads."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -9173,6 +10031,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -9201,6 +10062,9 @@
                                                 "$value": "The x component."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9229,6 +10093,9 @@
                                                 "$value": "The y component."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -9285,6 +10152,9 @@
                                                     "Doc": "The scalar multiplier."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -9342,6 +10212,9 @@
                                                     "Doc": "Right operand."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -9399,6 +10272,9 @@
                                                     "Doc": "Right operand."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -9484,6 +10360,9 @@
                                         "Doc": "The input string."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "```fsharp\n Words.capitalize \"hello\"  // \"Hello\"\n Words.capitalize \"\"       // \"\"\n```"
                                 ]
@@ -9524,6 +10403,9 @@
                                         "Doc": "The input string (case-insensitive)."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "```fsharp\n Words.isPalindrome \"racecar\"  // true\n Words.isPalindrome \"hello\"    // false\n```"
                                 ]
@@ -9602,6 +10484,9 @@
                                         "Doc": "A multi-line input string."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -9662,6 +10547,9 @@
                                         "Doc": "The lines to join."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -9700,6 +10588,9 @@
                                         "Doc": "A multi-line input string."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -9773,7 +10664,7 @@
                                 "Returns": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A new ``Point`` shifted by `(dx, dy)`."
+                                    "$value": "A new [`Point`](fsharp-doc:Point) shifted by `(dx, dy)`."
                                 },
                                 "Params": [
                                     {
@@ -9789,6 +10680,9 @@
                                         "Doc": "The point to translate."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -9848,6 +10742,9 @@
                                         "Doc": "Second point."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "```fsharp\n let d = Points.distance origin { X = 3.0; Y = 4.0 }  // 5.0\n```"
                                 ]
@@ -9873,6 +10770,9 @@
                                     "$value": "The origin — the point `(0, 0)`."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -9908,6 +10808,9 @@
                                         "$value": "Each case carries the minimum data needed to compute area and perimeter."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -9930,6 +10833,9 @@
                                                         "$value": "A circle defined by its radius."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -9941,6 +10847,9 @@
                                                 "$value": "A circle defined by its radius."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -9961,6 +10870,9 @@
                                                         "$value": "A rectangle defined by its width and height."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             },
@@ -9977,6 +10889,9 @@
                                                         "$value": "A rectangle defined by its width and height."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -9988,6 +10903,9 @@
                                                 "$value": "A rectangle defined by its width and height."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10008,6 +10926,9 @@
                                                         "$value": "An equilateral triangle defined by its side length."
                                                     },
                                                     "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
                                                     "Examples": []
                                                 }
                                             }
@@ -10019,6 +10940,9 @@
                                                 "$value": "An equilateral triangle defined by its side length."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -10040,6 +10964,9 @@
                                         "$value": "The axis-aligned bounding box of a shape."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10058,6 +10985,9 @@
                                                 "$value": "Width of the bounding box."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10074,6 +11004,9 @@
                                                 "$value": "Height of the bounding box."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -10125,6 +11058,9 @@
                                         "Doc": "The shape whose area is computed."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "```fsharp\n let a = area (Circle 1.0)   // Math.PI\n let b = area (Rectangle (3.0, 4.0))  // 12.0\n```"
                                 ]
@@ -10164,7 +11100,7 @@
                                 "Returns": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A ``BoundingBox`` record."
+                                    "$value": "A [`BoundingBox`](fsharp-doc:BoundingBox) record."
                                 },
                                 "Params": [
                                     {
@@ -10172,6 +11108,9 @@
                                         "Doc": "The shape to bound."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10219,7 +11158,7 @@
                                 "Returns": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A new ``Shape`` scaled by `factor`."
+                                    "$value": "A new [`Shape`](fsharp-doc:Shape) scaled by `factor`."
                                 },
                                 "Params": [
                                     {
@@ -10231,6 +11170,9 @@
                                         "Doc": "The shape to scale."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10303,6 +11245,9 @@
                                         "Doc": "The shape whose bounding box is tested."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10323,9 +11268,12 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "The unit circle — a ``Circle`` with radius `1.0`."
+                                    "$value": "The unit circle — a [`Circle`](fsharp-doc:Circle) with radius `1.0`."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10356,6 +11304,9 @@
                                         "$value": "Legacy configuration format. Use ConfigV2 instead."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10369,6 +11320,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10380,6 +11334,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -10423,6 +11380,9 @@
                                     "$value": "Returns true if the given string is non-empty."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "Check a non-empty string:\n ```fsharp\n isNonEmpty \"hello\" // true\n```",
                                     "Check an empty string:\n ```fsharp\n isNonEmpty \"\" // false\n```"
@@ -10464,6 +11424,9 @@
                                     "$value": "A formatted date-time string, e.g. `\"2025-01-01T00:00:00Z\"`."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": [
                                     "```fsharp\n let now = timestamp ()\n printfn \"Current time: %s\" now\n```"
                                 ]
@@ -10504,6 +11467,9 @@
                                     "$value": "Seconds since 1970-01-01T00:00:00Z."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": [
@@ -10550,6 +11516,9 @@
                                     "$value": "Pads a string on the left to a given width."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Deprecated"
@@ -10572,6 +11541,9 @@
                                     "$value": "Returns the version string of the library."
                                 },
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10603,6 +11575,9 @@
                             "IsMutable": false,
                             "XmlDoc": {
                                 "Params": [],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
@@ -10631,6 +11606,9 @@
                                         "$value": "Marking state for a reactive node. Ordered Clean < Check < Dirty; an F# enum\n so it is a plain int at runtime (erased by Fable) - named and type-checked,\n zero cost vs raw ints."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10654,6 +11632,9 @@
                                                 "$value": "The value is current; nothing downstream needs touching"
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10676,6 +11657,9 @@
                                                 "$value": "A transitive dependency *might* have changed (verify before recomputing)"
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10698,6 +11682,9 @@
                                                 "$value": "A direct dependency changed"
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -10718,6 +11705,9 @@
                                         "$value": "The reactive node and the writable handle. A **source** (`Var.create`) is a\n `Var<'T>` you read and write; a **computed** is the same node type built with a\n recompute function but handed back read-only as a `Signal<'T>`. ONE runtime\n class backs both, so every read stays monomorphic (no dispatch, no hidden-class\n polymorphism). Reading `.Value` inside a computation registers a dependency."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10806,6 +11796,9 @@
                                         ],
                                         "XmlDoc": {
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,
@@ -10840,6 +11833,9 @@
                                                 "$value": "The current value held by this node."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -10877,6 +11873,9 @@
                                         "$value": "A distance measured in metres."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10900,6 +11899,9 @@
                                         "$value": "A 2D point in Euclidean space."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10918,6 +11920,9 @@
                                                 "$value": "The horizontal coordinate."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10934,6 +11939,9 @@
                                                 "$value": "The vertical coordinate."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -10955,6 +11963,9 @@
                                         "$value": "An axis-aligned 2D rectangle defined by its two corners."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -10974,6 +11985,9 @@
                                                 "$value": "Top-left corner of the rectangle."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -10991,6 +12005,9 @@
                                                 "$value": "Bottom-right corner of the rectangle."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -11012,6 +12029,9 @@
                                         "$value": "A 2D vector with X and Y components."
                                     },
                                     "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
                                     "Examples": []
                                 },
                                 "Attributes": [],
@@ -11030,6 +12050,9 @@
                                                 "$value": "Horizontal component."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     },
@@ -11046,6 +12069,9 @@
                                                 "$value": "Vertical component."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         }
                                     }
@@ -11083,7 +12109,7 @@
                                             "Returns": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A new ``Vector`` that is the component-wise sum."
+                                                "$value": "A new [`Vector`](fsharp-doc:Vector) that is the component-wise sum."
                                             },
                                             "Params": [
                                                 {
@@ -11091,6 +12117,9 @@
                                                     "Doc": "The vector to add."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -11131,7 +12160,7 @@
                                             "Returns": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A new ``Vector`` with each component multiplied by `factor`."
+                                                "$value": "A new [`Vector`](fsharp-doc:Vector) with each component multiplied by `factor`."
                                             },
                                             "Params": [
                                                 {
@@ -11139,6 +12168,9 @@
                                                     "Doc": "The scaling factor."
                                                 }
                                             ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -11167,6 +12199,9 @@
                                                 "$value": "The Euclidean length (magnitude) of the vector."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": false,
@@ -11196,6 +12231,9 @@
                                                 "$value": "The zero vector — `(0, 0)`."
                                             },
                                             "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
                                             "Examples": []
                                         },
                                         "IsStatic": true,

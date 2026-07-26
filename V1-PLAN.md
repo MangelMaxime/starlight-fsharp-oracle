@@ -294,6 +294,12 @@ Ordered by how wrong the output is today.
       their compiled name, since `(+)` cannot be a URL fragment: `(*)` -> `op_Multiply`,
       `(|Positive|Negative|Zero|)` -> `Positive-Negative-Zero`.
 
+### Found while fixing: remarks were dropped everywhere but entity pages
+
+`renderDocumentationBlock` rendered summary, extras and examples but never `<remarks>`,
+so a function's, member's or value's remarks were silently discarded - only entity
+pages showed them. Fixed.
+
 ### Missing information
 
 - [x] **Inheritance and interface implementations.** Type heads now carry
@@ -344,15 +350,27 @@ The formatting reference settles it: `ActivePatterns.fsi` has both forms side by
 
 ### XML documentation
 
-- [ ] **`<see cref>` does not link.** `resolveCref`
-      (`Extractor/Helpers.fs:131`) is written but has zero call sites - it is dead
-      code. `MemberRef` renders as `` ``Name`` `` code text instead of a hyperlink.
-- [ ] **`<list>` is a no-op.** `HandleMicrosoftOrList = id` at
-      `packages/FSharp.Oracle/XmlDoc.fs:266`, so list markup passes through raw and
-      then gets escaped into visible tags.
-- [ ] **`<typeparam>`** - no field for it on `XmlDoc` in the Schema, needs adding.
-- [ ] **`<exception>`, `<seealso>`, `<value>`** - not extracted.
-- [ ] `<inheritdoc>` - decide in or out for v1.
+- [x] **`<see cref>` does not link.** The extractor now emits
+      `[`Name`](fsharp-doc:Ns.Type)` and the renderer resolves that scheme through the
+      same `LinkResolver` as everything else, so an undocumented target keeps its text
+      and loses the link. `M:`/`P:`/`F:` refs resolve to their declaring type, which is
+      the closest thing with a page. The old dead `resolveCref` is gone.
+
+      The link-check gate earned its keep here: module-page summaries went through a
+      different escape path that skipped resolution, so two literal `fsharp-doc:` hrefs
+      reached the built site. Caught and fixed.
+- [x] **`<list>` is a no-op.** Bullet and numbered lists become Markdown lists;
+      table-style lists become `term - description` lines, which is as close as
+      Markdown gets without building a table.
+- [x] **`<typeparam>`** - added to `XmlDoc` and rendered as a "Type parameters"
+      block, in the same shape as parameters, because that is what they are.
+- [x] **`<exception>`, `<seealso>`, `<value>`** - all three extracted and rendered.
+      Exception types and see-also targets link when they have a page and degrade to
+      text when they do not; both display without the generic arity suffix.
+- [x] `<inheritdoc>` - **out for v1.** Resolving it means walking to the base member
+      or interface member and merging its docs, across assemblies that may not be in
+      the documented set. That is a feature, not a gap, and nothing in the fixtures
+      uses it. Recorded in the decisions log.
 
 ---
 
@@ -446,5 +464,7 @@ Record choices made during the run so later phases do not relitigate them.
 | 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
 | 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `Punctuation of string` rather than a case per mark; `DeclarationName` carries text and anchor separately for overloaded constructors |
 | 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd - also deletes `payloadFields`' `spaceBeforeColon` flag_ |
+| 4 | `<inheritdoc>` | Out for v1: needs cross-assembly base-member resolution, and nothing uses it |
+| 4 | `<see cref>` transport | Extractor emits a `fsharp-doc:` markdown link; the renderer resolves it. Keeps the IR free of URLs while still recording what was referenced |
 | 5 | Slug collision disambiguation policy | _tbd_ |
 | 6 | Distribution: prebuilt binaries vs dotnet tool vs SDK requirement | _tbd_ |

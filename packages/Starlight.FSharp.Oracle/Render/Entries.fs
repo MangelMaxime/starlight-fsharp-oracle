@@ -23,12 +23,12 @@ module Entries =
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
                     sb.NewLine()
-                    sb.WriteLine(escapeMdxMarkdown f.XmlDoc.Summary.Value)
+                    sb.WriteLine(docText links f.XmlDoc.Summary.Value)
                     sb.NewLine()
                     sb.WriteLine "</div>"
 
         let renderDocumentation () =
-            renderDocumentationBlock sb case.XmlDoc renderFields
+            renderDocumentationBlock links sb case.XmlDoc renderFields
 
         renderDocEntry
             sb
@@ -41,7 +41,7 @@ module Entries =
     /// rendered like record fields.
     let renderField (links: LinkResolver) (isEnumCase: bool) (sb: StringBuilder) (field: Field) =
         let renderDocumentation () =
-            renderDocumentationBlock sb field.XmlDoc ignore
+            renderDocumentationBlock links sb field.XmlDoc ignore
 
         renderDocEntry
             sb
@@ -95,7 +95,7 @@ module Entries =
 
     let renderValueEntry (links: LinkResolver) (anchor: string) (sb: StringBuilder) (v: Value) =
         let renderDocumentation () =
-            renderDocumentationBlock sb v.XmlDoc ignore
+            renderDocumentationBlock links sb v.XmlDoc ignore
 
         renderDocEntry
             sb

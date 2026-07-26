@@ -215,6 +215,16 @@ Classifies an option value.
 The option to classify.
 
 </div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The option's value type.
+
+</div>
 <strong>Returns</strong>
 
 Some or None classification.
@@ -234,6 +244,25 @@ Decomposes a result into success or failure.
 <div class='fs-parameter__documentation'>
 
 The result to decompose.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The success type.
+
+</div>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">E</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The error type.
 
 </div>
 <strong>Returns</strong>
@@ -582,7 +611,10 @@ Integer, Float, or NotNumeric classification.
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Single|Pair|Many|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 <strong>Parameters</strong>
+<div class="fs-parameter__signature">
 <span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+</div>
+
 </DocEntry>
 
 <DocEntry name="EmptySeq-Singleton-Multiple">
