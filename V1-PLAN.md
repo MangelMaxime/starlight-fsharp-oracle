@@ -552,6 +552,32 @@ plus one hardcoded hex.
 - [x] **Attributes are theme-derived** rather than a fixed Starlight grey.
 - [x] Dropped `--fsharp-doc-fn`, which was generated but mapped to no token.
 
+### Second pass: declared names carried no class at all
+
+Only *referenced* types were coloured. Every name in declaration position - the `Foo`
+in `type Foo`, `val foo`, `member Foo`, a record field, a union case - was plain
+`TextNode.Text`, so it rendered black. `TextNode.TypeVar` turned out to be emitted in
+exactly one place: type variables were built as a tick beside plain text, which is why
+`'T` was black next to a purple `list`.
+
+- [x] `DeclaredName of text * role` covers every declaration-position name, with `Type`
+      and `Function` added to `DeclarationRole`. A name now colours the same whether it
+      is being declared or referred to.
+- [x] `TypeVar` carries its sigil (`'T`, `^T`) as one token, so the whole thing colours
+      as one rather than leaving the tick outside the span.
+- [x] Parameter names in the aligned function layout - the one place a parameter still
+      lost its colour, since that branch used plain text while member signatures used
+      `ParameterName`.
+- [x] Union case and exception payload field names, SRTP member names in constraints,
+      and anonymous record field names.
+- [x] `Literal` tokens for `[<Literal>]` values and enum case values, which rendered as
+      bare text.
+- [x] A space before the colon after a declared name, so `val tryFirst :` reads the same
+      as the `items : 'T seq` rows beneath it.
+
+Verified by sweeping every signature block in all 57 snapshots for text outside a
+`<span>`: **zero uncoloured tokens remain**.
+
 Type parameters intentionally still share the type colour: most themes define no
 separate scope for them, and falling back says so honestly rather than inventing one.
 
@@ -610,6 +636,7 @@ Record choices made during the run so later phases do not relitigate them.
 | 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
 | 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `DeclarationName` carries text and anchor separately for overloaded constructors. (`Punctuation` was `of string` here; later typed as `Symbol` once it turned out the renderer decides escaping per symbol) |
 | 4 | Colon spacing | Attached to the name, except in the aligned parameter block where padding forms a colon column. Alignment driven by parameter names only |
+| 6 | Colon spacing, revised | A space before the colon after a declared name too, so the header row reads the same as the aligned rows below it |
 | 4 | Layout as a plugin option? | No. 66 of 75 functions were affected, so this is the default's problem, not a preference. An option costs two layouts, two snapshot sets, and permanent API |
 | 4 | Long signatures | Break the constraint clause at `when`/`and`, and scroll rather than wrap |
 | 4 | Extension members placement | On the extended type's page when it has one, labelled with the declaring module; on the module's page otherwise |

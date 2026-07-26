@@ -19,7 +19,7 @@ import { Aside } from '@astrojs/starlight/components';
 <p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-generics">Reference.Generics</a></p>
 
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Result<span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Success">Success</a><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;value<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Failure">Failure</a><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;error<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;E</div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'E</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Success">Success</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Failure">Failure</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">error</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'E</span></div>
 </div>
 
 <h2 id="description">Description</h2>
@@ -47,12 +47,12 @@ The type of the error value.
 </div>
 <div class="collapsible-group">
 <DocEntry name="Success">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Success&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;value<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Success</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span></div>
 
 </DocEntry>
 
 <DocEntry name="Failure">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Failure&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;error<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;E</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Failure</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">error</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'E</span></div>
 
 </DocEntry>
 

@@ -5,6 +5,8 @@
 .fsharp-doc-type { color: var(--fsharp-doc-type); }
 .fsharp-doc-typevar { color: var(--fsharp-doc-typevar); }
 .fsharp-doc-param { color: var(--fsharp-doc-param); }
+.fsharp-doc-fn { color: var(--fsharp-doc-fn); }
+.fsharp-doc-literal { color: var(--fsharp-doc-literal); }
 /* Was a hardcoded #0a86ff, which ignored the reader's theme entirely. */
 .fsharp-doc-property { color: var(--fsharp-doc-member); }
 

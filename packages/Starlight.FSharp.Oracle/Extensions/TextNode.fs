@@ -79,6 +79,18 @@ let private symbolText =
 
 let private anchored (href: string) (text: string) = $"""<a href="{href}">{text}</a>"""
 
+/// The class a declared name takes. A name is coloured the same whether it is being
+/// declared or referred to, so `Point` reads as a type in `type Point` and in
+/// `p: Point` alike.
+let private declarationClass =
+    function
+    | DeclarationRole.Member -> "fsharp-doc-property"
+    | DeclarationRole.Constructor -> "fsharp-doc-kw"
+    // Union cases are the type's constructors, and read as types.
+    | DeclarationRole.UnionCase
+    | DeclarationRole.Type -> "fsharp-doc-type"
+    | DeclarationRole.Function -> "fsharp-doc-fn"
+
 type TextNode with
 
     static member ToHtml(links: LinkResolver, nodes: TextNode list) : string =
@@ -89,11 +101,12 @@ type TextNode with
         | TextNode.Text s -> escapeText s
         | TextNode.Punctuation symbol -> wrapWithClass (symbolClass symbol) (symbolText symbol)
         | TextNode.Keyword text -> wrapInKeyword text
+        | TextNode.Literal text -> wrapWithClass "fsharp-doc-literal" (escapeText text)
         | TextNode.Tick -> "&#x27;"
         | TextNode.Space -> space
         | TextNode.NewLine -> "\n"
         | TextNode.Indent levels -> String.replicate (levels * indentWidth) space
-        | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name
+        | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" (escapeText name)
         // A parameter is not a type variable; it only borrowed that class to keep the
         // output stable while the token model was being sorted out.
         | TextNode.ParameterName name -> wrapWithClass "fsharp-doc-param" name
@@ -103,11 +116,8 @@ type TextNode with
         | TextNode.TypeRef(name, fullName) ->
             wrapWithClass "fsharp-doc-type" (links.Link(escapeText name, fullName))
         | TextNode.DeclarationName(text, anchor, role) ->
-            let link = anchored $"#{anchor}" (escapeText text)
-
-            match role with
-            | DeclarationRole.Member -> wrapWithClass "fsharp-doc-property" link
-            | DeclarationRole.Constructor -> wrapWithClass "fsharp-doc-kw" link
-            | DeclarationRole.UnionCase -> link
+            wrapWithClass (declarationClass role) (anchored $"#{anchor}" (escapeText text))
+        | TextNode.DeclaredName(text, role) ->
+            wrapWithClass (declarationClass role) (escapeText text)
         | TextNode.Node nodes ->
             nodes |> List.map (fun node -> node.ToHtml(links)) |> String.concat ""

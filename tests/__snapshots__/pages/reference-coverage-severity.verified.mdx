@@ -25,7 +25,7 @@ import { Aside } from '@astrojs/starlight/components';
 <p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-coverage">Reference.Coverage</a></p>
 
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-attr">[&lt;RequireQualifiedAccess&gt;]</span><br/><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Severity&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Debug">Debug</a><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Info">Info</a><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Warning">Warning</a><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Error">Error</a><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;code<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-attr">[&lt;RequireQualifiedAccess&gt;]</span><br/><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Severity</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Debug">Debug</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Info">Info</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Warning">Warning</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Error">Error</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">code</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
 </div>
 
 <h2 id="description">Description</h2>
@@ -34,34 +34,34 @@ A log severity level. Callers must qualify the case names.
 
 <div class="collapsible-group">
 <DocEntry name="Debug">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Debug</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Debug</span></div>
 
 Diagnostic detail, normally hidden.
 
 </DocEntry>
 
 <DocEntry name="Info">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Info</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Info</span></div>
 
 Routine progress information.
 
 </DocEntry>
 
 <DocEntry name="Warning">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Warning</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Warning</span></div>
 
 Something unexpected but recoverable.
 
 </DocEntry>
 
 <DocEntry name="Error">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Error&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;code<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Error</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">code</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
 
 A failure, carrying its numeric code.
 
 <strong>Fields</strong>
 <div class="fs-parameter__signature">
-code<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+<span class="fsharp-doc-property">code</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
 </div>
 
 <div class='fs-parameter__documentation'>

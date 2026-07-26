@@ -23,13 +23,13 @@ import { Aside } from '@astrojs/starlight/components';
 
 <div class="collapsible-group">
 <DocEntry name="split">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;split<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;text&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">split</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span></div>
 
 Splits text into individual lines, stripping empty lines.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-param">text</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -44,13 +44,13 @@ An array of non-empty lines.
 </DocEntry>
 
 <DocEntry name="join">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;join<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;lines&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">join</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">lines</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
 
 Joins an array of lines with a newline separator.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-param">lines</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>
+<span class="fsharp-doc-param">lines</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">array</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -65,13 +65,13 @@ A single string with lines separated by `\n`.
 </DocEntry>
 
 <DocEntry name="count">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;count<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;text&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">count</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
 
 Returns the number of lines in a string.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-param">text</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
 </div>
 
 <div class='fs-parameter__documentation'>

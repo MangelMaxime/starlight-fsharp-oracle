@@ -22,7 +22,7 @@ import { Aside } from '@astrojs/starlight/components';
 <p><strong>Namespace:</strong> <a href="/api/reference-reactive">Reference.Reactive</a></p>
 
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;NodeState&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;0<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;1<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;2</div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">NodeState</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">0</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">1</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">2</span></div>
 </div>
 
 <h2 id="description">Description</h2>
@@ -33,21 +33,21 @@ Marking state for a reactive node. Ordered Clean &lt; Check &lt; Dirty; an F# en
 
 <div class="collapsible-group">
 <DocEntry name="Clean">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;0</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">0</span></div>
 
 The value is current; nothing downstream needs touching
 
 </DocEntry>
 
 <DocEntry name="Check">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;1</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">1</span></div>
 
 A transitive dependency *might* have changed (verify before recomputing)
 
 </DocEntry>
 
 <DocEntry name="Dirty">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;2</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;<span class="fsharp-doc-literal">2</span></div>
 
 A direct dependency changed
 

@@ -730,10 +730,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             "Space",
                                             [
@@ -741,10 +740,9 @@
                                                 "when"
                                             ],
                                             "Space",
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             "Space",
                                             [
@@ -778,14 +776,8 @@
                                                         "Node",
                                                         [
                                                             [
-                                                                "Node",
-                                                                [
-                                                                    "Tick",
-                                                                    [
-                                                                        "Text",
-                                                                        "T"
-                                                                    ]
-                                                                ]
+                                                                "TypeVar",
+                                                                "'T"
                                                             ],
                                                             "Space",
                                                             [
@@ -813,14 +805,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -853,14 +839,8 @@
                                                 {
                                                     "Name": "first",
                                                     "Type": [
-                                                        "Node",
-                                                        [
-                                                            "Tick",
-                                                            [
-                                                                "Text",
-                                                                "T"
-                                                            ]
-                                                        ]
+                                                        "TypeVar",
+                                                        "'T"
                                                     ],
                                                     "IsOptional": false,
                                                     "IsUnit": false
@@ -868,14 +848,8 @@
                                                 {
                                                     "Name": "second",
                                                     "Type": [
-                                                        "Node",
-                                                        [
-                                                            "Tick",
-                                                            [
-                                                                "Text",
-                                                                "T"
-                                                            ]
-                                                        ]
+                                                        "TypeVar",
+                                                        "'T"
                                                     ],
                                                     "IsOptional": false,
                                                     "IsUnit": false
@@ -883,14 +857,8 @@
                                             ]
                                         ],
                                         "ReturnType": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -971,14 +939,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -1908,14 +1870,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -1934,14 +1890,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -2077,14 +2027,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -2100,14 +2044,8 @@
                                                             "LeftParen"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         "Space",
                                                         [
@@ -2116,14 +2054,8 @@
                                                         ],
                                                         "Space",
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "U"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'U"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -2145,14 +2077,8 @@
                                     {
                                         "Name": "first",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -2162,14 +2088,8 @@
                                     {
                                         "Name": "second",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -2177,14 +2097,8 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "U"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'U"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -2609,10 +2523,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -2629,14 +2542,8 @@
                                             {
                                                 "Name": "Item",
                                                 "Type": [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
@@ -2825,10 +2732,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -2839,35 +2745,17 @@
                                 },
                                 "Parameters": [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ]
                                 ],
                                 "ReturnType": [
-                                    "Node",
-                                    [
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ]
-                                    ]
+                                    "TypeVar",
+                                    "'T"
                                 ],
                                 "ObsoleteInfo": "Active"
                             }
@@ -3394,10 +3282,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -3426,14 +3313,8 @@
                                             {
                                                 "Name": "Item",
                                                 "Type": [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
@@ -3471,14 +3352,8 @@
                                                             "LessThan"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -3509,14 +3384,8 @@
                                                             "LessThan"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -3935,14 +3804,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -3970,14 +3833,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -4048,14 +3905,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -4063,14 +3914,8 @@
                                                 ],
                                                 "Space",
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "E"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'E"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -4096,14 +3941,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -4111,14 +3950,8 @@
                                     ],
                                     "Space",
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "E"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'E"
                                     ],
                                     [
                                         "Punctuation",
@@ -4967,14 +4800,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -4996,14 +4823,8 @@
                                         "Node",
                                         [
                                             [
-                                                "Node",
-                                                [
-                                                    "Tick",
-                                                    [
-                                                        "Text",
-                                                        "T"
-                                                    ]
-                                                ]
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             "Space",
                                             [
@@ -5161,14 +4982,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -5194,14 +5009,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -5212,14 +5021,8 @@
                                         "Node",
                                         [
                                             [
-                                                "Node",
-                                                [
-                                                    "Tick",
-                                                    [
-                                                        "Text",
-                                                        "T"
-                                                    ]
-                                                ]
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             "Space",
                                             [
@@ -5228,14 +5031,8 @@
                                             ],
                                             "Space",
                                             [
-                                                "Node",
-                                                [
-                                                    "Tick",
-                                                    [
-                                                        "Text",
-                                                        "T"
-                                                    ]
-                                                ]
+                                                "TypeVar",
+                                                "'T"
                                             ]
                                         ]
                                     ],
@@ -5279,14 +5076,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -5324,14 +5115,8 @@
                                     ],
                                     "Space",
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -5397,14 +5182,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -5412,14 +5191,8 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -5479,14 +5252,8 @@
                                                 ],
                                                 "Space",
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -5503,14 +5270,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -5578,14 +5339,8 @@
                                     {
                                         "Name": "initial",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -5605,14 +5360,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -5663,14 +5412,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -5684,14 +5427,8 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -5761,10 +5498,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -5777,14 +5513,8 @@
                                     {
                                         "Name": "Value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "XmlDoc": {
                                             "Summary": {
@@ -5843,20 +5573,18 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
                                                 "Comma"
                                             ],
                                             "Space",
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "E"
+                                                "TypeVar",
+                                                "'E"
                                             ],
                                             [
                                                 "Punctuation",
@@ -5873,14 +5601,8 @@
                                             {
                                                 "Name": "value",
                                                 "Type": [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
@@ -5906,14 +5628,8 @@
                                             {
                                                 "Name": "error",
                                                 "Type": [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "E"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'E"
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
@@ -5972,10 +5688,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -5992,14 +5707,8 @@
                                             {
                                                 "Name": "value",
                                                 "Type": [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "XmlDoc": {
                                                     "Params": [],
@@ -6037,14 +5746,8 @@
                                                             "LessThan"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -6075,14 +5778,8 @@
                                                             "LessThan"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -6147,10 +5844,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -6166,14 +5862,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -6212,14 +5902,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -6239,14 +5923,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -6307,14 +5985,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6328,14 +6000,8 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -6385,14 +6051,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -6401,14 +6061,8 @@
                                                 ],
                                                 "Space",
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "U"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'U"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6436,14 +6090,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6469,14 +6117,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "U"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'U"
                                     ],
                                     [
                                         "Punctuation",
@@ -6533,14 +6175,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -6560,14 +6196,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -6623,14 +6253,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -6639,14 +6263,8 @@
                                                 ],
                                                 "Space",
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "U"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'U"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6674,14 +6292,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6707,14 +6319,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "U"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'U"
                                     ],
                                     [
                                         "Punctuation",
@@ -6783,14 +6389,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6861,14 +6461,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6882,23 +6476,16 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -6965,17 +6552,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        [
-                                                            "Text",
-                                                            "^"
-                                                        ],
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "^T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -6989,29 +6567,16 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    [
-                                        "Text",
-                                        "^"
-                                    ],
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "^T"
                             ],
                             "Constraints": [
                                 [
                                     "Node",
                                     [
                                         [
-                                            "Text",
-                                            "^"
-                                        ],
-                                        [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         "Space",
                                         [
@@ -7034,8 +6599,9 @@
                                         ],
                                         "Space",
                                         [
-                                            "Text",
-                                            "op_Addition"
+                                            "DeclaredName",
+                                            "op_Addition",
+                                            "Member"
                                         ],
                                         "Space",
                                         [
@@ -7044,17 +6610,8 @@
                                         ],
                                         "Space",
                                         [
-                                            "Node",
-                                            [
-                                                [
-                                                    "Text",
-                                                    "^"
-                                                ],
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         "Space",
                                         [
@@ -7063,17 +6620,8 @@
                                         ],
                                         "Space",
                                         [
-                                            "Node",
-                                            [
-                                                [
-                                                    "Text",
-                                                    "^"
-                                                ],
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         "Space",
                                         [
@@ -7082,17 +6630,8 @@
                                         ],
                                         "Space",
                                         [
-                                            "Node",
-                                            [
-                                                [
-                                                    "Text",
-                                                    "^"
-                                                ],
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         [
                                             "Punctuation",
@@ -7104,12 +6643,8 @@
                                     "Node",
                                     [
                                         [
-                                            "Text",
-                                            "^"
-                                        ],
-                                        [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         "Space",
                                         [
@@ -7132,8 +6667,9 @@
                                         ],
                                         "Space",
                                         [
-                                            "Text",
-                                            "get_Zero"
+                                            "DeclaredName",
+                                            "get_Zero",
+                                            "Member"
                                         ],
                                         "Space",
                                         [
@@ -7142,17 +6678,8 @@
                                         ],
                                         "Space",
                                         [
-                                            "Node",
-                                            [
-                                                [
-                                                    "Text",
-                                                    "^"
-                                                ],
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "^T"
                                         ],
                                         [
                                             "Punctuation",
@@ -7208,14 +6735,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -7254,14 +6775,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -7278,14 +6793,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -7352,14 +6861,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -7381,10 +6884,9 @@
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7447,14 +6949,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -7543,14 +7039,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -7576,14 +7066,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -7595,10 +7079,9 @@
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7654,14 +7137,8 @@
                                     {
                                         "Name": "a",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -7671,14 +7148,8 @@
                                     {
                                         "Name": "b",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -7694,10 +7165,9 @@
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7756,14 +7226,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -7771,23 +7235,16 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7804,10 +7261,9 @@
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7862,14 +7318,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -7877,23 +7327,16 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "T"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'T"
                             ],
                             "Constraints": [
                                 [
                                     "Node",
                                     [
-                                        "Tick",
                                         [
-                                            "Text",
-                                            "T"
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Space",
                                         [
@@ -7960,14 +7403,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -7976,14 +7413,8 @@
                                                 ],
                                                 "Space",
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "U"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'U"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -8011,14 +7442,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -8044,14 +7469,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "U"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'U"
                                     ],
                                     [
                                         "Punctuation",
@@ -8132,14 +7551,8 @@
                                                             "LessThan"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -8171,14 +7584,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -8230,14 +7637,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8265,14 +7666,8 @@
                                         "LessThan"
                                     ],
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Punctuation",
@@ -8354,8 +7749,9 @@
                                         "Node",
                                         [
                                             [
-                                                "Text",
-                                                "Age"
+                                                "DeclaredName",
+                                                "Age",
+                                                "Member"
                                             ],
                                             "Space",
                                             [
@@ -8379,8 +7775,9 @@
                                         "Node",
                                         [
                                             [
-                                                "Text",
-                                                "Name"
+                                                "DeclaredName",
+                                                "Name",
+                                                "Member"
                                             ],
                                             "Space",
                                             [
@@ -8453,8 +7850,9 @@
                                                     "Node",
                                                     [
                                                         [
-                                                            "Text",
-                                                            "Age"
+                                                            "DeclaredName",
+                                                            "Age",
+                                                            "Member"
                                                         ],
                                                         "Space",
                                                         [
@@ -8478,8 +7876,9 @@
                                                     "Node",
                                                     [
                                                         [
-                                                            "Text",
-                                                            "Name"
+                                                            "DeclaredName",
+                                                            "Name",
+                                                            "Member"
                                                         ],
                                                         "Space",
                                                         [
@@ -8554,14 +7953,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8591,14 +7984,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8617,14 +8004,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -8686,14 +8067,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8723,14 +8098,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8749,14 +8118,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -8814,14 +8177,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -8840,14 +8197,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -8898,14 +8249,8 @@
                                     {
                                         "Name": "value",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -8916,14 +8261,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     "Space",
                                     [
@@ -8977,14 +8316,8 @@
                                             "Node",
                                             [
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 "Space",
                                                 [
@@ -9003,14 +8336,8 @@
                                 "Node",
                                 [
                                     [
-                                        "Node",
-                                        [
-                                            "Tick",
-                                            [
-                                                "Text",
-                                                "T"
-                                            ]
-                                        ]
+                                        "TypeVar",
+                                        "'T"
                                     ],
                                     [
                                         "Text",
@@ -9066,14 +8393,8 @@
                                                     "LeftParen"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "S"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'S"
                                                 ],
                                                 "Space",
                                                 [
@@ -9089,14 +8410,8 @@
                                                             "LeftParen"
                                                         ],
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "T"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'T"
                                                         ],
                                                         "Space",
                                                         [
@@ -9105,14 +8420,8 @@
                                                         ],
                                                         "Space",
                                                         [
-                                                            "Node",
-                                                            [
-                                                                "Tick",
-                                                                [
-                                                                    "Text",
-                                                                    "S"
-                                                                ]
-                                                            ]
+                                                            "TypeVar",
+                                                            "'S"
                                                         ],
                                                         [
                                                             "Punctuation",
@@ -9134,14 +8443,8 @@
                                     {
                                         "Name": "state",
                                         "Type": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "S"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'S"
                                         ],
                                         "IsOptional": false,
                                         "IsUnit": false
@@ -9163,14 +8466,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -9184,14 +8481,8 @@
                                 ]
                             ],
                             "ReturnType": [
-                                "Node",
-                                [
-                                    "Tick",
-                                    [
-                                        "Text",
-                                        "S"
-                                    ]
-                                ]
+                                "TypeVar",
+                                "'S"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -9258,14 +8549,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -9293,14 +8578,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "U"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'U"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -9329,14 +8608,8 @@
                                         "Node",
                                         [
                                             [
-                                                "Node",
-                                                [
-                                                    "Tick",
-                                                    [
-                                                        "Text",
-                                                        "T"
-                                                    ]
-                                                ]
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             "Space",
                                             [
@@ -9345,14 +8618,8 @@
                                             ],
                                             "Space",
                                             [
-                                                "Node",
-                                                [
-                                                    "Tick",
-                                                    [
-                                                        "Text",
-                                                        "U"
-                                                    ]
-                                                ]
+                                                "TypeVar",
+                                                "'U"
                                             ]
                                         ]
                                     ],
@@ -11731,10 +10998,9 @@
                                                 "Punctuation",
                                                 "LessThan"
                                             ],
-                                            "Tick",
                                             [
-                                                "Text",
-                                                "T"
+                                                "TypeVar",
+                                                "'T"
                                             ],
                                             [
                                                 "Punctuation",
@@ -11755,14 +11021,8 @@
                                                 {
                                                     "Name": "initial",
                                                     "Type": [
-                                                        "Node",
-                                                        [
-                                                            "Tick",
-                                                            [
-                                                                "Text",
-                                                                "T"
-                                                            ]
-                                                        ]
+                                                        "TypeVar",
+                                                        "'T"
                                                     ],
                                                     "IsOptional": false,
                                                     "IsUnit": false
@@ -11782,14 +11042,8 @@
                                                     "LessThan"
                                                 ],
                                                 [
-                                                    "Node",
-                                                    [
-                                                        "Tick",
-                                                        [
-                                                            "Text",
-                                                            "T"
-                                                        ]
-                                                    ]
+                                                    "TypeVar",
+                                                    "'T"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -11821,14 +11075,8 @@
                                             []
                                         ],
                                         "ReturnType": [
-                                            "Node",
-                                            [
-                                                "Tick",
-                                                [
-                                                    "Text",
-                                                    "T"
-                                                ]
-                                            ]
+                                            "TypeVar",
+                                            "'T"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {

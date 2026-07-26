@@ -57,6 +57,10 @@ type DeclarationRole =
     | UnionCase
     /// A constructor, written `new`.
     | Constructor
+    /// A type: the `Foo` in `type Foo`.
+    | Type
+    /// A function or value: the `foo` in `val foo`.
+    | Function
 
 /// Punctuation that can appear in a signature.
 ///
@@ -186,12 +190,15 @@ type TextNode =
     /// A reference to a named type. Whether it becomes a link is the renderer's call:
     /// only it knows which types have a page.
     | TypeRef of name: string * fullName: string
-    /// A generic type variable, e.g. "T" (the tick is implied).
+    /// A generic type variable, sigil included: `'T`, or `^T` for an SRTP parameter.
+    /// One token rather than a tick beside a name, so the whole thing colours as one.
     | TypeVar of string
     /// The name of a parameter in a signature.
     | ParameterName of string
     /// An F# keyword, e.g. "val", "type", "member".
     | Keyword of string
+    /// A literal value, e.g. the `3` of `[<Literal>] let MaxRetries = 3`.
+    | Literal of string
     /// Punctuation. Escaping is the renderer's problem.
     | Punctuation of Symbol
     /// The apostrophe introducing a type variable.
@@ -202,6 +209,9 @@ type TextNode =
     /// `text` and `anchor` differ for overloaded constructors, which all read `new`
     /// but anchor to `new`, `new-1`, ...
     | DeclarationName of text: string * anchor: string * role: DeclarationRole
+    /// The name being declared - the `Foo` in `type Foo` or `member Foo`. Coloured like
+    /// a reference to it, but not a link: the reader is already looking at it.
+    | DeclaredName of text: string * role: DeclarationRole
     | Space
     | NewLine
     /// Structural indentation. The renderer decides how wide a level is.

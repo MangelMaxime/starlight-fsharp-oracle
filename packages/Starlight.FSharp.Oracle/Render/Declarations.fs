@@ -83,6 +83,7 @@ module Declarations =
                         punct Symbol.Question
 
                     TextNode.ParameterName p.Name
+                    TextNode.Space
                     colon
                     TextNode.Space
                     p.Type
@@ -145,7 +146,8 @@ module Declarations =
             [
                 yield! valKeyword f.IsInline f.IsMutable
                 TextNode.Space
-                TextNode.Text f.Name
+                TextNode.DeclaredName(f.Name, DeclarationRole.Function)
+                TextNode.Space
                 colon
 
                 for group in groups do
@@ -158,7 +160,9 @@ module Declarations =
                         if p.IsOptional then
                             punct Symbol.Question
 
-                        TextNode.Text p.Name
+                        // ParameterName, not plain text: the aligned layout was the
+                        // one place a parameter lost its colour.
+                        TextNode.ParameterName p.Name
                         padding (column - p.Name.Length)
                         colon
                         TextNode.Space
@@ -187,7 +191,8 @@ module Declarations =
             [
                 yield! valKeyword v.IsInline v.IsMutable
                 TextNode.Space
-                TextNode.Text v.Name
+                TextNode.DeclaredName(v.Name, DeclarationRole.Function)
+                TextNode.Space
                 colon
                 TextNode.Space
                 v.Type
@@ -196,7 +201,7 @@ module Declarations =
                     TextNode.Space
                     equals
                     TextNode.Space
-                    TextNode.Text value
+                    TextNode.Literal value
                 | None -> ()
                 constraintClause v.Constraints
             ]
@@ -262,6 +267,7 @@ module Declarations =
         let groups = m.Parameters |> List.filter (List.isEmpty >> not)
 
         [
+            TextNode.Space
             colon
             TextNode.Space
 
@@ -295,7 +301,7 @@ module Declarations =
         let nameNode =
             match m.Kind with
             | MemberKind.Constructor -> [ keyword Keyword.New ]
-            | _ -> [ TextNode.Text m.Name ]
+            | _ -> [ TextNode.DeclaredName(m.Name, DeclarationRole.Member) ]
 
         TextNode.Node
             [
@@ -347,13 +353,14 @@ module Declarations =
                         TextNode.Space
                         equals
                         TextNode.Space
-                        TextNode.Text value
+                        TextNode.Literal value
                     | None -> ()
                 ]
         else
             TextNode.Node
                 [
-                    TextNode.Text f.Name
+                    TextNode.DeclaredName(f.Name, DeclarationRole.Member)
+                    TextNode.Space
                     colon
                     TextNode.Space
                     f.Type
@@ -371,7 +378,8 @@ module Declarations =
                     TextNode.Space
 
                 if f.Name <> "" then
-                    TextNode.Text f.Name
+                    TextNode.DeclaredName(f.Name, DeclarationRole.Member)
+                    TextNode.Space
                     colon
                     TextNode.Space
 
@@ -386,7 +394,7 @@ module Declarations =
             [
                 punct Symbol.Bar
                 TextNode.Space
-                TextNode.Text case.Name
+                TextNode.DeclaredName(case.Name, DeclarationRole.UnionCase)
                 if not case.Fields.IsEmpty then
                     TextNode.Space
                     keyword Keyword.Of
@@ -404,7 +412,7 @@ module Declarations =
         [
             keyword Keyword.Type
             TextNode.Space
-            TextNode.Text name
+            TextNode.DeclaredName(name, DeclarationRole.Type)
             match generics with
             | Some nodes -> nodes
             | None -> ()
@@ -454,7 +462,7 @@ module Declarations =
             [
                 keyword Keyword.Type
                 TextNode.Space
-                TextNode.Text extendedTypeName
+                TextNode.DeclaredName(extendedTypeName, DeclarationRole.Type)
                 TextNode.Space
                 keyword Keyword.With
                 yield! memberLines members
@@ -478,7 +486,7 @@ module Declarations =
                     yield! attributeLines e.Attributes false
                     keyword Keyword.Exception
                     TextNode.Space
-                    TextNode.Text e.Name
+                    TextNode.DeclaredName(e.Name, DeclarationRole.Type)
                     if not e.Fields.IsEmpty then
                         keyword " of"
                         TextNode.Space
@@ -554,6 +562,7 @@ module Declarations =
                         TextNode.NewLine
                         TextNode.Indent 2
                         TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
+                        TextNode.Space
                         colon
                         TextNode.Space
                         f.Type
@@ -586,7 +595,7 @@ module Declarations =
                             TextNode.Space
                             equals
                             TextNode.Space
-                            TextNode.Text value
+                            TextNode.Literal value
                         | None -> ()
                 ]
 

@@ -17,6 +17,16 @@ module internal SignatureRendering =
     let private openParen = TextNode.Punctuation Symbol.LeftParen
     let private closeParen = TextNode.Punctuation Symbol.RightParen
 
+    /// A type variable with its sigil: `'T`, or `^T` when it carries SRTP constraints.
+    let private typeVarName (gp: FSharpGenericParameter) =
+        let sigil =
+            if isSrtp gp then
+                "^"
+            else
+                "'"
+
+        sigil + gp.DisplayName
+
     /// Joins rendered items with a separator token sequence.
     let private separated (separator: TextNode list) (items: TextNode list) =
         items
@@ -30,16 +40,7 @@ module internal SignatureRendering =
 
     let rec renderFSharpType (isTopLevel: bool) (typ: FSharpType) : TextNode =
         if typ.IsGenericParameter then
-            let gp = typ.GenericParameter
-
-            TextNode.Node
-                [
-                    if isSrtp gp then
-                        TextNode.Text "^"
-                    else
-                        TextNode.Tick
-                    TextNode.Text gp.DisplayName
-                ]
+            TextNode.TypeVar(typeVarName typ.GenericParameter)
         elif typ.IsFunctionType then
             let parts =
                 typ.GenericArguments
@@ -71,7 +72,7 @@ module internal SignatureRendering =
                 |> Array.mapi (fun i name ->
                     TextNode.Node
                         [
-                            TextNode.Text name
+                            TextNode.DeclaredName(name, DeclarationRole.Member)
                             TextNode.Space
                             colon
                             TextNode.Space
@@ -210,7 +211,7 @@ module internal SignatureRendering =
 
                 TextNode.Keyword Keyword.Member
                 TextNode.Space
-                TextNode.Text m.MemberName
+                TextNode.DeclaredName(m.MemberName, DeclarationRole.Member)
                 if not (List.isEmpty argTypes) || not (isNull (box m.MemberReturnType)) then
                     TextNode.Space
                     colon
@@ -231,8 +232,7 @@ module internal SignatureRendering =
                 TextNode.Space
                 arrow
                 TextNode.Space
-                TextNode.Tick
-                TextNode.Text gp.DisplayName
+                TextNode.TypeVar(typeVarName gp)
                 closeParen
             ]
         elif c.IsEnumConstraint then
@@ -271,19 +271,12 @@ module internal SignatureRendering =
     /// to lay them out, and does not have to recover the boundaries by matching on the
     /// text of an `and` keyword.
     let renderConstraints (gps: FSharpGenericParameter seq) : TextNode list =
-        let tickOf (gp: FSharpGenericParameter) =
-            if isSrtp gp then
-                TextNode.Text "^"
-            else
-                TextNode.Tick
-
         gps
         |> Seq.collect (fun gp -> gp.Constraints |> Seq.map (fun c -> gp, c))
         |> Seq.map (fun (gp, c) ->
             TextNode.Node
                 [
-                    tickOf gp
-                    TextNode.Text gp.DisplayName
+                    TextNode.TypeVar(typeVarName gp)
                     TextNode.Space
                     yield! renderConstraint gp c
                 ]
@@ -299,12 +292,6 @@ module internal SignatureRendering =
         if List.isEmpty gps then
             None
         else
-            let tickOf (gp: FSharpGenericParameter) =
-                if isSrtp gp then
-                    TextNode.Text "^"
-                else
-                    TextNode.Tick
-
             let nodes =
                 [
                     openAngle
@@ -313,8 +300,7 @@ module internal SignatureRendering =
                             comma
                             TextNode.Space
 
-                        tickOf gp
-                        TextNode.Text gp.DisplayName
+                        TextNode.TypeVar(typeVarName gp)
 
                         let constraints =
                             gp.Constraints |> Seq.toList |> List.map (renderConstraint gp)
@@ -323,8 +309,7 @@ module internal SignatureRendering =
                             TextNode.Space
                             TextNode.Keyword Keyword.When
                             TextNode.Space
-                            tickOf gp
-                            TextNode.Text gp.DisplayName
+                            TextNode.TypeVar(typeVarName gp)
 
                             for i, cList in List.indexed constraints do
                                 TextNode.Space
@@ -332,8 +317,7 @@ module internal SignatureRendering =
                                 if i > 0 then
                                     TextNode.Keyword Keyword.And
                                     TextNode.Space
-                                    tickOf gp
-                                    TextNode.Text gp.DisplayName
+                                    TextNode.TypeVar(typeVarName gp)
                                     TextNode.Space
 
                                 yield! cList

@@ -22,7 +22,7 @@ import { Aside } from '@astrojs/starlight/components';
 <p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-activepatterns">Reference.ActivePatterns</a></p>
 
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Tree<span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Empty">Empty</a><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Leaf">Leaf</a><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;Item<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<a href="#Node">Node</a><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;Item1<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;Item2<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-op">&gt;</span></div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Tree</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Empty">Empty</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Leaf">Leaf</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#Node">Node</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item1</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item2</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span></div>
 </div>
 
 <h2 id="description">Description</h2>
@@ -41,17 +41,17 @@ The tree element type.
 </div>
 <div class="collapsible-group">
 <DocEntry name="Empty">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Empty</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Empty</span></div>
 
 </DocEntry>
 
 <DocEntry name="Leaf">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Leaf&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;Item<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Leaf</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span></div>
 
 </DocEntry>
 
 <DocEntry name="Node">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;Node&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;Item1<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;Item2<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span>&#x27;T<span class="fsharp-doc-op">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Node</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item1</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-property">Item2</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span></div>
 
 </DocEntry>
 

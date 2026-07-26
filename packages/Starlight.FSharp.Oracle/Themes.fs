@@ -85,6 +85,8 @@ let generateCss (ecRenderer: obj) : string =
                     "support.type"
                 ]
                 "param", [ "variable.parameter"; "variable.other"; "variable" ]
+                "fn", [ "entity.name.function"; "support.function"; "variable.function" ]
+                "literal", [ "constant"; "constant.numeric"; "string" ]
                 "member",
                 [
                     "variable.other.property"
