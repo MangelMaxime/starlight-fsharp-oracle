@@ -27,6 +27,8 @@ type AstroIntegrationLogger =
 
 type AstroConfig =
     abstract member root: Node.Url.URL
+    /// Astro's site `base` path (defaults to "/"). Prefixes all in-content links.
+    abstract member ``base``: string
 
 [<StringEnum(CaseRules.None)>]
 [<RequireQualifiedAccess>]
@@ -42,7 +44,7 @@ let private importMetaUrl: string = jsNative
 [<Import("fileURLToPath", "node:url")>]
 let private fileURLToPath (url: string) : string = jsNative
 
-let private runExtractor (logger :AstroIntegrationLogger) (outputBase: string) (dllPaths: string list) =
+let private runExtractor (logger :AstroIntegrationLogger) (basePath: string) (outputBase: string) (dllPaths: string list) =
     // 50MB buffer to handle large API documentation outputs
     let maxBuffer = 50 * 1024 * 1024
 
@@ -60,6 +62,8 @@ let private runExtractor (logger :AstroIntegrationLogger) (outputBase: string) (
             "--"
             "--output-base"
             outputBase
+            "--base"
+            basePath
             yield! dllPaths
         ]
 #else
@@ -72,6 +76,8 @@ let private runExtractor (logger :AstroIntegrationLogger) (outputBase: string) (
             oracleDll
             "--output-base"
             outputBase
+            "--base"
+            basePath
             yield! dllPaths
         ]
 #endif
@@ -140,8 +146,19 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                 let outputBase: string =
                                     pluginOptions.output |> Option.defaultValue "api"
 
+                                // Astro's site `base` (e.g. "/my-repo") must prefix every
+                                // in-content link. Normalize "/" or a trailing slash away so
+                                // it composes cleanly as `{basePath}/{outputBase}/...`.
+                                let basePath: string =
+                                    let raw =
+                                        astroConfig.``base``
+                                        |> Option.ofObj
+                                        |> Option.defaultValue ""
+
+                                    raw.TrimEnd('/')
+
                                 let root =
-                                    runExtractor logger outputBase (pluginOptions.assemblies |> Seq.toList)
+                                    runExtractor logger basePath outputBase (pluginOptions.assemblies |> Seq.toList)
 
                                 let modules = root.Assemblies |> List.collect _.Modules
 
@@ -198,8 +215,8 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     | Error msg -> logger.warn $"Failed to write .gitignore: {msg}"
                                     | Ok() -> ()
 
-                                let modulePages = Generate.modulePages outputBase modules
-                                let namespacePages = Generate.namespacePages outputBase modules
+                                let modulePages = Generate.modulePages basePath outputBase modules
+                                let namespacePages = Generate.namespacePages basePath outputBase modules
                                 let moduleSlugs = modulePages |> List.map fst
 
                                 let dedupedNamespacePages =
@@ -210,10 +227,10 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
 
                                 let pages =
                                     [
-                                        Generate.rootIndexPage outputBase root.Assemblies modules
+                                        Generate.rootIndexPage basePath outputBase root.Assemblies modules
                                         yield! dedupedNamespacePages
                                         yield! modulePages
-                                        yield! Generate.entityPages outputBase modules
+                                        yield! Generate.entityPages basePath outputBase modules
                                     ]
 
                                 let writeResults =

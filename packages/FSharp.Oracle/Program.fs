@@ -9,13 +9,14 @@ open Thoth.Json.Core.Auto
 
 [<EntryPoint>]
 let main argv =
-    let rec parseArgs outputBase dlls =
+    let rec parseArgs outputBase basePath dlls =
         function
-        | "--output-base" :: value :: rest -> parseArgs value dlls rest
-        | path :: rest -> parseArgs outputBase (path :: dlls) rest
-        | [] -> outputBase, List.rev dlls |> List.toArray
+        | "--output-base" :: value :: rest -> parseArgs value basePath dlls rest
+        | "--base" :: value :: rest -> parseArgs outputBase value dlls rest
+        | path :: rest -> parseArgs outputBase basePath (path :: dlls) rest
+        | [] -> outputBase, basePath, List.rev dlls |> List.toArray
 
-    let outputBase, dllPaths = parseArgs "api" [] (argv |> Array.toList)
+    let outputBase, basePath, dllPaths = parseArgs "api" "" [] (argv |> Array.toList)
 
     match dllPaths with
     | [||] ->
@@ -48,7 +49,7 @@ let main argv =
 
         let assemblies =
             dllPaths
-            |> Array.map (extractAssembly checker allDllPaths outputBase)
+            |> Array.map (extractAssembly checker allDllPaths basePath outputBase)
             |> Array.toList
 
         let root =

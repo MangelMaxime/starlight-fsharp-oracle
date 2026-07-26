@@ -18,6 +18,7 @@ open FSharp.Oracle.ModuleExtractor
 let extractAssembly
     (checker: FSharpChecker)
     (allDllPaths: string array)
+    (basePath: string)
     (outputBase: string)
     (dllPath: string)
     : Assembly
@@ -27,7 +28,11 @@ let extractAssembly
         // Strip F# generic arity suffix (e.g. Tree`1 -> tree)
         System.Text.RegularExpressions.Regex.Replace(sanitized, @"`\d+$", "")
 
-    let toUrl (fullName: string) = $"/{outputBase}/{toSlug fullName}"
+    // Astro's site `base` (e.g. "/my-repo") must prefix in-content links; a bare
+    // "/" or empty base normalizes to no prefix.
+    let normalizedBase = basePath.TrimEnd('/')
+
+    let toUrl (fullName: string) = $"{normalizedBase}/{outputBase}/{toSlug fullName}"
 
     let baseOptions, _ =
         checker.GetProjectOptionsFromScript(

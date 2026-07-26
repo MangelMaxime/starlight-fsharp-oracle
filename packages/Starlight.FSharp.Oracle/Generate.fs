@@ -102,12 +102,12 @@ import {{ Aside }} from '@astrojs/starlight/components';
 // Page generation
 // ---------------------------------------------------------------------------
 
-let namespacePages (outputBase: string) (modules: Module list) : (string * string) list =
+let namespacePages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
     let allNamespaces = namespacesOf modules
 
     let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="/{outputBase}/{toSlug fullName}">{name}</a>"""
+        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     let directChildNamespaces (ns: string) =
         allNamespaces
@@ -137,11 +137,11 @@ let namespacePages (outputBase: string) (modules: Module list) : (string * strin
         )
     )
 
-let modulePages (outputBase: string) (modules: Module list) : (string * string) list =
+let modulePages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
     let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="/{outputBase}/{toSlug fullName}">{name}</a>"""
+        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     realModules
     |> List.map (fun m ->
@@ -151,9 +151,9 @@ let modulePages (outputBase: string) (modules: Module list) : (string * string) 
         toSlug m.FullName, toMdxPage (Render.renderModulePage htmlLinkGen m subModules)
     )
 
-let entityPages (outputBase: string) (modules: Module list) : (string * string) list =
+let entityPages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
     let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="/{outputBase}/{toSlug fullName}">{name}</a>"""
+        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     [
         for m in modules do
@@ -162,13 +162,14 @@ let entityPages (outputBase: string) (modules: Module list) : (string * string) 
     ]
 
 let rootIndexPage
+    (basePath: string)
     (outputBase: string)
     (assemblies: Assembly list)
     (modules: Module list)
     : string * string
     =
     let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="/{outputBase}/{toSlug fullName}">{name}</a>"""
+        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     let globalModules =
         modules |> List.filter (fun m -> not m.IsSynthetic && m.Namespace = "")
