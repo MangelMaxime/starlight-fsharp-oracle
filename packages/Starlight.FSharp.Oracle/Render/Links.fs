@@ -12,6 +12,9 @@ type LinkResolver =
         IsDocumented: string -> bool
         /// The href of the page for a documented name.
         Href: string -> string
+        /// The page slug of a name. Pages are written from this same map, so a link
+        /// and the page it points at cannot disagree.
+        Slug: string -> string
     }
 
     /// An anchor when the target is documented, plain text when it is not.

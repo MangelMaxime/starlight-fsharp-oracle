@@ -248,3 +248,14 @@ module StringExtensions =
 /// <returns>The combined result.</returns>
 let combineWith (combine: 'T -> 'T -> 'U) (first: 'T) (second: 'T) : 'U =
     combine first second
+
+// ---------------------------------------------------------------------------
+// Slug collision: these two differ only by case, so both slug to
+// "reference-coverage-casing". They must not overwrite each other on disk.
+// ---------------------------------------------------------------------------
+
+/// <summary>Collides with <c>CASING</c> once slugged.</summary>
+type Casing = { Value: string }
+
+/// <summary>Collides with <c>Casing</c> once slugged.</summary>
+type CASING = { Other: string }

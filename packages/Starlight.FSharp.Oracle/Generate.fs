@@ -119,12 +119,80 @@ let documentedNames (modules: Module list) : Set<string> =
             yield! namespacesOf modules
         ]
 
+/// Assign a slug to every name of one kind, disambiguating names that collapse to the
+/// same one. Deterministic: the names are sorted, the first keeps the plain slug.
+let private assignSlugs (names: string list) =
+    names
+    |> List.distinct
+    |> List.sort
+    |> List.groupBy toSlug
+    |> List.collect (fun (baseSlug, group) ->
+        group
+        |> List.mapi (fun i name ->
+            let slug =
+                if i = 0 then
+                    baseSlug
+                else
+                    $"{baseSlug}-{i + 1}"
+
+            name, slug
+        )
+    )
+
+/// Names of one kind that collapse to the same slug, as warning lines.
+let private collisionsIn (kind: string) (names: string list) =
+    names
+    |> List.distinct
+    |> List.sort
+    |> List.groupBy toSlug
+    |> List.filter (fun (_, group) -> group.Length > 1)
+    |> List.map (fun (baseSlug, group) ->
+        let names = String.concat ", " group
+
+        $"two or more {kind} share the slug '{baseSlug}': {names}. Only the first keeps "
+        + "that URL; the rest are suffixed. Rename one, or they will keep moving as "
+        + "names change."
+    )
+
+/// Slug collisions worth telling the user about.
+///
+/// A module and a type may share a slug on purpose - a generic type and its companion
+/// module are merged onto one page - so only collisions within one kind are reported.
+let slugWarnings (modules: Module list) : string list =
+    let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
+
+    [
+        yield!
+            collisionsIn
+                "types"
+                (modules |> List.collect (fun m -> m.Entities) |> List.map (fun e -> e.FullName))
+        yield! collisionsIn "modules" (realModules |> List.map (fun m -> m.FullName))
+    ]
+
 let linkResolver (basePath: string) (outputBase: string) (modules: Module list) : Render.LinkResolver =
     let documented = documentedNames modules
+    let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
+
+    // Types and modules are slugged separately, so the one intentional collision -
+    // a generic type and its companion module, merged onto one page - is preserved
+    // while two types that collapse to the same slug are pulled apart.
+    let slugs =
+        [
+            yield!
+                assignSlugs (
+                    modules |> List.collect (fun m -> m.Entities) |> List.map (fun e -> e.FullName)
+                )
+            yield! assignSlugs (realModules |> List.map (fun m -> m.FullName))
+        ]
+        |> Map.ofList
+
+    let slugOf fullName =
+        slugs |> Map.tryFind fullName |> Option.defaultValue (toSlug fullName)
 
     {
         IsDocumented = fun fullName -> Set.contains fullName documented
-        Href = fun fullName -> $"{basePath}/{outputBase}/{toSlug fullName}"
+        Href = fun fullName -> $"{basePath}/{outputBase}/{slugOf fullName}"
+        Slug = slugOf
     }
 
 let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
@@ -190,7 +258,7 @@ let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * 
                 typeName, None, extensions |> List.map (fun e -> e.Member)
             )
 
-        toSlug m.FullName, toMdxPage (Render.renderModulePage links m subModules orphans)
+        links.Slug m.FullName, toMdxPage (Render.renderModulePage links m subModules orphans)
     )
 
 let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
@@ -201,15 +269,15 @@ let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * 
     // module so its members can be folded into the type page instead of one silently
     // overwriting the other on disk.
     let companionOf (entity: Entity) (parent: Module) =
-        let slug = toSlug entity.FullName
+        let slug = links.Slug entity.FullName
 
         realModules
-        |> List.tryFind (fun m -> m.FullName <> parent.FullName && toSlug m.FullName = slug)
+        |> List.tryFind (fun m -> m.FullName <> parent.FullName && links.Slug m.FullName = slug)
 
     [
         for m in modules do
             for e in m.Entities do
-                toSlug e.FullName,
+                links.Slug e.FullName,
                 toMdxPage (
                     Render.renderEntityPage links e m (companionOf e m) (extensionsFor modules e)
                 )
@@ -219,11 +287,12 @@ let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * 
 /// Their standalone module page must be dropped so it does not clobber the merged one.
 let mergedModuleSlugs (modules: Module list) : string list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
-    let entitySlugs = modules |> List.collect (fun m -> m.Entities) |> List.map (fun e -> toSlug e.FullName)
+    let entitySlugs =
+        modules |> List.collect (fun m -> m.Entities) |> List.map (fun e -> toSlug e.FullName) |> Set.ofList
 
     realModules
     |> List.map (fun m -> toSlug m.FullName)
-    |> List.filter (fun slug -> List.contains slug entitySlugs)
+    |> List.filter (fun slug -> Set.contains slug entitySlugs)
     |> List.distinct
 
 let rootIndexPage
@@ -315,11 +384,11 @@ let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
     // A generic type and its companion module share a slug and are merged onto one
     // page (see `entityPages`). The module already appears in the tree as a group,
     // so drop the redundant bare entity link that points to the same page.
-    let realModuleSlugs = realModules |> List.map (fun m -> toSlug m.FullName)
+    let realModuleSlugs = realModules |> List.map (fun m -> toSlug m.FullName) |> Set.ofList
 
     let entitySidebarItems (entities: Entity list) =
         entities
-        |> List.filter (fun e -> not (List.contains (toSlug e.FullName) realModuleSlugs))
+        |> List.filter (fun e -> not (Set.contains (toSlug e.FullName) realModuleSlugs))
         |> List.map (entitySidebarItem outputBase)
 
     let moduleHref (m: Module) = $"/{outputBase}/{toSlug m.FullName}"

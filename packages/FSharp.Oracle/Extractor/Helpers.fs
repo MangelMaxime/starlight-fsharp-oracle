@@ -167,6 +167,16 @@ module internal Helpers =
     let isMeasure (entity: FSharpEntity) =
         hasAttribute "Microsoft.FSharp.Core.MeasureAttribute" entity
 
+    /// Run an extraction step, and on failure warn and skip rather than take the whole
+    /// documentation build down. One entity FCS cannot describe should cost that
+    /// entity's page, not everything.
+    let tryExtract (describe: string) (extract: unit -> 'T) : 'T option =
+        try
+            Some(extract ())
+        with ex ->
+            eprintfn "warning: skipped %s: %s" describe ex.Message
+            None
+
     /// A literal as F# source would write it: strings quoted, chars ticked.
     /// `val Greeting : string = hello` reads as though the value were an identifier.
     let literalText (value: obj) =

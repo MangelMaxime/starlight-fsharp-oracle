@@ -483,28 +483,38 @@ Zero content-sensitive matches on tokens remain.
 
 ## Phase 5 - Robustness
 
-- [ ] **Slug collisions are silent.** `toSlug` lowercases and strips generic arity,
-      so `MyType`/`Mytype`, and identically-named types across two assemblies,
-      overwrite each other on disk with no warning. Detect and report; decide a
-      disambiguation policy (assembly prefix?). The generic-type-plus-companion-module
-      case is already handled, but as a special case
-      (`Generate.fs:164-185`) rather than by a general rule.
-- [ ] **One bad entity kills the build.** `failwithf "Could not load assembly: %s"`
-      (`Extractor/Assembly.fs:67`) has no diagnostics; any throwing entity takes the
-      whole Astro build down. Degrade per-entity with a warning instead.
-- [ ] **FCS runs once per dll.** `Program.fs:52` maps `extractAssembly` over
-      `dllPaths` and each call does its own `GetProjectOptionsFromScript` +
-      `ParseAndCheckProject`. Six assemblies means six full checks of the same
-      reference set. Hoist the project context out of the loop.
-- [ ] **IR serialization cost.** Pretty-printed at indent 4 (`Program.fs:63`) through
-      a 50 MB stdout buffer (`Plugin.fs:49`). Use indent 0, or a temp file.
-- [ ] **O(n^2) page filtering.** `List.contains` over lists in `Plugin.fs:227,236`
-      and `Generate.fs:257`, once per page. Use a `Set`.
-- [ ] `Starlight.FSharp.Oracle/Helpers.fs` defines a `FileOperationResult` DU whose
-      cases are named `Ok`/`Error`, shadowing `Result` in every file that opens it.
-      Use `Result<unit, string>`.
+- [x] **Slug collisions are silent.** There is now one authoritative name-to-slug map,
+      built once and used for both the pages that get written and the links that point
+      at them, so the two cannot disagree. Colliding names are pulled apart
+      deterministically (sorted, first keeps the plain slug, rest get `-2`, `-3`), and
+      the collision is reported through the Astro logger.
 
----
+      Types and modules are slugged separately, which preserves the one *intentional*
+      collision - a generic type and its companion module share a slug and are merged
+      onto one page - while still separating two types that collapse together.
+
+      Fixture added: `Casing` and `CASING` differ only by case. They now get
+      `reference-coverage-casing` and `reference-coverage-casing-2`, with the warning
+      naming both, instead of one silently overwriting the other on disk.
+- [x] **One bad entity kills the build.** `tryExtract` wraps each entity, module,
+      function and value: on failure it warns to stderr and skips that one item rather
+      than taking the whole documentation build down. The "could not load assembly"
+      message now names what it looked for and lists what it resolved, so a typo is
+      distinguishable from a missing reference.
+- [x] **Assembly paths are validated up front.** A bad argument used to surface as
+      `The value cannot be an empty string (Parameter 'path')` from inside a directory
+      scan, naming neither the argument nor the problem.
+- [x] **FCS runs once per dll.** Split into `resolveAssemblies` (one project check of
+      the shared reference set) and `extractAssembly` (one pass per target). Six
+      assemblies used to mean six full checks of the same references.
+- [x] **IR serialization cost.** `Encode.toString 0` rather than indent 4: the IR goes
+      down a pipe to the plugin, not to a reader. The fixture's IR went from **0.59 MB
+      to 0.12 MB**, roughly a fifth of the size, which is also a fifth of the parse
+      cost at the other end.
+- [x] **O(n^2) page filtering.** The remaining `List.contains` scans in `Generate.fs`
+      are `Set` lookups.
+- [x] `FileOperationResult` is gone; `Result<unit, string>` replaces it, so `Ok` and
+      `Error` no longer shadow the built-ins in every file that opens `Helpers`.
 
 ## Phase 6 - Syntax highligthing
 

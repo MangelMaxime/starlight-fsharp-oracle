@@ -44,7 +44,8 @@ let private extract () =
         |> Array.map Path.GetFullPath
         |> Array.distinct
 
-    let assembly = extractAssembly checker allDlls fixtureDll
+    let resolved = resolveAssemblies checker allDlls
+    let assembly = extractAssembly resolved fixtureDll
 
     {
         Assemblies = [ assembly ]
@@ -81,6 +82,11 @@ let main argv =
     // ---- Page snapshots ----------------------------------------------------
 
     let pagesDirectory = Path.Combine(snapshotDirectory, "pages")
+    let modules = root.Assemblies |> List.collect (fun a -> a.Modules)
+
+    for warning in Starlight.FSharp.Generate.slugWarnings modules do
+        printfn "  warning: %s" warning
+
     let pages = Starlight.FSharp.Generate.allPages basePath outputBase root
 
     let pageResults =

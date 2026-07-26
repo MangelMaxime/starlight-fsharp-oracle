@@ -12,14 +12,14 @@ open FSharp.Oracle.ModuleExtractor
 // Public entry point
 // ---------------------------------------------------------------------------
 
-/// Extract the JSON IR for a single compiled .dll + optional .xml doc file.
-/// The checker must have already been created with [allDllPaths] as references
-/// so cross-assembly resolution works.
-let extractAssembly
+/// Resolve every referenced assembly, once.
+///
+/// This used to happen per target dll, so N assemblies meant N full FCS checks of the
+/// same reference set. The result is shared by every `extractAssembly` call.
+let resolveAssemblies
     (checker: FSharpChecker)
     (allDllPaths: string array)
-    (dllPath: string)
-    : Assembly
+    : FSharpAssembly list
     =
     let baseOptions, _ =
         checker.GetProjectOptionsFromScript(
@@ -39,26 +39,37 @@ let extractAssembly
                 |]
         }
 
-    // Load the assembly via FCS reflection
-    let fsharpAssembly =
-        checker.ParseAndCheckProject(projectOptions)
-        |> Async.RunSynchronously
-        // Walk the resolved assemblies to find the target dll
-        |> fun results ->
-            let targetName = System.IO.Path.GetFileNameWithoutExtension(dllPath)
+    checker.ParseAndCheckProject(projectOptions)
+    |> Async.RunSynchronously
+    |> fun results -> results.ProjectContext.GetReferencedAssemblies()
 
-            results.ProjectContext.GetReferencedAssemblies()
-            |> List.tryFind (fun a -> a.SimpleName = targetName)
+/// Extract the IR for a single compiled .dll plus its .xml doc file, from assemblies
+/// already resolved by `resolveAssemblies`.
+let extractAssembly (resolved: FSharpAssembly list) (dllPath: string) : Assembly =
+    let targetName = System.IO.Path.GetFileNameWithoutExtension(dllPath)
+
+    let fsharpAssembly = resolved |> List.tryFind (fun a -> a.SimpleName = targetName)
 
     match fsharpAssembly with
-    | None -> failwithf "Could not load assembly: %s" dllPath
+    | None ->
+        // Say what was looked for and what was found: "could not load" on its own
+        // leaves no way to tell a typo from a missing reference.
+        let available =
+            resolved
+            |> List.map (fun a -> a.SimpleName)
+            |> List.sort
+            |> String.concat ", "
+
+        failwith
+            $"Could not load assembly '%s{targetName}' from %s{dllPath}.\nResolved assemblies were: %s{available}"
     | Some asm ->
         let docs = loadXmlDocFile dllPath
 
         // Recursively collect a module and all its nested sub-modules as
         // separate pages (each sub-module becomes its own page).
         let rec collectModulePages (entity: FSharpEntity) : Module list =
-            let thisPage = extractModule docs entity
+            let thisPage =
+                tryExtract $"module {entity.FullName}" (fun () -> extractModule docs entity)
 
             let subPages =
                 entity.NestedEntities
@@ -66,7 +77,9 @@ let extractAssembly
                 |> Seq.collect collectModulePages
                 |> Seq.toList
 
-            thisPage :: subPages
+            match thisPage with
+            | Some page -> page :: subPages
+            | None -> subPages
 
         // All pages that come from module entities (including sub-modules).
         let modulePages =
@@ -91,7 +104,12 @@ let extractAssembly
                     FullName = ns + ".global"
                     Namespace = ns
                     XmlDoc = None
-                    Entities = entities |> Seq.map (extractEntity docs) |> Seq.toList
+                    Entities =
+                        entities
+                        |> Seq.choose (fun e ->
+                            tryExtract $"type {safeFullName e}" (fun () -> extractEntity docs e)
+                        )
+                        |> Seq.toList
                     Functions = []
                     Values = []
                     ExtensionMembers = []

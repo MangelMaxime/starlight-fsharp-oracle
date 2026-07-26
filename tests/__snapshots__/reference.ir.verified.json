@@ -1774,6 +1774,86 @@
                                 "ObsoleteInfo": "Active",
                                 "IsStruct": false
                             }
+                        ],
+                        [
+                            "Record",
+                            {
+                                "Name": "Casing",
+                                "FullName": "Reference.Coverage.Casing",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "Collides with `CASING` once slugged."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Fields": [
+                                    {
+                                        "Name": "Value",
+                                        "Type": [
+                                            "Text",
+                                            "string"
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        }
+                                    }
+                                ],
+                                "Members": [],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Record",
+                            {
+                                "Name": "CASING",
+                                "FullName": "Reference.Coverage.CASING",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "Collides with `Casing` once slugged."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Fields": [
+                                    {
+                                        "Name": "Other",
+                                        "Type": [
+                                            "Text",
+                                            "string"
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        }
+                                    }
+                                ],
+                                "Members": [],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
                         ]
                     ],
                     "Functions": [

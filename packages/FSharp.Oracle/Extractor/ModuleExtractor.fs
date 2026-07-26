@@ -32,10 +32,21 @@ module internal ModuleExtractor =
         let entities =
             nested
             |> List.filter (fun e -> not e.IsFSharpModule)
-            |> List.map (extractEntity docs)
+            |> List.choose (fun e ->
+                tryExtract $"type {safeFullName e}" (fun () -> extractEntity docs e)
+            )
 
-        let funcs = functions |> List.map (extractFunction docs)
-        let vals = values |> List.map (extractValue docs)
+        let funcs =
+            functions
+            |> List.choose (fun f ->
+                tryExtract $"function {f.FullName}" (fun () -> extractFunction docs f)
+            )
+
+        let vals =
+            values
+            |> List.choose (fun v ->
+                tryExtract $"value {v.FullName}" (fun () -> extractValue docs v)
+            )
 
         let extensions =
             extensionMembers

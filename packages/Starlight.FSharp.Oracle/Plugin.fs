@@ -207,6 +207,12 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     | Error msg -> logger.warn $"Failed to write .gitignore: {msg}"
                                     | Ok() -> ()
 
+                                // Two names that slug the same would overwrite each
+                                // other on disk; they are pulled apart, but the author
+                                // still needs to know.
+                                for warning in Generate.slugWarnings modules do
+                                    logger.warn warning
+
                                 let pages = Generate.allPages basePath outputBase root
 
                                 let writeResults =

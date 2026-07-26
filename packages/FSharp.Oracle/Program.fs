@@ -20,6 +20,23 @@ let main argv =
         eprintfn "Output: JSON IR written to stdout"
         1
     | _ ->
+        // Validate up front: a bad path otherwise surfaces as
+        // "The value cannot be an empty string (Parameter 'path')" from deep inside
+        // a directory scan, which says nothing about which argument was wrong.
+        let missing =
+            dllPaths
+            |> Array.filter (fun path -> String.IsNullOrWhiteSpace path || not (IO.File.Exists path))
+
+        if missing.Length > 0 then
+            for path in missing do
+                if String.IsNullOrWhiteSpace path then
+                    eprintfn "error: empty assembly path"
+                else
+                    eprintfn "error: assembly not found: %s" path
+
+            1
+        else
+
         let checker = FSharpChecker.Create()
 
         // Gather every .dll in the same directories as the specified assemblies
@@ -43,10 +60,11 @@ let main argv =
             |> Array.map IO.Path.GetFullPath
             |> Array.distinct
 
+        // One check of the shared reference set, then one pass per target assembly.
+        let resolved = resolveAssemblies checker allDllPaths
+
         let assemblies =
-            dllPaths
-            |> Array.map (extractAssembly checker allDllPaths)
-            |> Array.toList
+            dllPaths |> Array.map (extractAssembly resolved) |> Array.toList
 
         let root =
             {
@@ -56,7 +74,8 @@ let main argv =
         let json =
             root
             |> Encode.Auto.generateEncoder(losslessOption = true)
-            |> Encode.toString 4
+            // Compact: this goes down a pipe to the plugin, not to a reader.
+            |> Encode.toString 0
 
         Console.WriteLine(json)
 
