@@ -28,43 +28,42 @@ module Declarations =
     // Generic parameters
     // -----------------------------------------------------------------------
 
-    /// The constraint clause of a generic parameter list, with the angle brackets and
-    /// leading type variable stripped, e.g. ` when 'T : comparison`. Appended after a
-    /// signature rather than before it.
-    let constraintClause (genericParameters: TextNode option) : TextNode =
-        match genericParameters with
-        | Some(TextNode.Node nodes) ->
-            let inner =
-                nodes
-                |> List.skipWhile (
-                    function
-                    | TextNode.Punctuation "<" -> true
-                    | _ -> false
-                )
-                |> List.skipWhile (
-                    function
-                    | TextNode.Tick
-                    | TextNode.Text _ -> true
-                    | _ -> false
-                )
-                |> List.rev
-                |> List.skipWhile (
-                    function
-                    | TextNode.Punctuation ">" -> true
-                    | _ -> false
-                )
-                |> List.rev
-                |> List.skipWhile (
-                    function
-                    | TextNode.Space -> true
-                    | _ -> false
-                )
+    /// The clause on one line, appended after a signature: ` when 'T : comparison`.
+    let constraintClause (constraints: TextNode option) : TextNode =
+        match constraints with
+        | Some clause -> TextNode.Node [ TextNode.Space; clause ]
+        | None -> TextNode.Node []
 
-            if List.isEmpty inner then
-                TextNode.Node []
-            else
-                TextNode.Node(TextNode.Space :: inner)
-        | _ -> TextNode.Node []
+    /// The clause broken across lines at each `and`, indented to `column`.
+    ///
+    /// SRTP constraints are long - the widest line in the reference fixture was a
+    /// 110-character constraint, not a type - and a wrapped line restarts at column 0,
+    /// which destroys the alignment. Breaking where F# would breaks it deliberately.
+    let constraintLines (column: int) (constraints: TextNode option) : TextNode list =
+        match constraints with
+        | None -> []
+        | Some(TextNode.Node nodes) ->
+            [
+                TextNode.NewLine
+                TextNode.Indent 1
+                padding column
+
+                for node in nodes do
+                    match node with
+                    | TextNode.Keyword "and" ->
+                        TextNode.NewLine
+                        TextNode.Indent 1
+                        padding column
+                        node
+                    | node -> node
+            ]
+        | Some clause ->
+            [
+                TextNode.NewLine
+                TextNode.Indent 1
+                padding column
+                clause
+            ]
 
     // -----------------------------------------------------------------------
     // Parameters
@@ -84,7 +83,6 @@ module Declarations =
                         punct "?"
 
                     TextNode.ParameterName p.Name
-                    TextNode.Space
                     colon
                     TextNode.Space
                     p.Type
@@ -113,31 +111,32 @@ module Declarations =
 
     /// A function signature laid out over several lines with the colons in one column:
     ///
-    ///     val name   :
-    ///         first  : int
-    ///         second : string
-    ///                -> bool
+    ///     val combineWith:
+    ///         combine : 'T -> 'T -> 'U
+    ///         first   : 'T
+    ///         second  : 'T
+    ///                 -> 'U
     ///
-    /// The column is the longest of the function name and the parameter names, which
-    /// is why this has to happen here: the extractor emits names and types, not layout.
+    /// The column comes from the parameter names alone. Including the function name -
+    /// which is what the old layout did - made the gap depend on something unrelated to
+    /// what is being aligned, and opened rivers of up to 38 blank columns between a
+    /// parameter and its type.
+    ///
+    /// This has to happen here: the extractor emits names and types, not layout.
     let functionSignature (f: Function) : TextNode =
         let groups = f.Parameters |> List.filter (List.isEmpty >> not)
         let allParams = groups |> List.collect id
 
         let column =
-            let longestParameter =
-                allParams |> List.map (fun p -> p.Name.Length) |> function
-                    | [] -> 0
-                    | lengths -> List.max lengths
-
-            (max f.Name.Length longestParameter) + 1
+            match allParams |> List.map (fun p -> p.Name.Length) with
+            | [] -> 0
+            | lengths -> List.max lengths + 1
 
         TextNode.Node
             [
                 keyword (valKeyword f.IsInline f.IsMutable)
                 TextNode.Space
                 TextNode.Text f.Name
-                padding (max (column - f.Name.Length) 1)
                 colon
 
                 for group in groups do
@@ -162,16 +161,16 @@ module Declarations =
                 if allParams.IsEmpty then
                     TextNode.Space
                     f.ReturnType
+                    constraintClause f.Constraints
                 else
-                    // The arrow lines up under the colons above.
+                    // The arrow lines up under the column of colons above.
                     TextNode.NewLine
                     TextNode.Indent 1
                     padding column
                     arrow
                     TextNode.Space
                     f.ReturnType
-
-                constraintClause f.GenericParameters
+                    yield! constraintLines column f.Constraints
             ]
 
     let valueDeclaration (v: Value) : TextNode =
@@ -180,7 +179,6 @@ module Declarations =
                 keyword (valKeyword v.IsInline v.IsMutable)
                 TextNode.Space
                 TextNode.Text v.Name
-                TextNode.Space
                 colon
                 TextNode.Space
                 v.Type
@@ -191,7 +189,7 @@ module Declarations =
                     TextNode.Space
                     TextNode.Text value
                 | None -> ()
-                constraintClause v.GenericParameters
+                constraintClause v.Constraints
             ]
 
     // -----------------------------------------------------------------------
@@ -254,7 +252,6 @@ module Declarations =
         let groups = m.Parameters |> List.filter (List.isEmpty >> not)
 
         [
-            TextNode.Space
             colon
             TextNode.Space
 
@@ -293,7 +290,7 @@ module Declarations =
         TextNode.Node
             [
                 yield! memberPrefix m nameNode
-                yield! memberTypeNodes m [ constraintClause m.GenericParameters ]
+                yield! memberTypeNodes m [ constraintClause m.Constraints ]
             ]
 
     /// The anchor slug of a member. Operators anchor on their compiled name, because
@@ -347,7 +344,6 @@ module Declarations =
             TextNode.Node
                 [
                     TextNode.Text f.Name
-                    TextNode.Space
                     colon
                     TextNode.Space
                     f.Type
@@ -355,11 +351,7 @@ module Declarations =
 
     /// The `a: int * b: string` payload of a union case or exception.
     ///
-    /// `spaceBeforeColon` exists only because unions and exceptions disagree today -
-    /// unions write `a : int`, exceptions write `a: int`. Fantomas writes neither with
-    /// a space, so phase 4's colon-spacing decision removes this parameter. Keeping the
-    /// difference explicit beats leaving it duplicated in two places.
-    let private payloadFields (spaceBeforeColon: bool) (fields: Field list) : TextNode list =
+    let private payloadFields (fields: Field list) : TextNode list =
         fields
         |> List.mapi (fun i f ->
             [
@@ -370,10 +362,6 @@ module Declarations =
 
                 if f.Name <> "" then
                     TextNode.Text f.Name
-
-                    if spaceBeforeColon then
-                        TextNode.Space
-
                     colon
                     TextNode.Space
 
@@ -392,7 +380,7 @@ module Declarations =
                 if not case.Fields.IsEmpty then
                     keyword " of"
                     TextNode.Space
-                    yield! payloadFields true case.Fields
+                    yield! payloadFields case.Fields
             ]
 
     // -----------------------------------------------------------------------
@@ -470,7 +458,7 @@ module Declarations =
                     if not e.Fields.IsEmpty then
                         keyword " of"
                         TextNode.Space
-                        yield! payloadFields false e.Fields
+                        yield! payloadFields e.Fields
                 ]
 
         | Entity.Delegate e ->
@@ -521,7 +509,7 @@ module Declarations =
                         if not case.Fields.IsEmpty then
                             keyword " of"
                             TextNode.Space
-                            yield! payloadFields true case.Fields
+                            yield! payloadFields case.Fields
 
                     yield! supertypeLines None e.Interfaces
                     yield! memberLines e.Members
@@ -542,7 +530,6 @@ module Declarations =
                         TextNode.NewLine
                         TextNode.Indent 2
                         TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
-                        TextNode.Space
                         colon
                         TextNode.Space
                         f.Type

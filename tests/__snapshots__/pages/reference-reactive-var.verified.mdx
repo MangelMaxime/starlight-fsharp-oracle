@@ -34,7 +34,7 @@ import { Aside } from '@astrojs/starlight/components';
 <p><strong>Namespace:</strong> <a href="/api/reference-reactive">Reference.Reactive</a></p>
 
 <div class="not-content">
-<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Var<span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">inherit</span>&nbsp;&zwnj;obj<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw"><a href="#new">new</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">initial</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Value">Value</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Var<span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw"><a href="#new">new</a></span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">initial</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Value">Value</a></span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
 </div>
 
 <h2 id="description">Description</h2>
@@ -49,11 +49,11 @@ The reactive node and the writable handle. A **source** (`Var.create`) is a
 
 <div class="collapsible-group">
 <DocEntry name="new">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">new</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">initial</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">new</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">initial</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">initial</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">initial</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 </DocEntry>
@@ -64,7 +64,7 @@ The reactive node and the writable handle. A **source** (`Var.create`) is a
 
 <div class="collapsible-group">
 <DocEntry name="Value">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;Value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;Value<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
 
 The current value held by this node.
 
@@ -76,13 +76,13 @@ The current value held by this node.
 
 <div class="collapsible-group">
 <DocEntry name="create">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;create&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;initial&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;create<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;initial&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 Create a new source node holding `initial`.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">initial</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">initial</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -93,13 +93,13 @@ The starting value of the node.
 </DocEntry>
 
 <DocEntry name="get">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;get&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;node&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;get<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;node&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
 
 Read the current value of a node.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">node</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">node</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-reactive-var">Var</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 </DocEntry>

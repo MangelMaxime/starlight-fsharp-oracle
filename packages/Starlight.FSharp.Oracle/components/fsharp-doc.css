@@ -7,8 +7,11 @@
 .fsharp-doc-sig {
     font-family: var(--sl-font-mono, monospace);
     font-size: var(--sl-text-code, 0.875em);
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+    /* Signatures are column-aligned, and a wrapped line restarts at column 0, which
+       destroys that alignment. Keep the line intact and let the block scroll instead,
+       the way code blocks do everywhere else on the page. */
+    white-space: pre;
+    overflow-x: auto;
     display: block;
 
     > div {

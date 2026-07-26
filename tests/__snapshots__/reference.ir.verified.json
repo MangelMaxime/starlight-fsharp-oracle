@@ -395,14 +395,6 @@
                                 "Attributes": [
                                     "[<AbstractClass>]"
                                 ],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -741,14 +733,6 @@
                                         ]
                                     ]
                                 },
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -1007,14 +991,6 @@
                                     "Examples": []
                                 },
                                 "Attributes": [],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -1179,14 +1155,6 @@
                                     "Examples": []
                                 },
                                 "Attributes": [],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -1380,14 +1348,6 @@
                                     "Examples": []
                                 },
                                 "Attributes": [],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -1542,28 +1502,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -1789,38 +1727,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "U"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -3500,28 +3406,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -3651,38 +3535,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "E"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -4503,28 +4355,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -4750,28 +4580,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -4861,28 +4669,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -4951,28 +4737,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -5073,28 +4837,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": true,
@@ -5187,28 +4929,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -5280,28 +5000,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -5859,28 +5557,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -5962,28 +5638,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -6128,38 +5782,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "U"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -6249,28 +5871,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -6415,38 +6015,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "U"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -6530,28 +6098,6 @@
                                 "Text",
                                 "int"
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -6633,22 +6179,12 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -6668,10 +6204,6 @@
                                         [
                                             "Keyword",
                                             "comparison"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -6763,25 +6295,12 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        [
-                                            "Text",
-                                            "^"
-                                        ],
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -6930,10 +6449,6 @@
                                         [
                                             "Punctuation",
                                             ")"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7068,28 +6583,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -7169,22 +6662,12 @@
                                 "Text",
                                 "unit"
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -7205,10 +6688,6 @@
                                             "TypeRef",
                                             "IDisposable",
                                             "System.IDisposable"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7301,28 +6780,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -7422,22 +6879,12 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -7458,10 +6905,6 @@
                                             "TypeRef",
                                             "ICloneable",
                                             "System.ICloneable"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7539,22 +6982,12 @@
                                 "Text",
                                 "bool"
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -7574,10 +7007,6 @@
                                         [
                                             "Keyword",
                                             "equality"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7649,22 +7078,12 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -7705,10 +7124,6 @@
                                         [
                                             "Keyword",
                                             "struct"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7776,22 +7191,12 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
+                            "Constraints": {
                                 "$type": "option",
                                 "$case": "some",
                                 "$value": [
                                     "Node",
                                     [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        "Space",
                                         [
                                             "Keyword",
                                             "when"
@@ -7811,10 +7216,6 @@
                                         [
                                             "Keyword",
                                             "not null"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
                                         ]
                                     ]
                                 ]
@@ -7963,38 +7364,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "U"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8120,28 +7489,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8233,28 +7580,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8591,28 +7916,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8739,28 +8042,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8848,28 +8129,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -8943,28 +8202,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -9047,28 +8284,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -9240,38 +8455,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "S"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -9438,38 +8621,6 @@
                                     ]
                                 ]
                             ],
-                            "GenericParameters": {
-                                "$type": "option",
-                                "$case": "some",
-                                "$value": [
-                                    "Node",
-                                    [
-                                        [
-                                            "Punctuation",
-                                            "<"
-                                        ],
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "T"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ","
-                                        ],
-                                        "Space",
-                                        "Tick",
-                                        [
-                                            "Text",
-                                            "U"
-                                        ],
-                                        [
-                                            "Punctuation",
-                                            ">"
-                                        ]
-                                    ]
-                                ]
-                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "IsActivePattern": false,
@@ -9682,14 +8833,6 @@
                                     "Examples": []
                                 },
                                 "Attributes": [],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -9989,14 +9132,6 @@
                                     "Examples": []
                                 },
                                 "Attributes": [],
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
-                                    ]
-                                },
                                 "Interfaces": [],
                                 "Members": [
                                     {
@@ -11731,14 +10866,6 @@
                                                 ">"
                                             ]
                                         ]
-                                    ]
-                                },
-                                "BaseType": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": [
-                                        "Text",
-                                        "obj"
                                     ]
                                 },
                                 "Interfaces": [],

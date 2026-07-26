@@ -96,13 +96,13 @@ import { Aside } from '@astrojs/starlight/components';
 
 <div class="collapsible-group">
 <DocEntry name="Integer">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Integer|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Integer|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Parses a string as an integer using a single-case active pattern.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -117,13 +117,13 @@ The integer if parsing succeeds.
 </DocEntry>
 
 <DocEntry name="NormalizeSpaces">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|NormalizeSpaces|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|NormalizeSpaces|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
 
 Normalizes whitespace in a string.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -138,13 +138,13 @@ The string with normalized whitespace.
 </DocEntry>
 
 <DocEntry name="Positive-Negative-Zero">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Positive|Negative|Zero|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Positive|Negative|Zero|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Recognizes different shapes of numeric values.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">n</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
+<span class="fsharp-doc-typevar">n</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -159,13 +159,13 @@ The shape classification.
 </DocEntry>
 
 <DocEntry name="Weekday-Weekend">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Weekday|Weekend|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;date&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Weekday|Weekend|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;date&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Classifies a day of the week.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">date</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span>
+<span class="fsharp-doc-typevar">date</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -180,13 +180,13 @@ Weekday or Weekend classification.
 </DocEntry>
 
 <DocEntry name="Empty-Short-Medium-Long">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Empty|Short|Medium|Long|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Empty|Short|Medium|Long|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Analyzes string length.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -201,13 +201,13 @@ Classification by length.
 </DocEntry>
 
 <DocEntry name="IsSome-IsNone">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IsSome|IsNone|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;opt&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IsSome|IsNone|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;opt&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Classifies an option value.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">opt</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option
+<span class="fsharp-doc-typevar">opt</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -232,13 +232,13 @@ Some or None classification.
 </DocEntry>
 
 <DocEntry name="Success-Failure">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Success|Failure|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;result&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Success|Failure|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;result&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span></div>
 
 Decomposes a result into success or failure.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">result</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">result</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -272,13 +272,13 @@ Success or Failure classification.
 </DocEntry>
 
 <DocEntry name="EvenInt">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EvenInt|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EvenInt|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Tries to parse a string as an even integer.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -293,13 +293,13 @@ The even integer if successful.
 </DocEntry>
 
 <DocEntry name="Prime">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Prime|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Prime|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Tries to parse a string as a prime number.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -314,13 +314,13 @@ The prime number if successful.
 </DocEntry>
 
 <DocEntry name="Palindrome">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Palindrome|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Palindrome|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes palindrome strings.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -335,13 +335,13 @@ The palindrome if it is one.
 </DocEntry>
 
 <DocEntry name="Email">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Email|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Email|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes valid email addresses (simplified).
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -356,13 +356,13 @@ The email if valid.
 </DocEntry>
 
 <DocEntry name="Url">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Url|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Url|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes valid URL strings (simplified).
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -377,13 +377,13 @@ The URL if valid.
 </DocEntry>
 
 <DocEntry name="KeyValue">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|KeyValue|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|KeyValue|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Tries to extract a key-value pair from a string.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -398,13 +398,13 @@ The key and value if the format matches.
 </DocEntry>
 
 <DocEntry name="DivisibleBy">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|DivisibleBy|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;divisor&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|DivisibleBy|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;divisor&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Checks if a number is divisible by a given divisor.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">divisor</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">divisor</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -413,7 +413,7 @@ The number to divide by.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">n</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">n</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -428,13 +428,13 @@ The quotient if divisible.
 </DocEntry>
 
 <DocEntry name="RegexMatch">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|RegexMatch|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;pattern&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|RegexMatch|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;pattern&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string matches a regex pattern.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">pattern</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">pattern</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -443,7 +443,7 @@ The regex pattern.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -458,13 +458,13 @@ The matched value if successful.
 </DocEntry>
 
 <DocEntry name="StartsWith">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|StartsWith|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;prefix&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|StartsWith|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;prefix&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string starts with a given prefix.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">prefix</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">prefix</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -473,7 +473,7 @@ The prefix to check.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -488,13 +488,13 @@ The remainder if it starts with the prefix.
 </DocEntry>
 
 <DocEntry name="EndsWith">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EndsWith|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;suffix&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EndsWith|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;suffix&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string ends with a given suffix.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">suffix</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">suffix</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -503,7 +503,7 @@ The suffix to check.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -518,13 +518,13 @@ The prefix if it ends with the suffix.
 </DocEntry>
 
 <DocEntry name="InRange">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|InRange|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-typevar">min</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">max</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|InRange|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-typevar">min</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">max</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Checks if a number is within a range.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">min</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">min</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -533,7 +533,7 @@ The minimum value (inclusive).
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">max</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">max</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -542,7 +542,7 @@ The maximum value (inclusive).
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">n</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">n</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -557,13 +557,13 @@ The number if within range.
 </DocEntry>
 
 <DocEntry name="Exactly">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Exactly|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;lst&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Exactly|_|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;lst&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list&nbsp;&zwnj;option</div>
 
 Checks if a list contains exactly N elements.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">n</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">n</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -572,7 +572,7 @@ The expected count.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">lst</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
+<span class="fsharp-doc-typevar">lst</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -587,13 +587,13 @@ The list if it has exactly N elements.
 </DocEntry>
 
 <DocEntry name="IntegerString-FloatString-NotNumeric">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IntegerString|FloatString|NotNumeric|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>int<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;float<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IntegerString|FloatString|NotNumeric|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>int<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;float<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Recognizes different types of numeric strings.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">str</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">str</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -608,23 +608,23 @@ Integer, Float, or NotNumeric classification.
 </DocEntry>
 
 <DocEntry name="Single-Pair-Many">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Single|Pair|Many|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Single|Pair|Many|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 </DocEntry>
 
 <DocEntry name="EmptySeq-Singleton-Multiple">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EmptySeq|Singleton|Multiple|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;seq&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;int<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EmptySeq|Singleton|Multiple|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;seq&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;int<span class="fsharp-doc-kw">&gt;</span></div>
 
 Analyzes collection emptiness and size.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">seq</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
+<span class="fsharp-doc-typevar">seq</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -639,13 +639,13 @@ Empty, Singleton, or Multiple classification.
 </DocEntry>
 
 <DocEntry name="Log">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Log|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;label&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Log|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;label&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
 
 Logs and returns the value (for debugging patterns).
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">label</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">label</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -654,7 +654,7 @@ The label to log.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -669,13 +669,13 @@ The value unchanged.
 </DocEntry>
 
 <DocEntry name="Timed">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Timed|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;float</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Timed|)<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;float</div>
 
 Times the execution of a function and returns the result with elapsed time.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">f</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">f</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>

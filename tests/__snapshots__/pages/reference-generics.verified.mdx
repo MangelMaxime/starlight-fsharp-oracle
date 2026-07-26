@@ -120,13 +120,13 @@ import { Aside } from '@astrojs/starlight/components';
 
 <div class="collapsible-group">
 <DocEntry name="box">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;box&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;box<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 Wraps a value in a Box.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -151,13 +151,13 @@ A Box containing the value.
 </DocEntry>
 
 <DocEntry name="unbox">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;unbox&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;unbox<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
 
 Extracts the value from a Box.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">b</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -182,13 +182,13 @@ The contained value.
 </DocEntry>
 
 <DocEntry name="mapBox">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapBox&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;U</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapBox<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span></div>
 
 Maps a function over a Box.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">f</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">f</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -197,7 +197,7 @@ The mapping function.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">b</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-box">Box</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -231,13 +231,13 @@ A new Box with the mapped value.
 </DocEntry>
 
 <DocEntry name="singleton">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;singleton&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;singleton<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 Creates a singleton tree.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -262,13 +262,13 @@ A Tree containing just the value.
 </DocEntry>
 
 <DocEntry name="mapTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;U</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span></div>
 
 Maps a function over all values in a tree.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">f</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">f</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -277,7 +277,7 @@ The mapping function.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -311,13 +311,13 @@ A new Tree with mapped values.
 </DocEntry>
 
 <DocEntry name="countLeaves">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;countLeaves&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;countLeaves<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int</div>
 
 Counts the number of leaves in a tree.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -342,13 +342,13 @@ The number of leaf nodes.
 </DocEntry>
 
 <DocEntry name="findMax">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;findMax&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">comparison</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;findMax<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">comparison</span></div>
 
 Finds the maximum value in a tree. Requires the type to be comparable.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -373,13 +373,13 @@ The maximum value.
 </DocEntry>
 
 <DocEntry name="sumTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val inline</span>&nbsp;&zwnj;sumTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>^T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span><span class="fsharp-doc-kw">static member</span>&nbsp;&zwnj;op_Addition&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;^T<span class="fsharp-doc-kw">)</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span><span class="fsharp-doc-kw">static member</span>&nbsp;&zwnj;get_Zero&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;^T<span class="fsharp-doc-kw">)</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val inline</span>&nbsp;&zwnj;sumTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>^T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;^T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span><span class="fsharp-doc-kw">static member</span>&nbsp;&zwnj;op_Addition&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;^T<span class="fsharp-doc-kw">)</span>&nbsp;&zwnj;<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;^T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span><span class="fsharp-doc-kw">static member</span>&nbsp;&zwnj;get_Zero&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;^T<span class="fsharp-doc-kw">)</span></div>
 
 Sums all numeric values in a tree using generic math.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>^T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>^T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -404,13 +404,13 @@ The sum of all values.
 </DocEntry>
 
 <DocEntry name="tryFind">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFind&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFind<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
 
 Finds an item in a tree by predicate.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">predicate</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">predicate</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -419,7 +419,7 @@ The function to test items.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -444,13 +444,13 @@ Some value if found, None otherwise.
 </DocEntry>
 
 <DocEntry name="disposeAll">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;disposeAll&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;unit&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;:&gt;&nbsp;&zwnj;<span class="fsharp-doc-type">IDisposable</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;disposeAll<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;unit<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;:&gt;&nbsp;&zwnj;<span class="fsharp-doc-type">IDisposable</span></div>
 
 Disposes all IDisposable values in a tree.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -471,13 +471,13 @@ The type of values - must implement IDisposable.
 </DocEntry>
 
 <DocEntry name="formatTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;formatTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>string<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;formatTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>string<span class="fsharp-doc-kw">&gt;</span></div>
 
 Formats all values in a tree to strings.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -502,13 +502,13 @@ A tree of string representations.
 </DocEntry>
 
 <DocEntry name="cloneTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;cloneTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;:&gt;&nbsp;&zwnj;<span class="fsharp-doc-type">ICloneable</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;cloneTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;:&gt;&nbsp;&zwnj;<span class="fsharp-doc-type">ICloneable</span></div>
 
 Clones a tree of cloneable items.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -533,13 +533,13 @@ A new tree with cloned values.
 </DocEntry>
 
 <DocEntry name="areEqual">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;areEqual&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;a&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">equality</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;areEqual<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;a&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;b&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">equality</span></div>
 
 Equality constraint demonstration.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">a</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -548,7 +548,7 @@ First value.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">b</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -573,13 +573,13 @@ True if equal.
 </DocEntry>
 
 <DocEntry name="unmanagedDemo">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;unmanagedDemo&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">unmanaged</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">struct</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;unmanagedDemo<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">unmanaged</span>&nbsp;&zwnj;<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">and</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">struct</span></div>
 
 Unmanaged constraint for efficient copying.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -604,13 +604,13 @@ The value unchanged (demonstration only).
 </DocEntry>
 
 <DocEntry name="notNullDemo">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;notNullDemo&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">not null</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;notNullDemo<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">not null</span></div>
 
 Not null constraint demonstration.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -635,13 +635,13 @@ The value if not null.
 </DocEntry>
 
 <DocEntry name="mapListWrapper">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapListWrapper&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;wrapper&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;U</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;mapListWrapper<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;wrapper&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span></div>
 
 Maps over a list wrapper.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">f</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">f</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -650,7 +650,7 @@ The mapping function.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">wrapper</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">wrapper</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-listwrapper">ListWrapper</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -684,13 +684,13 @@ A new wrapper with mapped items.
 </DocEntry>
 
 <DocEntry name="flattenTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;flattenTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;flattenTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 Flattens a tree of trees.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -715,13 +715,13 @@ A flattened tree.
 </DocEntry>
 
 <DocEntry name="treeFromList">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;treeFromList&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;treeFromList<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span></div>
 
 Creates a tree from a list.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">items</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
+<span class="fsharp-doc-typevar">items</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -746,13 +746,13 @@ A balanced tree.
 </DocEntry>
 
 <DocEntry name="makePerson">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;makePerson&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;name&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;age&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;makePerson<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;age&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;</div>
 
 Creates a person record.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">name</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
+<span class="fsharp-doc-typevar">name</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -761,7 +761,7 @@ The person's name.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">age</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-typevar">age</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -776,13 +776,13 @@ An anonymous record.
 </DocEntry>
 
 <DocEntry name="getPersonName">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;getPersonName&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;person&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;getPersonName<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;person&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
 
 Gets the name from a person record.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">person</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;
+<span class="fsharp-doc-typevar">person</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#123;|&nbsp;&zwnj;Age&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int;&nbsp;&zwnj;Name&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;|&#125;
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -797,13 +797,13 @@ The name.
 </DocEntry>
 
 <DocEntry name="tryFindInList">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFindInList&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFindInList<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
 
 Finds first matching item in a list.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">predicate</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">predicate</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -812,7 +812,7 @@ The predicate to test.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">items</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
+<span class="fsharp-doc-typevar">items</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -837,13 +837,13 @@ The first matching item, or None.
 </DocEntry>
 
 <DocEntry name="filterSeq">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;filterSeq&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;filterSeq<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;predicate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq</div>
 
 Filters a sequence.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">predicate</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">predicate</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool<span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -852,7 +852,7 @@ The predicate to test.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">items</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
+<span class="fsharp-doc-typevar">items</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -877,13 +877,13 @@ A sequence of matching items.
 </DocEntry>
 
 <DocEntry name="voptionToOption">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;voptionToOption&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;opt&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;voption<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;voptionToOption<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;opt&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;voption<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
 
 Tries to get a value from a voption.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">opt</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;voption
+<span class="fsharp-doc-typevar">opt</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;voption
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -908,13 +908,13 @@ The value, or None.
 </DocEntry>
 
 <DocEntry name="makeRef">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;makeRef&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;ref</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;makeRef<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;ref</div>
 
 Creates a reference cell.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">value</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-typevar">value</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -939,13 +939,13 @@ A reference cell.
 </DocEntry>
 
 <DocEntry name="listToArray">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;listToArray&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T[]</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;listToArray<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T[]</div>
 
 Creates an array from a list.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">items</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
+<span class="fsharp-doc-typevar">items</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -970,13 +970,13 @@ An array of items.
 </DocEntry>
 
 <DocEntry name="foldTree">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;foldTree&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;folder&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;S&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;state&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;S<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;S</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;foldTree<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;folder&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;S&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;state&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;S<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S</div>
 
 Folds a tree from left to right.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">folder</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;S&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-typevar">folder</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;S&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;S<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -985,7 +985,7 @@ The folding function.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">state</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;S
+<span class="fsharp-doc-typevar">state</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;S
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -994,7 +994,7 @@ The initial state.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -1028,13 +1028,13 @@ The final accumulated value.
 </DocEntry>
 
 <DocEntry name="zipTrees">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;zipTrees&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree1&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree2&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;U</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;zipTrees<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree1&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree2&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">&gt;</span></div>
 
 Zips two trees together.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree1</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree1</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -1043,7 +1043,7 @@ The first tree.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">tree2</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span>
+<span class="fsharp-doc-typevar">tree2</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-generics-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;U<span class="fsharp-doc-kw">&gt;</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -1082,14 +1082,14 @@ A tree of tuples.
 
 <div class="collapsible-group">
 <DocEntry name="counter">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val mutable</span>&nbsp;&zwnj;counter&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val mutable</span>&nbsp;&zwnj;counter<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int</div>
 
 A mutable counter for demonstration.
 
 </DocEntry>
 
 <DocEntry name="configValue">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val mutable</span>&nbsp;&zwnj;configValue&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val mutable</span>&nbsp;&zwnj;configValue<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string</div>
 
 A mutable configuration string.
 

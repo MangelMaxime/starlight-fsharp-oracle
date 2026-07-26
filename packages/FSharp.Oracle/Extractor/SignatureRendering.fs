@@ -260,6 +260,45 @@ module internal SignatureRendering =
         else
             []
 
+    /// The constraint clause on its own: `when 'T : comparison and 'U : equality`.
+    /// `None` when nothing is constrained.
+    ///
+    /// Emitted separately rather than recovered from the rendered parameter list. The
+    /// renderer used to strip `<`, the leading type variable and `>` back off, which
+    /// only works for a single parameter - `<'T, 'U>` left a stray `, 'U` behind.
+    let renderConstraints (gps: FSharpGenericParameter seq) : TextNode option =
+        let tickOf (gp: FSharpGenericParameter) =
+            if isSrtp gp then
+                TextNode.Text "^"
+            else
+                TextNode.Tick
+
+        let constrained =
+            gps
+            |> Seq.collect (fun gp -> gp.Constraints |> Seq.map (fun c -> gp, c))
+            |> Seq.toList
+
+        if List.isEmpty constrained then
+            None
+        else
+            Some(
+                TextNode.Node
+                    [
+                        for i, (gp, c) in List.indexed constrained do
+                            if i = 0 then
+                                TextNode.Keyword "when"
+                            else
+                                TextNode.Space
+                                TextNode.Keyword "and"
+
+                            TextNode.Space
+                            tickOf gp
+                            TextNode.Text gp.DisplayName
+                            TextNode.Space
+                            yield! renderConstraint gp c
+                    ]
+            )
+
     /// The generic-parameter list for a function or member, e.g.
     /// `<'T when 'T : comparison>` or `<^T when ^T : (static member (+) : ^T * ^T -> ^T)>`.
     /// `None` when there are no parameters.

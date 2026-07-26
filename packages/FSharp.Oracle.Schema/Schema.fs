@@ -119,8 +119,8 @@ type Function =
         /// each inner list holds the parameters within that group (tupled parameters).
         Parameters: Parameter list list
         ReturnType: TextNode
-        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
-        GenericParameters: TextNode option
+        /// The constraint clause alone, e.g. `when 'T : comparison`.
+        Constraints: TextNode option
         IsInline: bool
         IsMutable: bool
         /// `(|Integer|)`, `(|Even|_|)` and friends, which are documented separately.
@@ -136,8 +136,8 @@ type Value =
         Type: TextNode
         /// Set for `[<Literal>]` bindings, whose value is part of their contract.
         LiteralValue: string option
-        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
-        GenericParameters: TextNode option
+        /// The constraint clause alone, e.g. `when 'T : comparison`.
+        Constraints: TextNode option
         IsInline: bool
         IsMutable: bool
         XmlDoc: XmlDoc
@@ -169,8 +169,8 @@ type Member =
         /// The return type of the member (property type, method return type, or
         /// constructed type for constructors).
         ReturnType: TextNode
-        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
-        GenericParameters: TextNode option
+        /// The constraint clause alone, e.g. `when 'T : comparison`.
+        Constraints: TextNode option
         XmlDoc: XmlDoc
         IsStatic: bool
         /// True for `abstract member` declarations (interface and abstract class members).

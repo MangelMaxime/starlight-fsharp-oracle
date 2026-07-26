@@ -230,11 +230,17 @@ module internal Helpers =
             | None -> false)
 
     /// True when a base type carries no information, i.e. it is `obj`.
+    /// Matched on the display name as well: `obj` is a type abbreviation, and
+    /// `FullName` throws for those, so a full-name check alone lets it through.
     let isTrivialBaseType (typ: FSharpType) =
         typ.HasTypeDefinition
-        && (match tryGetFullName typ.TypeDefinition with
-            | Some fullName -> fullName = "System.Object" || fullName = "obj"
-            | None -> false)
+        && (let td = typ.TypeDefinition
+
+            td.DisplayName = "obj"
+            || td.DisplayName = "Object"
+            || (match tryGetFullName td with
+                | Some fullName -> fullName = "System.Object" || fullName = "obj"
+                | None -> false))
 
     let obsoleteOfEntity (entity: FSharpEntity) : ObsoleteInfo =
         entity.Attributes

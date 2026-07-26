@@ -286,9 +286,53 @@ Ordered by how wrong the output is today.
       `val (|EvenInt|_|): str: string -> int option`, so the `option` return on a
       partial pattern is correct, not the defect the plan assumed. Only the section
       and the anchors needed work.
-- [ ] **Colon spacing.** `val name : type` today vs `val name: type` from Fantomas.
-      Decide once, apply everywhere (`ValueExtractor.fs:78-79`, both member builders,
-      field/case/parameter declarations), record in the decisions log.
+- [x] **Colon spacing.** Settled: the colon attaches to the name everywhere, except in
+      the aligned parameter block of a function, where padding fills the gap so the
+      colons form a column:
+
+      ```
+      val combineWith:
+          combine : 'T -> 'T -> 'U
+          first   : 'T
+          second  : 'T
+                  -> 'U
+      ```
+
+      The column now comes from the **parameter names alone**. Including the function
+      name - what the old layout did - made the gap depend on something unrelated to
+      what is being aligned. Measured across the fixture: 66 of 75 functions with
+      parameters had padding driven by the name rather than the parameters, median 5
+      blank columns for ordinary functions and up to 38 for active patterns. That is
+      the readability defect, and it was never an active-pattern-only problem.
+
+      This also deletes `payloadFields`' `spaceBeforeColon` flag: the union/exception
+      disagreement disappears rather than being preserved behind a parameter.
+
+### Found while re-laying out: the constraint clause was reverse-engineered
+
+Not in the plan, and pre-existing - visible in the committed snapshot as
+`-> 'U , 'U` on `combineWith`. The renderer recovered the `when ...` clause by
+stripping `<`, the leading type variable and `>` back off the *rendered* generic
+parameter list. That only works for a single type parameter; `<'T, 'U>` left a stray
+`, 'U` behind. Moving the layout onto its own line is what made it obvious.
+
+- [x] The extractor now emits the clause directly (`renderConstraints`), and the
+      renderer's text-stripping is gone. `Function`, `Value` and `Member` carry
+      `Constraints` rather than the whole bracketed list, since the clause is all the
+      renderer ever used them for. Entities keep the combined form, because a type head
+      does write its constraints inside the brackets.
+- [x] `inherit obj` was leaking onto every class: `obj` is a type abbreviation and
+      `FullName` throws for those, so the full-name-only filter never matched.
+
+### Long signatures
+
+- [x] The constraint clause breaks onto its own line, and again at each `and`, which is
+      where F# breaks it too. The widest signature line in the fixture went from **110
+      characters to 63** - and the 110 was a constraint, not a type.
+- [x] `.fsharp-doc-sig` switched from `white-space: pre-wrap` to `white-space: pre` with
+      `overflow-x: auto`. A wrapped line restarted at column 0 and destroyed the
+      alignment; now anything still too wide scrolls in its own box, the way code blocks
+      do elsewhere on the page.
 - [x] **Anchors are not escaped.** `Anchor.slug` keeps identifier characters and
       collapses the rest to `-`, dropping wildcard-only segments. Operators anchor on
       their compiled name, since `(+)` cannot be a URL fragment: `(*)` -> `op_Multiply`,
@@ -463,7 +507,9 @@ Record choices made during the run so later phases do not relitigate them.
 | 2 | External types: plain text vs MS Learn links | Plain text for v1. Linking out needs a per-source URL scheme (MS Learn for BCL, nothing for arbitrary third-party assemblies) - that is an option-surface question, deferred to phase 6 |
 | 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
 | 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `Punctuation of string` rather than a case per mark; `DeclarationName` carries text and anchor separately for overloaded constructors |
-| 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd - also deletes `payloadFields`' `spaceBeforeColon` flag_ |
+| 4 | Colon spacing | Attached to the name, except in the aligned parameter block where padding forms a colon column. Alignment driven by parameter names only |
+| 4 | Layout as a plugin option? | No. 66 of 75 functions were affected, so this is the default's problem, not a preference. An option costs two layouts, two snapshot sets, and permanent API |
+| 4 | Long signatures | Break the constraint clause at `when`/`and`, and scroll rather than wrap |
 | 4 | `<inheritdoc>` | Out for v1: needs cross-assembly base-member resolution, and nothing uses it |
 | 4 | `<see cref>` transport | Extractor emits a `fsharp-doc:` markdown link; the renderer resolves it. Keeps the IR free of URLs while still recording what was referenced |
 | 5 | Slug collision disambiguation policy | _tbd_ |
