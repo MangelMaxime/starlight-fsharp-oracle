@@ -1,0 +1,337 @@
+# Road to v1
+
+Working checklist. Tick boxes as items land. This file is the durable state of the
+effort - if a session ends mid-way, the next one resumes from here.
+
+## How to run this
+
+Phases are ordered by dependency, not by size. Do not reorder 1 -> 2 -> 3.
+
+After each phase:
+
+1. Run the gates (below).
+2. Commit that phase on its own (Conventional Commits, scope = `oracle`, `render`,
+   `plugin`, `build`, or `test`).
+3. Tick the boxes here and commit this file with the phase.
+
+If something is ambiguous and not covered here, add it under **Blocked** at the
+bottom and keep working on everything else. Do not stall the run on one decision.
+
+## Gates
+
+Phase 1 creates the first two. Until then only `./build.sh docs` exists.
+
+| Gate | Command | From |
+|---|---|---|
+| Unit/snapshot tests | `./build.sh test` | phase 1 |
+| Link check | `./build.sh test --links` | phase 2 |
+| Docs build | `./build.sh docs` | today |
+
+"Done" = all three green, every box below ticked.
+
+---
+
+## Formatting reference
+
+**When unsure how a declaration should be presented, do not invent it - generate it.**
+
+`telplin` and `fantomas` are both in `dotnet-tools.json`. Telplin derives a signature
+file from an implementation file; Fantomas formats it against this repo's
+`.editorconfig`. The result is the canonical F# rendering of that construct, and it is
+the tie-breaker for any layout question in phases 3 and 4.
+
+```sh
+dotnet telplin <path>.fsproj      # derive .fsi from .fs
+dotnet fantomas <path>.fsi        # format to repo conventions
+```
+
+`tests/Reference/ActivePatterns.fsi` is exactly that output, kept in the tree as a
+worked example. It is deliberately **not** in `Reference.fsproj` - it is documentation
+for us, not a compilation unit. Read it before guessing at active-pattern rendering:
+
+- `val (|Integer|): str: string -> int option` - parameter names are part of the
+  signature
+- `val (|DivisibleBy|_|): divisor: int -> n: int -> int option` - curried groups
+- `val (|InRange|_|): min: int * max: int -> n: int -> int option` - tupled group
+  uses `*`
+- `val (|Timed|): f: (unit -> 'T) -> 'T * float` - function-typed parameter is
+  parenthesised
+- `val mutable a: int`
+
+Regenerate it against any construct in doubt rather than reasoning from first
+principles.
+
+**One divergence already spotted:** Fantomas writes `val name: type` (no space before
+the colon); the Oracle currently emits `val name : type`
+(`Extractor/ValueExtractor.fs:78-79`, and the same in the member builders). The spaced
+form is the older F#-tooling convention and may well be the right call for docs - but
+make it a deliberate choice, not an accident. Logged as a phase 4 decision.
+
+---
+
+## Phase 1 - Make regressions visible
+
+Nothing else on this list is safe to attempt without this. Almost every defect
+below is a string-formatting defect, which is exactly what golden files catch.
+
+### Fixture coverage
+
+- [ ] Add `MissingSyntaxes.fs` to `tests/Reference/Reference.fsproj` (currently
+      written but **not compiled** - measures, structs, exceptions, delegates,
+      type extensions and `<see cref>` are all untested end to end)
+- [ ] Leave `tests/Reference/ActivePatterns.fsi` out of the fsproj on purpose - it is
+      a **formatting reference**, not a fixture (see "Formatting reference" above).
+      Add a header comment saying so, so nobody deletes it as dead weight.
+- [ ] Extend fixtures to cover what the report found missing and nothing covers yet:
+      a property with a setter, a `[<Literal>]`, a `[<RequireQualifiedAccess>]` union,
+      a class implementing an interface, a class inheriting a base type, an overloaded
+      method (two `Format` overloads), a function with optional `?x` and a byref param,
+      a `<list>` and a `<typeparam>` in XML doc
+
+### Test harness
+
+- [ ] New `build/Commands/Test.fs`, registered in `build/Main.fs` alongside
+      `DocsCommand`/`ServeCommand` (the `Workspace.fs` type provider picks up new
+      folders automatically)
+- [ ] Snapshot the **JSON IR**: build `tests/Reference`, run the Oracle over the
+      resulting dll, compare against `tests/__snapshots__/reference.ir.json`
+- [ ] Snapshot the **generated `.mdx`**: compare per-page output against
+      `tests/__snapshots__/pages/*.mdx`
+- [ ] `--update` flag to rewrite snapshots, so intentional changes are a reviewable diff
+
+**Decision needed in this phase:** how to run the renderer snapshots.
+`Render/*` is plain F# + `System.Text.StringBuilder` and would run under .NET
+directly, but `Plugin.fs` pulls in `Node.Api` and `Fable.Core.JS` imports, so
+referencing `Starlight.FSharp.Oracle.fsproj` from a .NET test project may not
+compile. Two options - pick whichever is cheaper once tried:
+
+- (a) Split the Fable/Node-specific surface (`Plugin.fs`, `Helpers.fs`) out from the
+  renderer so the renderer is a plain .NET-testable library. Cleaner, and it helps
+  phase 3 too.
+- (b) Compile with Fable and run the snapshots in Node.
+
+Record the choice here when made.
+
+---
+
+## Phase 2 - Fix the dead links
+
+All four of these are visible in the committed output under `docs/src/pages/api/`.
+They are the most damaging defect class for a docs tool: a reader clicking a type
+name lands on a 404.
+
+- [ ] **Foreign types link to nowhere.** `toUrl` (`packages/FSharp.Oracle/Extractor/Assembly.fs:35`)
+      builds a page URL for any type with a full name. Generated output contains
+      `/api/system-datetime`, `/api/microsoft-fsharp-core-fsharpchoice`,
+      `/api/microsoft-fsharp-core-fsharpresult` - no such pages exist.
+      Fix: only emit a link when the target page will be generated. External types
+      render as plain text, or link out to MS Learn behind an option.
+- [ ] **Synthetic `global` modules link to nowhere.** `/api/reference-geometry-global`
+      and `/api/reference-reactive-global` are emitted, but `Generate.modulePages`
+      filters synthetic modules out so the pages are never written.
+- [ ] **Assemblies section on the index links to nowhere.** `Pages.fs:276` links
+      `/api/{assembly-slug}`; no assembly page is generated. It only appears to work
+      in `docs/` because the assembly is named `Reference` and a namespace page of
+      that slug happens to exist. Either generate assembly pages or drop the links.
+- [ ] **Empty namespace link.** `Pages.fs:75` emits
+      `htmlLinkGen parentModule.Namespace parentModule.Namespace` - for a root-level
+      type that is an empty label pointing at `/api/`.
+- [ ] Add the link-check gate: walk `docs/dist/**/*.html`, collect internal `href`s,
+      assert each resolves to a generated file. Plain Node script, no new dependency.
+
+Note: doing this properly means the renderer decides links, because the renderer is
+what knows the set of generated pages. That is the same move phase 3 makes, so
+implement the page-set lookup here in a way phase 3 can absorb rather than undo.
+
+---
+
+## Phase 3 - Semantic IR (**review checkpoint - stop here**)
+
+> **Stop and produce a diff for review at the end of this phase.** The shape of the
+> new `TextNode` is a design call, not a mechanical one. Everything before and after
+> this phase can run unattended; this one gets looked at once.
+
+Presentation currently lives in the extractor:
+
+- `TextNode` carries `OpenTag`, `CloseTag`, `OpenTagWithClass`, `Anchor`,
+  `AnchoredProperty`, `AnchoredKeyword`, `Spaces of int`
+  (`packages/FSharp.Oracle.Schema/Schema.fs:36-72`)
+- `TypeRef` carries a **pre-computed URL**, so the Oracle takes `--base` and
+  `--output-base` - Astro site config passed into a compiler tool
+  (`packages/FSharp.Oracle/Program.fs:12-19`)
+- `Function` carries pre-formatted `Declaration` / `AlignedDeclaration` / `ReturnType`
+  with embedded `\n` and column alignment computed at
+  `packages/FSharp.Oracle/Extractor/ValueExtractor.fs:22-31` - i.e. layout decided
+  before anything knows the rendering font
+
+Tasks:
+
+- [ ] Reduce `TextNode` to semantics: `Text | TypeRef of name * fullName | TypeVar |
+      Keyword | Punct | Break | Indent` (final shape is the reviewable decision)
+- [ ] Move link generation, indentation and column alignment into
+      `packages/Starlight.FSharp.Oracle/Render/`
+- [ ] Drop `--base` and `--output-base` from the Oracle CLI
+- [ ] Collapse the duplicated declaration builders - `memberDeclarationLine`
+      (`Extractor/EntityExtractor.fs:39`) and `buildMemberDeclaration`
+      (`Extractor/MemberExtractor.fs:13`) are the same logic twice, one with anchors
+      and indentation and one without. Both need the identical `with get, set` fix
+      in phase 4, so merge them first.
+- [ ] Same for `caseFieldNodes` (`EntityExtractor.fs:11`) vs the exception field
+      nodes (`EntityExtractor.fs:299`), and the shared `valKeyword` /
+      `constraintClause` block in `extractFunction` / `extractValue`
+- [ ] Renderer side: factor the `<dl><dt>link</dt><dd>summary</dd>` loop repeated in
+      `renderModulePage`, `renderNamespacePage` and `renderRootIndexPage`
+- [ ] Single `toSlug`. It is implemented twice and the two disagree:
+      `Assembly.fs:26` strips `` `\d+$ `` by regex, `Generate.fs:34` truncates at the
+      last backtick regardless of what follows.
+
+Snapshots will churn heavily here. Review the snapshot diff as part of the checkpoint -
+it is the clearest evidence of what actually changed.
+
+---
+
+## Phase 4 - F# feature gaps
+
+Ordered by how wrong the output is today.
+
+### Wrong output
+
+- [ ] **Property setters.** `with get` is hardcoded at
+      `Extractor/MemberExtractor.fs:106-115` and again at
+      `Extractor/EntityExtractor.fs:111-120`. `HasGetterMethod`/`HasSetterMethod` are
+      never read, so every mutable property is documented as read-only.
+- [ ] **Overload anchors collide.** Only constructors are disambiguated
+      (`EntityExtractor.fs:246-272`). Two `Format` overloads both get `#Format`,
+      colliding in the TOC and in the type-header links.
+- [ ] **Undocumented parameters vanish.** `renderParamsAndReturns`
+      (`Render/Documentation.fs:52`) gates the whole Parameters block on
+      `xmlDoc.Params` being non-empty, so a function with no `<param>` tags shows no
+      parameter list at all.
+- [ ] **Type-level generic constraints dropped.** `typeHeadNodes`
+      (`EntityExtractor.fs:135`) emits `<'T>` only;
+      `type Tree<'T when 'T : comparison>` loses its constraint on the type page.
+- [ ] **`Function` vs `Value` split.** Partitioned on `IsFunction`
+      (`Extractor/ModuleExtractor.fs:23`), so `let f = fun x -> x` lands in Values
+      and loses its parameter table.
+- [ ] **Active patterns.** Land in "Functions" with the raw name `(|Integer|)` used
+      verbatim as an HTML `id` and URL fragment. Partial patterns show a raw
+      `Choice<...>`/`option` return type rather than pattern syntax. Needs its own
+      `MemberKind` and its own rendering - target format is
+      `tests/Reference/ActivePatterns.fsi` verbatim.
+- [ ] **Colon spacing.** `val name : type` today vs `val name: type` from Fantomas.
+      Decide once, apply everywhere (`ValueExtractor.fs:78-79`, both member builders,
+      field/case/parameter declarations), record in the decisions log.
+- [ ] **Anchors are not escaped** - `#(|Integer|)`, `#op_Addition`, names with spaces
+      go straight into `id=` and `href=`.
+
+### Missing information
+
+- [ ] **Inheritance and interface implementations.** `entity.BaseType` and
+      `entity.DeclaredInterfaces` are never read anywhere in the codebase. A class
+      page never states what it inherits or implements, and interface
+      implementations get mixed into "Methods" unmarked.
+- [ ] **Attributes.** Only `[<Struct>]` and `[<Measure>]` render. Add at minimum
+      `[<RequireQualifiedAccess>]`, `[<AutoOpen>]`, `[<Literal>]`, `[<CLIMutable>]`,
+      `[<Sealed>]`, `[<AbstractClass>]`, `[<Extension>]`. `[<RequireQualifiedAccess>]`
+      matters most - it changes how callers write code.
+- [ ] **Literal values.** `[<Literal>] let X = 42` renders `val X : int`, dropping
+      the value.
+- [ ] **Type extensions / extension members.** `type Foo with ...` and `[<Extension>]`
+      methods are extracted as ordinary module functions and never attached to the
+      extended type.
+- [ ] **Parameter modifiers.** `extractParameter`
+      (`Extractor/ParameterExtractor.fs:8`) ignores `IsOptionalArg` (`?x`),
+      `IsInArg`/`IsOutArg` (byref/inref/outref) and `[<ParamArray>]`.
+- [ ] **`inline` on members** (works for let-bound functions/values only).
+- [ ] **Events, indexed properties (`Item`), explicit interface implementations.**
+
+### XML documentation
+
+- [ ] **`<see cref>` does not link.** `resolveCref`
+      (`Extractor/Helpers.fs:131`) is written but has zero call sites - it is dead
+      code. `MemberRef` renders as `` ``Name`` `` code text instead of a hyperlink.
+- [ ] **`<list>` is a no-op.** `HandleMicrosoftOrList = id` at
+      `packages/FSharp.Oracle/XmlDoc.fs:266`, so list markup passes through raw and
+      then gets escaped into visible tags.
+- [ ] **`<typeparam>`** - no field for it on `XmlDoc` in the Schema, needs adding.
+- [ ] **`<exception>`, `<seealso>`, `<value>`** - not extracted.
+- [ ] `<inheritdoc>` - decide in or out for v1.
+
+---
+
+## Phase 5 - Robustness
+
+- [ ] **Slug collisions are silent.** `toSlug` lowercases and strips generic arity,
+      so `MyType`/`Mytype`, and identically-named types across two assemblies,
+      overwrite each other on disk with no warning. Detect and report; decide a
+      disambiguation policy (assembly prefix?). The generic-type-plus-companion-module
+      case is already handled, but as a special case
+      (`Generate.fs:164-185`) rather than by a general rule.
+- [ ] **One bad entity kills the build.** `failwithf "Could not load assembly: %s"`
+      (`Extractor/Assembly.fs:67`) has no diagnostics; any throwing entity takes the
+      whole Astro build down. Degrade per-entity with a warning instead.
+- [ ] **FCS runs once per dll.** `Program.fs:52` maps `extractAssembly` over
+      `dllPaths` and each call does its own `GetProjectOptionsFromScript` +
+      `ParseAndCheckProject`. Six assemblies means six full checks of the same
+      reference set. Hoist the project context out of the loop.
+- [ ] **IR serialization cost.** Pretty-printed at indent 4 (`Program.fs:63`) through
+      a 50 MB stdout buffer (`Plugin.fs:49`). Use indent 0, or a temp file.
+- [ ] **O(n^2) page filtering.** `List.contains` over lists in `Plugin.fs:227,236`
+      and `Generate.fs:257`, once per page. Use a `Set`.
+- [ ] `Starlight.FSharp.Oracle/Helpers.fs` defines a `FileOperationResult` DU whose
+      cases are named `Ok`/`Error`, shadowing `Result` in every file that opens it.
+      Use `Result<unit, string>`.
+
+---
+
+## Phase 6 - Ship
+
+- [ ] **README `## Usage` currently says `TODO`.** Write a getting-started that
+      actually works, plus a full option reference.
+- [ ] **Plugin options.** Today only `output`, `assemblies`, `sidebar.label`. Decide
+      the v1 surface: include/exclude filters, document-internals toggle, per-assembly
+      grouping, external-type link base, sidebar collapse defaults.
+- [ ] **Distribution decision.** `postinstall` runs `dotnet publish` on every consumer
+      install, requiring the .NET SDK on any machine that installs the npm package -
+      including Node-only CI images. Pick one: ship prebuilt per-RID binaries, ship a
+      `dotnet tool` the user installs explicitly, or keep it and document the
+      requirement loudly. Blocking for 1.0.
+- [ ] Namespace convention in the Oracle is inconsistent: `module Oracle.XmlDoc`,
+      `module FSharp.Oracle.Program`, `module FSharp.Oracle.Extractor` (for
+      `Assembly.fs`), and `namespace FSharp.Oracle` + `module internal X` elsewhere.
+      Pick one.
+- [ ] `XmlDoc.fs` sits at the Oracle project root while every other extraction file
+      is under `Extractor/`. Move it in.
+- [ ] Rename `Extractor/Assembly.fs` -> `Extractor/Extract.fs` (it is the entry
+      point, not a peer of the other extractors).
+- [ ] Split `EntityExtractor.fs` (639 lines, a nine-branch `if/elif` chain). It is
+      where base types, attributes and extension members all had to land in phase 4 -
+      one file per entity kind, or at minimum one named function per branch.
+- [ ] `Render.fs` is a 19-line re-export shim over `Render/*`. Either drop it, or make
+      it the sole public surface and mark the rest `internal`.
+- [ ] Remove stray artifacts: tracked `starlight-fsharp-oracle-0.1.0.tgz`, leftover
+      `docs/src/pages/prototype.astro` and `docs/src/pages/test/api.astro`, empty
+      `guides/`.
+
+---
+
+## Blocked
+
+Questions that came up mid-run and need a human answer. Keep working around these.
+
+_(none yet)_
+
+---
+
+## Decisions log
+
+Record choices made during the run so later phases do not relitigate them.
+
+| Phase | Decision | Choice |
+|---|---|---|
+| 1 | Renderer snapshot harness (.NET vs Node) | _tbd_ |
+| 2 | External types: plain text vs MS Learn links | _tbd_ |
+| 3 | Final `TextNode` shape | _tbd_ |
+| 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd_ |
+| 5 | Slug collision disambiguation policy | _tbd_ |
+| 6 | Distribution: prebuilt binaries vs dotnet tool vs SDK requirement | _tbd_ |
