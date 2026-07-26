@@ -9,7 +9,7 @@ open Documentation
 
 module Entries =
 
-    let renderUnionCaseEntry (sb: StringBuilder) (case: UnionCase) =
+    let renderUnionCaseEntry (links: LinkResolver) (sb: StringBuilder) (case: UnionCase) =
         let renderFields () =
             let documentedFields = case.Fields |> List.filter (fun f -> f.XmlDoc.Summary.IsSome)
 
@@ -18,19 +18,21 @@ module Entries =
 
                 for f in documentedFields do
                     let fieldDeclaration =
-                        [
-                            TextNode.OpenTagWithClass("div", "fs-parameter__signature")
-                            TextNode.NewLine
-                            TextNode.Text f.Name
-                            TextNode.Space
-                            TextNode.Colon
-                            TextNode.Space
-                            f.Type
-                            TextNode.NewLine
-                            TextNode.CloseTag "div"
-                            TextNode.NewLine
-                        ]
-                        |> TextNode.ToHtml
+                        TextNode.ToHtml(
+                            links,
+                            [
+                                TextNode.OpenTagWithClass("div", "fs-parameter__signature")
+                                TextNode.NewLine
+                                TextNode.Text f.Name
+                                TextNode.Space
+                                TextNode.Colon
+                                TextNode.Space
+                                f.Type
+                                TextNode.NewLine
+                                TextNode.CloseTag "div"
+                                TextNode.NewLine
+                            ]
+                        )
 
                     sb.WriteLine fieldDeclaration
 
@@ -43,96 +45,82 @@ module Entries =
         let renderDocumentation () =
             renderDocumentationBlock sb case.XmlDoc renderFields
 
-        renderDocEntry sb case.Name case.Declaration.Html ObsoleteInfo.Active renderDocumentation
+        renderDocEntry
+            sb
+            case.Name
+            (case.Declaration.ToHtml(links))
+            ObsoleteInfo.Active
+            renderDocumentation
 
-    let renderRecordField (sb: StringBuilder) (field: Field) =
+    let renderRecordField (links: LinkResolver) (sb: StringBuilder) (field: Field) =
         let renderDocumentation () =
             renderDocumentationBlock sb field.XmlDoc ignore
 
-        renderDocEntry sb field.Name field.Declaration.Html ObsoleteInfo.Active renderDocumentation
+        renderDocEntry
+            sb
+            field.Name
+            (field.Declaration.ToHtml(links))
+            ObsoleteInfo.Active
+            renderDocumentation
 
-    let renderMemberEntry (sb: StringBuilder) (m: Member) =
+    let renderMemberEntry (links: LinkResolver) (sb: StringBuilder) (m: Member) =
         renderDocEntry
             sb
             m.Name
-            m.Declaration.Html
+            (m.Declaration.ToHtml(links))
             m.ObsoleteInfo
-            (fun () -> renderXmlDocBody sb m.Parameters m.XmlDoc)
+            (fun () -> renderXmlDocBody links sb m.Parameters m.XmlDoc)
 
     let renderMemberSections
+        (links: LinkResolver)
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
         (members: Member list)
         =
-        let constructors = members |> List.filter (fun m -> m.Kind = MemberKind.Constructor)
-        let properties = members |> List.filter (fun m -> m.Kind = MemberKind.Property)
-        let methods = members |> List.filter (fun m -> m.Kind = MemberKind.Method)
-        let operators = members |> List.filter (fun m -> m.Kind = MemberKind.Operator)
+        let section (title: string) (slug: string) (items: Member list) =
+            if not items.IsEmpty then
+                h2 sb toc slug title
+                sb.WriteLine("<div class=\"collapsible-group\">")
 
-        if not constructors.IsEmpty then
-            h2 sb toc "constructors" "Constructors"
-            sb.WriteLine("<div class=\"collapsible-group\">")
+                for m in items do
+                    tocH3 toc m.Name m.Name
+                    renderMemberEntry links sb m
 
-            for m in constructors do
-                tocH3 toc m.Name m.Name
-                renderMemberEntry sb m
+                sb.WriteLine("</div>")
+                sb.NewLine()
 
-            sb.WriteLine("</div>")
-            sb.NewLine()
+        let ofKind kind = members |> List.filter (fun m -> m.Kind = kind)
 
-        if not properties.IsEmpty then
-            h2 sb toc "properties" "Properties"
-            sb.WriteLine("<div class=\"collapsible-group\">")
+        section "Constructors" "constructors" (ofKind MemberKind.Constructor)
+        section "Properties" "properties" (ofKind MemberKind.Property)
+        section "Methods" "methods" (ofKind MemberKind.Method)
+        section "Operators" "operators" (ofKind MemberKind.Operator)
 
-            for m in properties do
-                tocH3 toc m.Name m.Name
-                renderMemberEntry sb m
-
-            sb.WriteLine("</div>")
-            sb.NewLine()
-
-        if not methods.IsEmpty then
-            h2 sb toc "methods" "Methods"
-            sb.WriteLine("<div class=\"collapsible-group\">")
-
-            for m in methods do
-                tocH3 toc m.Name m.Name
-                renderMemberEntry sb m
-
-            sb.WriteLine("</div>")
-            sb.NewLine()
-
-        if not operators.IsEmpty then
-            h2 sb toc "operators" "Operators"
-            sb.WriteLine("<div class=\"collapsible-group\">")
-
-            for m in operators do
-                tocH3 toc m.Name m.Name
-                renderMemberEntry sb m
-
-            sb.WriteLine("</div>")
-            sb.NewLine()
-
-    let functionSignatureHtml (f: Function) =
+    let functionSignatureHtml (links: LinkResolver) (f: Function) =
         [
             f.AlignedDeclaration
             for p in f.Parameters |> List.collect id do
                 p.AlignedDeclaration
             f.ReturnType
         ]
-        |> List.map (fun n -> n.Html)
+        |> List.map (fun n -> n.ToHtml(links))
         |> String.concat ""
 
-    let renderFunctionEntry (sb: StringBuilder) (f: Function) =
+    let renderFunctionEntry (links: LinkResolver) (sb: StringBuilder) (f: Function) =
         renderDocEntry
             sb
             f.Name
-            (functionSignatureHtml f)
+            (functionSignatureHtml links f)
             f.ObsoleteInfo
-            (fun () -> renderXmlDocBody sb f.Parameters f.XmlDoc)
+            (fun () -> renderXmlDocBody links sb f.Parameters f.XmlDoc)
 
-    let renderValueEntry (sb: StringBuilder) (v: Value) =
+    let renderValueEntry (links: LinkResolver) (sb: StringBuilder) (v: Value) =
         let renderDocumentation () =
             renderDocumentationBlock sb v.XmlDoc ignore
 
-        renderDocEntry sb v.Name v.Declaration.Html v.ObsoleteInfo renderDocumentation
+        renderDocEntry
+            sb
+            v.Name
+            (v.Declaration.ToHtml(links))
+            v.ObsoleteInfo
+            renderDocumentation

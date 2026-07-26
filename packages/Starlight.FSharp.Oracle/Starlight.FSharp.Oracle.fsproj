@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <Compile Include="Extensions/StringBuilder.fs" />
+    <!-- Links.fs precedes the TextNode extensions: rendering a TypeRef needs the resolver. -->
+    <Compile Include="Render/Links.fs" />
     <Compile Include="Extensions/TextNode.fs" />
     <Compile Include="Helpers.fs" />
     <Compile Include="Themes.fs" />

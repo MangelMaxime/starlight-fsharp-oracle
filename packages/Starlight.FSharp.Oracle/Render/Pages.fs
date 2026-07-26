@@ -10,7 +10,26 @@ open Entries
 
 module Pages =
 
+    /// A `<dl>` of links with optional summaries - the shape every index-style
+    /// section on every page uses.
+    let private definitionList
+        (sb: StringBuilder)
+        (entries: (string * string option) list)
+        =
+        sb.WriteLine("<dl>")
+
+        for term, description in entries do
+            sb.WriteLine($"<dt>{term}</dt>")
+
+            match description with
+            | Some text -> sb.WriteLine($"<dd>{escapeMdxInline text}</dd>")
+            | None -> ()
+
+        sb.WriteLine("</dl>")
+        sb.NewLine()
+
     let private renderFunctionsAndValues
+        (links: LinkResolver)
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
         (functions: Function list)
@@ -22,7 +41,7 @@ module Pages =
 
             for f in functions do
                 tocH3 toc f.Name f.Name
-                renderFunctionEntry sb f
+                renderFunctionEntry links sb f
 
             sb.WriteLine("</div>")
             sb.NewLine()
@@ -33,35 +52,65 @@ module Pages =
 
             for v in values do
                 tocH3 toc v.Name v.Name
-                renderValueEntry sb v
+                renderValueEntry links sb v
 
             sb.WriteLine("</div>")
             sb.NewLine()
 
     let renderDeclaredModules
+        (links: LinkResolver)
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
-        (htmlLinkGen: string -> string -> string)
         (modules: Module list)
         =
         if not modules.IsEmpty then
             h2 sb toc "declared-modules" "Declared Modules"
-            sb.WriteLine("<dl>")
 
-            for m in modules do
-                sb.WriteLine(
-                    $"<dt>{htmlLinkGen m.Name m.FullName}{obsoleteInlineHtml m.ObsoleteInfo}</dt>"
-                )
+            modules
+            |> List.map (fun m ->
+                links.Link(m.Name, m.FullName) + obsoleteInlineHtml m.ObsoleteInfo, m.XmlDoc
+            )
+            |> definitionList sb
 
-                match m.XmlDoc with
-                | Some doc -> sb.WriteLine($"<dd>{escapeMdxInline doc}</dd>")
-                | None -> ()
+    let private renderTypeList
+        (links: LinkResolver)
+        (sb: StringBuilder)
+        (toc: ResizeArray<TocEntry>)
+        (entities: Entity list)
+        =
+        if not entities.IsEmpty then
+            h2 sb toc "types" "Types"
 
-            sb.WriteLine("</dl>")
+            entities
+            |> List.map (fun e ->
+                links.Link(e.Name, e.FullName) + obsoleteInlineHtml e.ObsoleteInfo,
+                e.XmlDoc.Summary
+            )
+            |> definitionList sb
+
+    let private renderFields
+        (links: LinkResolver)
+        (sb: StringBuilder)
+        (toc: ResizeArray<TocEntry>)
+        (heading: (string * string) option)
+        (fields: Field list)
+        =
+        if not fields.IsEmpty then
+            match heading with
+            | Some(slug, title) -> h2 sb toc slug title
+            | None -> ()
+
+            sb.WriteLine("<div class=\"collapsible-group\">")
+
+            for field in fields do
+                tocH3 toc field.Name field.Name
+                renderRecordField links sb field
+
+            sb.WriteLine("</div>")
             sb.NewLine()
 
     let renderEntityPage
-        (htmlLinkGen: string -> string -> string)
+        (links: LinkResolver)
         (entity: Entity)
         (parentModule: Module)
         (companionModule: Module option)
@@ -71,18 +120,29 @@ module Pages =
         let sb = StringBuilder()
         let toc = ResizeArray<TocEntry>()
 
-        sb.WriteLine(
-            $"<p><strong>Namespace:</strong> {htmlLinkGen parentModule.Namespace parentModule.Namespace}"
-            + $"&nbsp;&nbsp;<strong>Parent:</strong> {htmlLinkGen parentModule.FullName parentModule.FullName}</p>"
-        )
+        // The root namespace has no page and no name worth printing, and a synthetic
+        // module ("Ns.global", holding bare namespace-level types) has no page either -
+        // both used to be emitted as links, to `/api/` and `/api/ns-global`.
+        let breadcrumbs =
+            [
+                if parentModule.Namespace <> "" then
+                    "Namespace", links.Link(parentModule.Namespace, parentModule.Namespace)
 
-        sb.NewLine()
+                if not parentModule.IsSynthetic then
+                    "Parent", links.Link(parentModule.FullName, parentModule.FullName)
+            ]
+            |> List.map (fun (label, link) -> $"<strong>{label}:</strong> {link}")
+            |> String.concat "&nbsp;&nbsp;"
+
+        if breadcrumbs <> "" then
+            sb.WriteLine($"<p>{breadcrumbs}</p>")
+            sb.NewLine()
 
         renderObsoleteBanner sb entity.ObsoleteInfo
 
         sb.WriteLine("<div class=\"not-content\">")
         sb.Write("<div class=\"fsharp-doc-sig\">")
-        sb.Write(inlineSignatureHtml entity.Declaration.Html)
+        sb.Write(inlineSignatureHtml (entity.Declaration.ToHtml(links)))
         sb.WriteLine("</div>")
         sb.WriteLine("</div>")
         sb.NewLine()
@@ -95,53 +155,28 @@ module Pages =
 
             for c in e.Cases do
                 tocH3 toc c.Name c.Name
-                renderUnionCaseEntry sb c
+                renderUnionCaseEntry links sb c
 
             sb.WriteLine("</div>")
             sb.NewLine()
+
+            renderMemberSections links sb toc e.Members
         | Entity.Record r ->
-            if not r.Fields.IsEmpty then
-                h2 sb toc "fields" "Fields"
-                sb.WriteLine("<div class=\"collapsible-group\">")
-
-                for field in r.Fields do
-                    tocH3 toc field.Name field.Name
-                    renderRecordField sb field
-
-                sb.WriteLine("</div>")
-                sb.NewLine()
-
-            renderMemberSections sb toc r.Members
-        | Entity.Enum e ->
-            if not e.Fields.IsEmpty then
-                sb.WriteLine("<div class=\"collapsible-group\">")
-
-                for field in e.Fields do
-                    tocH3 toc field.Name field.Name
-                    renderRecordField sb field
-
-                sb.WriteLine("</div>")
-                sb.NewLine()
-        | Entity.Class e -> renderMemberSections sb toc e.Members
-        | Entity.Interface e -> renderMemberSections sb toc e.Members
-        | Entity.Exception e ->
-            if not e.Fields.IsEmpty then
-                h2 sb toc "fields" "Fields"
-                sb.WriteLine("<div class=\"collapsible-group\">")
-
-                for field in e.Fields do
-                    tocH3 toc field.Name field.Name
-                    renderRecordField sb field
-
-                sb.WriteLine("</div>")
-                sb.NewLine()
-        | _ -> ()
+            renderFields links sb toc (Some("fields", "Fields")) r.Fields
+            renderMemberSections links sb toc r.Members
+        | Entity.Enum e -> renderFields links sb toc None e.Fields
+        | Entity.Class e -> renderMemberSections links sb toc e.Members
+        | Entity.Interface e -> renderMemberSections links sb toc e.Members
+        | Entity.Exception e -> renderFields links sb toc (Some("fields", "Fields")) e.Fields
+        | Entity.Abbrev _
+        | Entity.Measure _
+        | Entity.Delegate _ -> ()
 
         // A generic type (e.g. `Var<'T>`) and its companion module (`Var`) share a
         // URL slug. Rather than let one page overwrite the other, fold the module's
         // functions and values into this type page so nothing is lost.
         match companionModule with
-        | Some cm -> renderFunctionsAndValues sb toc cm.Functions cm.Values
+        | Some cm -> renderFunctionsAndValues links sb toc cm.Functions cm.Values
         | None -> ()
 
         {
@@ -151,7 +186,7 @@ module Pages =
         }
 
     let renderNamespacePage
-        (htmlLinkGen: string -> string -> string)
+        (links: LinkResolver)
         (ns: string)
         (subNamespaces: string list)
         (entities: Entity list)
@@ -164,9 +199,9 @@ module Pages =
 
         if not subNamespaces.IsEmpty then
             h2 sb toc "namespaces" "Namespaces"
-            sb.WriteLine("<dl>")
 
-            for subNs in subNamespaces do
+            subNamespaces
+            |> List.map (fun subNs ->
                 let shortName =
                     let lastDot = subNs.LastIndexOf('.')
 
@@ -175,28 +210,12 @@ module Pages =
                     else
                         subNs.[lastDot + 1 ..]
 
-                sb.WriteLine($"<dt>{htmlLinkGen shortName subNs}</dt>")
+                links.Link(shortName, subNs), None
+            )
+            |> definitionList sb
 
-            sb.WriteLine("</dl>")
-            sb.NewLine()
-
-        if not entities.IsEmpty then
-            h2 sb toc "types" "Types"
-            sb.WriteLine("<dl>")
-
-            for e in entities do
-                sb.WriteLine(
-                    $"<dt>{htmlLinkGen e.Name e.FullName}{obsoleteInlineHtml e.ObsoleteInfo}</dt>"
-                )
-
-                match e.XmlDoc.Summary with
-                | Some summary -> sb.WriteLine($"<dd>{escapeMdxInline summary}</dd>")
-                | None -> ()
-
-            sb.WriteLine("</dl>")
-            sb.NewLine()
-
-        renderDeclaredModules sb toc htmlLinkGen modules
+        renderTypeList links sb toc entities
+        renderDeclaredModules links sb toc modules
 
         {
             Title = ns
@@ -205,7 +224,7 @@ module Pages =
         }
 
     let renderModulePage
-        (htmlLinkGen: string -> string -> string)
+        (links: LinkResolver)
         (m: Module)
         (subModules: Module list)
         : RenderedPage
@@ -215,26 +234,9 @@ module Pages =
         let toc = ResizeArray<TocEntry>()
 
         renderObsoleteBanner sb m.ObsoleteInfo
-
-        renderDeclaredModules sb toc htmlLinkGen subModules
-
-        if not m.Entities.IsEmpty then
-            h2 sb toc "types" "Types"
-            sb.WriteLine("<dl>")
-
-            for e in m.Entities do
-                sb.WriteLine(
-                    $"<dt>{htmlLinkGen e.Name e.FullName}{obsoleteInlineHtml e.ObsoleteInfo}</dt>"
-                )
-
-                match e.XmlDoc.Summary with
-                | Some summary -> sb.WriteLine($"<dd>{escapeMdxInline summary}</dd>")
-                | None -> ()
-
-            sb.WriteLine("</dl>")
-            sb.NewLine()
-
-        renderFunctionsAndValues sb toc m.Functions m.Values
+        renderDeclaredModules links sb toc subModules
+        renderTypeList links sb toc m.Entities
+        renderFunctionsAndValues links sb toc m.Functions m.Values
 
         {
             Title = m.FullName
@@ -243,7 +245,7 @@ module Pages =
         }
 
     let renderRootIndexPage
-        (htmlLinkGen: string -> string -> string)
+        (links: LinkResolver)
         (assemblies: Assembly list)
         (globalModules: Module list)
         : RenderedPage
@@ -254,29 +256,19 @@ module Pages =
 
         if not globalModules.IsEmpty then
             h2 sb toc "modules" "Modules"
-            sb.WriteLine("<dl>")
 
-            for m in globalModules do
-                sb.WriteLine(
-                    $"<dt>{htmlLinkGen m.Name m.FullName}{obsoleteInlineHtml m.ObsoleteInfo}</dt>"
-                )
+            globalModules
+            |> List.map (fun m ->
+                links.Link(m.Name, m.FullName) + obsoleteInlineHtml m.ObsoleteInfo, m.XmlDoc
+            )
+            |> definitionList sb
 
-                match m.XmlDoc with
-                | Some doc -> sb.WriteLine($"<dd>{escapeMdxInline doc}</dd>")
-                | None -> ()
-
-            sb.WriteLine("</dl>")
-            sb.NewLine()
-
+        // Assemblies are listed for orientation only - there is no per-assembly page,
+        // so these are deliberately plain text rather than links to nowhere.
         if not assemblies.IsEmpty then
             h2 sb toc "assemblies" "Assemblies"
-            sb.WriteLine("<dl>")
 
-            for a in assemblies do
-                sb.WriteLine($"<dt>{htmlLinkGen a.Name a.Name}</dt>")
-
-            sb.WriteLine("</dl>")
-            sb.NewLine()
+            assemblies |> List.map (fun a -> a.Name, None) |> definitionList sb
 
         {
             Title = "API Reference"

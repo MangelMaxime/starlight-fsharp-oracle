@@ -314,6 +314,458 @@
                             }
                         ],
                         [
+                            "Union",
+                            {
+                                "Name": "Temperature",
+                                "FullName": "Reference.Coverage.Temperature",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A union carrying members. The type header links each member to an anchor on the\n page, so the page has to actually render those members."
+                                    },
+                                    "Params": [],
+                                    "Examples": []
+                                },
+                                "Cases": [
+                                    {
+                                        "Name": "Celsius",
+                                        "FullName": "Reference.Coverage.Temperature.Celsius",
+                                        "Fields": [
+                                            {
+                                                "Name": "Item",
+                                                "Type": [
+                                                    "Text",
+                                                    "float"
+                                                ],
+                                                "XmlDoc": {
+                                                    "Summary": {
+                                                        "$type": "option",
+                                                        "$case": "some",
+                                                        "$value": "Degrees Celsius."
+                                                    },
+                                                    "Params": [],
+                                                    "Examples": []
+                                                },
+                                                "Declaration": [
+                                                    "Node",
+                                                    [
+                                                        [
+                                                            "Text",
+                                                            "Item"
+                                                        ],
+                                                        "Space",
+                                                        "Colon",
+                                                        "Space",
+                                                        [
+                                                            "Text",
+                                                            "float"
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Degrees Celsius."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "Declaration": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Keyword",
+                                                    "|"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "Celsius"
+                                                ],
+                                                [
+                                                    "Keyword",
+                                                    " of"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "Item"
+                                                ],
+                                                "Space",
+                                                "Colon",
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "float"
+                                                ]
+                                            ]
+                                        ]
+                                    },
+                                    {
+                                        "Name": "Fahrenheit",
+                                        "FullName": "Reference.Coverage.Temperature.Fahrenheit",
+                                        "Fields": [
+                                            {
+                                                "Name": "Item",
+                                                "Type": [
+                                                    "Text",
+                                                    "float"
+                                                ],
+                                                "XmlDoc": {
+                                                    "Summary": {
+                                                        "$type": "option",
+                                                        "$case": "some",
+                                                        "$value": "Degrees Fahrenheit."
+                                                    },
+                                                    "Params": [],
+                                                    "Examples": []
+                                                },
+                                                "Declaration": [
+                                                    "Node",
+                                                    [
+                                                        [
+                                                            "Text",
+                                                            "Item"
+                                                        ],
+                                                        "Space",
+                                                        "Colon",
+                                                        "Space",
+                                                        [
+                                                            "Text",
+                                                            "float"
+                                                        ]
+                                                    ]
+                                                ]
+                                            }
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Degrees Fahrenheit."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "Declaration": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Keyword",
+                                                    "|"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "Fahrenheit"
+                                                ],
+                                                [
+                                                    "Keyword",
+                                                    " of"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "Item"
+                                                ],
+                                                "Space",
+                                                "Colon",
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "float"
+                                                ]
+                                            ]
+                                        ]
+                                    }
+                                ],
+                                "Members": [
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "AsCelsius",
+                                        "FullName": "Reference.Coverage.Temperature.AsCelsius",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "float"
+                                        ],
+                                        "Declaration": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Keyword",
+                                                    "property"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "AsCelsius"
+                                                ],
+                                                "Space",
+                                                "Colon",
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "float"
+                                                ],
+                                                [
+                                                    "Node",
+                                                    []
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Keyword",
+                                                    "with"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Keyword",
+                                                    "get"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The temperature expressed in Celsius."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Freezing",
+                                        "FullName": "Reference.Coverage.Temperature.Freezing",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "Temperature",
+                                            "Reference.Coverage.Temperature",
+                                            "/api/reference-coverage-temperature"
+                                        ],
+                                        "Declaration": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Keyword",
+                                                    "static"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Keyword",
+                                                    "property"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "Freezing"
+                                                ],
+                                                "Space",
+                                                "Colon",
+                                                "Space",
+                                                [
+                                                    "TypeRef",
+                                                    "Temperature",
+                                                    "Reference.Coverage.Temperature",
+                                                    "/api/reference-coverage-temperature"
+                                                ],
+                                                [
+                                                    "Node",
+                                                    []
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Keyword",
+                                                    "with"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Keyword",
+                                                    "get"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Freezing point of water."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "Declaration": [
+                                    "Node",
+                                    [
+                                        [
+                                            "Keyword",
+                                            "type"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "Temperature"
+                                        ],
+                                        "Space",
+                                        "Equal",
+                                        "NewLine",
+                                        [
+                                            "Spaces",
+                                            4
+                                        ],
+                                        [
+                                            "Keyword",
+                                            "|"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Anchor",
+                                            "Celsius",
+                                            "#Celsius"
+                                        ],
+                                        [
+                                            "Keyword",
+                                            " of"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "Item"
+                                        ],
+                                        "Space",
+                                        "Colon",
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "float"
+                                        ],
+                                        "NewLine",
+                                        [
+                                            "Spaces",
+                                            4
+                                        ],
+                                        [
+                                            "Keyword",
+                                            "|"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Anchor",
+                                            "Fahrenheit",
+                                            "#Fahrenheit"
+                                        ],
+                                        [
+                                            "Keyword",
+                                            " of"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "Item"
+                                        ],
+                                        "Space",
+                                        "Colon",
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "float"
+                                        ],
+                                        "NewLine",
+                                        [
+                                            "Spaces",
+                                            4
+                                        ],
+                                        [
+                                            "Keyword",
+                                            "property"
+                                        ],
+                                        "Space",
+                                        [
+                                            "AnchoredProperty",
+                                            "AsCelsius",
+                                            "#AsCelsius"
+                                        ],
+                                        "Space",
+                                        "Colon",
+                                        "Space",
+                                        [
+                                            "Text",
+                                            "float"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Keyword",
+                                            "with"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Keyword",
+                                            "get"
+                                        ],
+                                        "NewLine",
+                                        [
+                                            "Spaces",
+                                            4
+                                        ],
+                                        [
+                                            "Keyword",
+                                            "static"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Keyword",
+                                            "property"
+                                        ],
+                                        "Space",
+                                        [
+                                            "AnchoredProperty",
+                                            "Freezing",
+                                            "#Freezing"
+                                        ],
+                                        "Space",
+                                        "Colon",
+                                        "Space",
+                                        [
+                                            "TypeRef",
+                                            "Temperature",
+                                            "Reference.Coverage.Temperature",
+                                            "/api/reference-coverage-temperature"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Keyword",
+                                            "with"
+                                        ],
+                                        "Space",
+                                        [
+                                            "Keyword",
+                                            "get"
+                                        ]
+                                    ]
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
                             "Interface",
                             {
                                 "Name": "INamed",

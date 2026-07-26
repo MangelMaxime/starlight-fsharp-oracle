@@ -54,6 +54,12 @@ let private extract () =
 let main argv =
     let update = argv |> Array.contains "--update"
 
+    // The link check runs against the built site rather than the IR, so it is a
+    // separate mode: `./build.sh docs` first, then `./build.sh test --links`.
+    if argv |> Array.contains "--links" then
+        LinkCheck.run (Path.Combine(repoRoot, "docs", "dist"))
+    else
+
     if not (File.Exists fixtureDll) then
         eprintfn "Fixture not built: %s" fixtureDll
         eprintfn "Run: dotnet build tests/Reference/Reference.fsproj"

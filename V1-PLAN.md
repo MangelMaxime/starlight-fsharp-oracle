@@ -140,28 +140,41 @@ All four of these are visible in the committed output under `docs/src/pages/api/
 They are the most damaging defect class for a docs tool: a reader clicking a type
 name lands on a 404.
 
-- [ ] **Foreign types link to nowhere.** `toUrl` (`packages/FSharp.Oracle/Extractor/Assembly.fs:35`)
-      builds a page URL for any type with a full name. Generated output contains
-      `/api/system-datetime`, `/api/microsoft-fsharp-core-fsharpchoice`,
-      `/api/microsoft-fsharp-core-fsharpresult` - no such pages exist.
-      Fix: only emit a link when the target page will be generated. External types
-      render as plain text, or link out to MS Learn behind an option.
-- [ ] **Synthetic `global` modules link to nowhere.** `/api/reference-geometry-global`
-      and `/api/reference-reactive-global` are emitted, but `Generate.modulePages`
-      filters synthetic modules out so the pages are never written.
-- [ ] **Assemblies section on the index links to nowhere.** `Pages.fs:276` links
-      `/api/{assembly-slug}`; no assembly page is generated. It only appears to work
-      in `docs/` because the assembly is named `Reference` and a namespace page of
-      that slug happens to exist. Either generate assembly pages or drop the links.
-- [ ] **Empty namespace link.** `Pages.fs:75` emits
-      `htmlLinkGen parentModule.Namespace parentModule.Namespace` - for a root-level
-      type that is an empty label pointing at `/api/`.
-- [ ] Add the link-check gate: walk `docs/dist/**/*.html`, collect internal `href`s,
-      assert each resolves to a generated file. Plain Node script, no new dependency.
+Done via a `LinkResolver` (`Render/Links.fs`) built once from the IR and threaded
+through the renderer. It answers two questions - "does this name have a page?" and
+"what is its href?" - and undocumented names render as plain text rather than as a
+promise of a page that was never written. This is the page-set lookup phase 3 absorbs:
+the extractor's baked `TypeRef` url is now ignored, which is what lets phase 3 delete
+it along with `--base`/`--output-base`.
 
-Note: doing this properly means the renderer decides links, because the renderer is
-what knows the set of generated pages. That is the same move phase 3 makes, so
-implement the page-set lookup here in a way phase 3 can absorb rather than undo.
+- [x] **Foreign types link to nowhere.** Confirmed fixed in the snapshot diff:
+      `Choice`, `DateTime`, `IDisposable`, `ICloneable`, `float`, `MeasureProduct`,
+      `MeasureOne` all render as plain text now, while documented types in the same
+      signatures (`Tree<'T>`, the `m` measure) stay linked.
+- [x] **Synthetic `global` modules link to nowhere.** Synthetic modules are excluded
+      from the documented set, and the entity-page breadcrumb omits a Parent it cannot
+      link to, instead of pointing at `/api/reference-geometry-global`.
+- [x] **Assemblies section on the index links to nowhere.** Now plain text, with a
+      comment saying why. Generating per-assembly pages is a phase 6 option question,
+      not a link bug.
+- [x] **Empty namespace link.** The breadcrumb is assembled from the parts that exist,
+      so a root-level type gets `Parent:` only rather than an empty `<a href="/api/">`.
+- [x] Link-check gate: `./build.sh test --links` walks `docs/dist/**/*.html`, resolves
+      every internal href against disk (accepting Astro's directory-style pages), and
+      fails with a per-link report. Implemented in the existing .NET runner rather
+      than a separate Node script, so there is one test entry point.
+      **55 pages scanned, 0 broken.** Verified it fails on an injected bad link.
+
+### Found while fixing: union members were rendered nowhere
+
+`renderEntityPage` handled `Record`, `Class`, `Interface` and `Exception` members but
+fell through to `()` for `Union`, even though the union's type header emits anchor
+links for each member. Any union with members had a header full of `#Name` links to
+ids that were never rendered - the same defect class, just page-local.
+
+- [x] Unions now render member sections. Added a `Temperature` union with an instance
+      and a static member to `Coverage.fs`, since no existing fixture had one and the
+      fix would otherwise have been unverified.
 
 ---
 
@@ -355,7 +368,8 @@ Record choices made during the run so later phases do not relitigate them.
 |---|---|---|
 | 1 | Renderer snapshot harness (.NET vs Node) | .NET console project against the real fsproj; no split needed, no test framework, Verify file convention |
 | 1 | Entity member ordering | kind, then name, then `XmlDocSig` - FCS order is not stable across processes |
-| 2 | External types: plain text vs MS Learn links | _tbd_ |
+| 2 | External types: plain text vs MS Learn links | Plain text for v1. Linking out needs a per-source URL scheme (MS Learn for BCL, nothing for arbitrary third-party assemblies) - that is an option-surface question, deferred to phase 6 |
+| 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
 | 3 | Final `TextNode` shape | _tbd_ |
 | 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd_ |
 | 5 | Slug collision disambiguation policy | _tbd_ |

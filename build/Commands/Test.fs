@@ -14,6 +14,10 @@ type TestSettings() =
     [<Description("Accept the current output as the new snapshots")>]
     member val IsUpdate = false with get, set
 
+    [<CommandOption("-l|--links")>]
+    [<Description("Check every internal link in docs/dist resolves (run ./build.sh docs first)")>]
+    member val IsLinks = false with get, set
+
 type TestCommand() =
     inherit Command<TestSettings>()
     interface ICommandLimiter<TestSettings>
@@ -21,15 +25,17 @@ type TestCommand() =
     override __.Execute(_, settings, _) =
 
         // The snapshot tests read the compiled fixture, so it must be current.
-        Command.Run(
-            "dotnet",
-            CmdLine.empty
-            |> CmdLine.appendRaw "build"
-            |> CmdLine.appendRaw Workspace.tests.Reference.``Reference.fsproj``
-            |> CmdLine.appendPrefix "-v" "quiet"
-            |> CmdLine.appendRaw "--nologo"
-            |> CmdLine.toString
-        )
+        // The link check reads docs/dist instead and needs no fixture.
+        if not settings.IsLinks then
+            Command.Run(
+                "dotnet",
+                CmdLine.empty
+                |> CmdLine.appendRaw "build"
+                |> CmdLine.appendRaw Workspace.tests.Reference.``Reference.fsproj``
+                |> CmdLine.appendPrefix "-v" "quiet"
+                |> CmdLine.appendRaw "--nologo"
+                |> CmdLine.toString
+            )
 
         Command.Run(
             "dotnet",
@@ -40,6 +46,7 @@ type TestCommand() =
             |> CmdLine.appendRaw "--nologo"
             |> CmdLine.appendRaw "--"
             |> CmdLine.appendIf settings.IsUpdate "--update"
+            |> CmdLine.appendIf settings.IsLinks "--links"
             |> CmdLine.toString
         )
 

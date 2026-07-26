@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="Snapshot.fs" />
+    <Compile Include="LinkCheck.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

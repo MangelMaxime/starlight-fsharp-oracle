@@ -1,6 +1,7 @@
 module TextNode.Extensions
 
 open FSharp.Oracle.Schema
+open Starlight.FSharp.RenderImpl
 
 /// Escape `{`/`}` which MDX parses as JSX expressions. Angle brackets are left
 /// untouched since callers may pass intentional HTML (e.g. anchors).
@@ -24,11 +25,10 @@ let wrapInKeyword text = wrapWithClass "fsharp-doc-kw" text
 
 type TextNode with
 
-    static member ToHtml(node: TextNode) : string = node.Html
+    static member ToHtml(links: LinkResolver, nodes: TextNode list) : string =
+        (TextNode.Node nodes).ToHtml(links)
 
-    static member ToHtml(node: TextNode list) : string = TextNode.Node node |> TextNode.ToHtml
-
-    member this.Html =
+    member this.ToHtml(links: LinkResolver) : string =
         match this with
         | TextNode.Text s -> escapeText s
         | TextNode.Colon -> wrapInKeyword ":"
@@ -48,13 +48,16 @@ type TextNode with
         | TextNode.Tick -> "&#x27;"
         | TextNode.LeftParen -> wrapInKeyword "("
         | TextNode.RightParen -> wrapInKeyword ")"
-        | TextNode.Node node -> node |> List.map (fun node -> node.Html) |> String.concat ""
+        | TextNode.Node node ->
+            node |> List.map (fun node -> node.ToHtml(links)) |> String.concat ""
         | TextNode.Keyword text -> wrapInKeyword text
         // Emit the asterisk as an HTML entity so MDX's markdown parser does not
         // treat it as emphasis and pair it with a `*` from a neighbouring node.
         | TextNode.Star -> wrapInKeyword "&#42;"
-        | TextNode.TypeRef(name, _, url) ->
-            wrapWithClass "fsharp-doc-type" $"""<a href="{url}">{name}</a>"""
+        // The url baked into the node by the extractor is ignored: it was generated for
+        // every named type, including ones with no page. The resolver decides instead.
+        | TextNode.TypeRef(name, fullName, _) ->
+            wrapWithClass "fsharp-doc-type" (links.Link(escapeText name, fullName))
         | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name
         | TextNode.NewLine -> "\n"
         | TextNode.OpenTag tagName -> $"""<{tagName}>"""
@@ -71,4 +74,4 @@ type TextNode with
                     TextNode.Space
             ]
             |> TextNode.Node
-            |> TextNode.ToHtml
+            |> fun node -> node.ToHtml(links)

@@ -34,6 +34,25 @@ type Severity =
     /// <summary>A failure, carrying its numeric code.</summary>
     | Error of code: int
 
+/// <summary>
+/// A union carrying members. The type header links each member to an anchor on the
+/// page, so the page has to actually render those members.
+/// </summary>
+type Temperature =
+    /// <summary>Degrees Celsius.</summary>
+    | Celsius of float
+    /// <summary>Degrees Fahrenheit.</summary>
+    | Fahrenheit of float
+
+    /// <summary>The temperature expressed in Celsius.</summary>
+    member this.AsCelsius =
+        match this with
+        | Celsius value -> value
+        | Fahrenheit value -> (value - 32.0) / 1.8
+
+    /// <summary>Freezing point of water.</summary>
+    static member Freezing = Celsius 0.0
+
 // ---------------------------------------------------------------------------
 // Interface, base class, inheritance and implementation
 // ---------------------------------------------------------------------------

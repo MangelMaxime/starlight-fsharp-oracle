@@ -102,12 +102,34 @@ import {{ Aside }} from '@astrojs/starlight/components';
 // Page generation
 // ---------------------------------------------------------------------------
 
-let namespacePages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
+/// Every fully-qualified name that gets a page. Anything outside this set - BCL types,
+/// types from assemblies we are not documenting, synthetic `Ns.global` holders - must
+/// render as plain text, not as a link to a page that was never written.
+let documentedNames (modules: Module list) : Set<string> =
+    Set.ofList
+        [
+            for m in modules do
+                // Synthetic modules are namespace-level type holders; they have no page.
+                if not m.IsSynthetic then
+                    m.FullName
+
+                for e in m.Entities do
+                    e.FullName
+
+            yield! namespacesOf modules
+        ]
+
+let linkResolver (basePath: string) (outputBase: string) (modules: Module list) : Render.LinkResolver =
+    let documented = documentedNames modules
+
+    {
+        IsDocumented = fun fullName -> Set.contains fullName documented
+        Href = fun fullName -> $"{basePath}/{outputBase}/{toSlug fullName}"
+    }
+
+let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
     let allNamespaces = namespacesOf modules
-
-    let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     let directChildNamespaces (ns: string) =
         allNamespaces
@@ -132,29 +154,21 @@ let namespacePages (basePath: string) (outputBase: string) (modules: Module list
             |> List.collect (fun m -> m.Entities)
 
         slug,
-        toMdxPage (
-            Render.renderNamespacePage htmlLinkGen ns subNamespaces entitiesInNs modulesInNs
-        )
+        toMdxPage (Render.renderNamespacePage links ns subNamespaces entitiesInNs modulesInNs)
     )
 
-let modulePages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
+let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
-
-    let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
     realModules
     |> List.map (fun m ->
         let subModules =
             realModules |> List.filter (fun other -> other.Namespace = m.FullName)
 
-        toSlug m.FullName, toMdxPage (Render.renderModulePage htmlLinkGen m subModules)
+        toSlug m.FullName, toMdxPage (Render.renderModulePage links m subModules)
     )
 
-let entityPages (basePath: string) (outputBase: string) (modules: Module list) : (string * string) list =
-    let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
-
+let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
     // A generic type and its companion module (e.g. `type Var<'T>` + `module Var`)
@@ -170,7 +184,7 @@ let entityPages (basePath: string) (outputBase: string) (modules: Module list) :
     [
         for m in modules do
             for e in m.Entities do
-                toSlug e.FullName, toMdxPage (Render.renderEntityPage htmlLinkGen e m (companionOf e m))
+                toSlug e.FullName, toMdxPage (Render.renderEntityPage links e m (companionOf e m))
     ]
 
 /// Slugs of modules whose page is merged into a same-slug entity page.
@@ -185,44 +199,41 @@ let mergedModuleSlugs (modules: Module list) : string list =
     |> List.distinct
 
 let rootIndexPage
-    (basePath: string)
-    (outputBase: string)
+    (links: Render.LinkResolver)
     (assemblies: Assembly list)
     (modules: Module list)
     : string * string
     =
-    let htmlLinkGen (name: string) (fullName: string) =
-        $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
-
     let globalModules =
         modules |> List.filter (fun m -> not m.IsSynthetic && m.Namespace = "")
 
-    "index", toMdxPage (Render.renderRootIndexPage htmlLinkGen assemblies globalModules)
+    "index", toMdxPage (Render.renderRootIndexPage links assemblies globalModules)
 
 /// Every page the plugin writes, as (slug, mdx content).
 /// Shared by the plugin and the snapshot tests so the two cannot drift apart.
 let allPages (basePath: string) (outputBase: string) (root: Root) : (string * string) list =
     let modules = root.Assemblies |> List.collect _.Modules
+    let links = linkResolver basePath outputBase modules
 
     // Modules whose page is folded into a same-slug entity page (generic type +
     // companion module) must not be written standalone, or they clobber it.
     let mergedSlugs = mergedModuleSlugs modules |> Set.ofList
 
     let moduleOutputs =
-        modulePages basePath outputBase modules
+        modulePages links modules
         |> List.filter (fun (slug, _) -> not (Set.contains slug mergedSlugs))
 
     let moduleSlugs = moduleOutputs |> List.map fst |> Set.ofList
 
     let namespaceOutputs =
-        namespacePages basePath outputBase modules
+        namespacePages links modules
         |> List.filter (fun (slug, _) -> not (Set.contains slug moduleSlugs))
 
     [
-        rootIndexPage basePath outputBase root.Assemblies modules
+        rootIndexPage links root.Assemblies modules
         yield! namespaceOutputs
         yield! moduleOutputs
-        yield! entityPages basePath outputBase modules
+        yield! entityPages links modules
     ]
 
 // ---------------------------------------------------------------------------

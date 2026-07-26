@@ -45,6 +45,7 @@ module Documentation =
         )
 
     let private renderParamsAndReturns
+        (links: LinkResolver)
         (sb: StringBuilder)
         (parameters: Parameter list list)
         (xmlDoc: XmlDoc)
@@ -65,7 +66,7 @@ module Documentation =
                         TextNode.CloseTag "div"
                         TextNode.NewLine
                     ]
-                    |> TextNode.ToHtml
+                    |> fun nodes -> TextNode.ToHtml(links, nodes)
                     |> sb.WriteLine
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
@@ -73,7 +74,7 @@ module Documentation =
                     sb.WriteLine(escapeMdxMarkdown paramDoc.Doc)
                     sb.NewLine()
                     sb.WriteLine "</div>"
-                | None -> sb.WriteLine(parameter.Declaration.Html)
+                | None -> sb.WriteLine(parameter.Declaration.ToHtml(links))
 
         match xmlDoc.Returns with
         | Some returnDoc ->
@@ -84,8 +85,11 @@ module Documentation =
         | None -> ()
 
     let renderXmlDocBody
+        (links: LinkResolver)
         (sb: StringBuilder)
         (parameters: Parameter list list)
         (xmlDoc: XmlDoc)
         =
-        renderDocumentationBlock sb xmlDoc (fun () -> renderParamsAndReturns sb parameters xmlDoc)
+        renderDocumentationBlock sb xmlDoc (fun () ->
+            renderParamsAndReturns links sb parameters xmlDoc
+        )

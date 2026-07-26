@@ -8,6 +8,7 @@ open Starlight.FSharp.RenderImpl
 
 type TocEntry = RenderImpl.TocEntry
 type RenderedPage = RenderImpl.RenderedPage
+type LinkResolver = RenderImpl.LinkResolver
 
 // ---------------------------------------------------------------------------
 // Public API
