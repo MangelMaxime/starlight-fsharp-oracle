@@ -44,7 +44,7 @@ let private extract () =
         |> Array.map Path.GetFullPath
         |> Array.distinct
 
-    let assembly = extractAssembly checker allDlls basePath outputBase fixtureDll
+    let assembly = extractAssembly checker allDlls fixtureDll
 
     {
         Assemblies = [ assembly ]

@@ -44,7 +44,7 @@ let private importMetaUrl: string = jsNative
 [<Import("fileURLToPath", "node:url")>]
 let private fileURLToPath (url: string) : string = jsNative
 
-let private runExtractor (logger :AstroIntegrationLogger) (basePath: string) (outputBase: string) (dllPaths: string list) =
+let private runExtractor (logger: AstroIntegrationLogger) (dllPaths: string list) =
     // 50MB buffer to handle large API documentation outputs
     let maxBuffer = 50 * 1024 * 1024
 
@@ -60,10 +60,6 @@ let private runExtractor (logger :AstroIntegrationLogger) (basePath: string) (ou
             "--project"
             oracleProject
             "--"
-            "--output-base"
-            outputBase
-            "--base"
-            basePath
             yield! dllPaths
         ]
 #else
@@ -74,10 +70,6 @@ let private runExtractor (logger :AstroIntegrationLogger) (basePath: string) (ou
     let args =
         [
             oracleDll
-            "--output-base"
-            outputBase
-            "--base"
-            basePath
             yield! dllPaths
         ]
 #endif
@@ -158,7 +150,7 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     raw.TrimEnd('/')
 
                                 let root =
-                                    runExtractor logger basePath outputBase (pluginOptions.assemblies |> Seq.toList)
+                                    runExtractor logger (pluginOptions.assemblies |> Seq.toList)
 
                                 let modules = root.Assemblies |> List.collect _.Modules
 

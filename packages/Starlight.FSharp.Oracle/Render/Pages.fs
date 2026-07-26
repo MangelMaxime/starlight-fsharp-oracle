@@ -90,6 +90,7 @@ module Pages =
 
     let private renderFields
         (links: LinkResolver)
+        (isEnumCase: bool)
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
         (heading: (string * string) option)
@@ -104,7 +105,7 @@ module Pages =
 
             for field in fields do
                 tocH3 toc field.Name field.Name
-                renderRecordField links sb field
+                renderField links isEnumCase sb field
 
             sb.WriteLine("</div>")
             sb.NewLine()
@@ -142,7 +143,7 @@ module Pages =
 
         sb.WriteLine("<div class=\"not-content\">")
         sb.Write("<div class=\"fsharp-doc-sig\">")
-        sb.Write(inlineSignatureHtml (entity.Declaration.ToHtml(links)))
+        sb.Write(inlineSignatureHtml ((Declarations.entityDeclaration entity).ToHtml(links)))
         sb.WriteLine("</div>")
         sb.WriteLine("</div>")
         sb.NewLine()
@@ -162,12 +163,12 @@ module Pages =
 
             renderMemberSections links sb toc e.Members
         | Entity.Record r ->
-            renderFields links sb toc (Some("fields", "Fields")) r.Fields
+            renderFields links false sb toc (Some("fields", "Fields")) r.Fields
             renderMemberSections links sb toc r.Members
-        | Entity.Enum e -> renderFields links sb toc None e.Fields
+        | Entity.Enum e -> renderFields links true sb toc None e.Fields
         | Entity.Class e -> renderMemberSections links sb toc e.Members
         | Entity.Interface e -> renderMemberSections links sb toc e.Members
-        | Entity.Exception e -> renderFields links sb toc (Some("fields", "Fields")) e.Fields
+        | Entity.Exception e -> renderFields links false sb toc (Some("fields", "Fields")) e.Fields
         | Entity.Abbrev _
         | Entity.Measure _
         | Entity.Delegate _ -> ()

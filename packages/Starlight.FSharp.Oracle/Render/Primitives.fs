@@ -67,6 +67,10 @@ module Primitives =
     let inlineSignatureHtml (html: string) : string =
         html.Replace("\n", "<br/>")
 
+    /// The small boxed signature shown above a parameter's or case field's description.
+    let signatureBlock (html: string) =
+        "<div class=\"fs-parameter__signature\">\n" + html + "\n</div>\n"
+
     let h2 (sb: StringBuilder) (toc: ResizeArray<TocEntry>) (slug: string) (text: string) =
         toc.Add(
             {

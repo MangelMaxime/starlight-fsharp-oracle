@@ -23,6 +23,26 @@ let wrapWithClass cls (text: string) =
 
 let wrapInKeyword text = wrapWithClass "fsharp-doc-kw" text
 
+/// How wide one level of structural indentation is.
+let private indentWidth = 4
+
+/// MDX strips whitespace-only text nodes (mashing adjacent signature tokens
+/// together), but keeps text that is not purely whitespace. Pair the non-breaking
+/// space with an (invisible) zero-width non-joiner so the node survives while still
+/// rendering - and copying - as a single space.
+let private space = "&nbsp;&zwnj;"
+
+/// Punctuation that HTML or MDX would otherwise eat. `*` in particular would pair
+/// with a `*` from a neighbouring token and become emphasis.
+let private escapePunctuation =
+    function
+    | "<" -> "&lt;"
+    | ">" -> "&gt;"
+    | "*" -> "&#42;"
+    | other -> other
+
+let private anchored (href: string) (text: string) = $"""<a href="{href}">{text}</a>"""
+
 type TextNode with
 
     static member ToHtml(links: LinkResolver, nodes: TextNode list) : string =
@@ -31,47 +51,25 @@ type TextNode with
     member this.ToHtml(links: LinkResolver) : string =
         match this with
         | TextNode.Text s -> escapeText s
-        | TextNode.Colon -> wrapInKeyword ":"
-        | TextNode.Arrow -> wrapInKeyword "->"
-        | TextNode.Dot -> wrapInKeyword "."
-        | TextNode.Comma -> wrapInKeyword ","
-        // MDX strips whitespace-only text nodes (mashing adjacent signature
-        // tokens together), but keeps text that is not purely whitespace. Pair the
-        // non-breaking space with an (invisible) zero-width non-joiner so the node
-        // survives while still rendering - and copying - as a single space.
-        | TextNode.Space -> "&nbsp;&zwnj;"
-        | TextNode.GreaterThan -> wrapInKeyword "&gt;"
-        | TextNode.LessThan -> wrapInKeyword "&lt;"
-        | TextNode.LeftBrace -> wrapInKeyword "{"
-        | TextNode.RightBrace -> wrapInKeyword "}"
-        | TextNode.Equal -> wrapInKeyword "="
-        | TextNode.Tick -> "&#x27;"
-        | TextNode.LeftParen -> wrapInKeyword "("
-        | TextNode.RightParen -> wrapInKeyword ")"
-        | TextNode.Node node ->
-            node |> List.map (fun node -> node.ToHtml(links)) |> String.concat ""
+        | TextNode.Punctuation s -> wrapInKeyword (escapePunctuation s)
         | TextNode.Keyword text -> wrapInKeyword text
-        // Emit the asterisk as an HTML entity so MDX's markdown parser does not
-        // treat it as emphasis and pair it with a `*` from a neighbouring node.
-        | TextNode.Star -> wrapInKeyword "&#42;"
-        // The url baked into the node by the extractor is ignored: it was generated for
-        // every named type, including ones with no page. The resolver decides instead.
-        | TextNode.TypeRef(name, fullName, _) ->
-            wrapWithClass "fsharp-doc-type" (links.Link(escapeText name, fullName))
-        | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name
+        | TextNode.Tick -> "&#x27;"
+        | TextNode.Space -> space
         | TextNode.NewLine -> "\n"
-        | TextNode.OpenTag tagName -> $"""<{tagName}>"""
-        | TextNode.OpenTagWithClass(tagName, cls) -> $"""<{tagName} class="{cls}">"""
-        | TextNode.CloseTag tagName -> $"""</{tagName}>"""
-        | TextNode.Anchor(text, href) -> $"""<a href="{href}">{text}</a>"""
-        | TextNode.AnchoredProperty(text, href) ->
-            wrapWithClass "fsharp-doc-property" $"""<a href="{href}">{text}</a>"""
-        | TextNode.AnchoredKeyword(text, href) ->
-            wrapWithClass "fsharp-doc-kw" $"""<a href="{href}">{text}</a>"""
-        | TextNode.Spaces count ->
-            [
-                for _ in 1..count do
-                    TextNode.Space
-            ]
-            |> TextNode.Node
-            |> fun node -> node.ToHtml(links)
+        | TextNode.Indent levels -> String.replicate (levels * indentWidth) space
+        | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name
+        | TextNode.ParameterName name -> wrapWithClass "fsharp-doc-typevar" name
+        | TextNode.Attribute text -> $"""<span class="fsharp-doc-attr">{escapeText text}</span>"""
+        // Whether a type reference becomes a link is the resolver's call: only it
+        // knows which types have a page.
+        | TextNode.TypeRef(name, fullName) ->
+            wrapWithClass "fsharp-doc-type" (links.Link(escapeText name, fullName))
+        | TextNode.DeclarationName(text, anchor, role) ->
+            let link = anchored $"#{anchor}" (escapeText text)
+
+            match role with
+            | DeclarationRole.Member -> wrapWithClass "fsharp-doc-property" link
+            | DeclarationRole.Constructor -> wrapWithClass "fsharp-doc-kw" link
+            | DeclarationRole.UnionCase -> link
+        | TextNode.Node nodes ->
+            nodes |> List.map (fun node -> node.ToHtml(links)) |> String.concat ""

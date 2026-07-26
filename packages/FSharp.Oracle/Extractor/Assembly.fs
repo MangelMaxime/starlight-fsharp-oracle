@@ -18,22 +18,9 @@ open FSharp.Oracle.ModuleExtractor
 let extractAssembly
     (checker: FSharpChecker)
     (allDllPaths: string array)
-    (basePath: string)
-    (outputBase: string)
     (dllPath: string)
     : Assembly
     =
-    let toSlug (name: string) =
-        let sanitized = name.ToLowerInvariant().Replace(".", "-")
-        // Strip F# generic arity suffix (e.g. Tree`1 -> tree)
-        System.Text.RegularExpressions.Regex.Replace(sanitized, @"`\d+$", "")
-
-    // Astro's site `base` (e.g. "/my-repo") must prefix in-content links; a bare
-    // "/" or empty base normalizes to no prefix.
-    let normalizedBase = basePath.TrimEnd('/')
-
-    let toUrl (fullName: string) = $"{normalizedBase}/{outputBase}/{toSlug fullName}"
-
     let baseOptions, _ =
         checker.GetProjectOptionsFromScript(
             "dummy.fsx",
@@ -71,7 +58,7 @@ let extractAssembly
         // Recursively collect a module and all its nested sub-modules as
         // separate pages (each sub-module becomes its own page).
         let rec collectModulePages (entity: FSharpEntity) : Module list =
-            let thisPage = extractModule toUrl docs entity
+            let thisPage = extractModule docs entity
 
             let subPages =
                 entity.NestedEntities
@@ -104,7 +91,7 @@ let extractAssembly
                     FullName = ns + ".global"
                     Namespace = ns
                     XmlDoc = None
-                    Entities = entities |> Seq.map (extractEntity toUrl docs) |> Seq.toList
+                    Entities = entities |> Seq.map (extractEntity docs) |> Seq.toList
                     Functions = []
                     Values = []
                     IsSynthetic = true

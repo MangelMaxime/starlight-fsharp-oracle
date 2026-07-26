@@ -8,12 +8,7 @@ open EntityExtractor
 open ValueExtractor
 
 module internal ModuleExtractor =
-    let extractModule
-        (toUrl: string -> string)
-        (docs: Map<string, string>)
-        (entity: FSharpEntity)
-        : Module
-        =
+    let extractModule (docs: Map<string, string>) (entity: FSharpEntity) : Module =
         let nested = entity.NestedEntities |> Seq.toList
 
         let functions, values =
@@ -27,10 +22,10 @@ module internal ModuleExtractor =
         let entities =
             nested
             |> List.filter (fun e -> not e.IsFSharpModule)
-            |> List.map (extractEntity toUrl docs)
+            |> List.map (extractEntity docs)
 
-        let funcs = functions |> List.map (extractFunction toUrl docs)
-        let vals = values |> List.map (extractValue toUrl docs)
+        let funcs = functions |> List.map (extractFunction docs)
+        let vals = values |> List.map (extractValue docs)
 
         {
             Name = entity.DisplayName

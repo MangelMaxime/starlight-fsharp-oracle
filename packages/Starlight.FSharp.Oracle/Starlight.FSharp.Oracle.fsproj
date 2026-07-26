@@ -13,6 +13,7 @@
     <Compile Include="Helpers.fs" />
     <Compile Include="Themes.fs" />
     <Compile Include="Render/Types.fs" />
+    <Compile Include="Render/Declarations.fs" />
     <Compile Include="Render/Primitives.fs" />
     <Compile Include="Render/Documentation.fs" />
     <Compile Include="Render/Entries.fs" />

@@ -17,24 +17,9 @@ module Entries =
                 sb.WriteLine("<strong>Fields</strong>")
 
                 for f in documentedFields do
-                    let fieldDeclaration =
-                        TextNode.ToHtml(
-                            links,
-                            [
-                                TextNode.OpenTagWithClass("div", "fs-parameter__signature")
-                                TextNode.NewLine
-                                TextNode.Text f.Name
-                                TextNode.Space
-                                TextNode.Colon
-                                TextNode.Space
-                                f.Type
-                                TextNode.NewLine
-                                TextNode.CloseTag "div"
-                                TextNode.NewLine
-                            ]
-                        )
-
-                    sb.WriteLine fieldDeclaration
+                    (Declarations.fieldDeclaration false f).ToHtml(links)
+                    |> signatureBlock
+                    |> sb.WriteLine
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
                     sb.NewLine()
@@ -48,18 +33,20 @@ module Entries =
         renderDocEntry
             sb
             case.Name
-            (case.Declaration.ToHtml(links))
+            ((Declarations.unionCaseDeclaration case).ToHtml(links))
             ObsoleteInfo.Active
             renderDocumentation
 
-    let renderRecordField (links: LinkResolver) (sb: StringBuilder) (field: Field) =
+    /// Enum cases read `Name = 3` rather than `name : type`, but are otherwise
+    /// rendered like record fields.
+    let renderField (links: LinkResolver) (isEnumCase: bool) (sb: StringBuilder) (field: Field) =
         let renderDocumentation () =
             renderDocumentationBlock sb field.XmlDoc ignore
 
         renderDocEntry
             sb
             field.Name
-            (field.Declaration.ToHtml(links))
+            ((Declarations.fieldDeclaration isEnumCase field).ToHtml(links))
             ObsoleteInfo.Active
             renderDocumentation
 
@@ -67,7 +54,7 @@ module Entries =
         renderDocEntry
             sb
             m.Name
-            (m.Declaration.ToHtml(links))
+            ((Declarations.memberDeclaration m).ToHtml(links))
             m.ObsoleteInfo
             (fun () -> renderXmlDocBody links sb m.Parameters m.XmlDoc)
 
@@ -96,21 +83,11 @@ module Entries =
         section "Methods" "methods" (ofKind MemberKind.Method)
         section "Operators" "operators" (ofKind MemberKind.Operator)
 
-    let functionSignatureHtml (links: LinkResolver) (f: Function) =
-        [
-            f.AlignedDeclaration
-            for p in f.Parameters |> List.collect id do
-                p.AlignedDeclaration
-            f.ReturnType
-        ]
-        |> List.map (fun n -> n.ToHtml(links))
-        |> String.concat ""
-
     let renderFunctionEntry (links: LinkResolver) (sb: StringBuilder) (f: Function) =
         renderDocEntry
             sb
             f.Name
-            (functionSignatureHtml links f)
+            ((Declarations.functionSignature f).ToHtml(links))
             f.ObsoleteInfo
             (fun () -> renderXmlDocBody links sb f.Parameters f.XmlDoc)
 
@@ -121,6 +98,6 @@ module Entries =
         renderDocEntry
             sb
             v.Name
-            (v.Declaration.ToHtml(links))
+            ((Declarations.valueDeclaration v).ToHtml(links))
             v.ObsoleteInfo
             renderDocumentation

@@ -4,13 +4,32 @@ open FSharp.Compiler.Symbols
 open FSharp.Oracle.Schema
 open Helpers
 
+/// Turns FCS types and constraints into signature tokens.
+/// These are semantic tokens only - no links, no layout. See `TextNode`.
 module internal SignatureRendering =
-    let rec renderFSharpType
-        (toUrl: string -> string)
-        (isTopLevel: bool)
-        (typ: FSharpType)
-        : TextNode
-        =
+
+    let private punct s = TextNode.Punctuation s
+    let private colon = punct ":"
+    let private arrow = punct "->"
+    let private comma = punct ","
+    let private star = punct "*"
+    let private openAngle = punct "<"
+    let private closeAngle = punct ">"
+    let private openParen = punct "("
+    let private closeParen = punct ")"
+
+    /// Joins rendered items with a separator token sequence.
+    let private separated (separator: TextNode list) (items: TextNode list) =
+        items
+        |> List.mapi (fun i item ->
+            if i = 0 then
+                [ item ]
+            else
+                separator @ [ item ]
+        )
+        |> List.concat
+
+    let rec renderFSharpType (isTopLevel: bool) (typ: FSharpType) : TextNode =
         if typ.IsGenericParameter then
             let gp = typ.GenericParameter
 
@@ -24,228 +43,126 @@ module internal SignatureRendering =
                 ]
         elif typ.IsFunctionType then
             let parts =
-                [
-                    for i in 0 .. typ.GenericArguments.Count - 1 do
-                        let arg = typ.GenericArguments.[i]
-
-                        if i > 0 then
-                            TextNode.Space
-                            TextNode.Arrow
-                            TextNode.Space
-
-                        renderFSharpType toUrl false arg
-                ]
+                typ.GenericArguments
+                |> Seq.map (renderFSharpType false)
+                |> Seq.toList
+                |> separated [ TextNode.Space; arrow; TextNode.Space ]
 
             if isTopLevel then
                 TextNode.Node parts
             else
                 TextNode.Node
                     [
-                        TextNode.LeftParen
+                        openParen
                         yield! parts
-                        TextNode.RightParen
+                        closeParen
                     ]
         elif typ.IsTupleType then
-            TextNode.Node
-                [
-                    for i in 0 .. typ.GenericArguments.Count - 1 do
-                        let arg = typ.GenericArguments.[i]
-
-                        if i > 0 then
-                            TextNode.Space
-                            TextNode.Star
-                            TextNode.Space
-
-                        renderFSharpType toUrl false arg
-                ]
+            typ.GenericArguments
+            |> Seq.map (renderFSharpType false)
+            |> Seq.toList
+            |> separated [ TextNode.Space; star; TextNode.Space ]
+            |> TextNode.Node
         elif typ.IsAnonRecordType then
-            let details = typ.AnonRecordTypeDetails
-            let names = details.SortedFieldNames
+            let names = typ.AnonRecordTypeDetails.SortedFieldNames
             let types = typ.GenericArguments |> Seq.toArray
 
             let fields =
                 names
                 |> Array.mapi (fun i name ->
-                    let fieldType = types.[i]
-
                     TextNode.Node
                         [
                             TextNode.Text name
                             TextNode.Space
-                            TextNode.Colon
+                            colon
                             TextNode.Space
-                            renderFSharpType toUrl false fieldType
+                            renderFSharpType false types.[i]
                         ]
                 )
                 |> Array.toList
+                |> separated [ TextNode.Text ";"; TextNode.Space ]
 
             TextNode.Node
                 [
-                    yield TextNode.Text "{|"
-                    yield TextNode.Space
-                    for i, field in List.indexed fields do
-                        if i > 0 then
-                            yield TextNode.Text ";"
-                            yield TextNode.Space
-
-                        yield field
-                    yield TextNode.Space
-                    yield TextNode.Text "|}"
+                    TextNode.Text "{|"
+                    TextNode.Space
+                    yield! fields
+                    TextNode.Space
+                    TextNode.Text "|}"
                 ]
-        elif typ.HasTypeDefinition && typ.GenericArguments.Count = 0 then
-            let td = typ.TypeDefinition
-
-            match tryGetFullName td with
-            | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName, toUrl fullName)
-            | None -> TextNode.Text td.DisplayName
-        elif
-            typ.HasTypeDefinition
-            && typ.TypeDefinition.IsArrayType
-            && typ.GenericArguments.Count = 1
-        then
-            let arg = renderFSharpType toUrl false typ.GenericArguments.[0]
-
-            TextNode.Node
-                [
-                    arg
-                    TextNode.Text "[]"
-                ]
-        elif typ.HasTypeDefinition && typ.GenericArguments.Count = 1 then
-            let td = typ.TypeDefinition
-            let arg = renderFSharpType toUrl false typ.GenericArguments.[0]
-
-            let isPostfix =
-                Set.contains td.DisplayName postfixTypeDisplayNames
-                || match tryGetFullName td with
-                   | Some fullName -> Set.contains fullName postfixTypeNames
-                   | None -> false
-
-            if isPostfix then
-                let head =
-                    match tryGetFullName td with
-                    | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName, toUrl fullName)
-                    | None -> TextNode.Text td.DisplayName
-
-                TextNode.Node
-                    [
-                        arg
-                        TextNode.Space
-                        head
-                    ]
-            else
-                let args =
-                    [
-                        for i in 0 .. typ.GenericArguments.Count - 1 do
-                            let a = typ.GenericArguments.[i]
-
-                            if i > 0 then
-                                TextNode.Comma
-                                TextNode.Space
-
-                            renderFSharpType toUrl false a
-                    ]
-
-                let head =
-                    match tryGetFullName td with
-                    | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName, toUrl fullName)
-                    | None -> TextNode.Text td.DisplayName
-
-                TextNode.Node
-                    [
-                        head
-                        TextNode.LessThan
-                        yield! args
-                        TextNode.GreaterThan
-                    ]
         elif typ.HasTypeDefinition then
             let td = typ.TypeDefinition
 
-            let args =
-                [
-                    for i in 0 .. typ.GenericArguments.Count - 1 do
-                        let arg = typ.GenericArguments.[i]
-
-                        if i > 0 then
-                            TextNode.Comma
-                            TextNode.Space
-
-                        renderFSharpType toUrl false arg
-                ]
-
             let head =
                 match tryGetFullName td with
-                | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName, toUrl fullName)
+                | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName)
                 | None -> TextNode.Text td.DisplayName
 
-            TextNode.Node
-                [
-                    head
-                    TextNode.LessThan
-                    yield! args
-                    TextNode.GreaterThan
-                ]
+            let args = typ.GenericArguments |> Seq.map (renderFSharpType false) |> Seq.toList
+
+            match args with
+            | [] -> head
+            | [ single ] when td.IsArrayType ->
+                TextNode.Node
+                    [
+                        single
+                        TextNode.Text "[]"
+                    ]
+            | [ single ] when isPostfixType td ->
+                // `int list`, `string option` - F# writes these the other way round.
+                TextNode.Node
+                    [
+                        single
+                        TextNode.Space
+                        head
+                    ]
+            | args ->
+                TextNode.Node
+                    [
+                        head
+                        openAngle
+                        yield! separated [ comma; TextNode.Space ] args
+                        closeAngle
+                    ]
         else
             TextNode.Text(typ.Format FSharpDisplayContext.Empty)
 
-    /// Render a single generic parameter constraint as a TextNode list.
+    /// Render a single generic parameter constraint as a token list.
     let renderConstraint
-        (toUrl: string -> string)
         (gp: FSharpGenericParameter)
         (c: FSharpGenericParameterConstraint)
         : TextNode list
         =
-        if c.IsComparisonConstraint then
+        /// `: keyword`
+        let simple keyword =
             [
-                TextNode.Colon
+                colon
                 TextNode.Space
-                TextNode.Keyword "comparison"
+                TextNode.Keyword keyword
             ]
-        elif c.IsEqualityConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "equality"
-            ]
-        elif c.IsUnmanagedConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "unmanaged"
-            ]
-        elif c.IsNonNullableValueTypeConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "struct"
-            ]
-        elif c.IsReferenceTypeConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "not null"
-            ]
-        elif c.IsNotSupportsNullConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "not null"
-            ]
-        elif c.IsSupportsNullConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "null"
-            ]
-        elif c.IsCoercesToConstraint then
-            let ty = c.CoercesToTarget
 
+        if c.IsComparisonConstraint then
+            simple "comparison"
+        elif c.IsEqualityConstraint then
+            simple "equality"
+        elif c.IsUnmanagedConstraint then
+            simple "unmanaged"
+        elif c.IsNonNullableValueTypeConstraint then
+            simple "struct"
+        elif c.IsReferenceTypeConstraint then
+            simple "not null"
+        elif c.IsNotSupportsNullConstraint then
+            simple "not null"
+        elif c.IsSupportsNullConstraint then
+            simple "null"
+        elif c.IsCoercesToConstraint then
             [
                 TextNode.Text ":>"
                 TextNode.Space
-                renderFSharpType toUrl false ty
+                renderFSharpType false c.CoercesToTarget
             ]
         elif c.IsMemberConstraint then
-            // SRTP — render simplified member constraint
+            // SRTP - render a simplified member constraint
             let m = c.MemberConstraintData
             let argTypes = m.MemberArgumentTypes |> Seq.toList
 
@@ -255,13 +172,10 @@ module internal SignatureRendering =
                 else
                     [
                         TextNode.Space
-                        for i, arg in List.indexed argTypes do
-                            if i > 0 then
-                                TextNode.Space
-                                TextNode.Star
-                                TextNode.Space
-
-                            renderFSharpType toUrl false arg
+                        yield!
+                            argTypes
+                            |> List.map (renderFSharpType false)
+                            |> separated [ TextNode.Space; star; TextNode.Space ]
                     ]
 
             let retNodes =
@@ -270,24 +184,22 @@ module internal SignatureRendering =
                 if isNull (box rt) then
                     []
                 elif List.isEmpty argTypes then
-                    // No args, just return type: `: ret`
                     [
                         TextNode.Space
-                        renderFSharpType toUrl false rt
+                        renderFSharpType false rt
                     ]
                 else
-                    // Args + return type: `: args -> ret`
                     [
                         TextNode.Space
-                        TextNode.Arrow
+                        arrow
                         TextNode.Space
-                        renderFSharpType toUrl false rt
+                        renderFSharpType false rt
                     ]
 
             [
-                TextNode.Colon
+                colon
                 TextNode.Space
-                TextNode.LeftParen
+                openParen
                 if m.MemberIsStatic then
                     TextNode.Keyword "static member"
                 else
@@ -296,113 +208,92 @@ module internal SignatureRendering =
                 TextNode.Text m.MemberName
                 if not (List.isEmpty argTypes) || not (isNull (box m.MemberReturnType)) then
                     TextNode.Space
-                    TextNode.Colon
+                    colon
                     yield! argNodes
                     yield! retNodes
-                TextNode.RightParen
+                closeParen
             ]
         elif c.IsRequiresDefaultConstructorConstraint then
             [
-                TextNode.Colon
+                colon
                 TextNode.Space
-                TextNode.LeftParen
+                openParen
                 TextNode.Keyword "new"
                 TextNode.Space
-                TextNode.Colon
+                colon
                 TextNode.Space
                 TextNode.Text "unit"
                 TextNode.Space
-                TextNode.Arrow
+                arrow
                 TextNode.Space
                 TextNode.Tick
                 TextNode.Text gp.DisplayName
-                TextNode.RightParen
+                closeParen
             ]
         elif c.IsEnumConstraint then
-            let target = c.EnumConstraintTarget
-
             [
-                TextNode.Colon
+                colon
                 TextNode.Space
                 TextNode.Keyword "enum"
-                TextNode.LessThan
-                renderFSharpType toUrl false target
-                TextNode.GreaterThan
+                openAngle
+                renderFSharpType false c.EnumConstraintTarget
+                closeAngle
             ]
         elif c.IsDelegateConstraint then
-            [
-                TextNode.Colon
-                TextNode.Space
-                TextNode.Keyword "delegate"
-            ]
+            simple "delegate"
         elif c.IsDefaultsToConstraint then
-            let data = c.DefaultsToConstraintData
-
             [
-                TextNode.Equal
+                punct "="
                 TextNode.Space
-                renderFSharpType toUrl false data.DefaultsToTarget
+                renderFSharpType false c.DefaultsToConstraintData.DefaultsToTarget
             ]
         elif c.IsSimpleChoiceConstraint then
             c.SimpleChoices
-            |> Seq.map (renderFSharpType toUrl false)
+            |> Seq.map (renderFSharpType false)
             |> Seq.toList
-            |> List.mapi (fun i tn ->
-                if i = 0 then
-                    tn
-                else
-                    TextNode.Node
-                        [
-                            TextNode.Space
-                            TextNode.Text "|"
-                            TextNode.Space
-                            tn
-                        ]
-            )
+            |> separated
+                [
+                    TextNode.Space
+                    TextNode.Text "|"
+                    TextNode.Space
+                ]
         else
             []
 
-    /// Render the generic-parameter list for a function or member, e.g.
+    /// The generic-parameter list for a function or member, e.g.
     /// `<'T when 'T : comparison>` or `<^T when ^T : (static member (+) : ^T * ^T -> ^T)>`.
-    /// Returns `None` when there are no parameters.
-    let renderGenericParams
-        (toUrl: string -> string)
-        (gps: FSharpGenericParameter seq)
-        : TextNode option
-        =
+    /// `None` when there are no parameters.
+    let renderGenericParams (gps: FSharpGenericParameter seq) : TextNode option =
         let gps = gps |> Seq.toList
 
         if List.isEmpty gps then
             None
         else
+            let tickOf (gp: FSharpGenericParameter) =
+                if isSrtp gp then
+                    TextNode.Text "^"
+                else
+                    TextNode.Tick
+
             let nodes =
                 [
-                    TextNode.LessThan
+                    openAngle
                     for i, gp in List.indexed gps do
                         if i > 0 then
-                            TextNode.Comma
+                            comma
                             TextNode.Space
-                        // Use ^ only for SRTP (member constraints)
-                        if isSrtp gp then
-                            TextNode.Text "^"
-                        else
-                            TextNode.Tick
 
+                        tickOf gp
                         TextNode.Text gp.DisplayName
 
                         let constraints =
-                            gp.Constraints |> Seq.toList |> List.map (renderConstraint toUrl gp)
+                            gp.Constraints |> Seq.toList |> List.map (renderConstraint gp)
 
                         if not (List.isEmpty constraints) then
                             TextNode.Space
                             TextNode.Keyword "when"
                             TextNode.Space
-
-                            if isSrtp gp then
-                                TextNode.Text "^"
-                            else
-                                TextNode.Tick
-
+                            tickOf gp
                             TextNode.Text gp.DisplayName
 
                             for i, cList in List.indexed constraints do
@@ -411,54 +302,12 @@ module internal SignatureRendering =
                                 if i > 0 then
                                     TextNode.Keyword "and"
                                     TextNode.Space
-
-                                    if isSrtp gp then
-                                        TextNode.Text "^"
-                                    else
-                                        TextNode.Tick
-
+                                    tickOf gp
                                     TextNode.Text gp.DisplayName
                                     TextNode.Space
 
-                                for cNode in cList do
-                                    cNode
-                    TextNode.GreaterThan
+                                yield! cList
+                    closeAngle
                 ]
 
             Some(TextNode.Node nodes)
-
-    /// Strip `<`, `>` and the leading type variable from a generic-parameter list,
-    /// returning only the constraint clause (e.g. ` when 'T : comparison`).
-    /// Used to append constraints after a value/member signature.
-    let stripGenericParamBrackets (genericParams: TextNode option) : TextNode =
-        match genericParams with
-        | None -> TextNode.Node []
-        | Some(TextNode.Node nodes) ->
-            let inner =
-                nodes
-                |> List.skipWhile (
-                    function
-                    | TextNode.LessThan -> true
-                    | _ -> false
-                )
-                |> List.skipWhile (
-                    function
-                    | TextNode.Tick -> true
-                    | TextNode.Text _ -> true
-                    | _ -> false
-                )
-                |> List.rev
-                |> List.skipWhile (
-                    function
-                    | TextNode.GreaterThan -> true
-                    | _ -> false
-                )
-                |> List.rev
-                |> List.skipWhile (
-                    function
-                    | TextNode.Space -> true
-                    | _ -> false
-                )
-
-            TextNode.Node(TextNode.Space :: inner)
-        | Some _ -> TextNode.Node []

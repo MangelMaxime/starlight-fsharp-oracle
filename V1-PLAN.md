@@ -199,24 +199,53 @@ Presentation currently lives in the extractor:
 
 Tasks:
 
-- [ ] Reduce `TextNode` to semantics: `Text | TypeRef of name * fullName | TypeVar |
-      Keyword | Punct | Break | Indent` (final shape is the reviewable decision)
-- [ ] Move link generation, indentation and column alignment into
-      `packages/Starlight.FSharp.Oracle/Render/`
-- [ ] Drop `--base` and `--output-base` from the Oracle CLI
-- [ ] Collapse the duplicated declaration builders - `memberDeclarationLine`
-      (`Extractor/EntityExtractor.fs:39`) and `buildMemberDeclaration`
-      (`Extractor/MemberExtractor.fs:13`) are the same logic twice, one with anchors
-      and indentation and one without. Both need the identical `with get, set` fix
-      in phase 4, so merge them first.
-- [ ] Same for `caseFieldNodes` (`EntityExtractor.fs:11`) vs the exception field
-      nodes (`EntityExtractor.fs:299`), and the shared `valKeyword` /
-      `constraintClause` block in `extractFunction` / `extractValue`
-- [ ] Renderer side: factor the `<dl><dt>link</dt><dd>summary</dd>` loop repeated in
-      `renderModulePage`, `renderNamespacePage` and `renderRootIndexPage`
-- [ ] Single `toSlug`. It is implemented twice and the two disagree:
-      `Assembly.fs:26` strips `` `\d+$ `` by regex, `Generate.fs:34` truncates at the
-      last backtick regardless of what follows.
+- [x] `TextNode` reduced to semantics. Final shape: `Text | TypeRef of name * fullName
+      | TypeVar | ParameterName | Keyword | Punctuation of string | Tick | Attribute |
+      DeclarationName of text * anchor * role | Space | NewLine | Indent of levels |
+      Node`. Gone: `OpenTag`/`CloseTag`/`OpenTagWithClass` (raw HTML), the baked url on
+      `TypeRef`, `Spaces of int` (raw counts), and the three `Anchor*` cases.
+      `DeclarationName` carries text and anchor separately because overloaded
+      constructors all read `new` but anchor to `new`, `new-1`, ...
+- [x] The Schema is now data, not presentation. Every `Declaration` /
+      `AlignedDeclaration` field is gone, along with the five `Signature` fields that
+      turned out to be dead payload - nothing consumed them. Entities gained
+      `GenericParameters`, `Field` gained `LiteralValue`, and `Function`/`Value` gained
+      `IsInline`/`IsMutable`, all of which the renderer previously received
+      pre-formatted.
+- [x] Link generation, indentation and column alignment now live in
+      `Render/Declarations.fs`. Column alignment in particular could only move once the
+      renderer had the parameter names, which it does.
+- [x] Drop `--base` and `--output-base` from the Oracle CLI, and from the plugin's
+      invocation of it. The extractor no longer knows anything about the site.
+- [x] Collapsed the duplicated declaration builders. `memberDeclarationLine` and
+      `buildMemberDeclaration` are now `memberPrefix` + `memberTypeNodes`, shared by
+      `memberDeclaration` (standalone entry) and `memberHeaderLine` (type header).
+      Phase 4's `with get, set` fix is now a one-line change instead of two.
+- [x] `caseFieldNodes` and the exception field nodes are now `payloadFields`. They
+      disagreed - unions write `a : int`, exceptions write `a: int` - so the shared
+      function takes a `spaceBeforeColon` flag to keep output identical. Fantomas
+      writes neither with a space, so phase 4's colon decision deletes the flag.
+- [x] `valKeyword` and `constraintClause` shared between functions and values.
+- [x] Renderer `<dl>` loop factored into `definitionList` (landed in phase 2).
+- [x] Single `toSlug`: the extractor's copy is gone entirely, deleted along with
+      `toUrl`. Only `Generate.fs` has one now.
+
+### Result
+
+The refactor is **byte-identical across 50 snapshots except for 4 pages**, and those 4
+differ only by a stray trailing space that the old `stripGenericParamBrackets` emitted
+for unconstrained generics like `<'T>`: it stripped the brackets and type variable,
+found nothing left, and returned `Node [Space]` anyway. Dropped deliberately.
+
+That near-zero diff is the evidence the refactor preserved behaviour. Secondary
+effects worth noting:
+
+- The IR for the fixture shrank from **1.5 MB to 0.5 MB** - two thirds of it was
+  pre-rendered declaration text, much of it duplicated between a type's header and its
+  members' own entries.
+- `EntityExtractor.fs` went from **639 to 206 lines** and lost its nine-branch
+  formatting chain, which also settles most of the phase 6 "split EntityExtractor"
+  item. Extraction total: 1710 -> 1054 lines.
 
 Snapshots will churn heavily here. Review the snapshot diff as part of the checkpoint -
 it is the clearest evidence of what actually changed.
@@ -370,7 +399,7 @@ Record choices made during the run so later phases do not relitigate them.
 | 1 | Entity member ordering | kind, then name, then `XmlDocSig` - FCS order is not stable across processes |
 | 2 | External types: plain text vs MS Learn links | Plain text for v1. Linking out needs a per-source URL scheme (MS Learn for BCL, nothing for arbitrary third-party assemblies) - that is an option-surface question, deferred to phase 6 |
 | 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
-| 3 | Final `TextNode` shape | _tbd_ |
-| 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd_ |
+| 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `Punctuation of string` rather than a case per mark; `DeclarationName` carries text and anchor separately for overloaded constructors |
+| 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd - also deletes `payloadFields`' `spaceBeforeColon` flag_ |
 | 5 | Slug collision disambiguation policy | _tbd_ |
 | 6 | Distribution: prebuilt binaries vs dotnet tool vs SDK requirement | _tbd_ |

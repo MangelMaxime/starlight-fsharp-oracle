@@ -78,6 +78,13 @@ module internal Helpers =
                 "Microsoft.FSharp.Core.FSharpRef"
             ]
 
+    /// True for types F# conventionally writes postfix, e.g. `int list`, `string option`.
+    let isPostfixType (td: FSharpEntity) =
+        Set.contains td.DisplayName postfixTypeDisplayNames
+        || match tryGetFullName td with
+           | Some fullName -> Set.contains fullName postfixTypeNames
+           | None -> false
+
     let memberKindOf (mfv: FSharpMemberOrFunctionOrValue) =
         if mfv.IsConstructor then
             MemberKind.Constructor

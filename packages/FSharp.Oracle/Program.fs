@@ -9,18 +9,14 @@ open Thoth.Json.Core.Auto
 
 [<EntryPoint>]
 let main argv =
-    let rec parseArgs outputBase basePath dlls =
-        function
-        | "--output-base" :: value :: rest -> parseArgs value basePath dlls rest
-        | "--base" :: value :: rest -> parseArgs outputBase value dlls rest
-        | path :: rest -> parseArgs outputBase basePath (path :: dlls) rest
-        | [] -> outputBase, basePath, List.rev dlls |> List.toArray
-
-    let outputBase, basePath, dllPaths = parseArgs "api" "" [] (argv |> Array.toList)
+    // The Oracle emits a semantic IR and knows nothing about the site consuming it -
+    // no base path, no output folder, no URLs. Linking is the renderer's job, because
+    // only the renderer knows which names end up with a page.
+    let dllPaths = argv
 
     match dllPaths with
     | [||] ->
-        eprintfn "Usage: fsharp-docs-oracle [--output-base <base>] <path/to/Assembly.dll> [...]"
+        eprintfn "Usage: fsharp-docs-oracle <path/to/Assembly.dll> [...]"
         eprintfn "Output: JSON IR written to stdout"
         1
     | _ ->
@@ -49,7 +45,7 @@ let main argv =
 
         let assemblies =
             dllPaths
-            |> Array.map (extractAssembly checker allDllPaths basePath outputBase)
+            |> Array.map (extractAssembly checker allDllPaths)
             |> Array.toList
 
         let root =

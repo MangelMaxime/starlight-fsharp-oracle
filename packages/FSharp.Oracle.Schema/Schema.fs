@@ -29,62 +29,55 @@ type ObsoleteInfo =
     | DeprecatedWithMessage of string
 
 // ---------------------------------------------------------------------------
-// Signature AST
+// Signature tokens
 // ---------------------------------------------------------------------------
 
+/// What a name in a declaration refers to, so the renderer can style it and point
+/// it at the right anchor without the extractor knowing anything about HTML.
+[<RequireQualifiedAccess>]
+type DeclarationRole =
+    /// A member of the enclosing type (method, property, record field, enum case).
+    | Member
+    /// A union case.
+    | UnionCase
+    /// A constructor, written `new`.
+    | Constructor
+
+/// A token stream describing a signature.
+///
+/// Deliberately free of presentation: no HTML, no URLs, no space counts. The renderer
+/// decides what a keyword looks like, how wide an indent is, whether a type reference
+/// becomes a link, and how columns line up. Keeping those decisions out of the
+/// extractor is what lets the same IR drive something other than this Astro site.
 [<RequireQualifiedAccess>]
 type TextNode =
-    /// Plain identifier, e.g. "string", "int", "unit".
+    /// Plain text, e.g. "unit", "string".
     | Text of string
-    /// Named type with its full name for link generation, e.g. ("Option", "Microsoft.FSharp.Core.FSharpOption`1").
-    /// The url field is the pre-computed page URL (slugified, with output base prefix).
-    | TypeRef of name: string * fullName: string * url: string
-    /// Generic type variable, e.g. "T" (the tick is implied — rendered as 'T).
+    /// A reference to a named type. Whether it becomes a link is the renderer's call:
+    /// only it knows which types have a page.
+    | TypeRef of name: string * fullName: string
+    /// A generic type variable, e.g. "T" (the tick is implied).
     | TypeVar of string
-    /// F# keyword, e.g. "val", "type".
+    /// The name of a parameter in a signature.
+    | ParameterName of string
+    /// An F# keyword, e.g. "val", "type", "member".
     | Keyword of string
-    | LeftBrace
-    | RightBrace
-    | Equal
-    | Arrow
+    /// Punctuation, e.g. ":", "->", "*", "<". Escaping is the renderer's problem.
+    | Punctuation of string
+    /// The apostrophe introducing a type variable.
     | Tick
+    /// An attribute written above a declaration, e.g. "[<Struct>]".
+    | Attribute of string
+    /// The name of a declaration on the current page, linking to its own entry.
+    /// `text` and `anchor` differ for overloaded constructors, which all read `new`
+    /// but anchor to `new`, `new-1`, ...
+    | DeclarationName of text: string * anchor: string * role: DeclarationRole
     | Space
-    | Spaces of int
-    | Comma
-    | Colon
-    | Dot
-    | LeftParen
-    | RightParen
-    | LessThan
-    | GreaterThan
-    /// Tuple separator (*).
-    | Star
-    /// Grouping node — a flat list of child nodes.
-    | Node of nodes: TextNode list
     | NewLine
-    | OpenTag of string
-    | CloseTag of string
-    | OpenTagWithClass of string * string
-    /// An inline hyperlink; href is used as-is (supports page-local `#anchor` refs).
-    | Anchor of text: string * href: string
-    | AnchoredProperty of text: string * href: string
-    /// An inline hyperlink styled as a keyword (e.g. `new` in a constructor declaration).
-    | AnchoredKeyword of text: string * href: string
-
-    member this.TrimStart() =
-        let isWhitespace =
-            function
-            | Space
-            | Spaces _
-            | NewLine -> true
-            | _ -> false
-
-        match this with
-        | Space
-        | Spaces _
-        | NewLine -> Node []
-        | Node nodes -> nodes |> List.skipWhile isWhitespace |> Node
-        | _ -> this
+    /// Structural indentation. The renderer decides how wide a level is.
+    | Indent of levels: int
+    /// A flat sequence of child tokens.
+    | Node of nodes: TextNode list
 
 // ---------------------------------------------------------------------------
 // Parameters
@@ -94,10 +87,6 @@ type Parameter =
     {
         Name: string
         Type: TextNode
-        /// Signature line without column alignment: `\n    name : type`
-        Declaration: TextNode
-        /// Signature line with colon aligned to the common column: `\n    name   : type`
-        AlignedDeclaration: TextNode
     }
 
 // ---------------------------------------------------------------------------
@@ -108,20 +97,14 @@ type Function =
     {
         Name: string
         FullName: string
-        Signature: TextNode
         /// Curried parameter groups. Each outer list is a curried group;
         /// each inner list holds the parameters within that group (tupled parameters).
         Parameters: Parameter list list
-        /// First line without column alignment: `val name :`
-        Declaration: TextNode
-        /// First line with colon aligned to the common column: `val name   :`
-        AlignedDeclaration: TextNode
-        /// Generic parameters with constraints, e.g. `<\'T when \'T : comparison>`.
-        GenericParameters: TextNode option
-        /// Pre-formatted return type with contextual prefix.
-        /// With parameters: `\n    -> returnType`
-        /// Without parameters: ` returnType`
         ReturnType: TextNode
+        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
+        GenericParameters: TextNode option
+        IsInline: bool
+        IsMutable: bool
         XmlDoc: XmlDoc
         ObsoleteInfo: ObsoleteInfo
     }
@@ -130,11 +113,11 @@ type Value =
     {
         Name: string
         FullName: string
-        Signature: TextNode
-        /// Pre-formatted signature line: `val name : type`
-        Declaration: TextNode
-        /// Generic parameters with constraints, e.g. `<\'T when \'T : comparison>`.
+        Type: TextNode
+        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
         GenericParameters: TextNode option
+        IsInline: bool
+        IsMutable: bool
         XmlDoc: XmlDoc
         ObsoleteInfo: ObsoleteInfo
     }
@@ -158,45 +141,30 @@ type Member =
         /// Curried parameter groups. Each outer list is a curried group;
         /// each inner list holds the parameters within that group (tupled parameters).
         Parameters: Parameter list list
-        /// The return type of the member (property type, method return type, or constructed type for constructors).
+        /// The return type of the member (property type, method return type, or
+        /// constructed type for constructors).
         ReturnType: TextNode
-        /// Pre-formatted signature line for the DocEntry slot,
-        /// e.g. `member Add : other : Vector -> Vector` or `property Length : float with get`.
-        Declaration: TextNode
-        /// Generic parameters with constraints, e.g. `<\'T when \'T : comparison>`.
+        /// Generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
         GenericParameters: TextNode option
         XmlDoc: XmlDoc
         IsStatic: bool
-        /// True for `abstract member` declarations (interface members and abstract class members).
+        /// True for `abstract member` declarations (interface and abstract class members).
         IsAbstract: bool
         ObsoleteInfo: ObsoleteInfo
     }
 
 // ---------------------------------------------------------------------------
-// Record fields
+// Record fields, enum cases, union cases
 // ---------------------------------------------------------------------------
 
 type Field =
     {
         Name: string
         Type: TextNode
+        /// Set for enum cases, whose declaration reads `Name = value`.
+        LiteralValue: string option
         XmlDoc: XmlDoc
-        /// Pre-formatted signature: `field1 : type`
-        Declaration: TextNode
     }
-
-    /// Pre-formatted signature: `val field1 : type`
-    member this.Signature =
-        TextNode.Node
-            [
-                TextNode.Keyword "val"
-                TextNode.Space
-                this.Declaration
-            ]
-
-// ---------------------------------------------------------------------------
-// Union cases
-// ---------------------------------------------------------------------------
 
 type UnionCase =
     {
@@ -204,8 +172,6 @@ type UnionCase =
         FullName: string
         Fields: Field list
         XmlDoc: XmlDoc
-        /// Pre-formatted signature: `| Name of field1: type1 * field2: type2`
-        Declaration: TextNode
     }
 
 // ---------------------------------------------------------------------------
@@ -217,10 +183,10 @@ type RecordEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        /// Generic parameter names, without tick or constraints, e.g. ["T"].
+        GenericParameters: string list
         Fields: Field list
         Members: Member list
-        /// Pre-formatted full type declaration: `type Name =\n    { field1 : t1\n      ... }`
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -230,10 +196,9 @@ type UnionEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        GenericParameters: string list
         Cases: UnionCase list
         Members: Member list
-        /// Pre-formatted full type declaration with anchor links on case names.
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -243,10 +208,9 @@ type AbbrevEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        GenericParameters: string list
         /// The abbreviated type (right-hand side only).
-        Signature: TextNode
-        /// Pre-formatted full declaration: `type Name = abbreviatedType`
-        Declaration: TextNode
+        AbbreviatedType: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -256,9 +220,8 @@ type ClassEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        GenericParameters: string list
         Members: Member list
-        /// Pre-formatted full type declaration with member signatures.
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -268,9 +231,8 @@ type InterfaceEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        GenericParameters: string list
         Members: Member list
-        /// Pre-formatted full type declaration with member signatures.
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -280,9 +242,8 @@ type EnumEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
+        GenericParameters: string list
         Fields: Field list
-        /// Pre-formatted full type declaration: `type Name =\n    | Case1\n    | ...`
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
     }
@@ -292,8 +253,7 @@ type MeasureEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        /// Pre-formatted declaration: `[<Measure>] type Name`
-        Declaration: TextNode
+        GenericParameters: string list
         ObsoleteInfo: ObsoleteInfo
     }
 
@@ -303,8 +263,6 @@ type ExceptionEntity =
         FullName: string
         XmlDoc: XmlDoc
         Fields: Field list
-        /// Pre-formatted declaration: `exception Name of field1: type1 * field2: type2`
-        Declaration: TextNode
         ObsoleteInfo: ObsoleteInfo
     }
 
@@ -313,10 +271,10 @@ type DelegateEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        /// Pre-formatted signature of the Invoke method.
-        Signature: TextNode
-        /// Pre-formatted declaration: `type Name = delegate of ... -> ...`
-        Declaration: TextNode
+        GenericParameters: string list
+        /// Parameter types of the delegate's Invoke method.
+        Parameters: TextNode list
+        ReturnType: TextNode
         ObsoleteInfo: ObsoleteInfo
     }
 
@@ -368,17 +326,17 @@ type Entity =
         | Exception e -> e.XmlDoc
         | Delegate e -> e.XmlDoc
 
-    member this.Declaration =
+    member this.GenericParameters =
         match this with
-        | Record e -> e.Declaration
-        | Union e -> e.Declaration
-        | Abbrev e -> e.Declaration
-        | Class e -> e.Declaration
-        | Interface e -> e.Declaration
-        | Enum e -> e.Declaration
-        | Measure e -> e.Declaration
-        | Exception e -> e.Declaration
-        | Delegate e -> e.Declaration
+        | Record e -> e.GenericParameters
+        | Union e -> e.GenericParameters
+        | Abbrev e -> e.GenericParameters
+        | Class e -> e.GenericParameters
+        | Interface e -> e.GenericParameters
+        | Enum e -> e.GenericParameters
+        | Measure e -> e.GenericParameters
+        | Delegate e -> e.GenericParameters
+        | Exception _ -> []
 
     member this.ObsoleteInfo =
         match this with
@@ -412,15 +370,16 @@ type Module =
     {
         Name: string
         FullName: string
-        /// The parent namespace, Encode.g. "Encode.Geometry" for "Encode.Geometry.Points".
-        /// Empty string for root-level modules with no Encode.
+        /// The parent namespace, e.g. "Reference.Geometry" for "Reference.Geometry.Points".
+        /// Empty string for root-level modules with no namespace.
         Namespace: string
         XmlDoc: string option
         Entities: Entity list
         Functions: Function list
         Values: Value list
         /// True for synthetic modules that carry bare namespace-level types.
-        /// The plugin generates individual entity pages from these rather than a module Encode.
+        /// The plugin generates individual entity pages from these rather than a
+        /// module page, so these have no page of their own.
         IsSynthetic: bool
         ObsoleteInfo: ObsoleteInfo
     }
@@ -438,7 +397,7 @@ type Namespace =
     }
 
 // ---------------------------------------------------------------------------
-// Assemblies — top-level root
+// Assemblies - top-level root
 // ---------------------------------------------------------------------------
 
 type Assembly =

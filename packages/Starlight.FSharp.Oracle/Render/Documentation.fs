@@ -58,15 +58,8 @@ module Documentation =
 
                 match paramDoc with
                 | Some paramDoc ->
-                    [
-                        TextNode.OpenTagWithClass("div", "fs-parameter__signature")
-                        TextNode.NewLine
-                        parameter.Declaration
-                        TextNode.NewLine
-                        TextNode.CloseTag "div"
-                        TextNode.NewLine
-                    ]
-                    |> fun nodes -> TextNode.ToHtml(links, nodes)
+                    (Declarations.parameterDeclaration parameter).ToHtml(links)
+                    |> signatureBlock
                     |> sb.WriteLine
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
@@ -74,7 +67,8 @@ module Documentation =
                     sb.WriteLine(escapeMdxMarkdown paramDoc.Doc)
                     sb.NewLine()
                     sb.WriteLine "</div>"
-                | None -> sb.WriteLine(parameter.Declaration.ToHtml(links))
+                | None ->
+                    sb.WriteLine((Declarations.parameterDeclaration parameter).ToHtml(links))
 
         match xmlDoc.Returns with
         | Some returnDoc ->
