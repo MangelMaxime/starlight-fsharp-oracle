@@ -401,62 +401,80 @@ let private entitySidebarItem (outputBase: string) (entity: Entity) =
 
 /// Returns a Starlight sidebar group with a full hierarchy:
 /// namespaces → modules → entities.
-let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
+/// A sidebar entry, as plain F#.
+///
+/// The tree used to be built straight into Starlight's `jsNative` POJOs, which only run
+/// under Fable - so the sidebar was the one output the .NET harness could not test, and
+/// it drifted: its links used raw names where the pages used slugged anchors, leaving
+/// every active pattern and operator entry pointing at nothing. Building a plain model
+/// first makes the part that can be wrong testable.
+type SidebarNode =
+    | SidebarLeaf of label: string * href: string
+    | SidebarBranch of label: string * children: SidebarNode list
+
+/// The sidebar, derived from the same slugs and anchors the pages are written with.
+let sidebarModel
+    (links: LinkResolver)
+    (outputBase: string)
+    (label: string)
+    (modules: Module list)
+    : SidebarNode
+    =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
     let syntheticModules = modules |> List.filter (fun m -> m.IsSynthetic)
     let allNamespaces = namespacesOf modules
 
     // A generic type and its companion module share a slug and are merged onto one
-    // page (see `entityPages`). The module already appears in the tree as a group,
-    // so drop the redundant bare entity link that points to the same page.
-    let realModuleSlugs = realModules |> List.map (fun m -> toSlug m.FullName) |> Set.ofList
+    // page. The module already appears in the tree as a group, so drop the redundant
+    // bare entity link that points to the same page.
+    let realModuleSlugs = realModules |> List.map (fun m -> links.Slug m.FullName) |> Set.ofList
 
-    let entitySidebarItems (entities: Entity list) =
+    let pageHref (fullName: string) = $"/{outputBase}/{links.Slug fullName}"
+
+    let entityLeaf (entity: Entity) =
+        SidebarLeaf(entity.Name, pageHref entity.FullName)
+
+    let entityLeaves (entities: Entity list) =
         entities
-        |> List.filter (fun e -> not (Set.contains (toSlug e.FullName) realModuleSlugs))
-        |> List.map (entitySidebarItem outputBase)
+        |> List.filter (fun e -> not (Set.contains (links.Slug e.FullName) realModuleSlugs))
+        |> List.map entityLeaf
 
-    let moduleHref (m: Module) = $"/{outputBase}/{toSlug m.FullName}"
-
-    let anchorLink (label: string) (href: string) : SidebarItem =
-        U2.Case1(SidebarLink(label, href))
-
-    // Build a module item, recursively including sub-modules as children.
-    // Always a collapsible group with an Overview link first.
-    let rec moduleSidebarItem (m: Module) =
+    let rec moduleBranch (m: Module) =
         let subModules =
             realModules |> List.filter (fun other -> other.Namespace = m.FullName)
 
-        let overviewLink: SidebarItem = U2.Case1(SidebarLink("Overview", moduleHref m))
+        let href = pageHref m.FullName
 
-        let entityItems = m.Entities |> List.map (entitySidebarItem outputBase)
+        let functionLeaves =
+            Declarations.anchoredFunctionSections m.Functions
+            |> List.collect (fun (_, _, items) -> items)
+            |> List.map (fun (f, anchor) -> SidebarLeaf(f.Name, $"{href}#{anchor}"))
 
-        let functionItems =
-            m.Functions
-            |> List.map (fun f -> anchorLink f.Name $"{moduleHref m}#{f.Name}")
-
-        let valueItems =
-            m.Values
-            |> List.map (fun v -> anchorLink v.Name $"{moduleHref m}#{v.Name}")
-
-        let subModuleItems = subModules |> List.map moduleSidebarItem
+        let valueLeaves =
+            Declarations.anchoredValues m.Values
+            |> List.map (fun (v, anchor) -> SidebarLeaf(v.Name, $"{href}#{anchor}"))
 
         let children =
-            overviewLink :: entityItems @ functionItems @ valueItems @ subModuleItems
+            [
+                SidebarLeaf("Overview", href)
+                yield! m.Entities |> List.map entityLeaf
+                yield! functionLeaves
+                yield! valueLeaves
+                yield! subModules |> List.map moduleBranch
+            ]
 
-        sidebarGroup m.Name "M" "module" children
+        SidebarBranch(m.Name, children)
 
-    let rec buildNsGroup (ns: string) =
-        let shortName =
-            let lastDot = ns.LastIndexOf('.')
+    let shortNameOf (fullName: string) =
+        let lastDot = fullName.LastIndexOf('.')
 
-            if lastDot < 0 then
-                ns
-            else
-                ns.[lastDot + 1 ..]
+        if lastDot < 0 then
+            fullName
+        else
+            fullName.[lastDot + 1 ..]
 
-        // Skip child namespaces that are already represented by a real module
-        // (e.g. Reference.Text is both a module and the namespace of Words/Lines).
+    let rec namespaceBranch (ns: string) =
+        // Skip child namespaces already represented by a real module.
         let directChildNs =
             allNamespaces
             |> List.filter (fun other ->
@@ -465,59 +483,59 @@ let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
                 && not (realModules |> List.exists (fun m -> m.FullName = other))
             )
 
-        let modulesInNs = realModules |> List.filter (fun m -> m.Namespace = ns)
-        // Synthetic modules represent bare namespace declarations; show them as sub-groups.
-        let syntheticInNs = syntheticModules |> List.filter (fun m -> m.Namespace = ns)
-
-        let items =
+        let children =
             [
-                yield! modulesInNs |> List.map moduleSidebarItem
-                for sm in syntheticInNs do
-                    // "global" synthetic modules group bare namespace-level types.
-                    // Inline them directly rather than nesting under a "global" sub-group.
-                    if sm.Name = "global" then
-                        yield! entitySidebarItems sm.Entities
+                yield! realModules |> List.filter (fun m -> m.Namespace = ns) |> List.map moduleBranch
+
+                for synthetic in syntheticModules |> List.filter (fun m -> m.Namespace = ns) do
+                    // "global" synthetic modules hold bare namespace-level types.
+                    // Inline them rather than nesting under a "global" sub-group.
+                    if synthetic.Name = "global" then
+                        yield! entityLeaves synthetic.Entities
                     else
-                        let smShortName =
-                            let lastDot = sm.FullName.LastIndexOf('.')
+                        SidebarBranch(shortNameOf synthetic.FullName, entityLeaves synthetic.Entities)
 
-                            if lastDot < 0 then
-                                sm.FullName
-                            else
-                                sm.FullName.[lastDot + 1 ..]
-
-                        yield
-                            sidebarGroup
-                                smShortName
-                                "N"
-                                "namespace"
-                                (entitySidebarItems sm.Entities)
-                yield! directChildNs |> List.map buildNsGroup
+                yield! directChildNs |> List.map namespaceBranch
             ]
 
-        sidebarGroup shortName "N" "namespace" items
+        SidebarBranch(shortNameOf ns, children)
 
-    let topLevelNs =
+    let topLevelNamespaces =
         allNamespaces
         |> List.filter (fun ns ->
             not (allNamespaces |> List.exists (fun other -> ns.StartsWith(other + ".")))
-            // Skip namespaces that are also real modules — the module tree already
-            // shows everything inside them (values, entities, sub-modules).
+            // Skip namespaces that are also real modules - the module tree already shows
+            // everything inside them.
             && not (realModules |> List.exists (fun m -> m.FullName = ns))
         )
 
-    let globalModules = realModules |> List.filter (fun m -> m.Namespace = "")
-
-    let overviewLink: SidebarItem = U2.Case1(SidebarLink("Overview", $"/{outputBase}"))
-
-    let items =
+    SidebarBranch(
+        label,
         [
-            overviewLink
-            yield! globalModules |> List.map moduleSidebarItem
-            yield! topLevelNs |> List.map buildNsGroup
+            SidebarLeaf("Overview", $"/{outputBase}")
+            yield! realModules |> List.filter (fun m -> m.Namespace = "") |> List.map moduleBranch
+            yield! topLevelNamespaces |> List.map namespaceBranch
         ]
+    )
 
-    SidebarGroup(label, items |> Array.ofList)
+/// Converts the model to the POJOs Starlight expects. Deliberately trivial: everything
+/// that can be wrong happens in `sidebarModel`, which is covered by the snapshots.
+let sidebarTree
+    (links: LinkResolver)
+    (outputBase: string)
+    (label: string)
+    (modules: Module list)
+    =
+    let rec toItem node : SidebarItem =
+        match node with
+        | SidebarLeaf(label, href) -> U2.Case1(SidebarLink(label, href))
+        | SidebarBranch(label, children) ->
+            U2.Case2(SidebarGroup(label, children |> List.map toItem |> Array.ofList, collapsed = true))
+
+    match sidebarModel links outputBase label modules with
+    | SidebarBranch(label, children) ->
+        SidebarGroup(label, children |> List.map toItem |> Array.ofList)
+    | SidebarLeaf(label, href) -> SidebarGroup(label, [| U2.Case1(SidebarLink(label, href)) |])
 
 /// Returns a tiny inline script that publishes the sidebar label so that
 /// the external sidebar-controls.js file can find the right section without

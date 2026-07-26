@@ -685,11 +685,17 @@ sidebar, and still published.
 
 Questions that came up mid-run and need a human answer. Keep working around these.
 
-- **Sidebar tree is not snapshotted.** `Generate.sidebarTree` builds `jsNative` POJOs,
-  so it only runs under Fable and the .NET harness cannot cover it. Options: a small
-  Fable-compiled Node harness, or make the sidebar types plain records that Fable
-  erases. Not urgent - the sidebar has had no reported defects - but it is the one
-  untested output. (raised phase 1)
+- ~~**Sidebar tree is not snapshotted.**~~ **Resolved** - and it had drifted, exactly as
+  the entry feared. `sidebarTree` reimplemented linking instead of using the resolver
+  and anchor helpers the pages use, so its fragments were raw names: every active
+  pattern and operator entry had pointed at a non-existent anchor since phase 4, and
+  backticked names put spaces in the href. Module links also used `toSlug` directly,
+  bypassing collision disambiguation.
+
+  Split into `sidebarModel` (plain F#, snapshotted) and a trivial POJO conversion, with
+  the anchor assignment shared with the pages via
+  `Declarations.anchoredFunctionSections`. The test cross-checks that every sidebar
+  fragment matches a rendered anchor. (raised phase 1, fixed after phase 6)
 
 ---
 

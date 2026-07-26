@@ -330,6 +330,23 @@ module Declarations =
     let anchoredCases (cases: UnionCase list) =
         Anchor.assign (fun (c: UnionCase) -> Anchor.slug c.Name) cases
 
+    /// A module's functions, split into the sections the page renders, each with its
+    /// anchors assigned. Anchors are assigned per section, so anything deriving them
+    /// has to split the same way - the sidebar used to guess, and used the raw name.
+    let anchoredFunctionSections (functions: Function list) =
+        let patterns, plain = functions |> List.partition (fun f -> f.IsActivePattern)
+
+        let assign items =
+            Anchor.assign (fun (f: Function) -> Anchor.slug f.Name) items
+
+        [
+            "Functions", "functions", assign plain
+            "Active Patterns", "active-patterns", assign patterns
+        ]
+
+    let anchoredValues (values: Value list) =
+        Anchor.assign (fun (v: Value) -> Anchor.slug v.Name) values
+
     /// A member as a line inside its type's header block, linking to its own entry.
     let memberHeaderLine (anchor: string) (m: Member) : TextNode list =
         let nameNode =

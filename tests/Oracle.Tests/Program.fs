@@ -68,6 +68,7 @@ let main argv =
     else
 
     let root = extract ()
+    let modules = root.Assemblies |> List.collect (fun a -> a.Modules)
 
     // ---- IR snapshot -------------------------------------------------------
 
@@ -109,11 +110,34 @@ let main argv =
     for name, _ in uncovered do
         eprintfn "error: no fixture covers %s" name
 
+    // ---- Sidebar -----------------------------------------------------------
+
+    // The sidebar was the one output with no coverage, and it drifted: its links used
+    // raw names where the pages used slugged anchors. The model is plain F#, so it can
+    // be snapshotted here; only the POJO conversion stays untested.
+    let sidebarReport =
+        let rec render depth node =
+            let indent = String.replicate depth "  "
+
+            match node with
+            | Starlight.FSharp.Generate.SidebarLeaf(label, href) -> [ $"{indent}{label} -> {href}" ]
+            | Starlight.FSharp.Generate.SidebarBranch(label, children) ->
+                $"{indent}{label}/" :: (children |> List.collect (render (depth + 1)))
+
+        Starlight.FSharp.Generate.sidebarModel
+            (Starlight.FSharp.Generate.linkResolver basePath outputBase modules)
+            outputBase
+            "API Reference"
+            modules
+        |> render 0
+        |> String.concat "\n"
+
+    let sidebarResult =
+        Snapshot.verify update (Path.Combine(snapshotDirectory, "sidebar.verified.txt")) sidebarReport
+
     // ---- Page snapshots ----------------------------------------------------
 
     let pagesDirectory = Path.Combine(snapshotDirectory, "pages")
-    let modules = root.Assemblies |> List.collect (fun a -> a.Modules)
-
     for warning in Starlight.FSharp.Generate.slugWarnings modules do
         printfn "  warning: %s" warning
 
@@ -139,6 +163,7 @@ let main argv =
         [
             "reference.ir.json", irResult
             "coverage", coverageResult
+            "sidebar", sidebarResult
             yield! pageResults |> List.map snd
             yield! orphanResults
         ]

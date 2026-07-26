@@ -1,0 +1,74 @@
+API Reference/
+  Overview -> /api
+  RootModule/
+    Overview -> /api/rootmodule
+    RecordInRootModule -> /api/rootmodule-recordinrootmodule
+    functionWithCurriedParameters -> /api/rootmodule#functionWithCurriedParameters
+    functionTakingUnit -> /api/rootmodule#functionTakingUnit
+    valueAtRoot -> /api/rootmodule#valueAtRoot
+    ObsoleteNestedModule/
+      Overview -> /api/rootmodule-obsoletenestedmodule
+      obsoleteFunction -> /api/rootmodule-obsoletenestedmodule#obsoleteFunction
+  Reference/
+    Docs/
+      Overview -> /api/reference-docs
+      TypeWithDocumentedValue -> /api/reference-docs-typewithdocumentedvalue
+      ObsoleteType -> /api/reference-docs-obsoletetype
+      CaseCollision -> /api/reference-docs-casecollision-2
+      CASECOLLISION -> /api/reference-docs-casecollision
+      functionWithEveryDocTag -> /api/reference-docs#functionWithEveryDocTag
+    Functions/
+      Overview -> /api/reference-functions
+      MembersWithParameterModifiers -> /api/reference-functions-memberswithparametermodifiers
+      functionWithCurriedParameters -> /api/reference-functions#functionWithCurriedParameters
+      functionWithTupledParameters -> /api/reference-functions#functionWithTupledParameters
+      ``function with spaces`` -> /api/reference-functions#function-with-spaces
+      constrainedByComparison -> /api/reference-functions#constrainedByComparison
+      constrainedByEquality -> /api/reference-functions#constrainedByEquality
+      constrainedByUnmanagedStruct -> /api/reference-functions#constrainedByUnmanagedStruct
+      constrainedByNull -> /api/reference-functions#constrainedByNull
+      constrainedBySubtype -> /api/reference-functions#constrainedBySubtype
+      constrainedByDefaultConstructor -> /api/reference-functions#constrainedByDefaultConstructor
+      constrainedByStaticMembers -> /api/reference-functions#constrainedByStaticMembers
+      (|SingleCasePattern|) -> /api/reference-functions#SingleCasePattern
+      (|MultiCasePositive|MultiCaseNegative|MultiCaseZero|) -> /api/reference-functions#MultiCasePositive-MultiCaseNegative-MultiCaseZero
+      (|PartialPattern|_|) -> /api/reference-functions#PartialPattern
+      (|ParameterisedPattern|_|) -> /api/reference-functions#ParameterisedPattern
+      LiteralInt -> /api/reference-functions#LiteralInt
+      LiteralString -> /api/reference-functions#LiteralString
+      valueWithoutParameters -> /api/reference-functions#valueWithoutParameters
+    Members/
+      Overview -> /api/reference-members
+      MembersOfEveryKind -> /api/reference-members-membersofeverykind
+      IndexedAndInlineMembers -> /api/reference-members-indexedandinlinemembers
+      ExtensionMembers/
+        Overview -> /api/reference-members-extensionmembers
+    Types/
+      Overview -> /api/reference-types
+      RecordWithDocumentedFields -> /api/reference-types-recordwithdocumentedfields
+      StructRecord -> /api/reference-types-structrecord
+      Type With Spaces -> /api/reference-types-type-with-spaces
+      UnionWithCaseFieldsAndMembers -> /api/reference-types-unionwithcasefieldsandmembers
+      RequireQualifiedAccessUnion -> /api/reference-types-requirequalifiedaccessunion
+      StructUnion -> /api/reference-types-structunion
+      EnumWithExplicitValues -> /api/reference-types-enumwithexplicitvalues
+      AbbreviationOfPrimitive -> /api/abbreviationofprimitive
+      m -> /api/reference-types-m
+      ExceptionWithNamedFields -> /api/reference-types-exceptionwithnamedfields
+      DelegateWithTupledParameters -> /api/reference-types-delegatewithtupledparameters
+      InterfaceWithMembers -> /api/reference-types-interfacewithmembers
+      AbstractBaseClass -> /api/reference-types-abstractbaseclass
+      ClassInheritingAndImplementing -> /api/reference-types-classinheritingandimplementing
+      GenericClassWithConstraint -> /api/reference-types-genericclasswithconstraint
+      functionReturningMeasure -> /api/reference-types#functionReturningMeasure
+    Namespaces/
+      TypeMergedWithCompanionModule/
+        Overview -> /api/reference-namespaces-typemergedwithcompanionmodule
+        create -> /api/reference-namespaces-typemergedwithcompanionmodule#create
+      NestedModule/
+        Overview -> /api/reference-namespaces-nestedmodule
+        functionInNestedModule -> /api/reference-namespaces-nestedmodule#functionInNestedModule
+      Module With Spaces/
+        Overview -> /api/reference-namespaces-module-with-spaces
+        functionInBacktickedModule -> /api/reference-namespaces-module-with-spaces#functionInBacktickedModule
+      TypeDeclaredInNamespace -> /api/reference-namespaces-typedeclaredinnamespace

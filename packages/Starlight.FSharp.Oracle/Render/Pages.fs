@@ -40,29 +40,25 @@ module Pages =
         =
         // Active patterns are functions to the compiler but a different thing to a
         // reader, so they get their own section rather than sitting among `map` and
-        // `filter`.
-        let patterns, plainFunctions = functions |> List.partition (fun f -> f.IsActivePattern)
-
-        let functionSection (title: string) (slug: string) (items: Function list) =
+        // `filter`. The split and the anchors come from Declarations, so the sidebar
+        // derives exactly the same ones.
+        for title, slug, items in Declarations.anchoredFunctionSections functions do
             if not items.IsEmpty then
                 h2 sb toc slug title
                 sb.WriteLine("<div class=\"collapsible-group\">")
 
-                for f, anchor in Anchor.assign (fun (f: Function) -> Anchor.slug f.Name) items do
+                for f, anchor in items do
                     tocH3 toc anchor f.Name
                     renderFunctionEntry links anchor sb f
 
                 sb.WriteLine("</div>")
                 sb.NewLine()
 
-        functionSection "Functions" "functions" plainFunctions
-        functionSection "Active Patterns" "active-patterns" patterns
-
         if not values.IsEmpty then
             h2 sb toc "values" "Values"
             sb.WriteLine("<div class=\"collapsible-group\">")
 
-            for v, anchor in Anchor.assign (fun (v: Value) -> Anchor.slug v.Name) values do
+            for v, anchor in Declarations.anchoredValues values do
                 tocH3 toc anchor v.Name
                 renderValueEntry links anchor sb v
 

@@ -153,6 +153,7 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     runExtractor logger (pluginOptions.assemblies |> Seq.toList)
 
                                 let modules = root.Assemblies |> List.collect _.Modules
+                                let links = Generate.linkResolver basePath outputBase modules
 
                                 let sidebarLabel =
                                     pluginOptions.sidebar
@@ -179,7 +180,7 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                         sidebar =
                                             [|
                                                 yield! existingSidebar
-                                                Generate.sidebarTree outputBase sidebarLabel modules
+                                                Generate.sidebarTree links outputBase sidebarLabel modules
                                             |]
                                     |}
 
