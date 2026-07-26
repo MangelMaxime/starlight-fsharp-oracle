@@ -321,6 +321,15 @@ module Declarations =
     /// so the header's links and the entries' ids always agree.
     let anchoredMembers (members: Member list) = Anchor.assign memberSlug members
 
+    /// Fields and union cases anchor the same way members do. They used to use their
+    /// name verbatim, which breaks for a backticked F# name: `` ``Field With Spaces`` ``
+    /// put spaces straight into an `id` and an `href`.
+    let anchoredFields (fields: Field list) =
+        Anchor.assign (fun (f: Field) -> Anchor.slug f.Name) fields
+
+    let anchoredCases (cases: UnionCase list) =
+        Anchor.assign (fun (c: UnionCase) -> Anchor.slug c.Name) cases
+
     /// A member as a line inside its type's header block, linking to its own entry.
     let memberHeaderLine (anchor: string) (m: Member) : TextNode list =
         let nameNode =
@@ -347,7 +356,7 @@ module Declarations =
         if isEnumCase then
             TextNode.Node
                 [
-                    TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
+                    TextNode.DeclaredName(f.Name, DeclarationRole.Member)
                     match f.LiteralValue with
                     | Some value ->
                         TextNode.Space
@@ -531,12 +540,12 @@ module Declarations =
                     TextNode.Space
                     equals
 
-                    for case in e.Cases do
+                    for case, anchor in anchoredCases e.Cases do
                         TextNode.NewLine
                         TextNode.Indent 1
                         punct Symbol.Bar
                         TextNode.Space
-                        TextNode.DeclarationName(case.Name, case.Name, DeclarationRole.UnionCase)
+                        TextNode.DeclarationName(case.Name, anchor, DeclarationRole.UnionCase)
 
                         if not case.Fields.IsEmpty then
                             keyword " of"
@@ -558,10 +567,10 @@ module Declarations =
                     TextNode.Indent 1
                     punct Symbol.LeftBrace
 
-                    for f in e.Fields do
+                    for f, anchor in anchoredFields e.Fields do
                         TextNode.NewLine
                         TextNode.Indent 2
-                        TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
+                        TextNode.DeclarationName(f.Name, anchor, DeclarationRole.Member)
                         TextNode.Space
                         colon
                         TextNode.Space
@@ -583,12 +592,12 @@ module Declarations =
                     TextNode.Space
                     equals
 
-                    for f in e.Fields do
+                    for f, anchor in anchoredFields e.Fields do
                         TextNode.NewLine
                         TextNode.Indent 1
                         punct Symbol.Bar
                         TextNode.Space
-                        TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
+                        TextNode.DeclarationName(f.Name, anchor, DeclarationRole.Member)
 
                         match f.LiteralValue with
                         | Some value ->

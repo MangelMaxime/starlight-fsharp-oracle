@@ -211,6 +211,13 @@ let report (root: Root) : (string * int) list =
          )
          |> List.length)
 
+        // Names F# allows but URLs do not
+        "naming: backticked (contains a space)",
+        ((entities |> List.filter (fun e -> e.Name.Contains " ") |> List.length)
+         + (members |> List.filter (fun m -> m.Name.Contains " ") |> List.length)
+         + (functions |> List.filter (fun f -> f.Name.Contains " ") |> List.length)
+         + (modules |> List.filter (fun m -> m.Name.Contains " ") |> List.length))
+
         // Page-structure cases the generator has to handle
         "structure: module", (modules |> List.filter (fun m -> not m.IsSynthetic) |> List.length)
         "structure: nested module",

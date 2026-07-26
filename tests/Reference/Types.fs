@@ -124,3 +124,12 @@ type SortedBag<'T when 'T: comparison>(items: 'T list) =
 
     /// <summary>The items, in ascending order.</summary>
     member _.Items = List.sort items
+
+// -- backticked names -------------------------------------------------------
+
+/// <summary>A type whose name contains spaces, so its slug cannot be its name.</summary>
+type ``Type With Spaces`` =
+    {
+        /// <summary>A field whose name also contains spaces.</summary>
+        ``Field With Spaces``: string
+    }

@@ -115,9 +115,9 @@ module Pages =
 
             sb.WriteLine("<div class=\"collapsible-group\">")
 
-            for field in fields do
-                tocH3 toc field.Name field.Name
-                renderField links isEnumCase sb field
+            for field, anchor in Declarations.anchoredFields fields do
+                tocH3 toc anchor field.Name
+                renderField links isEnumCase anchor sb field
 
             sb.WriteLine("</div>")
             sb.NewLine()
@@ -167,9 +167,9 @@ module Pages =
         | Entity.Union e ->
             sb.WriteLine("<div class=\"collapsible-group\">")
 
-            for c in e.Cases do
-                tocH3 toc c.Name c.Name
-                renderUnionCaseEntry links sb c
+            for c, anchor in Declarations.anchoredCases e.Cases do
+                tocH3 toc anchor c.Name
+                renderUnionCaseEntry links anchor sb c
 
             sb.WriteLine("</div>")
             sb.NewLine()

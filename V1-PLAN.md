@@ -599,6 +599,25 @@ rewritten in several files.
 - [x] The report found a real gap on its first run: nothing exercised
       `when 'T : (new : unit -> 'T)`. Now covered.
 
+### Found while adding backticked-name coverage: slugs kept their spaces
+
+F# allows `` ``Type With Spaces`` ``, and nothing in the fixture used one. `toSlug`
+replaced only `.`, so such a name reached the filename and the href intact:
+`/api/reference-types-type with spaces`. `Anchor.slug` had always collapsed
+non-identifier characters, so page anchors were fine and only page slugs broke.
+
+- [x] `toSlug` reuses `Anchor.slug` and folds case, after stripping the generic arity
+      suffix (collapsing punctuation first would leave `tree-1` behind). No churn on
+      existing names - the fix is behaviour-preserving for identifiers.
+- [x] Record fields, enum cases and union cases were anchoring on their raw name,
+      bypassing the slugging members already went through, so
+      `` ``Field With Spaces`` `` put spaces into an `id` and an `href`. They now go
+      through `Anchor.assign` like members.
+- [x] Fixture covers a backticked module, type, record field, member and function, with
+      a coverage line so it cannot be dropped.
+
+Verified: no anchor value, href fragment or page slug contains a space.
+
 ### Found while consolidating: generated pages were never cleaned
 
 Removing fixture modules left their pages behind in `docs/src/pages/api`, and the site

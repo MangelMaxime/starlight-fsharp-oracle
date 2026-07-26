@@ -1387,6 +1387,51 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
+                            "Name": "``function with spaces``",
+                            "FullName": "Reference.Functions.``function with spaces``",
+                            "Parameters": [
+                                [
+                                    {
+                                        "Name": "value",
+                                        "Type": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": false
+                                    }
+                                ]
+                            ],
+                            "ReturnType": [
+                                "TypeRef",
+                                "int",
+                                "Microsoft.FSharp.Core.int"
+                            ],
+                            "Constraints": [],
+                            "IsInline": false,
+                            "IsMutable": false,
+                            "IsActivePattern": false,
+                            "XmlDoc": {
+                                "Summary": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "A function whose name contains spaces."
+                                },
+                                "Params": [
+                                    {
+                                        "Name": "value",
+                                        "Doc": "Any value."
+                                    }
+                                ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
+                                "Examples": []
+                            },
+                            "ObsoleteInfo": "Active"
+                        },
+                        {
                             "Name": "(|Trimmed|)",
                             "FullName": "Reference.Functions.(|Trimmed|)",
                             "Parameters": [
@@ -2361,6 +2406,39 @@
                                         "IsStatic": false,
                                         "IsAbstract": false,
                                         "IsInline": true,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "``Member With Spaces``",
+                                        "FullName": "Reference.Members.Row.``Member With Spaces``",
+                                        "CompiledName": "Member With Spaces",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "unit",
+                                            "Microsoft.FSharp.Core.unit"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A member whose name contains spaces."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
                                         "HasGetter": false,
                                         "HasSetter": false,
                                         "ObsoleteInfo": "Active"
@@ -3810,6 +3888,52 @@
                                 "ObsoleteInfo": "Active",
                                 "IsStruct": false
                             }
+                        ],
+                        [
+                            "Record",
+                            {
+                                "Name": "Type With Spaces",
+                                "FullName": "Reference.Types.Type With Spaces",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A type whose name contains spaces, so its slug cannot be its name."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Fields": [
+                                    {
+                                        "Name": "Field With Spaces",
+                                        "Type": [
+                                            "TypeRef",
+                                            "string",
+                                            "Microsoft.FSharp.Core.string"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A field whose name also contains spaces."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        }
+                                    }
+                                ],
+                                "Members": [],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
                         ]
                     ],
                     "Functions": [
@@ -4042,6 +4166,63 @@
                                         "Doc": "The text to parse."
                                     }
                                 ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
+                                "Examples": []
+                            },
+                            "ObsoleteInfo": "Active"
+                        }
+                    ],
+                    "Values": [],
+                    "ExtensionMembers": [],
+                    "IsSynthetic": false,
+                    "ObsoleteInfo": "Active"
+                },
+                {
+                    "Name": "Module With Spaces",
+                    "FullName": "Reference.Data.Module With Spaces",
+                    "Namespace": "Reference.Data",
+                    "XmlDoc": {
+                        "$type": "option",
+                        "$case": "some",
+                        "$value": "A module whose name contains spaces."
+                    },
+                    "Entities": [],
+                    "Functions": [
+                        {
+                            "Name": "noop",
+                            "FullName": "Reference.Data.Module With Spaces.noop",
+                            "Parameters": [
+                                [
+                                    {
+                                        "Name": "",
+                                        "Type": [
+                                            "TypeRef",
+                                            "unit",
+                                            "Microsoft.FSharp.Core.unit"
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": true
+                                    }
+                                ]
+                            ],
+                            "ReturnType": [
+                                "TypeRef",
+                                "unit",
+                                "Microsoft.FSharp.Core.unit"
+                            ],
+                            "Constraints": [],
+                            "IsInline": false,
+                            "IsMutable": false,
+                            "IsActivePattern": false,
+                            "XmlDoc": {
+                                "Summary": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "Does nothing in particular."
+                                },
+                                "Params": [],
                                 "TypeParams": [],
                                 "Exceptions": [],
                                 "SeeAlso": [],

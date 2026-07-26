@@ -32,12 +32,27 @@ and [<AllowNullLiteral; Global>] SidebarGroup
     member val collapsed: bool = jsNative with get, set
     member val badge: SidebarBadge option = jsNative with get, set
 
+/// The page slug of a fully-qualified name.
+///
+/// Only `.` used to be replaced, so a backticked F# name - ``My Type`` - kept its
+/// spaces all the way into the filename and the href. `Anchor.slug` already collapses
+/// anything that is not an identifier character, so this reuses it and folds case.
 let private toSlug (name: string) =
-    let sanitized = name.ToLowerInvariant().Replace(".", "-")
-    // Strip F# generic arity suffix (e.g. Tree`1 -> tree)
-    // Use string ops rather than Regex so Fable/JS behaves identically to .NET.
-    let backtickIdx = sanitized.LastIndexOf("`")
-    if backtickIdx >= 0 then sanitized.Substring(0, backtickIdx) else sanitized
+    // The generic arity suffix FCS appends (Tree`1) goes first: collapsing punctuation
+    // before stripping it would leave `tree-1` behind.
+    let withoutArity =
+        let backtick = name.LastIndexOf('`')
+
+        if
+            backtick >= 0
+            && backtick < name.Length - 1
+            && name.Substring(backtick + 1) |> Seq.forall System.Char.IsDigit
+        then
+            name.Substring(0, backtick)
+        else
+            name
+
+    (Anchor.slug withoutArity).ToLowerInvariant()
 
 let private expandNamespaces (namespaces: string list) : string list =
     namespaces

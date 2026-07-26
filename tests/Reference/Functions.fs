@@ -78,6 +78,10 @@ let inline total< ^T when ^T: (static member (+): ^T * ^T -> ^T) and ^T: (static
     =
     List.fold (+) LanguagePrimitives.GenericZero items
 
+/// <summary>A function whose name contains spaces.</summary>
+/// <param name="value">Any value.</param>
+let ``function with spaces`` (value: int) = value
+
 // -- active patterns --------------------------------------------------------
 
 /// <summary>A single-case active pattern.</summary>

@@ -1,0 +1,40 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Type With Spaces"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "fields"
+    text: "Fields"
+  - depth: 3
+    slug: "Field-With-Spaces"
+    text: "Field With Spaces"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-types">Reference.Types</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Type With Spaces</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Field-With-Spaces">Field With Spaces</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-bracket">&#125;</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A type whose name contains spaces, so its slug cannot be its name.
+
+<h2 id="fields">Fields</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Field-With-Spaces">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property">Field With Spaces</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+
+A field whose name also contains spaces.
+
+</DocEntry>
+
+</div>
+

@@ -54,6 +54,9 @@ type Row(values: int list) =
     member _.Item
         with get (index: int) = List.item index values
 
+    /// <summary>A member whose name contains spaces.</summary>
+    member _.``Member With Spaces``() = ()
+
     /// <summary>Returns whichever argument is larger.</summary>
     /// <param name="first">The first value.</param>
     /// <param name="second">The second value.</param>

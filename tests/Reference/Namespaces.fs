@@ -34,3 +34,9 @@ module Parsing =
     /// <summary>Parses text into an identifier.</summary>
     /// <param name="text">The text to parse.</param>
     let parse (text: string) = { Value = text }
+
+/// <summary>A module whose name contains spaces.</summary>
+module ``Module With Spaces`` =
+
+    /// <summary>Does nothing in particular.</summary>
+    let noop () = ()

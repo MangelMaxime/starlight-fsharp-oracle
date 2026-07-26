@@ -9,7 +9,7 @@ open Documentation
 
 module Entries =
 
-    let renderUnionCaseEntry (links: LinkResolver) (sb: StringBuilder) (case: UnionCase) =
+    let renderUnionCaseEntry (links: LinkResolver) (anchor: string) (sb: StringBuilder) (case: UnionCase) =
         let renderFields () =
             let documentedFields = case.Fields |> List.filter (fun f -> f.XmlDoc.Summary.IsSome)
 
@@ -32,20 +32,20 @@ module Entries =
 
         renderDocEntry
             sb
-            case.Name
+            anchor
             ((Declarations.unionCaseDeclaration case).ToHtml(links))
             ObsoleteInfo.Active
             renderDocumentation
 
     /// Enum cases read `Name = 3` rather than `name : type`, but are otherwise
     /// rendered like record fields.
-    let renderField (links: LinkResolver) (isEnumCase: bool) (sb: StringBuilder) (field: Field) =
+    let renderField (links: LinkResolver) (isEnumCase: bool) (anchor: string) (sb: StringBuilder) (field: Field) =
         let renderDocumentation () =
             renderDocumentationBlock links sb field.XmlDoc ignore
 
         renderDocEntry
             sb
-            field.Name
+            anchor
             ((Declarations.fieldDeclaration isEnumCase field).ToHtml(links))
             ObsoleteInfo.Active
             renderDocumentation
