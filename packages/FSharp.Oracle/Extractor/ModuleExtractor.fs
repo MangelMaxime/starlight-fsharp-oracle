@@ -15,7 +15,10 @@ module internal ModuleExtractor =
             entity.MembersFunctionsAndValues
             |> Seq.filter (fun m -> not m.IsCompilerGenerated)
             |> Seq.toList
-            |> List.partition (fun m -> m.IsFunction)
+            // A binding with parameter groups is a function; anything else is a value,
+            // including `let f = fun x -> x`, which has a function type but no named
+            // parameters to tabulate.
+            |> List.partition (fun m -> not (Seq.isEmpty m.CurriedParameterGroups))
 
         let obsoleteInfo = obsoleteOfEntity entity
 

@@ -114,6 +114,12 @@ module internal Helpers =
 
         rank, mfv.DisplayName, mfv.XmlDocSig
 
+    /// `inline` is meaningless on an active pattern, and FCS reports them as inline.
+    let isInlineAnnotated (mfv: FSharpMemberOrFunctionOrValue) =
+        (mfv.InlineAnnotation = FSharpInlineAnnotation.AlwaysInline
+         || mfv.InlineAnnotation = FSharpInlineAnnotation.AggressiveInline)
+        && not mfv.IsActivePattern
+
     let obsoleteOf (mfv: FSharpMemberOrFunctionOrValue) : ObsoleteInfo =
         mfv.Attributes
         |> Seq.tryFind (fun a -> a.AttributeType.FullName = "System.ObsoleteAttribute")

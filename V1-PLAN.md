@@ -258,33 +258,41 @@ Ordered by how wrong the output is today.
 
 ### Wrong output
 
-- [ ] **Property setters.** `with get` is hardcoded at
-      `Extractor/MemberExtractor.fs:106-115` and again at
-      `Extractor/EntityExtractor.fs:111-120`. `HasGetterMethod`/`HasSetterMethod` are
-      never read, so every mutable property is documented as read-only.
-- [ ] **Overload anchors collide.** Only constructors are disambiguated
-      (`EntityExtractor.fs:246-272`). Two `Format` overloads both get `#Format`,
-      colliding in the TOC and in the type-header links.
-- [ ] **Undocumented parameters vanish.** `renderParamsAndReturns`
-      (`Render/Documentation.fs:52`) gates the whole Parameters block on
-      `xmlDoc.Params` being non-empty, so a function with no `<param>` tags shows no
-      parameter list at all.
-- [ ] **Type-level generic constraints dropped.** `typeHeadNodes`
-      (`EntityExtractor.fs:135`) emits `<'T>` only;
-      `type Tree<'T when 'T : comparison>` loses its constraint on the type page.
-- [ ] **`Function` vs `Value` split.** Partitioned on `IsFunction`
-      (`Extractor/ModuleExtractor.fs:23`), so `let f = fun x -> x` lands in Values
-      and loses its parameter table.
-- [ ] **Active patterns.** Land in "Functions" with the raw name `(|Integer|)` used
-      verbatim as an HTML `id` and URL fragment. Partial patterns show a raw
-      `Choice<...>`/`option` return type rather than pattern syntax. Needs its own
-      `MemberKind` and its own rendering - target format is
-      `tests/Reference/ActivePatterns.fsi` verbatim.
+- [x] **Property setters.** `Member` now carries `HasGetter`/`HasSetter`, and
+      properties render `with get`, `with set` or `with get, set`. Verified against
+      `User.DisplayName` and `User.IsActive` (both `get, set`) and `Counter.Count`
+      (`get` only).
+- [x] **Overload anchors collide.** Replaced the constructor-only hack with
+      `Anchor.assign`, which suffixes any repeat `-1`, `-2`. `Formatter` now anchors
+      `Format` and `Format-1`. The extractor no longer renames constructors: anchoring
+      is a page concern and lives in the renderer.
+- [x] **Undocumented parameters vanish.** Now gated on there being parameters, not on
+      there being parameter docs. Unnamed parameters - the `()` of `let timestamp ()` -
+      render as the type alone rather than as a headless `: unit`.
+- [x] **Type-level generic constraints dropped.** Entities carry their rendered
+      generic parameters, so the type head reads
+      `type SortedBag<'T when 'T : comparison>`. No fixture had a constrained generic
+      *type* (only constrained functions), so `SortedBag` was added to cover it.
+- [x] **`Function` vs `Value` split.** Now partitioned on having parameter groups
+      rather than on `IsFunction`, which is the question actually being asked: a
+      binding with no named parameters has no parameter table to lose, so `Value` is
+      the right home for it.
+- [x] **Active patterns.** They now get their own "Active Patterns" section rather
+      than sitting among ordinary functions, and anchor cleanly (`Integer`,
+      `Positive-Negative-Zero`).
+
+      Checking the formatting reference first was worth it: the *signatures* were
+      already right. `ActivePatterns.fsi` shows Fantomas writing
+      `val (|EvenInt|_|): str: string -> int option`, so the `option` return on a
+      partial pattern is correct, not the defect the plan assumed. Only the section
+      and the anchors needed work.
 - [ ] **Colon spacing.** `val name : type` today vs `val name: type` from Fantomas.
       Decide once, apply everywhere (`ValueExtractor.fs:78-79`, both member builders,
       field/case/parameter declarations), record in the decisions log.
-- [ ] **Anchors are not escaped** - `#(|Integer|)`, `#op_Addition`, names with spaces
-      go straight into `id=` and `href=`.
+- [x] **Anchors are not escaped.** `Anchor.slug` keeps identifier characters and
+      collapses the rest to `-`, dropping wildcard-only segments. Operators anchor on
+      their compiled name, since `(+)` cannot be a URL fragment: `(*)` -> `op_Multiply`,
+      `(|Positive|Negative|Zero|)` -> `Positive-Negative-Zero`.
 
 ### Missing information
 
@@ -304,7 +312,8 @@ Ordered by how wrong the output is today.
 - [ ] **Parameter modifiers.** `extractParameter`
       (`Extractor/ParameterExtractor.fs:8`) ignores `IsOptionalArg` (`?x`),
       `IsInArg`/`IsOutArg` (byref/inref/outref) and `[<ParamArray>]`.
-- [ ] **`inline` on members** (works for let-bound functions/values only).
+- [x] **`inline` on members.** Renders as `member inline Largest : ...`; fixture
+      added, since none existed.
 - [ ] **Events, indexed properties (`Item`), explicit interface implementations.**
 
 ### XML documentation
@@ -346,7 +355,17 @@ Ordered by how wrong the output is today.
 
 ---
 
-## Phase 6 - Ship
+## Phase 6 - Syntax highligthing
+
+- [ ] Make a pass on the code generation to improve syntax coloration. The goal is to have as good coloration as in IDE.
+
+    Either you are able to find the information yourself or you can perhaps use tree-sitter from https://github.com/MangelMaxime/tree-sitter-fsharp/ to request tokens color candidates for the differents type of constructions.
+
+    You can clone the repo in a temp folder, and use tree sitter queries to test the different construction we support.
+
+---
+
+## Phase 7 - Ship
 
 - [ ] **README `## Usage` currently says `TODO`.** Write a getting-started that
       actually works, plus a full option reference.

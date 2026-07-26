@@ -50,7 +50,9 @@ module Documentation =
         (parameters: Parameter list list)
         (xmlDoc: XmlDoc)
         =
-        if not xmlDoc.Params.IsEmpty then
+        // Listed whenever there are parameters: an undocumented parameter still
+        // needs to appear, or the reader cannot tell what the function takes.
+        if not (parameters |> List.collect id |> List.isEmpty) then
             sb.WriteLine("<strong>Parameters</strong>")
 
             for parameter in parameters |> List.collect id do

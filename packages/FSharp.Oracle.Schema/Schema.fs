@@ -105,6 +105,8 @@ type Function =
         GenericParameters: TextNode option
         IsInline: bool
         IsMutable: bool
+        /// `(|Integer|)`, `(|Even|_|)` and friends, which are documented separately.
+        IsActivePattern: bool
         XmlDoc: XmlDoc
         ObsoleteInfo: ObsoleteInfo
     }
@@ -138,6 +140,9 @@ type Member =
         Kind: MemberKind
         Name: string
         FullName: string
+        /// The .NET name, e.g. `op_Addition` for `(+)`. The display name of an operator
+        /// is not usable as a URL fragment, so the renderer anchors on this instead.
+        CompiledName: string
         /// Curried parameter groups. Each outer list is a curried group;
         /// each inner list holds the parameters within that group (tupled parameters).
         Parameters: Parameter list list
@@ -150,6 +155,10 @@ type Member =
         IsStatic: bool
         /// True for `abstract member` declarations (interface and abstract class members).
         IsAbstract: bool
+        IsInline: bool
+        /// Properties only. A property with neither is write-only.
+        HasGetter: bool
+        HasSetter: bool
         ObsoleteInfo: ObsoleteInfo
     }
 
@@ -183,8 +192,8 @@ type RecordEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        /// Generic parameter names, without tick or constraints, e.g. ["T"].
-        GenericParameters: string list
+        /// The type's generic parameters with constraints, e.g. `<'T when 'T : comparison>`.
+        GenericParameters: TextNode option
         Fields: Field list
         Members: Member list
         ObsoleteInfo: ObsoleteInfo
@@ -196,7 +205,7 @@ type UnionEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         Cases: UnionCase list
         Members: Member list
         ObsoleteInfo: ObsoleteInfo
@@ -208,7 +217,7 @@ type AbbrevEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         /// The abbreviated type (right-hand side only).
         AbbreviatedType: TextNode
         ObsoleteInfo: ObsoleteInfo
@@ -220,7 +229,7 @@ type ClassEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         Members: Member list
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
@@ -231,7 +240,7 @@ type InterfaceEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         Members: Member list
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
@@ -242,7 +251,7 @@ type EnumEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         Fields: Field list
         ObsoleteInfo: ObsoleteInfo
         IsStruct: bool
@@ -253,7 +262,7 @@ type MeasureEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         ObsoleteInfo: ObsoleteInfo
     }
 
@@ -271,7 +280,7 @@ type DelegateEntity =
         Name: string
         FullName: string
         XmlDoc: XmlDoc
-        GenericParameters: string list
+        GenericParameters: TextNode option
         /// Parameter types of the delegate's Invoke method.
         Parameters: TextNode list
         ReturnType: TextNode
@@ -326,7 +335,7 @@ type Entity =
         | Exception e -> e.XmlDoc
         | Delegate e -> e.XmlDoc
 
-    member this.GenericParameters =
+    member this.GenericParameters: TextNode option =
         match this with
         | Record e -> e.GenericParameters
         | Union e -> e.GenericParameters
@@ -336,7 +345,7 @@ type Entity =
         | Enum e -> e.GenericParameters
         | Measure e -> e.GenericParameters
         | Delegate e -> e.GenericParameters
-        | Exception _ -> []
+        | Exception _ -> None
 
     member this.ObsoleteInfo =
         match this with

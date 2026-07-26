@@ -9,12 +9,6 @@ open ParameterExtractor
 
 module internal ValueExtractor =
 
-    /// `inline` is meaningless on an active pattern, and FCS reports them as inline.
-    let private isInline (mfv: FSharpMemberOrFunctionOrValue) =
-        (mfv.InlineAnnotation = FSharpInlineAnnotation.AlwaysInline
-         || mfv.InlineAnnotation = FSharpInlineAnnotation.AggressiveInline)
-        && not mfv.IsActivePattern
-
     let extractFunction (docs: Map<string, string>) (mfv: FSharpMemberOrFunctionOrValue) : Function =
         {
             Name = mfv.DisplayName
@@ -22,8 +16,9 @@ module internal ValueExtractor =
             Parameters = curriedParams mfv
             ReturnType = renderFSharpType false mfv.ReturnParameter.Type
             GenericParameters = renderGenericParams mfv.GenericParameters
-            IsInline = isInline mfv
+            IsInline = isInlineAnnotated mfv
             IsMutable = mfv.IsMutable
+            IsActivePattern = mfv.IsActivePattern
             XmlDoc = xmlDocOf docs mfv.XmlDocSig
             ObsoleteInfo = obsoleteOf mfv
         }
@@ -34,7 +29,7 @@ module internal ValueExtractor =
             FullName = mfv.FullName
             Type = renderFSharpType true mfv.FullType
             GenericParameters = renderGenericParams mfv.GenericParameters
-            IsInline = isInline mfv
+            IsInline = isInlineAnnotated mfv
             IsMutable = mfv.IsMutable
             XmlDoc = xmlDocOf docs mfv.XmlDocSig
             ObsoleteInfo = obsoleteOf mfv

@@ -22,3 +22,59 @@ type LinkResolver =
             $"""<a href="{this.Href fullName}">{text}</a>"""
         else
             text
+
+/// Page-local anchors, which are a different problem from page URLs: they must be
+/// usable as an HTML id and a URL fragment, and unique within one page.
+module Anchor =
+
+    /// Keep identifier characters and collapse everything else into a separator, so
+    /// `(|Positive|Negative|Zero|)` anchors as `Positive-Negative-Zero` rather than
+    /// putting pipes and parentheses into an href. Segments that are only underscores
+    /// are dropped: they are the wildcard of a partial active pattern and add nothing.
+    /// String operations rather than a Regex, so Fable and .NET agree.
+    let slug (text: string) =
+        let parts = ResizeArray<string>()
+        let current = System.Text.StringBuilder()
+
+        let flush () =
+            if current.Length > 0 then
+                let segment = current.ToString()
+
+                if segment |> Seq.exists (fun c -> c <> '_') then
+                    parts.Add segment
+
+                current.Clear() |> ignore
+
+        for c in text do
+            if System.Char.IsLetterOrDigit c || c = '_' then
+                current.Append(c) |> ignore
+            else
+                flush ()
+
+        flush ()
+        String.concat "-" parts
+
+    /// Pair each item with an anchor, suffixing repeats `-1`, `-2`, ... This is what
+    /// keeps overloads apart: two `Format` methods anchor as `Format` and `Format-1`,
+    /// and it subsumes the old constructor-only special case.
+    let assign (slugOf: 'T -> string) (items: 'T list) : ('T * string) list =
+        items
+        |> List.mapFold
+            (fun (seen: Map<string, int>) item ->
+                let baseSlug =
+                    match slugOf item with
+                    | "" -> "item"
+                    | s -> s
+
+                let count = seen |> Map.tryFind baseSlug |> Option.defaultValue 0
+
+                let anchor =
+                    if count = 0 then
+                        baseSlug
+                    else
+                        $"{baseSlug}-{count}"
+
+                (item, anchor), Map.add baseSlug (count + 1) seen
+            )
+            Map.empty
+        |> fst

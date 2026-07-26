@@ -95,6 +95,28 @@ type User(id: int, name: string) =
         member _.Name = name
 
 // ---------------------------------------------------------------------------
+// Constrained generic type, and an inline member
+// ---------------------------------------------------------------------------
+
+/// <summary>
+/// A bag that keeps its contents sorted. The constraint is part of the type's
+/// signature, so it belongs in the rendered type head.
+/// </summary>
+type SortedBag<'T when 'T: comparison>(items: 'T list) =
+
+    /// <summary>The items, in ascending order.</summary>
+    member _.Items = List.sort items
+
+    /// <summary>The number of items.</summary>
+    member _.Count = List.length items
+
+    /// <summary>Returns whichever of two items sorts higher.</summary>
+    /// <param name="first">The first item.</param>
+    /// <param name="second">The second item.</param>
+    /// <returns>The larger of the two.</returns>
+    member inline _.Largest(first: 'T, second: 'T) = max first second
+
+// ---------------------------------------------------------------------------
 // Overloads
 // ---------------------------------------------------------------------------
 

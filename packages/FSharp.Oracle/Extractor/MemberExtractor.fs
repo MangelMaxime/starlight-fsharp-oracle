@@ -21,11 +21,15 @@ module internal MemberExtractor =
             Kind = memberKindOf mfv
             Name = name
             FullName = mfv.FullName
+            CompiledName = mfv.CompiledName
             Parameters = curriedParams mfv
             ReturnType = renderFSharpType false mfv.ReturnParameter.Type
             GenericParameters = renderGenericParams mfv.GenericParameters
             XmlDoc = xmlDocOf docs mfv.XmlDocSig
             IsStatic = mfv.IsModuleValueOrMember && not mfv.IsInstanceMember
             IsAbstract = mfv.IsDispatchSlot
+            IsInline = isInlineAnnotated mfv
+            HasGetter = mfv.HasGetterMethod
+            HasSetter = mfv.HasSetterMethod
             ObsoleteInfo = obsoleteOf mfv
         }

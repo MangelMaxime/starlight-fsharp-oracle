@@ -35,24 +35,33 @@ module Pages =
         (functions: Function list)
         (values: Value list)
         =
-        if not functions.IsEmpty then
-            h2 sb toc "functions" "Functions"
-            sb.WriteLine("<div class=\"collapsible-group\">")
+        // Active patterns are functions to the compiler but a different thing to a
+        // reader, so they get their own section rather than sitting among `map` and
+        // `filter`.
+        let patterns, plainFunctions = functions |> List.partition (fun f -> f.IsActivePattern)
 
-            for f in functions do
-                tocH3 toc f.Name f.Name
-                renderFunctionEntry links sb f
+        let functionSection (title: string) (slug: string) (items: Function list) =
+            if not items.IsEmpty then
+                h2 sb toc slug title
+                sb.WriteLine("<div class=\"collapsible-group\">")
 
-            sb.WriteLine("</div>")
-            sb.NewLine()
+                for f, anchor in Anchor.assign (fun (f: Function) -> Anchor.slug f.Name) items do
+                    tocH3 toc anchor f.Name
+                    renderFunctionEntry links anchor sb f
+
+                sb.WriteLine("</div>")
+                sb.NewLine()
+
+        functionSection "Functions" "functions" plainFunctions
+        functionSection "Active Patterns" "active-patterns" patterns
 
         if not values.IsEmpty then
             h2 sb toc "values" "Values"
             sb.WriteLine("<div class=\"collapsible-group\">")
 
-            for v in values do
-                tocH3 toc v.Name v.Name
-                renderValueEntry links sb v
+            for v, anchor in Anchor.assign (fun (v: Value) -> Anchor.slug v.Name) values do
+                tocH3 toc anchor v.Name
+                renderValueEntry links anchor sb v
 
             sb.WriteLine("</div>")
             sb.NewLine()

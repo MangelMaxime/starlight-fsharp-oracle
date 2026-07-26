@@ -28,24 +28,6 @@ module Declarations =
     // Generic parameters
     // -----------------------------------------------------------------------
 
-    /// `<'T, 'U>` for a type head. Constraints are not shown here - see the note in
-    /// V1-PLAN.md phase 4.
-    let genericParameterList (names: string list) : TextNode list =
-        if List.isEmpty names then
-            []
-        else
-            [
-                punct "<"
-                for i, name in List.indexed names do
-                    if i > 0 then
-                        punct ","
-                        TextNode.Space
-
-                    TextNode.Tick
-                    TextNode.Text name
-                punct ">"
-            ]
-
     /// The constraint clause of a generic parameter list, with the angle brackets and
     /// leading type variable stripped, e.g. ` when 'T : comparison`. Appended after a
     /// signature rather than before it.
@@ -91,14 +73,19 @@ module Declarations =
     /// `name : type`, with the name styled as a parameter. Used in the documentation
     /// block for each parameter and inside member signatures.
     let parameterDeclaration (p: Parameter) : TextNode =
-        TextNode.Node
-            [
-                TextNode.ParameterName p.Name
-                TextNode.Space
-                colon
-                TextNode.Space
-                p.Type
-            ]
+        // An unnamed parameter is the `()` of `let timestamp ()`. Writing ` : unit`
+        // with nothing before the colon reads as a mistake; the type alone does not.
+        if p.Name = "" then
+            p.Type
+        else
+            TextNode.Node
+                [
+                    TextNode.ParameterName p.Name
+                    TextNode.Space
+                    colon
+                    TextNode.Space
+                    p.Type
+                ]
 
     // -----------------------------------------------------------------------
     // Functions and values
@@ -195,6 +182,12 @@ module Declarations =
             | MemberKind.Property -> "property"
             | _ -> "member"
 
+        let inlineKeyword =
+            if m.IsInline then
+                [ keyword "inline"; TextNode.Space ]
+            else
+                []
+
         match m.Kind with
         | MemberKind.Constructor -> nameNode
         | _ ->
@@ -202,8 +195,23 @@ module Declarations =
                 yield! modifier
                 keyword noun
                 TextNode.Space
+                yield! inlineKeyword
                 yield! nameNode
             ]
+
+    /// ` with get, set`
+    let private accessors (names: string list) =
+        [
+            TextNode.Space
+            keyword "with"
+            TextNode.Space
+            for i, name in List.indexed names do
+                if i > 0 then
+                    punct ","
+                    TextNode.Space
+
+                keyword name
+        ]
 
     /// `: paramA -> paramB -> returnType`, or `: returnType` when there are none.
     let private memberTypeNodes (m: Member) (trailing: TextNode list) : TextNode list =
@@ -230,12 +238,13 @@ module Declarations =
             m.ReturnType
             yield! trailing
 
-            // Setters are not surfaced yet - see V1-PLAN.md phase 4.
             if m.Kind = MemberKind.Property then
-                TextNode.Space
-                keyword "with"
-                TextNode.Space
-                keyword "get"
+                match m.HasGetter, m.HasSetter with
+                | true, true -> yield! accessors [ "get"; "set" ]
+                | false, true -> yield! accessors [ "set" ]
+                // A property with neither accessor reported is still readable: FCS
+                // leaves both false for some abstract and interface properties.
+                | _ -> yield! accessors [ "get" ]
         ]
 
     /// A member as its own documented entry.
@@ -251,14 +260,26 @@ module Declarations =
                 yield! memberTypeNodes m [ constraintClause m.GenericParameters ]
             ]
 
+    /// The anchor slug of a member. Operators anchor on their compiled name, because
+    /// `(+)` cannot go into a URL fragment.
+    let memberSlug (m: Member) =
+        match m.Kind with
+        | MemberKind.Operator -> Anchor.slug m.CompiledName
+        | _ -> Anchor.slug m.Name
+
+    /// Members paired with their page-unique anchors. Both the type header and the
+    /// member sections derive anchors this way, from the same list in the same order,
+    /// so the header's links and the entries' ids always agree.
+    let anchoredMembers (members: Member list) = Anchor.assign memberSlug members
+
     /// A member as a line inside its type's header block, linking to its own entry.
-    let memberHeaderLine (m: Member) : TextNode list =
+    let memberHeaderLine (anchor: string) (m: Member) : TextNode list =
         let nameNode =
             match m.Kind with
             // Overloaded constructors all read `new` but anchor to new, new-1, ...
             | MemberKind.Constructor ->
-                [ TextNode.DeclarationName("new", m.Name, DeclarationRole.Constructor) ]
-            | _ -> [ TextNode.DeclarationName(m.Name, m.Name, DeclarationRole.Member) ]
+                [ TextNode.DeclarationName("new", anchor, DeclarationRole.Constructor) ]
+            | _ -> [ TextNode.DeclarationName(m.Name, anchor, DeclarationRole.Member) ]
 
         [
             TextNode.NewLine
@@ -342,12 +363,16 @@ module Declarations =
     // Entity headers
     // -----------------------------------------------------------------------
 
-    let private typeHead (name: string) (generics: string list) =
+    /// `type Name<'T when 'T : comparison>`. The constraints belong here: they are part
+    /// of how a caller must satisfy the type.
+    let private typeHead (name: string) (generics: TextNode option) =
         [
             keyword "type"
             TextNode.Space
             TextNode.Text name
-            yield! genericParameterList generics
+            match generics with
+            | Some nodes -> nodes
+            | None -> ()
         ]
 
     let private structAttribute (isStruct: bool) =
@@ -358,7 +383,8 @@ module Declarations =
         ]
 
     let private memberLines (members: Member list) =
-        members |> List.collect memberHeaderLine
+        anchoredMembers members
+        |> List.collect (fun (m, anchor) -> memberHeaderLine anchor m)
 
     /// The full declaration shown at the top of an entity's page.
     let entityDeclaration (entity: Entity) : TextNode =

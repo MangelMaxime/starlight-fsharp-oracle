@@ -6,79 +6,79 @@ headings:
     slug: "types"
     text: "Types"
   - depth: 2
-    slug: "functions"
-    text: "Functions"
+    slug: "active-patterns"
+    text: "Active Patterns"
   - depth: 3
-    slug: "(|Integer|)"
+    slug: "Integer"
     text: "(|Integer|)"
   - depth: 3
-    slug: "(|NormalizeSpaces|)"
+    slug: "NormalizeSpaces"
     text: "(|NormalizeSpaces|)"
   - depth: 3
-    slug: "(|Positive|Negative|Zero|)"
+    slug: "Positive-Negative-Zero"
     text: "(|Positive|Negative|Zero|)"
   - depth: 3
-    slug: "(|Weekday|Weekend|)"
+    slug: "Weekday-Weekend"
     text: "(|Weekday|Weekend|)"
   - depth: 3
-    slug: "(|Empty|Short|Medium|Long|)"
+    slug: "Empty-Short-Medium-Long"
     text: "(|Empty|Short|Medium|Long|)"
   - depth: 3
-    slug: "(|IsSome|IsNone|)"
+    slug: "IsSome-IsNone"
     text: "(|IsSome|IsNone|)"
   - depth: 3
-    slug: "(|Success|Failure|)"
+    slug: "Success-Failure"
     text: "(|Success|Failure|)"
   - depth: 3
-    slug: "(|EvenInt|_|)"
+    slug: "EvenInt"
     text: "(|EvenInt|_|)"
   - depth: 3
-    slug: "(|Prime|_|)"
+    slug: "Prime"
     text: "(|Prime|_|)"
   - depth: 3
-    slug: "(|Palindrome|_|)"
+    slug: "Palindrome"
     text: "(|Palindrome|_|)"
   - depth: 3
-    slug: "(|Email|_|)"
+    slug: "Email"
     text: "(|Email|_|)"
   - depth: 3
-    slug: "(|Url|_|)"
+    slug: "Url"
     text: "(|Url|_|)"
   - depth: 3
-    slug: "(|KeyValue|_|)"
+    slug: "KeyValue"
     text: "(|KeyValue|_|)"
   - depth: 3
-    slug: "(|DivisibleBy|_|)"
+    slug: "DivisibleBy"
     text: "(|DivisibleBy|_|)"
   - depth: 3
-    slug: "(|RegexMatch|_|)"
+    slug: "RegexMatch"
     text: "(|RegexMatch|_|)"
   - depth: 3
-    slug: "(|StartsWith|_|)"
+    slug: "StartsWith"
     text: "(|StartsWith|_|)"
   - depth: 3
-    slug: "(|EndsWith|_|)"
+    slug: "EndsWith"
     text: "(|EndsWith|_|)"
   - depth: 3
-    slug: "(|InRange|_|)"
+    slug: "InRange"
     text: "(|InRange|_|)"
   - depth: 3
-    slug: "(|Exactly|_|)"
+    slug: "Exactly"
     text: "(|Exactly|_|)"
   - depth: 3
-    slug: "(|IntegerString|FloatString|NotNumeric|)"
+    slug: "IntegerString-FloatString-NotNumeric"
     text: "(|IntegerString|FloatString|NotNumeric|)"
   - depth: 3
-    slug: "(|Single|Pair|Many|)"
+    slug: "Single-Pair-Many"
     text: "(|Single|Pair|Many|)"
   - depth: 3
-    slug: "(|EmptySeq|Singleton|Multiple|)"
+    slug: "EmptySeq-Singleton-Multiple"
     text: "(|EmptySeq|Singleton|Multiple|)"
   - depth: 3
-    slug: "(|Log|)"
+    slug: "Log"
     text: "(|Log|)"
   - depth: 3
-    slug: "(|Timed|)"
+    slug: "Timed"
     text: "(|Timed|)"
 ---
 
@@ -92,10 +92,10 @@ import { Aside } from '@astrojs/starlight/components';
 <dd>Decomposes a tree structure into cases.</dd>
 </dl>
 
-<h2 id="functions">Functions</h2>
+<h2 id="active-patterns">Active Patterns</h2>
 
 <div class="collapsible-group">
-<DocEntry name="(|Integer|)">
+<DocEntry name="Integer">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Integer|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Parses a string as an integer using a single-case active pattern.
@@ -116,7 +116,7 @@ The integer if parsing succeeds.
 
 </DocEntry>
 
-<DocEntry name="(|NormalizeSpaces|)">
+<DocEntry name="NormalizeSpaces">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|NormalizeSpaces|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
 
 Normalizes whitespace in a string.
@@ -137,7 +137,7 @@ The string with normalized whitespace.
 
 </DocEntry>
 
-<DocEntry name="(|Positive|Negative|Zero|)">
+<DocEntry name="Positive-Negative-Zero">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Positive|Negative|Zero|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Recognizes different shapes of numeric values.
@@ -158,7 +158,7 @@ The shape classification.
 
 </DocEntry>
 
-<DocEntry name="(|Weekday|Weekend|)">
+<DocEntry name="Weekday-Weekend">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Weekday|Weekend|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;date&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Classifies a day of the week.
@@ -179,7 +179,7 @@ Weekday or Weekend classification.
 
 </DocEntry>
 
-<DocEntry name="(|Empty|Short|Medium|Long|)">
+<DocEntry name="Empty-Short-Medium-Long">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Empty|Short|Medium|Long|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Analyzes string length.
@@ -200,7 +200,7 @@ Classification by length.
 
 </DocEntry>
 
-<DocEntry name="(|IsSome|IsNone|)">
+<DocEntry name="IsSome-IsNone">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IsSome|IsNone|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;opt&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Classifies an option value.
@@ -221,7 +221,7 @@ Some or None classification.
 
 </DocEntry>
 
-<DocEntry name="(|Success|Failure|)">
+<DocEntry name="Success-Failure">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Success|Failure|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;result&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Result</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E<span class="fsharp-doc-kw">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;E</div>
 
 Decomposes a result into success or failure.
@@ -242,7 +242,7 @@ Success or Failure classification.
 
 </DocEntry>
 
-<DocEntry name="(|EvenInt|_|)">
+<DocEntry name="EvenInt">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EvenInt|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Tries to parse a string as an even integer.
@@ -263,7 +263,7 @@ The even integer if successful.
 
 </DocEntry>
 
-<DocEntry name="(|Prime|_|)">
+<DocEntry name="Prime">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Prime|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Tries to parse a string as a prime number.
@@ -284,7 +284,7 @@ The prime number if successful.
 
 </DocEntry>
 
-<DocEntry name="(|Palindrome|_|)">
+<DocEntry name="Palindrome">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Palindrome|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes palindrome strings.
@@ -305,7 +305,7 @@ The palindrome if it is one.
 
 </DocEntry>
 
-<DocEntry name="(|Email|_|)">
+<DocEntry name="Email">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Email|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes valid email addresses (simplified).
@@ -326,7 +326,7 @@ The email if valid.
 
 </DocEntry>
 
-<DocEntry name="(|Url|_|)">
+<DocEntry name="Url">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Url|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Recognizes valid URL strings (simplified).
@@ -347,7 +347,7 @@ The URL if valid.
 
 </DocEntry>
 
-<DocEntry name="(|KeyValue|_|)">
+<DocEntry name="KeyValue">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|KeyValue|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Tries to extract a key-value pair from a string.
@@ -368,7 +368,7 @@ The key and value if the format matches.
 
 </DocEntry>
 
-<DocEntry name="(|DivisibleBy|_|)">
+<DocEntry name="DivisibleBy">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|DivisibleBy|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;divisor&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Checks if a number is divisible by a given divisor.
@@ -398,7 +398,7 @@ The quotient if divisible.
 
 </DocEntry>
 
-<DocEntry name="(|RegexMatch|_|)">
+<DocEntry name="RegexMatch">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|RegexMatch|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;pattern&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string matches a regex pattern.
@@ -428,7 +428,7 @@ The matched value if successful.
 
 </DocEntry>
 
-<DocEntry name="(|StartsWith|_|)">
+<DocEntry name="StartsWith">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|StartsWith|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;prefix&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string starts with a given prefix.
@@ -458,7 +458,7 @@ The remainder if it starts with the prefix.
 
 </DocEntry>
 
-<DocEntry name="(|EndsWith|_|)">
+<DocEntry name="EndsWith">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EndsWith|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;suffix&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string&nbsp;&zwnj;option</div>
 
 Checks if a string ends with a given suffix.
@@ -488,7 +488,7 @@ The prefix if it ends with the suffix.
 
 </DocEntry>
 
-<DocEntry name="(|InRange|_|)">
+<DocEntry name="InRange">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|InRange|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;min&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;max&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int&nbsp;&zwnj;option</div>
 
 Checks if a number is within a range.
@@ -527,7 +527,7 @@ The number if within range.
 
 </DocEntry>
 
-<DocEntry name="(|Exactly|_|)">
+<DocEntry name="Exactly">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Exactly|_|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;n&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;lst&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;list&nbsp;&zwnj;option</div>
 
 Checks if a list contains exactly N elements.
@@ -557,7 +557,7 @@ The list if it has exactly N elements.
 
 </DocEntry>
 
-<DocEntry name="(|IntegerString|FloatString|NotNumeric|)">
+<DocEntry name="IntegerString-FloatString-NotNumeric">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|IntegerString|FloatString|NotNumeric|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;str&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>int<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;float<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
 Recognizes different types of numeric strings.
@@ -578,12 +578,14 @@ Integer, Float, or NotNumeric classification.
 
 </DocEntry>
 
-<DocEntry name="(|Single|Pair|Many|)">
+<DocEntry name="Single-Pair-Many">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Single|Pair|Many|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;tree&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;unit<span class="fsharp-doc-kw">&gt;</span></div>
 
+<strong>Parameters</strong>
+<span class="fsharp-doc-typevar">tree</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-activepatterns-tree">Tree</a></span><span class="fsharp-doc-kw">&lt;</span>&#x27;T<span class="fsharp-doc-kw">&gt;</span>
 </DocEntry>
 
-<DocEntry name="(|EmptySeq|Singleton|Multiple|)">
+<DocEntry name="EmptySeq-Singleton-Multiple">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|EmptySeq|Singleton|Multiple|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;seq&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Choice</span><span class="fsharp-doc-kw">&lt;</span>unit<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;int<span class="fsharp-doc-kw">&gt;</span></div>
 
 Analyzes collection emptiness and size.
@@ -604,7 +606,7 @@ Empty, Singleton, or Multiple classification.
 
 </DocEntry>
 
-<DocEntry name="(|Log|)">
+<DocEntry name="Log">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Log|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;label&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;value&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T</div>
 
 Logs and returns the value (for debugging patterns).
@@ -634,7 +636,7 @@ The value unchanged.
 
 </DocEntry>
 
-<DocEntry name="(|Timed|)">
+<DocEntry name="Timed">
 <div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;(|Timed|)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;f&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>unit&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T<span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">&#42;</span>&nbsp;&zwnj;float</div>
 
 Times the execution of a function and returns the result with elapsed time.

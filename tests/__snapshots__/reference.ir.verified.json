@@ -53,7 +53,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Cases": [
                                     {
                                         "Name": "Debug",
@@ -148,7 +147,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Cases": [
                                     {
                                         "Name": "Celsius",
@@ -218,6 +216,7 @@
                                         "Kind": "Property",
                                         "Name": "AsCelsius",
                                         "FullName": "Reference.Coverage.Temperature.AsCelsius",
+                                        "CompiledName": "get_AsCelsius",
                                         "Parameters": [
                                             []
                                         ],
@@ -236,12 +235,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Freezing",
                                         "FullName": "Reference.Coverage.Temperature.Freezing",
+                                        "CompiledName": "get_Freezing",
                                         "Parameters": [
                                             []
                                         ],
@@ -261,6 +264,9 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -282,12 +288,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Property",
                                         "Name": "Name",
                                         "FullName": "Reference.Coverage.INamed.Name",
+                                        "CompiledName": "get_Name",
                                         "Parameters": [
                                             []
                                         ],
@@ -306,6 +312,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": true,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -327,12 +336,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Coverage.EntityBase",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
                                                 {
@@ -355,12 +364,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
                                         "FullName": "Reference.Coverage.EntityBase.Describe",
+                                        "CompiledName": "Describe",
                                         "Parameters": [
                                             []
                                         ],
@@ -379,12 +392,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": true,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Id",
                                         "FullName": "Reference.Coverage.EntityBase.Id",
+                                        "CompiledName": "get_Id",
                                         "Parameters": [
                                             []
                                         ],
@@ -403,6 +420,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -424,12 +444,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Coverage.User",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
                                                 {
@@ -459,12 +479,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
                                         "FullName": "Reference.Coverage.User.Describe",
+                                        "CompiledName": "Describe",
                                         "Parameters": [
                                             []
                                         ],
@@ -478,12 +502,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "DisplayName",
                                         "FullName": "Reference.Coverage.User.DisplayName",
+                                        "CompiledName": "get_DisplayName",
                                         "Parameters": [
                                             []
                                         ],
@@ -502,12 +530,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": true,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "IsActive",
                                         "FullName": "Reference.Coverage.User.IsActive",
+                                        "CompiledName": "get_IsActive",
                                         "Parameters": [
                                             []
                                         ],
@@ -526,6 +558,290 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": true,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "SortedBag",
+                                "FullName": "Reference.Coverage.SortedBag`1",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A bag that keeps its contents sorted. The constraint is part of the type's\n signature, so it belongs in the rendered type head."
+                                    },
+                                    "Params": [],
+                                    "Examples": []
+                                },
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            "Space",
+                                            [
+                                                "Keyword",
+                                                "when"
+                                            ],
+                                            "Space",
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            "Space",
+                                            [
+                                                "Punctuation",
+                                                ":"
+                                            ],
+                                            "Space",
+                                            [
+                                                "Keyword",
+                                                "comparison"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
+                                "Members": [
+                                    {
+                                        "Kind": "Constructor",
+                                        "Name": "new",
+                                        "FullName": "Reference.Coverage.SortedBag",
+                                        "CompiledName": ".ctor",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "items",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "Node",
+                                                                [
+                                                                    "Tick",
+                                                                    [
+                                                                        "Text",
+                                                                        "T"
+                                                                    ]
+                                                                ]
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Text",
+                                                                "list"
+                                                            ]
+                                                        ]
+                                                    ]
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "TypeRef",
+                                                    "SortedBag",
+                                                    "Reference.Coverage.SortedBag`1"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "<"
+                                                ],
+                                                [
+                                                    "Node",
+                                                    [
+                                                        "Tick",
+                                                        [
+                                                            "Text",
+                                                            "T"
+                                                        ]
+                                                    ]
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    ">"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "Largest",
+                                        "FullName": "Reference.Coverage.SortedBag.Largest",
+                                        "CompiledName": "Largest",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "first",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            "Tick",
+                                                            [
+                                                                "Text",
+                                                                "T"
+                                                            ]
+                                                        ]
+                                                    ]
+                                                },
+                                                {
+                                                    "Name": "second",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            "Tick",
+                                                            [
+                                                                "Text",
+                                                                "T"
+                                                            ]
+                                                        ]
+                                                    ]
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                "Tick",
+                                                [
+                                                    "Text",
+                                                    "T"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Returns whichever of two items sorts higher."
+                                            },
+                                            "Returns": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The larger of the two."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "first",
+                                                    "Doc": "The first item."
+                                                },
+                                                {
+                                                    "Name": "second",
+                                                    "Doc": "The second item."
+                                                }
+                                            ],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": true,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Count",
+                                        "FullName": "Reference.Coverage.SortedBag.Count",
+                                        "CompiledName": "get_Count",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The number of items."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Items",
+                                        "FullName": "Reference.Coverage.SortedBag.Items",
+                                        "CompiledName": "get_Items",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Node",
+                                                    [
+                                                        "Tick",
+                                                        [
+                                                            "Text",
+                                                            "T"
+                                                        ]
+                                                    ]
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Text",
+                                                    "list"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The items, in ascending order."
+                                            },
+                                            "Params": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -547,12 +863,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Coverage.Formatter",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
@@ -567,12 +883,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Format",
                                         "FullName": "Reference.Coverage.Formatter.Format",
+                                        "CompiledName": "Format",
                                         "Parameters": [
                                             [
                                                 {
@@ -620,12 +940,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Format",
                                         "FullName": "Reference.Coverage.Formatter.Format",
+                                        "CompiledName": "Format",
                                         "Parameters": [
                                             [
                                                 {
@@ -662,6 +986,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -683,12 +1010,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Coverage.Parser",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
@@ -703,12 +1030,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Parse",
                                         "FullName": "Reference.Coverage.Parser.Parse",
+                                        "CompiledName": "Parse",
                                         "Parameters": [
                                             [
                                                 {
@@ -766,12 +1097,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "TryParse",
                                         "FullName": "Reference.Coverage.Parser.TryParse",
+                                        "CompiledName": "TryParse",
                                         "Parameters": [
                                             [
                                                 {
@@ -836,6 +1171,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -919,6 +1257,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -1097,6 +1436,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -1196,7 +1536,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1214,7 +1553,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1232,7 +1570,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1250,7 +1587,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -1280,6 +1616,7 @@
                                         "Kind": "Method",
                                         "Name": "Translate",
                                         "FullName": "Reference.MissingSyntaxes.StructPoint.Translate",
+                                        "CompiledName": "Translate",
                                         "Parameters": [
                                             [
                                                 {
@@ -1314,12 +1651,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "DistanceFromOrigin",
                                         "FullName": "Reference.MissingSyntaxes.StructPoint.DistanceFromOrigin",
+                                        "CompiledName": "get_DistanceFromOrigin",
                                         "Parameters": [
                                             []
                                         ],
@@ -1338,6 +1679,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -1359,9 +1703,28 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Cases": [
                                     {
                                         "Name": "StructSome",
@@ -1490,7 +1853,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Parameters": [
                                     [
                                         "Text",
@@ -1518,9 +1880,28 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Parameters": [
                                     [
                                         "Node",
@@ -1625,6 +2006,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -1703,6 +2085,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -1883,6 +2266,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -1970,6 +2354,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2020,9 +2405,28 @@
                                     ],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Cases": [
                                     {
                                         "Name": "Empty",
@@ -2178,6 +2582,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2219,6 +2624,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2296,6 +2702,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2365,6 +2772,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2451,6 +2859,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2563,6 +2972,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2714,6 +3124,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2765,6 +3176,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2816,6 +3228,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2867,6 +3280,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2918,6 +3332,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -2969,6 +3384,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3035,6 +3451,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3095,6 +3512,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3159,6 +3577,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3223,6 +3642,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3287,6 +3707,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3358,6 +3779,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3480,6 +3902,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3561,6 +3984,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3717,6 +4141,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Params": [],
                                 "Examples": []
@@ -3823,6 +4248,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -3907,6 +4333,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4024,6 +4451,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": true,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4133,6 +4561,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4221,6 +4650,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4261,9 +4691,28 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Fields": [
                                     {
                                         "Name": "Value",
@@ -4307,10 +4756,38 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T",
-                                    "E"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ","
+                                            ],
+                                            "Space",
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "E"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Cases": [
                                     {
                                         "Name": "Success",
@@ -4386,9 +4863,28 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Cases": [
                                     {
                                         "Name": "Leaf",
@@ -4517,9 +5013,28 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Fields": [
                                     {
                                         "Name": "Items",
@@ -4633,6 +5148,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4726,6 +5242,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4891,6 +5408,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -4988,6 +5506,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5153,6 +5672,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5244,6 +5764,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5358,6 +5879,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5610,6 +6132,7 @@
                             },
                             "IsInline": true,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5751,6 +6274,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5864,6 +6388,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -5964,6 +6489,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6097,6 +6623,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6202,6 +6729,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6323,6 +6851,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6419,6 +6948,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6584,6 +7114,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6717,6 +7248,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6820,6 +7352,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -6924,6 +7457,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7023,6 +7557,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7156,6 +7691,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7293,6 +7829,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7392,6 +7929,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7477,6 +8015,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7571,6 +8110,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7762,6 +8302,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -7945,6 +8486,7 @@
                             },
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8040,12 +8582,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
                                         "FullName": "Reference.Objects.IDescribable.Describe",
+                                        "CompiledName": "Describe",
                                         "Parameters": [
                                             []
                                         ],
@@ -8069,12 +8611,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": true,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Label",
                                         "FullName": "Reference.Objects.IDescribable.Label",
+                                        "CompiledName": "get_Label",
                                         "Parameters": [
                                             []
                                         ],
@@ -8093,6 +8639,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": true,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -8114,12 +8663,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Objects.Counter",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
@@ -8139,12 +8688,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Constructor",
-                                        "Name": "new-1",
+                                        "Name": "new",
                                         "FullName": "Reference.Objects.Counter",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
                                                 {
@@ -8167,12 +8720,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Format",
                                         "FullName": "Reference.Objects.Counter.Format",
+                                        "CompiledName": "Format",
                                         "Parameters": [
                                             []
                                         ],
@@ -8196,12 +8753,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Increment",
                                         "FullName": "Reference.Objects.Counter.Increment",
+                                        "CompiledName": "Increment",
                                         "Parameters": [
                                             []
                                         ],
@@ -8220,12 +8781,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "IncrementBy",
                                         "FullName": "Reference.Objects.Counter.IncrementBy",
+                                        "CompiledName": "IncrementBy",
                                         "Parameters": [
                                             [
                                                 {
@@ -8257,12 +8822,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Count",
                                         "FullName": "Reference.Objects.Counter.Count",
+                                        "CompiledName": "get_Count",
                                         "Parameters": [
                                             []
                                         ],
@@ -8281,12 +8850,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Label",
                                         "FullName": "Reference.Objects.Counter.Label",
+                                        "CompiledName": "get_Label",
                                         "Parameters": [
                                             []
                                         ],
@@ -8305,12 +8878,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Global",
                                         "FullName": "Reference.Objects.Counter.Global",
+                                        "CompiledName": "get_Global",
                                         "Parameters": [
                                             []
                                         ],
@@ -8330,6 +8907,9 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -8351,12 +8931,12 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Objects.Vector2D",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
                                                 {
@@ -8386,12 +8966,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "X",
                                         "FullName": "Reference.Objects.Vector2D.X",
+                                        "CompiledName": "get_X",
                                         "Parameters": [
                                             []
                                         ],
@@ -8410,12 +8994,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Y",
                                         "FullName": "Reference.Objects.Vector2D.Y",
+                                        "CompiledName": "get_Y",
                                         "Parameters": [
                                             []
                                         ],
@@ -8434,12 +9022,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Operator",
                                         "Name": "(*)",
                                         "FullName": "Reference.Objects.Vector2D.(*)",
+                                        "CompiledName": "op_Multiply",
                                         "Parameters": [
                                             [
                                                 {
@@ -8484,12 +9076,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Operator",
                                         "Name": "(+)",
                                         "FullName": "Reference.Objects.Vector2D.(+)",
+                                        "CompiledName": "op_Addition",
                                         "Parameters": [
                                             [
                                                 {
@@ -8535,12 +9131,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Operator",
                                         "Name": "(-)",
                                         "FullName": "Reference.Objects.Vector2D.(-)",
+                                        "CompiledName": "op_Subtraction",
                                         "Parameters": [
                                             [
                                                 {
@@ -8586,6 +9186,9 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -8645,6 +9248,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8688,6 +9292,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8759,6 +9364,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8817,6 +9423,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8858,6 +9465,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8930,6 +9538,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -8990,6 +9599,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9073,7 +9683,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Cases": [
                                     {
                                         "Name": "Circle",
@@ -9204,7 +9813,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "Width",
@@ -9267,6 +9875,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9312,6 +9921,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9364,6 +9974,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9428,6 +10039,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9508,7 +10120,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "Name",
@@ -9563,6 +10174,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9597,6 +10209,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9635,6 +10248,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9683,6 +10297,7 @@
                             ],
                             "IsInline": false,
                             "IsMutable": false,
+                            "IsActivePattern": false,
                             "XmlDoc": {
                                 "Summary": {
                                     "$type": "option",
@@ -9773,7 +10388,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "Clean",
@@ -9860,14 +10474,34 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [
-                                    "T"
-                                ],
+                                "GenericParameters": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Node",
+                                        [
+                                            [
+                                                "Punctuation",
+                                                "<"
+                                            ],
+                                            "Tick",
+                                            [
+                                                "Text",
+                                                "T"
+                                            ],
+                                            [
+                                                "Punctuation",
+                                                ">"
+                                            ]
+                                        ]
+                                    ]
+                                },
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
                                         "FullName": "Reference.Reactive.Var",
+                                        "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
                                                 {
@@ -9919,12 +10553,16 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Value",
                                         "FullName": "Reference.Reactive.Var.Value",
+                                        "CompiledName": "get_Value",
                                         "Parameters": [
                                             []
                                         ],
@@ -9949,6 +10587,9 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],
@@ -9981,7 +10622,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "AbbreviatedType": [
                                     "Text",
                                     "float"
@@ -10004,7 +10644,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -10058,7 +10697,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "TopLeft",
@@ -10114,7 +10752,6 @@
                                     "Params": [],
                                     "Examples": []
                                 },
-                                "GenericParameters": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -10154,6 +10791,7 @@
                                         "Kind": "Method",
                                         "Name": "Add",
                                         "FullName": "Reference.Geometry.Vector.Add",
+                                        "CompiledName": "Add",
                                         "Parameters": [
                                             [
                                                 {
@@ -10192,12 +10830,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Method",
                                         "Name": "Scale",
                                         "FullName": "Reference.Geometry.Vector.Scale",
+                                        "CompiledName": "Scale",
                                         "Parameters": [
                                             [
                                                 {
@@ -10235,12 +10877,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Length",
                                         "FullName": "Reference.Geometry.Vector.Length",
+                                        "CompiledName": "get_Length",
                                         "Parameters": [
                                             []
                                         ],
@@ -10259,12 +10905,16 @@
                                         },
                                         "IsStatic": false,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     },
                                     {
                                         "Kind": "Property",
                                         "Name": "Zero",
                                         "FullName": "Reference.Geometry.Vector.Zero",
+                                        "CompiledName": "get_Zero",
                                         "Parameters": [
                                             []
                                         ],
@@ -10284,6 +10934,9 @@
                                         },
                                         "IsStatic": true,
                                         "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
                                         "ObsoleteInfo": "Active"
                                     }
                                 ],

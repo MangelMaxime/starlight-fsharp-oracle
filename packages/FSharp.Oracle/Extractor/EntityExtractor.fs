@@ -9,10 +9,10 @@ open MemberExtractor
 
 module internal EntityExtractor =
 
-    let private genericParameterNames (entity: FSharpEntity) =
-        entity.GenericParameters |> Seq.map (fun gp -> gp.DisplayName) |> Seq.toList
+    let private genericParametersOf (entity: FSharpEntity) =
+        renderGenericParams entity.GenericParameters
 
-    let extractField (docs: Map<string, string>) (field: FSharpField) : Field =
+    let private extractField (docs: Map<string, string>) (field: FSharpField) : Field =
         {
             Name = field.Name
             Type = renderFSharpType false field.FieldType
@@ -20,7 +20,7 @@ module internal EntityExtractor =
             XmlDoc = xmlDocOf docs field.XmlDocSig
         }
 
-    let extractUnionCase (docs: Map<string, string>) (uc: FSharpUnionCase) : UnionCase =
+    let private extractUnionCase (docs: Map<string, string>) (uc: FSharpUnionCase) : UnionCase =
         {
             Name = uc.Name
             FullName = uc.FullName
@@ -28,54 +28,28 @@ module internal EntityExtractor =
             XmlDoc = xmlDocOf docs uc.XmlDocSig
         }
 
-    /// Members of an entity, filtered, deterministically ordered, and with overloaded
-    /// constructors given distinct anchor names.
+    /// Members of an entity, filtered and deterministically ordered.
+    /// Anchors (including disambiguating overloads) are the renderer's job.
     let private extractMembers (docs: Map<string, string>) (entity: FSharpEntity) =
-        let members =
-            entity.MembersFunctionsAndValues
-            |> Seq.filter (fun m ->
-                not m.IsCompilerGenerated
-                && not (entity.IsFSharpUnion && m.IsUnionCaseTester)
-                && not m.IsPropertyGetterMethod
-                && not m.IsPropertySetterMethod
-            )
-            // Sort the symbols, not the extracted members: the key needs XmlDocSig
-            // to separate overloads deterministically.
-            |> Seq.sortBy memberSortKey
-            |> Seq.map (extractMember docs)
-            |> Seq.toList
-
-        // When there are multiple constructors they all start as Name = "new".
-        // Assign unique anchor ids: first stays "new", subsequent get "new-1", "new-2", ...
-        let constructorCount =
-            members |> List.filter (fun m -> m.Kind = MemberKind.Constructor) |> List.length
-
-        if constructorCount <= 1 then
-            members
-        else
-            members
-            |> List.mapFold
-                (fun index m ->
-                    if m.Kind = MemberKind.Constructor then
-                        let name =
-                            if index = 0 then
-                                "new"
-                            else
-                                $"new-{index}"
-
-                        { m with Name = name }, index + 1
-                    else
-                        m, index
-                )
-                0
-            |> fst
+        entity.MembersFunctionsAndValues
+        |> Seq.filter (fun m ->
+            not m.IsCompilerGenerated
+            && not (entity.IsFSharpUnion && m.IsUnionCaseTester)
+            && not m.IsPropertyGetterMethod
+            && not m.IsPropertySetterMethod
+        )
+        // Sort the symbols, not the extracted members: the key needs XmlDocSig
+        // to separate overloads deterministically.
+        |> Seq.sortBy memberSortKey
+        |> Seq.map (extractMember docs)
+        |> Seq.toList
 
     let extractEntity (docs: Map<string, string>) (entity: FSharpEntity) : Entity =
         let name = entity.DisplayName
         let fullName = safeFullName entity
         let xmlDoc = xmlDocOf docs entity.XmlDocSig
         let obsoleteInfo = obsoleteOfEntity entity
-        let generics = genericParameterNames entity
+        let generics = genericParametersOf entity
         let isStruct = isStruct entity
 
         if isMeasure entity then
