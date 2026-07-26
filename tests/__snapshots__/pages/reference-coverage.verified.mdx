@@ -3,6 +3,9 @@ layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
 title: "Reference.Coverage"
 headings:
   - depth: 2
+    slug: "declared-modules"
+    text: "Declared Modules"
+  - depth: 2
     slug: "types"
     text: "Types"
   - depth: 2
@@ -31,6 +34,13 @@ headings:
 import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
 import { Aside } from '@astrojs/starlight/components';
 
+<h2 id="declared-modules">Declared Modules</h2>
+
+<dl>
+<dt><a href="/api/reference-coverage-stringextensions">StringExtensions</a></dt>
+<dd>Adds members to a type declared elsewhere.</dd>
+</dl>
+
 <h2 id="types">Types</h2>
 
 <dl>
@@ -52,6 +62,10 @@ import { Aside } from '@astrojs/starlight/components';
 <dd>Parses text into numbers.</dd>
 <dt><a href="/api/reference-coverage-tally">Tally</a></dt>
 <dd>A counter whose value can be read and written.</dd>
+<dt><a href="/api/reference-coverage-ticker">Ticker</a></dt>
+<dd>Raises an event on each tick.</dd>
+<dt><a href="/api/reference-coverage-row">Row</a></dt>
+<dd>A row of values addressable by index.</dd>
 </dl>
 
 <h2 id="functions">Functions</h2>

@@ -94,6 +94,7 @@ let extractAssembly
                     Entities = entities |> Seq.map (extractEntity docs) |> Seq.toList
                     Functions = []
                     Values = []
+                    ExtensionMembers = []
                     IsSynthetic = true
                     ObsoleteInfo = ObsoleteInfo.Active
                 }

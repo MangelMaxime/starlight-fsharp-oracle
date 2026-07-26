@@ -127,6 +127,7 @@ module Pages =
         (entity: Entity)
         (parentModule: Module)
         (companionModule: Module option)
+        (extensions: (string * Member) list)
         : RenderedPage
         =
 
@@ -185,6 +186,8 @@ module Pages =
         | Entity.Measure _
         | Entity.Delegate _ -> ()
 
+        renderExtensionMembers links sb toc extensions
+
         // A generic type (e.g. `Var<'T>`) and its companion module (`Var`) share a
         // URL slug. Rather than let one page overwrite the other, fold the module's
         // functions and values into this type page so nothing is lost.
@@ -240,6 +243,7 @@ module Pages =
         (links: LinkResolver)
         (m: Module)
         (subModules: Module list)
+        (orphanExtensions: (string * Member) list)
         : RenderedPage
         =
 
@@ -250,6 +254,7 @@ module Pages =
         renderDeclaredModules links sb toc subModules
         renderTypeList links sb toc m.Entities
         renderFunctionsAndValues links sb toc m.Functions m.Values
+        renderExtensionMembers links sb toc orphanExtensions
 
         {
             Title = m.FullName

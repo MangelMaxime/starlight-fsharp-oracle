@@ -83,7 +83,35 @@ module Entries =
         section "Constructors" "constructors" (ofKind MemberKind.Constructor)
         section "Properties" "properties" (ofKind MemberKind.Property)
         section "Methods" "methods" (ofKind MemberKind.Method)
+        section "Events" "events" (ofKind MemberKind.Event)
         section "Operators" "operators" (ofKind MemberKind.Operator)
+
+    /// Members another module adds to this type. Grouped separately because a reader
+    /// needs to know they come from elsewhere and require that module in scope.
+    let renderExtensionMembers
+        (links: LinkResolver)
+        (sb: StringBuilder)
+        (toc: ResizeArray<TocEntry>)
+        (extensions: (string * Member) list)
+        =
+        if not extensions.IsEmpty then
+            h2 sb toc "extension-members" "Extension Members"
+            sb.WriteLine("<div class=\"collapsible-group\">")
+
+            let anchored =
+                extensions
+                |> List.map snd
+                |> Declarations.anchoredMembers
+                |> List.map2 (fun (source, _) (m, anchor) -> source, m, anchor) extensions
+
+            for source, m, anchor in anchored do
+                tocH3 toc anchor m.Name
+                renderMemberEntry links anchor sb m
+                sb.WriteLine($"<p><em>Declared in {source}</em></p>")
+                sb.NewLine()
+
+            sb.WriteLine("</div>")
+            sb.NewLine()
 
     let renderFunctionEntry (links: LinkResolver) (anchor: string) (sb: StringBuilder) (f: Function) =
         renderDocEntry

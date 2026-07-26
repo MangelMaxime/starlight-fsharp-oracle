@@ -31,12 +31,32 @@ module internal EntityExtractor =
     /// Members of an entity, filtered and deterministically ordered.
     /// Anchors (including disambiguating overloads) are the renderer's job.
     let private extractMembers (docs: Map<string, string>) (entity: FSharpEntity) =
+        // A `[<CLIEvent>]` member also surfaces as add_X/remove_X methods. Documenting
+        // those alongside the event itself triples it. Matched on the event's display
+        // name: its logical name is `get_Tick`, while the accessors are `add_Tick` and
+        // `remove_Tick`.
+        let eventNames =
+            entity.MembersFunctionsAndValues
+            |> Seq.filter isEventProperty
+            |> Seq.map (fun m -> m.DisplayName)
+            |> Set.ofSeq
+
+        let isEventAccessor (m: FSharpMemberOrFunctionOrValue) =
+            m.IsEventAddMethod
+            || m.IsEventRemoveMethod
+            || [ "add_"; "remove_" ]
+               |> List.exists (fun prefix ->
+                   m.LogicalName.StartsWith prefix
+                   && Set.contains (m.LogicalName.Substring prefix.Length) eventNames
+               )
+
         entity.MembersFunctionsAndValues
         |> Seq.filter (fun m ->
             not m.IsCompilerGenerated
             && not (entity.IsFSharpUnion && m.IsUnionCaseTester)
             && not m.IsPropertyGetterMethod
             && not m.IsPropertySetterMethod
+            && not (isEventAccessor m)
         )
         // Sort the symbols, not the extracted members: the key needs XmlDocSig
         // to separate overloads deterministically.

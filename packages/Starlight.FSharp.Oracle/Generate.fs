@@ -157,6 +157,16 @@ let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string
         toMdxPage (Render.renderNamespacePage links ns subNamespaces entitiesInNs modulesInNs)
     )
 
+/// Extension members targeting a given type, labelled with the module that declares
+/// them. A reader has to know which module to open for them to be in scope.
+let private extensionsFor (modules: Module list) (fullName: string) =
+    [
+        for m in modules do
+            for extension in m.ExtensionMembers do
+                if extension.ExtendedType = fullName then
+                    m.FullName, extension.Member
+    ]
+
 let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
     let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
 
@@ -165,7 +175,14 @@ let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * 
         let subModules =
             realModules |> List.filter (fun other -> other.Namespace = m.FullName)
 
-        toSlug m.FullName, toMdxPage (Render.renderModulePage links m subModules)
+        // Extensions whose target has no page would otherwise vanish, so they stay
+        // with the module that declares them.
+        let orphans =
+            m.ExtensionMembers
+            |> List.filter (fun e -> not (links.IsDocumented e.ExtendedType))
+            |> List.map (fun e -> e.ExtendedTypeName, e.Member)
+
+        toSlug m.FullName, toMdxPage (Render.renderModulePage links m subModules orphans)
     )
 
 let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
@@ -184,7 +201,10 @@ let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * 
     [
         for m in modules do
             for e in m.Entities do
-                toSlug e.FullName, toMdxPage (Render.renderEntityPage links e m (companionOf e m))
+                toSlug e.FullName,
+                toMdxPage (
+                    Render.renderEntityPage links e m (companionOf e m) (extensionsFor modules e.FullName)
+                )
     ]
 
 /// Slugs of modules whose page is merged into a same-slug entity page.

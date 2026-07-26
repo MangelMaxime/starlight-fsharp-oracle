@@ -16,6 +16,10 @@
                     "FullName": "Reference"
                 },
                 {
+                    "Name": "Coverage",
+                    "FullName": "Reference.Coverage"
+                },
+                {
                     "Name": "Geometry",
                     "FullName": "Reference.Geometry"
                 },
@@ -1448,6 +1452,284 @@
                                 "ObsoleteInfo": "Active",
                                 "IsStruct": false
                             }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "Ticker",
+                                "FullName": "Reference.Coverage.Ticker",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "Raises an event on each tick."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Constructor",
+                                        "Name": "new",
+                                        "FullName": "Reference.Coverage.Ticker",
+                                        "CompiledName": ".ctor",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "Ticker",
+                                            "Reference.Coverage.Ticker"
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "Advance",
+                                        "FullName": "Reference.Coverage.Ticker.Advance",
+                                        "CompiledName": "Advance",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "unit"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Advances the ticker by one."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Event",
+                                        "Name": "Tick",
+                                        "FullName": "Reference.Coverage.Ticker.Tick",
+                                        "CompiledName": "get_Tick",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Text",
+                                                    "IEvent"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "<"
+                                                ],
+                                                [
+                                                    "Text",
+                                                    "int"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    ">"
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Raised once per advance, carrying the new count."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "Row",
+                                "FullName": "Reference.Coverage.Row",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A row of values addressable by index."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Constructor",
+                                        "Name": "new",
+                                        "FullName": "Reference.Coverage.Row",
+                                        "CompiledName": ".ctor",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "values",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "Text",
+                                                                "int"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Text",
+                                                                "list"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "Row",
+                                            "Reference.Coverage.Row"
+                                        ],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Item",
+                                        "FullName": "Reference.Coverage.Row.Item",
+                                        "CompiledName": "get_Item",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "index",
+                                                    "Type": [
+                                                        "Text",
+                                                        "int"
+                                                    ],
+                                                    "IsOptional": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The value at the given position."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "index",
+                                                    "Doc": "The zero-based position."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Length",
+                                        "FullName": "Reference.Coverage.Row.Length",
+                                        "CompiledName": "get_Length",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Text",
+                                            "int"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "How many values the row holds."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
                         ]
                     ],
                     "Functions": [
@@ -1828,6 +2110,68 @@
                                 "Examples": []
                             },
                             "ObsoleteInfo": "Active"
+                        }
+                    ],
+                    "ExtensionMembers": [],
+                    "IsSynthetic": false,
+                    "ObsoleteInfo": "Active"
+                },
+                {
+                    "Name": "StringExtensions",
+                    "FullName": "Reference.Coverage.StringExtensions",
+                    "Namespace": "Reference.Coverage",
+                    "XmlDoc": {
+                        "$type": "option",
+                        "$case": "some",
+                        "$value": "Adds members to a type declared elsewhere."
+                    },
+                    "Entities": [],
+                    "Functions": [],
+                    "Values": [],
+                    "ExtensionMembers": [
+                        {
+                            "ExtendedType": "System.String",
+                            "ExtendedTypeName": "String",
+                            "Member": {
+                                "Kind": "Method",
+                                "Name": "Shout",
+                                "FullName": "Reference.Coverage.StringExtensions.Shout",
+                                "CompiledName": "String.Shout",
+                                "Parameters": [
+                                    [
+                                        {
+                                            "Name": "",
+                                            "Type": [
+                                                "Text",
+                                                "unit"
+                                            ],
+                                            "IsOptional": false
+                                        }
+                                    ]
+                                ],
+                                "ReturnType": [
+                                    "Text",
+                                    "string"
+                                ],
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "Returns the string in upper case, with an exclamation mark."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "IsStatic": false,
+                                "IsAbstract": false,
+                                "IsInline": false,
+                                "HasGetter": false,
+                                "HasSetter": false,
+                                "ObsoleteInfo": "Active"
+                            }
                         }
                     ],
                     "IsSynthetic": false,
@@ -2777,6 +3121,7 @@
                         }
                     ],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -4866,6 +5211,7 @@
                         }
                     ],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -5019,6 +5365,7 @@
                         }
                     ],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -8710,6 +9057,7 @@
                             "ObsoleteInfo": "Active"
                         }
                     ],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -9427,6 +9775,7 @@
                     ],
                     "Functions": [],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -9442,6 +9791,7 @@
                     "Entities": [],
                     "Functions": [],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -9549,6 +9899,7 @@
                         }
                     ],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -9732,6 +10083,7 @@
                         }
                     ],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -9913,6 +10265,7 @@
                             "ObsoleteInfo": "Active"
                         }
                     ],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -10414,6 +10767,7 @@
                             "ObsoleteInfo": "Active"
                         }
                     ],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -10684,6 +11038,7 @@
                             "ObsoleteInfo": "Active"
                         }
                     ],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": "Active"
                 },
@@ -10718,6 +11073,7 @@
                             "ObsoleteInfo": "Active"
                         }
                     ],
+                    "ExtensionMembers": [],
                     "IsSynthetic": false,
                     "ObsoleteInfo": [
                         "DeprecatedWithMessage",
@@ -10980,6 +11336,7 @@
                     ],
                     "Functions": [],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": true,
                     "ObsoleteInfo": "Active"
                 },
@@ -11378,6 +11735,7 @@
                     ],
                     "Functions": [],
                     "Values": [],
+                    "ExtensionMembers": [],
                     "IsSynthetic": true,
                     "ObsoleteInfo": "Active"
                 }

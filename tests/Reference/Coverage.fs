@@ -200,6 +200,45 @@ type Tally() =
     /// </summary>
     member _.Record() = total <- total + 1
 
+// ---------------------------------------------------------------------------
+// Events and indexed properties
+// ---------------------------------------------------------------------------
+
+/// <summary>Raises an event on each tick.</summary>
+type Ticker() =
+
+    let tick = Event<int>()
+
+    /// <summary>Raised once per advance, carrying the new count.</summary>
+    [<CLIEvent>]
+    member _.Tick = tick.Publish
+
+    /// <summary>Advances the ticker by one.</summary>
+    member _.Advance() = tick.Trigger 1
+
+/// <summary>A row of values addressable by index.</summary>
+type Row(values: int list) =
+
+    /// <summary>The value at the given position.</summary>
+    /// <param name="index">The zero-based position.</param>
+    member _.Item
+        with get (index: int) = List.item index values
+
+    /// <summary>How many values the row holds.</summary>
+    member _.Length = List.length values
+
+// ---------------------------------------------------------------------------
+// Optional type extension, i.e. one declared away from the type it extends
+// ---------------------------------------------------------------------------
+
+/// <summary>Adds members to a type declared elsewhere.</summary>
+module StringExtensions =
+
+    type System.String with
+
+        /// <summary>Returns the string in upper case, with an exclamation mark.</summary>
+        member this.Shout() = this.ToUpper() + "!"
+
 /// <summary>Combines two values using a supplied function.</summary>
 /// <typeparam name="T">The input type.</typeparam>
 /// <typeparam name="U">The result type.</typeparam>

@@ -85,9 +85,31 @@ module internal Helpers =
            | Some fullName -> Set.contains fullName postfixTypeNames
            | None -> false
 
+    /// A `[<CLIEvent>]` member surfaces as a property returning `IEvent<_>` plus a
+    /// pair of add_/remove_ methods. FCS does not flag any of them as an event here,
+    /// so the return type is what identifies it.
+    let isEventProperty (mfv: FSharpMemberOrFunctionOrValue) =
+        mfv.IsProperty
+        && (let returnType = mfv.ReturnParameter.Type
+
+            returnType.HasTypeDefinition
+            && (let td = returnType.TypeDefinition
+
+                // `IEvent<'T>` is an abbreviation, and FullName throws for those, so
+                // the display name has to be checked too - the same trap as `obj`.
+                td.DisplayName = "IEvent"
+                || td.DisplayName = "IDelegateEvent"
+                || (match tryGetFullName td with
+                    | Some fullName ->
+                        fullName.StartsWith "Microsoft.FSharp.Control.IEvent"
+                        || fullName.StartsWith "Microsoft.FSharp.Control.IDelegateEvent"
+                    | None -> false)))
+
     let memberKindOf (mfv: FSharpMemberOrFunctionOrValue) =
         if mfv.IsConstructor then
             MemberKind.Constructor
+        elif mfv.IsEvent || isEventProperty mfv then
+            MemberKind.Event
         elif mfv.IsProperty then
             MemberKind.Property
         elif mfv.LogicalName.StartsWith("op_") && not mfv.IsActivePattern then
@@ -110,7 +132,8 @@ module internal Helpers =
             | MemberKind.Property, false -> 2
             | MemberKind.Method, true -> 3
             | MemberKind.Property, true -> 4
-            | MemberKind.Operator, _ -> 5
+            | MemberKind.Event, _ -> 5
+            | MemberKind.Operator, _ -> 6
 
         rank, mfv.DisplayName, mfv.XmlDocSig
 

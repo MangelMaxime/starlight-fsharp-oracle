@@ -211,6 +211,7 @@ module Declarations =
         let noun =
             match m.Kind with
             | MemberKind.Property -> "property"
+            | MemberKind.Event -> "event"
             | _ -> "member"
 
         let inlineKeyword =

@@ -363,16 +363,40 @@ pages showed them. Fixed.
 - [x] **Literal values.** `val MaxRetries : int = 3`, and
       `val DefaultGreeting : string = "hello"` - strings quoted and chars ticked, since
       an unquoted literal reads as an identifier.
-- [ ] **Type extensions / extension members.** `type Foo with ...` and `[<Extension>]`
-      methods are extracted as ordinary module functions and never attached to the
-      extended type.
+- [x] **Type extensions / extension members.** The premise was only half right.
+      *Intrinsic* extensions - `type StructPoint with ...` in the same file - already
+      arrived as members of the extended type; FCS attaches them itself. Only
+      *optional* extensions, declared in another module, landed among that module's
+      functions.
+
+      Those are now extracted as `Module.ExtensionMembers`, carrying the extended
+      type, and rendered in an "Extension Members" section on the extended type's page
+      when it has one, labelled with the module that declares them - a reader needs to
+      know what to open for them to be in scope. When the extended type has no page
+      (`System.String`), they stay on the declaring module's page rather than vanish.
 - [x] **Parameter modifiers.** Optional parameters render `?fallback : int` rather
       than `fallback : int option`, the option being what the `?` means. byref already
       rendered correctly (`result : byref<int>`). `[<ParamArray>]` is still not marked;
       no fixture covers it.
 - [x] **`inline` on members.** Renders as `member inline Largest : ...`; fixture
       added, since none existed.
-- [ ] **Events, indexed properties (`Item`), explicit interface implementations.**
+- [x] **Events.** A `[<CLIEvent>]` member produced *three* entries: the event plus its
+      `add_X`/`remove_X` accessors, all as plain methods. Events now have their own
+      `MemberKind` and section and render as `event Tick : IEvent<int>`, with the
+      accessors filtered out.
+
+      Two traps here, both worth remembering: FCS does not report these via `IsEvent`,
+      so detection is by `IEvent<_>` return type - and `IEvent<'T>` is a type
+      abbreviation, so `FullName` throws and a full-name-only check silently fails, the
+      same way `inherit obj` slipped through. And the event's *logical* name is
+      `get_Tick` while its accessors are `add_Tick`/`remove_Tick`, so matching has to be
+      on the display name.
+- [x] **Indexed properties** already render correctly: `property Item : index : int ->
+      int with get`. Fixture added to keep it that way.
+- [ ] **Explicit interface implementations** are still not listed. They are currently
+      omitted entirely rather than mislabelled, which is defensible - the `interface
+      INamed` line already states the type implements it, and the members are reachable
+      only through that interface. Left as a deliberate omission rather than a fix.
 
 ### Found while fixing: tupled parameters rendered as curried
 
@@ -510,6 +534,8 @@ Record choices made during the run so later phases do not relitigate them.
 | 4 | Colon spacing | Attached to the name, except in the aligned parameter block where padding forms a colon column. Alignment driven by parameter names only |
 | 4 | Layout as a plugin option? | No. 66 of 75 functions were affected, so this is the default's problem, not a preference. An option costs two layouts, two snapshot sets, and permanent API |
 | 4 | Long signatures | Break the constraint clause at `when`/`and`, and scroll rather than wrap |
+| 4 | Extension members placement | On the extended type's page when it has one, labelled with the declaring module; on the module's page otherwise |
+| 4 | Explicit interface implementations | Omitted, not listed. The `interface` line already states it, and they are reachable only through the interface |
 | 4 | `<inheritdoc>` | Out for v1: needs cross-assembly base-member resolution, and nothing uses it |
 | 4 | `<see cref>` transport | Extractor emits a `fsharp-doc:` markdown link; the renderer resolves it. Keeps the IR free of URLs while still recording what was referenced |
 | 5 | Slug collision disambiguation policy | _tbd_ |

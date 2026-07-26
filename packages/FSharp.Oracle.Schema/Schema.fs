@@ -154,6 +154,7 @@ type MemberKind =
     | Property
     | Constructor
     | Operator
+    | Event
 
 type Member =
     {
@@ -193,6 +194,18 @@ type Field =
         /// Set for enum cases, whose declaration reads `Name = value`.
         LiteralValue: string option
         XmlDoc: XmlDoc
+    }
+
+/// A member added to a type declared elsewhere, e.g. `type System.String with ...`.
+/// It belongs to the extended type as far as a caller is concerned, but it is declared
+/// in a module, so it has to be carried separately.
+type ExtensionMember =
+    {
+        /// Fully-qualified name of the extended type.
+        ExtendedType: string
+        /// Display name of the extended type, for when it has no page to link to.
+        ExtendedTypeName: string
+        Member: Member
     }
 
 type UnionCase =
@@ -446,6 +459,8 @@ type Module =
         Entities: Entity list
         Functions: Function list
         Values: Value list
+        /// Members this module adds to types declared elsewhere.
+        ExtensionMembers: ExtensionMember list
         /// True for synthetic modules that carry bare namespace-level types.
         /// The plugin generates individual entity pages from these rather than a
         /// module page, so these have no page of their own.
