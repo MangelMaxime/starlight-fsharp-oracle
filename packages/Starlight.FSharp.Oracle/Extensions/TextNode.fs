@@ -32,14 +32,26 @@ let private indentWidth = 4
 /// rendering - and copying - as a single space.
 let private space = "&nbsp;&zwnj;"
 
-/// Punctuation that HTML or MDX would otherwise eat. `*` in particular would pair
-/// with a `*` from a neighbouring token and become emphasis.
-let private escapePunctuation =
+/// Punctuation, already escaped for HTML and MDX. Exhaustive on purpose: a new symbol
+/// cannot be added without deciding here whether it needs escaping. `*` in particular
+/// would otherwise pair with a `*` from a neighbouring token and become emphasis.
+let private symbolText =
     function
-    | "<" -> "&lt;"
-    | ">" -> "&gt;"
-    | "*" -> "&#42;"
-    | other -> other
+    | Symbol.Colon -> ":"
+    | Symbol.Arrow -> "->"
+    | Symbol.SubtypeOf -> ":>"
+    | Symbol.Equals -> "="
+    | Symbol.Comma -> ","
+    | Symbol.Semicolon -> ";"
+    | Symbol.Star -> "&#42;"
+    | Symbol.Bar -> "|"
+    | Symbol.Question -> "?"
+    | Symbol.LessThan -> "&lt;"
+    | Symbol.GreaterThan -> "&gt;"
+    | Symbol.LeftParen -> "("
+    | Symbol.RightParen -> ")"
+    | Symbol.LeftBrace -> "{"
+    | Symbol.RightBrace -> "}"
 
 let private anchored (href: string) (text: string) = $"""<a href="{href}">{text}</a>"""
 
@@ -51,7 +63,7 @@ type TextNode with
     member this.ToHtml(links: LinkResolver) : string =
         match this with
         | TextNode.Text s -> escapeText s
-        | TextNode.Punctuation s -> wrapInKeyword (escapePunctuation s)
+        | TextNode.Punctuation symbol -> wrapInKeyword (symbolText symbol)
         | TextNode.Keyword text -> wrapInKeyword text
         | TextNode.Tick -> "&#x27;"
         | TextNode.Space -> space

@@ -58,6 +58,121 @@ type DeclarationRole =
     /// A constructor, written `new`.
     | Constructor
 
+/// Punctuation that can appear in a signature.
+///
+/// A closed set rather than a string, because the renderer has to decide something per
+/// symbol - `<` and `*` need escaping in HTML, most do not - and a string leaves that
+/// decision to a lookup that silently passes anything it does not recognise.
+[<RequireQualifiedAccess>]
+type Symbol =
+    | Colon
+    | Arrow
+    /// `:>`, the subtype-of constraint.
+    | SubtypeOf
+    | Equals
+    | Comma
+    | Semicolon
+    /// `*`, separating tuple elements.
+    | Star
+    /// `|`, before a union case or a choice constraint.
+    | Bar
+    /// `?`, marking an optional parameter.
+    | Question
+    | LessThan
+    | GreaterThan
+    | LeftParen
+    | RightParen
+    | LeftBrace
+    | RightBrace
+
+/// The keywords this generator emits.
+///
+/// Literals rather than a union: every keyword renders identically, so a union would be
+/// two dozen cases feeding one branch. The literals still give typo safety at the
+/// construction sites, and work as patterns if anything ever needs to match one.
+[<RequireQualifiedAccess>]
+module Keyword =
+    [<Literal>]
+    let Abstract = "abstract"
+
+    [<Literal>]
+    let And = "and"
+
+    [<Literal>]
+    let Delegate = "delegate"
+
+    [<Literal>]
+    let Enum = "enum"
+
+    [<Literal>]
+    let Equality = "equality"
+
+    [<Literal>]
+    let Event = "event"
+
+    [<Literal>]
+    let Exception = "exception"
+
+    [<Literal>]
+    let Get = "get"
+
+    [<Literal>]
+    let Inherit = "inherit"
+
+    [<Literal>]
+    let Inline = "inline"
+
+    [<Literal>]
+    let Interface = "interface"
+
+    [<Literal>]
+    let Member = "member"
+
+    [<Literal>]
+    let Mutable = "mutable"
+
+    [<Literal>]
+    let New = "new"
+
+    [<Literal>]
+    let Not = "not"
+
+    [<Literal>]
+    let Null = "null"
+
+    [<Literal>]
+    let Of = "of"
+
+    [<Literal>]
+    let Property = "property"
+
+    [<Literal>]
+    let Set = "set"
+
+    [<Literal>]
+    let Static = "static"
+
+    [<Literal>]
+    let Struct = "struct"
+
+    [<Literal>]
+    let Type = "type"
+
+    [<Literal>]
+    let Unmanaged = "unmanaged"
+
+    [<Literal>]
+    let Val = "val"
+
+    [<Literal>]
+    let When = "when"
+
+    [<Literal>]
+    let With = "with"
+
+    [<Literal>]
+    let Comparison = "comparison"
+
 /// A token stream describing a signature.
 ///
 /// Deliberately free of presentation: no HTML, no URLs, no space counts. The renderer
@@ -77,8 +192,8 @@ type TextNode =
     | ParameterName of string
     /// An F# keyword, e.g. "val", "type", "member".
     | Keyword of string
-    /// Punctuation, e.g. ":", "->", "*", "<". Escaping is the renderer's problem.
-    | Punctuation of string
+    /// Punctuation. Escaping is the renderer's problem.
+    | Punctuation of Symbol
     /// The apostrophe introducing a type variable.
     | Tick
     /// An attribute written above a declaration, e.g. "[<Struct>]".
@@ -105,6 +220,8 @@ type Parameter =
         /// `?name` in F#. The type is the unwrapped one: F# writes `?x: int`, not
         /// `?x: int option`.
         IsOptional: bool
+        /// True for the `()` of a no-argument member.
+        IsUnit: bool
     }
 
 // ---------------------------------------------------------------------------
@@ -119,8 +236,10 @@ type Function =
         /// each inner list holds the parameters within that group (tupled parameters).
         Parameters: Parameter list list
         ReturnType: TextNode
-        /// The constraint clause alone, e.g. `when 'T : comparison`.
-        Constraints: TextNode option
+        /// One entry per constraint, e.g. `'T : comparison`. A list rather than one
+        /// clause so the renderer can lay them out - inline or a line each - without
+        /// having to find the `and`s by matching on token text.
+        Constraints: TextNode list
         IsInline: bool
         IsMutable: bool
         /// `(|Integer|)`, `(|Even|_|)` and friends, which are documented separately.
@@ -136,8 +255,10 @@ type Value =
         Type: TextNode
         /// Set for `[<Literal>]` bindings, whose value is part of their contract.
         LiteralValue: string option
-        /// The constraint clause alone, e.g. `when 'T : comparison`.
-        Constraints: TextNode option
+        /// One entry per constraint, e.g. `'T : comparison`. A list rather than one
+        /// clause so the renderer can lay them out - inline or a line each - without
+        /// having to find the `and`s by matching on token text.
+        Constraints: TextNode list
         IsInline: bool
         IsMutable: bool
         XmlDoc: XmlDoc
@@ -170,8 +291,10 @@ type Member =
         /// The return type of the member (property type, method return type, or
         /// constructed type for constructors).
         ReturnType: TextNode
-        /// The constraint clause alone, e.g. `when 'T : comparison`.
-        Constraints: TextNode option
+        /// One entry per constraint, e.g. `'T : comparison`. A list rather than one
+        /// clause so the renderer can lay them out - inline or a line each - without
+        /// having to find the `and`s by matching on token text.
+        Constraints: TextNode list
         XmlDoc: XmlDoc
         IsStatic: bool
         /// True for `abstract member` declarations (interface and abstract class members).

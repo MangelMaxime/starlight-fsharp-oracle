@@ -5,6 +5,12 @@ open FSharp.Oracle.Schema
 open SignatureRendering
 
 module internal ParameterExtractor =
+    /// True for the `()` of a no-argument member. Asked of the FCS type rather than of
+    /// the rendered token: recovering meaning by matching rendered output breaks the
+    /// moment the rendering changes.
+    let private isUnit (typ: FSharpType) =
+        typ.HasTypeDefinition && typ.TypeDefinition.DisplayName = "unit"
+
     let extractParameter (param: FSharpParameter) : Parameter =
         // An optional parameter's type is reported as `int option`, but F# source
         // writes `?x: int` - the option is what the `?` means.
@@ -18,6 +24,7 @@ module internal ParameterExtractor =
             Name = param.DisplayName
             Type = renderFSharpType false declaredType
             IsOptional = param.IsOptionalArg
+            IsUnit = isUnit param.Type
         }
 
     let curriedParams (mfv: FSharpMemberOrFunctionOrValue) =
@@ -28,14 +35,5 @@ module internal ParameterExtractor =
         // no-arg getters (e.g. `member _.Zero`). For real functions and methods
         // (e.g. `let timestamp ()`) the unit group is explicit and must be kept.
         |> List.filter (fun group ->
-            not (
-                mfv.IsProperty
-                && group.Length = 1
-                && (
-                    match group.[0].Type with
-                    | TextNode.TypeRef(name, _) -> name = "unit"
-                    | TextNode.Text "unit" -> true
-                    | _ -> false
-                )
-            )
+            not (mfv.IsProperty && group.Length = 1 && group.[0].IsUnit)
         )

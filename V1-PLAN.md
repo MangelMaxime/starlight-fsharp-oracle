@@ -455,6 +455,32 @@ The formatting reference settles it: `ActivePatterns.fsi` has both forms side by
 
 ---
 
+## Token vocabulary (done before phase 5)
+
+Prompted by spotting `| TextNode.Keyword "and" ->` in the renderer: a layout decision
+driven by matching a string literal, which fails silently on a typo.
+
+- [x] **`Punctuation of Symbol`.** A closed union of 15 symbols. The renderer decides
+      something per symbol - `<`, `>` and `*` need escaping, the rest do not - and the
+      old string lookup passed anything it did not recognise through unescaped. The
+      match is now exhaustive, so a new symbol cannot be added without saying how it
+      escapes. It also resolved the inconsistency where `|`, `;` and `:>` were sometimes
+      `Keyword` and sometimes `Text` depending on the file.
+- [x] **Keywords stay strings, with `[<Literal>]` constants.** Every keyword renders
+      identically, so a union would be two dozen cases feeding one branch. The literals
+      give typo safety at the construction sites and still work as patterns.
+- [x] **Deleted the pattern match rather than making it safer.** `Constraints` is now a
+      list with one entry per constraint, so the renderer lays them out structurally and
+      never looks for the `and`s in token text.
+- [x] Same fix for the other content-sensitive match: `Parameter.IsUnit` is decided from
+      the FCS type instead of matching `TextNode.Text "unit"` in the rendered output.
+- [x] Normalized compound keywords. `"val inline"`, `"static member"` and `"not null"`
+      are separate tokens now, and `" of"` no longer carries a literal leading space
+      inside its own span - which MDX could strip, mashing `Error of` into `Errorof`.
+      That was a live bug, visible in the snapshot diff.
+
+Zero content-sensitive matches on tokens remain.
+
 ## Phase 5 - Robustness
 
 - [ ] **Slug collisions are silent.** `toSlug` lowercases and strips generic arity,

@@ -9,11 +9,11 @@ open FSharp.Oracle.Schema
 /// extractor so the IR stays a description of the API rather than of this website.
 module Declarations =
 
-    let private punct s = TextNode.Punctuation s
-    let private colon = punct ":"
-    let private arrow = punct "->"
-    let private equals = punct "="
-    let private star = punct "*"
+    let private punct symbol = TextNode.Punctuation symbol
+    let private colon = punct Symbol.Colon
+    let private arrow = punct Symbol.Arrow
+    let private equals = punct Symbol.Equals
+    let private star = punct Symbol.Star
 
     let private keyword k = TextNode.Keyword k
 
@@ -29,41 +29,41 @@ module Declarations =
     // -----------------------------------------------------------------------
 
     /// The clause on one line, appended after a signature: ` when 'T : comparison`.
-    let constraintClause (constraints: TextNode option) : TextNode =
-        match constraints with
-        | Some clause -> TextNode.Node [ TextNode.Space; clause ]
-        | None -> TextNode.Node []
+    let constraintClause (constraints: TextNode list) : TextNode =
+        TextNode.Node
+            [
+                for i, constraint' in List.indexed constraints do
+                    TextNode.Space
 
-    /// The clause broken across lines at each `and`, indented to `column`.
+                    if i = 0 then
+                        keyword Keyword.When
+                    else
+                        keyword Keyword.And
+
+                    TextNode.Space
+                    constraint'
+            ]
+
+    /// The clause with one constraint per line, indented to `column`.
     ///
     /// SRTP constraints are long - the widest line in the reference fixture was a
     /// 110-character constraint, not a type - and a wrapped line restarts at column 0,
     /// which destroys the alignment. Breaking where F# would breaks it deliberately.
-    let constraintLines (column: int) (constraints: TextNode option) : TextNode list =
-        match constraints with
-        | None -> []
-        | Some(TextNode.Node nodes) ->
-            [
+    let constraintLines (column: int) (constraints: TextNode list) : TextNode list =
+        [
+            for i, constraint' in List.indexed constraints do
                 TextNode.NewLine
                 TextNode.Indent 1
                 padding column
 
-                for node in nodes do
-                    match node with
-                    | TextNode.Keyword "and" ->
-                        TextNode.NewLine
-                        TextNode.Indent 1
-                        padding column
-                        node
-                    | node -> node
-            ]
-        | Some clause ->
-            [
-                TextNode.NewLine
-                TextNode.Indent 1
-                padding column
-                clause
-            ]
+                if i = 0 then
+                    keyword Keyword.When
+                else
+                    keyword Keyword.And
+
+                TextNode.Space
+                constraint'
+        ]
 
     // -----------------------------------------------------------------------
     // Parameters
@@ -80,7 +80,7 @@ module Declarations =
             TextNode.Node
                 [
                     if p.IsOptional then
-                        punct "?"
+                        punct Symbol.Question
 
                     TextNode.ParameterName p.Name
                     colon
@@ -104,10 +104,19 @@ module Declarations =
     // Functions and values
     // -----------------------------------------------------------------------
 
+    /// `val`, `val inline`, `val mutable` - as separate tokens, so no keyword smuggles
+    /// a space inside its own span.
     let private valKeyword (isInline: bool) (isMutable: bool) =
-        if isInline then "val inline"
-        elif isMutable then "val mutable"
-        else "val"
+        [
+            keyword Keyword.Val
+
+            if isInline then
+                TextNode.Space
+                keyword Keyword.Inline
+            elif isMutable then
+                TextNode.Space
+                keyword Keyword.Mutable
+        ]
 
     /// A function signature laid out over several lines with the colons in one column:
     ///
@@ -134,7 +143,7 @@ module Declarations =
 
         TextNode.Node
             [
-                keyword (valKeyword f.IsInline f.IsMutable)
+                yield! valKeyword f.IsInline f.IsMutable
                 TextNode.Space
                 TextNode.Text f.Name
                 colon
@@ -147,7 +156,7 @@ module Declarations =
                     // The common case: one parameter per curried group, colon aligned.
                     | [ p ] ->
                         if p.IsOptional then
-                            punct "?"
+                            punct Symbol.Question
 
                         TextNode.Text p.Name
                         padding (column - p.Name.Length)
@@ -176,7 +185,7 @@ module Declarations =
     let valueDeclaration (v: Value) : TextNode =
         TextNode.Node
             [
-                keyword (valKeyword v.IsInline v.IsMutable)
+                yield! valKeyword v.IsInline v.IsMutable
                 TextNode.Space
                 TextNode.Text v.Name
                 colon
@@ -202,9 +211,9 @@ module Declarations =
     let private memberPrefix (m: Member) (nameNode: TextNode list) : TextNode list =
         let modifier =
             if m.Kind = MemberKind.Operator || m.IsStatic then
-                [ keyword "static"; TextNode.Space ]
+                [ keyword Keyword.Static; TextNode.Space ]
             elif m.IsAbstract then
-                [ keyword "abstract"; TextNode.Space ]
+                [ keyword Keyword.Abstract; TextNode.Space ]
             else
                 []
 
@@ -216,7 +225,7 @@ module Declarations =
 
         let inlineKeyword =
             if m.IsInline then
-                [ keyword "inline"; TextNode.Space ]
+                [ keyword Keyword.Inline; TextNode.Space ]
             else
                 []
 
@@ -235,11 +244,11 @@ module Declarations =
     let private accessors (names: string list) =
         [
             TextNode.Space
-            keyword "with"
+            keyword Keyword.With
             TextNode.Space
             for i, name in List.indexed names do
                 if i > 0 then
-                    punct ","
+                    punct Symbol.Comma
                     TextNode.Space
 
                 keyword name
@@ -285,7 +294,7 @@ module Declarations =
     let memberDeclaration (m: Member) : TextNode =
         let nameNode =
             match m.Kind with
-            | MemberKind.Constructor -> [ keyword "new" ]
+            | MemberKind.Constructor -> [ keyword Keyword.New ]
             | _ -> [ TextNode.Text m.Name ]
 
         TextNode.Node
@@ -375,11 +384,12 @@ module Declarations =
     let unionCaseDeclaration (case: UnionCase) : TextNode =
         TextNode.Node
             [
-                keyword "|"
+                punct Symbol.Bar
                 TextNode.Space
                 TextNode.Text case.Name
                 if not case.Fields.IsEmpty then
-                    keyword " of"
+                    TextNode.Space
+                    keyword Keyword.Of
                     TextNode.Space
                     yield! payloadFields case.Fields
             ]
@@ -392,7 +402,7 @@ module Declarations =
     /// of how a caller must satisfy the type.
     let private typeHead (name: string) (generics: TextNode option) =
         [
-            keyword "type"
+            keyword Keyword.Type
             TextNode.Space
             TextNode.Text name
             match generics with
@@ -420,7 +430,7 @@ module Declarations =
             | Some node ->
                 TextNode.NewLine
                 TextNode.Indent 1
-                keyword "inherit"
+                keyword Keyword.Inherit
                 TextNode.Space
                 node
             | None -> ()
@@ -428,7 +438,7 @@ module Declarations =
             for node in interfaces do
                 TextNode.NewLine
                 TextNode.Indent 1
-                keyword "interface"
+                keyword Keyword.Interface
                 TextNode.Space
                 node
         ]
@@ -442,11 +452,11 @@ module Declarations =
     let extensionDeclaration (extendedTypeName: string) (members: Member list) : TextNode =
         TextNode.Node
             [
-                keyword "type"
+                keyword Keyword.Type
                 TextNode.Space
                 TextNode.Text extendedTypeName
                 TextNode.Space
-                keyword "with"
+                keyword Keyword.With
                 yield! memberLines members
             ]
 
@@ -466,7 +476,7 @@ module Declarations =
             TextNode.Node
                 [
                     yield! attributeLines e.Attributes false
-                    keyword "exception"
+                    keyword Keyword.Exception
                     TextNode.Space
                     TextNode.Text e.Name
                     if not e.Fields.IsEmpty then
@@ -483,9 +493,9 @@ module Declarations =
                     TextNode.Space
                     equals
                     TextNode.Space
-                    keyword "delegate"
+                    keyword Keyword.Delegate
                     TextNode.Space
-                    keyword "of"
+                    keyword Keyword.Of
                     TextNode.Space
                     yield!
                         e.Parameters
@@ -516,7 +526,7 @@ module Declarations =
                     for case in e.Cases do
                         TextNode.NewLine
                         TextNode.Indent 1
-                        keyword "|"
+                        punct Symbol.Bar
                         TextNode.Space
                         TextNode.DeclarationName(case.Name, case.Name, DeclarationRole.UnionCase)
 
@@ -538,7 +548,7 @@ module Declarations =
                     equals
                     TextNode.NewLine
                     TextNode.Indent 1
-                    punct "{"
+                    punct Symbol.LeftBrace
 
                     for f in e.Fields do
                         TextNode.NewLine
@@ -550,7 +560,7 @@ module Declarations =
 
                     TextNode.NewLine
                     TextNode.Indent 1
-                    punct "}"
+                    punct Symbol.RightBrace
 
                     yield! supertypeLines None e.Interfaces
                     yield! memberLines e.Members
@@ -567,7 +577,7 @@ module Declarations =
                     for f in e.Fields do
                         TextNode.NewLine
                         TextNode.Indent 1
-                        keyword "|"
+                        punct Symbol.Bar
                         TextNode.Space
                         TextNode.DeclarationName(f.Name, f.Name, DeclarationRole.Member)
 

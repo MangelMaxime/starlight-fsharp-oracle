@@ -8,15 +8,14 @@ open Helpers
 /// These are semantic tokens only - no links, no layout. See `TextNode`.
 module internal SignatureRendering =
 
-    let private punct s = TextNode.Punctuation s
-    let private colon = punct ":"
-    let private arrow = punct "->"
-    let private comma = punct ","
-    let private star = punct "*"
-    let private openAngle = punct "<"
-    let private closeAngle = punct ">"
-    let private openParen = punct "("
-    let private closeParen = punct ")"
+    let private colon = TextNode.Punctuation Symbol.Colon
+    let private arrow = TextNode.Punctuation Symbol.Arrow
+    let private comma = TextNode.Punctuation Symbol.Comma
+    let private star = TextNode.Punctuation Symbol.Star
+    let private openAngle = TextNode.Punctuation Symbol.LessThan
+    let private closeAngle = TextNode.Punctuation Symbol.GreaterThan
+    let private openParen = TextNode.Punctuation Symbol.LeftParen
+    let private closeParen = TextNode.Punctuation Symbol.RightParen
 
     /// Joins rendered items with a separator token sequence.
     let private separated (separator: TextNode list) (items: TextNode list) =
@@ -80,7 +79,7 @@ module internal SignatureRendering =
                         ]
                 )
                 |> Array.toList
-                |> separated [ TextNode.Text ";"; TextNode.Space ]
+                |> separated [ TextNode.Punctuation Symbol.Semicolon; TextNode.Space ]
 
             TextNode.Node
                 [
@@ -142,22 +141,26 @@ module internal SignatureRendering =
             ]
 
         if c.IsComparisonConstraint then
-            simple "comparison"
+            simple Keyword.Comparison
         elif c.IsEqualityConstraint then
-            simple "equality"
+            simple Keyword.Equality
         elif c.IsUnmanagedConstraint then
-            simple "unmanaged"
+            simple Keyword.Unmanaged
         elif c.IsNonNullableValueTypeConstraint then
-            simple "struct"
-        elif c.IsReferenceTypeConstraint then
-            simple "not null"
-        elif c.IsNotSupportsNullConstraint then
-            simple "not null"
+            simple Keyword.Struct
+        elif c.IsReferenceTypeConstraint || c.IsNotSupportsNullConstraint then
+            [
+                colon
+                TextNode.Space
+                TextNode.Keyword Keyword.Not
+                TextNode.Space
+                TextNode.Keyword Keyword.Null
+            ]
         elif c.IsSupportsNullConstraint then
-            simple "null"
+            simple Keyword.Null
         elif c.IsCoercesToConstraint then
             [
-                TextNode.Text ":>"
+                TextNode.Punctuation Symbol.SubtypeOf
                 TextNode.Space
                 renderFSharpType false c.CoercesToTarget
             ]
@@ -201,9 +204,10 @@ module internal SignatureRendering =
                 TextNode.Space
                 openParen
                 if m.MemberIsStatic then
-                    TextNode.Keyword "static member"
-                else
-                    TextNode.Keyword "member"
+                    TextNode.Keyword Keyword.Static
+                    TextNode.Space
+
+                TextNode.Keyword Keyword.Member
                 TextNode.Space
                 TextNode.Text m.MemberName
                 if not (List.isEmpty argTypes) || not (isNull (box m.MemberReturnType)) then
@@ -218,7 +222,7 @@ module internal SignatureRendering =
                 colon
                 TextNode.Space
                 openParen
-                TextNode.Keyword "new"
+                TextNode.Keyword Keyword.New
                 TextNode.Space
                 colon
                 TextNode.Space
@@ -234,16 +238,16 @@ module internal SignatureRendering =
             [
                 colon
                 TextNode.Space
-                TextNode.Keyword "enum"
+                TextNode.Keyword Keyword.Enum
                 openAngle
                 renderFSharpType false c.EnumConstraintTarget
                 closeAngle
             ]
         elif c.IsDelegateConstraint then
-            simple "delegate"
+            simple Keyword.Delegate
         elif c.IsDefaultsToConstraint then
             [
-                punct "="
+                TextNode.Punctuation Symbol.Equals
                 TextNode.Space
                 renderFSharpType false c.DefaultsToConstraintData.DefaultsToTarget
             ]
@@ -254,50 +258,36 @@ module internal SignatureRendering =
             |> separated
                 [
                     TextNode.Space
-                    TextNode.Text "|"
+                    TextNode.Punctuation Symbol.Bar
                     TextNode.Space
                 ]
         else
             []
 
-    /// The constraint clause on its own: `when 'T : comparison and 'U : equality`.
-    /// `None` when nothing is constrained.
+    /// One entry per constraint, e.g. `'T : comparison`.
     ///
-    /// Emitted separately rather than recovered from the rendered parameter list. The
-    /// renderer used to strip `<`, the leading type variable and `>` back off, which
-    /// only works for a single parameter - `<'T, 'U>` left a stray `, 'U` behind.
-    let renderConstraints (gps: FSharpGenericParameter seq) : TextNode option =
+    /// A list rather than a single `when ... and ...` clause: the renderer decides how
+    /// to lay them out, and does not have to recover the boundaries by matching on the
+    /// text of an `and` keyword.
+    let renderConstraints (gps: FSharpGenericParameter seq) : TextNode list =
         let tickOf (gp: FSharpGenericParameter) =
             if isSrtp gp then
                 TextNode.Text "^"
             else
                 TextNode.Tick
 
-        let constrained =
-            gps
-            |> Seq.collect (fun gp -> gp.Constraints |> Seq.map (fun c -> gp, c))
-            |> Seq.toList
-
-        if List.isEmpty constrained then
-            None
-        else
-            Some(
-                TextNode.Node
-                    [
-                        for i, (gp, c) in List.indexed constrained do
-                            if i = 0 then
-                                TextNode.Keyword "when"
-                            else
-                                TextNode.Space
-                                TextNode.Keyword "and"
-
-                            TextNode.Space
-                            tickOf gp
-                            TextNode.Text gp.DisplayName
-                            TextNode.Space
-                            yield! renderConstraint gp c
-                    ]
-            )
+        gps
+        |> Seq.collect (fun gp -> gp.Constraints |> Seq.map (fun c -> gp, c))
+        |> Seq.map (fun (gp, c) ->
+            TextNode.Node
+                [
+                    tickOf gp
+                    TextNode.Text gp.DisplayName
+                    TextNode.Space
+                    yield! renderConstraint gp c
+                ]
+        )
+        |> Seq.toList
 
     /// The generic-parameter list for a function or member, e.g.
     /// `<'T when 'T : comparison>` or `<^T when ^T : (static member (+) : ^T * ^T -> ^T)>`.
@@ -330,7 +320,7 @@ module internal SignatureRendering =
 
                         if not (List.isEmpty constraints) then
                             TextNode.Space
-                            TextNode.Keyword "when"
+                            TextNode.Keyword Keyword.When
                             TextNode.Space
                             tickOf gp
                             TextNode.Text gp.DisplayName
@@ -339,7 +329,7 @@ module internal SignatureRendering =
                                 TextNode.Space
 
                                 if i > 0 then
-                                    TextNode.Keyword "and"
+                                    TextNode.Keyword Keyword.And
                                     TextNode.Space
                                     tickOf gp
                                     TextNode.Text gp.DisplayName
