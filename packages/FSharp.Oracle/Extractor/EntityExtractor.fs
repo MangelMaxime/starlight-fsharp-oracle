@@ -502,19 +502,50 @@ module internal EntityExtractor =
                 }
 
         elif entity.IsEnum then
-            let fields = entity.FSharpFields |> Seq.map (extractField toUrl docs) |> Seq.toList
+            // Enums carry a synthetic `value__` instance field (the underlying
+            // storage). Keep only the named literal members (the actual cases).
+            let enumValueNodes (f: FSharpField) =
+                match f.LiteralValue with
+                | Some value ->
+                    [
+                        TextNode.Space
+                        TextNode.Equal
+                        TextNode.Space
+                        TextNode.Text(string value)
+                    ]
+                | None -> []
+
+            let fields =
+                entity.FSharpFields
+                |> Seq.filter (fun f -> f.Name <> "value__")
+                |> Seq.map (fun f ->
+                    let baseField = extractField toUrl docs f
+
+                    // Render each case as `Name = value` rather than the useless
+                    // `Name : underlyingType` the generic field extractor produces.
+                    // The case name is styled as a property (blue), like record fields.
+                    { baseField with
+                        Declaration =
+                            TextNode.Node(
+                                TextNode.AnchoredProperty(f.Name, $"#{f.Name}") :: enumValueNodes f
+                            )
+                    }
+                )
+                |> Seq.toList
 
             let caseNodes =
-                fields
-                |> List.collect (fun f ->
+                Seq.zip (entity.FSharpFields |> Seq.filter (fun f -> f.Name <> "value__")) fields
+                |> Seq.collect (fun (fcsField, f) ->
                     [
                         TextNode.NewLine
                         TextNode.Spaces 4
                         TextNode.Keyword "|"
                         TextNode.Space
-                        TextNode.Text f.Name
+                        TextNode.AnchoredProperty(f.Name, $"#{f.Name}")
+                        yield! enumValueNodes fcsField
                     ]
                 )
+                |> Seq.toList
 
             let declaration =
                 TextNode.Node

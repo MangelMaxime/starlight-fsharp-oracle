@@ -112,6 +112,16 @@ module Pages =
                 sb.NewLine()
 
             renderMemberSections sb toc r.Members
+        | Entity.Enum e ->
+            if not e.Fields.IsEmpty then
+                sb.WriteLine("<div class=\"collapsible-group\">")
+
+                for field in e.Fields do
+                    tocH3 toc field.Name field.Name
+                    renderRecordField sb field
+
+                sb.WriteLine("</div>")
+                sb.NewLine()
         | Entity.Class e -> renderMemberSections sb toc e.Members
         | Entity.Interface e -> renderMemberSections sb toc e.Members
         | Entity.Exception e ->
