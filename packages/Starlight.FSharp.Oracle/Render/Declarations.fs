@@ -437,6 +437,19 @@ module Declarations =
         anchoredMembers members
         |> List.collect (fun (m, anchor) -> memberHeaderLine anchor m)
 
+    /// `type System.String with` followed by its extension members, so a section of
+    /// extensions opens with the same at-a-glance overview an entity page has.
+    let extensionDeclaration (extendedTypeName: string) (members: Member list) : TextNode =
+        TextNode.Node
+            [
+                keyword "type"
+                TextNode.Space
+                TextNode.Text extendedTypeName
+                TextNode.Space
+                keyword "with"
+                yield! memberLines members
+            ]
+
     /// The full declaration shown at the top of an entity's page.
     let entityDeclaration (entity: Entity) : TextNode =
         match entity with

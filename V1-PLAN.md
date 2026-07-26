@@ -374,6 +374,19 @@ pages showed them. Fixed.
       when it has one, labelled with the module that declares them - a reader needs to
       know what to open for them to be in scope. When the extended type has no page
       (`System.String`), they stay on the declaring module's page rather than vanish.
+
+      Each group opens with its own declaration block, the way an entity page does:
+
+      ```
+      type String with
+          member Shout: unit -> string
+      ```
+
+      Grouped by extended type, so a module that extends several types gets one block
+      each.
+- [x] Attributes were double-spaced: `.fsharp-doc-attr` was `display: block` with a
+      margin *and* the signature emits a line break after an attribute, so the two
+      stacked. The CSS no longer inserts a break the token stream already describes.
 - [x] **Parameter modifiers.** Optional parameters render `?fallback : int` rather
       than `fallback : int option`, the option being what the `?` means. byref already
       rendered correctly (`result : byref<int>`). `[<ParamArray>]` is still not marked;

@@ -159,12 +159,16 @@ let namespacePages (links: Render.LinkResolver) (modules: Module list) : (string
 
 /// Extension members targeting a given type, labelled with the module that declares
 /// them. A reader has to know which module to open for them to be in scope.
-let private extensionsFor (modules: Module list) (fullName: string) =
+let private extensionsFor (modules: Module list) (entity: Entity) =
     [
         for m in modules do
-            for extension in m.ExtensionMembers do
-                if extension.ExtendedType = fullName then
-                    m.FullName, extension.Member
+            let members =
+                m.ExtensionMembers
+                |> List.filter (fun e -> e.ExtendedType = entity.FullName)
+                |> List.map (fun e -> e.Member)
+
+            if not members.IsEmpty then
+                entity.Name, Some m.FullName, members
     ]
 
 let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * string) list =
@@ -180,7 +184,11 @@ let modulePages (links: Render.LinkResolver) (modules: Module list) : (string * 
         let orphans =
             m.ExtensionMembers
             |> List.filter (fun e -> not (links.IsDocumented e.ExtendedType))
-            |> List.map (fun e -> e.ExtendedTypeName, e.Member)
+            |> List.groupBy (fun e -> e.ExtendedTypeName)
+            |> List.map (fun (typeName, extensions) ->
+                // Declared on this very page, so naming the source would be noise.
+                typeName, None, extensions |> List.map (fun e -> e.Member)
+            )
 
         toSlug m.FullName, toMdxPage (Render.renderModulePage links m subModules orphans)
     )
@@ -203,7 +211,7 @@ let entityPages (links: Render.LinkResolver) (modules: Module list) : (string * 
             for e in m.Entities do
                 toSlug e.FullName,
                 toMdxPage (
-                    Render.renderEntityPage links e m (companionOf e m) (extensionsFor modules e.FullName)
+                    Render.renderEntityPage links e m (companionOf e m) (extensionsFor modules e)
                 )
     ]
 

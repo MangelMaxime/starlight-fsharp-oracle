@@ -127,7 +127,7 @@ module Pages =
         (entity: Entity)
         (parentModule: Module)
         (companionModule: Module option)
-        (extensions: (string * Member) list)
+        (extensions: (string * string option * Member list) list)
         : RenderedPage
         =
 
@@ -243,7 +243,7 @@ module Pages =
         (links: LinkResolver)
         (m: Module)
         (subModules: Module list)
-        (orphanExtensions: (string * Member) list)
+        (orphanExtensions: (string * string option * Member list) list)
         : RenderedPage
         =
 

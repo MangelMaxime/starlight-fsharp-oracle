@@ -56,6 +56,6 @@
 .fsharp-doc-attr {
     color: var(--sl-color-gray-3);
     font-size: var(--sl-text-sm);
-    display: block;
-    margin-bottom: 0.25rem;
+    /* No display:block here. The signature already emits a line break after an
+       attribute, and a block would add a second one plus its margin. */
 }

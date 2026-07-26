@@ -86,32 +86,40 @@ module Entries =
         section "Events" "events" (ofKind MemberKind.Event)
         section "Operators" "operators" (ofKind MemberKind.Operator)
 
-    /// Members another module adds to this type. Grouped separately because a reader
-    /// needs to know they come from elsewhere and require that module in scope.
+    /// Members another module adds to a type. Grouped by extended type, because a
+    /// reader needs to know both what is being extended and which module to open for
+    /// these to be in scope.
     let renderExtensionMembers
         (links: LinkResolver)
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
-        (extensions: (string * Member) list)
+        (groups: (string * string option * Member list) list)
         =
-        if not extensions.IsEmpty then
+        if not groups.IsEmpty then
             h2 sb toc "extension-members" "Extension Members"
-            sb.WriteLine("<div class=\"collapsible-group\">")
 
-            let anchored =
-                extensions
-                |> List.map snd
-                |> Declarations.anchoredMembers
-                |> List.map2 (fun (source, _) (m, anchor) -> source, m, anchor) extensions
-
-            for source, m, anchor in anchored do
-                tocH3 toc anchor m.Name
-                renderMemberEntry links anchor sb m
-                sb.WriteLine($"<p><em>Declared in {source}</em></p>")
+            for typeName, declaredIn, members in groups do
+                sb.WriteLine("<div class=\"not-content\">")
+                sb.Write("<div class=\"fsharp-doc-sig\">")
+                sb.Write(inlineSignatureHtml ((Declarations.extensionDeclaration typeName members).ToHtml(links)))
+                sb.WriteLine("</div>")
+                sb.WriteLine("</div>")
                 sb.NewLine()
 
-            sb.WriteLine("</div>")
-            sb.NewLine()
+                match declaredIn with
+                | Some source ->
+                    sb.WriteLine($"<p><em>Declared in {source}</em></p>")
+                    sb.NewLine()
+                | None -> ()
+
+                sb.WriteLine("<div class=\"collapsible-group\">")
+
+                for m, anchor in Declarations.anchoredMembers members do
+                    tocH3 toc anchor m.Name
+                    renderMemberEntry links anchor sb m
+
+                sb.WriteLine("</div>")
+                sb.NewLine()
 
     let renderFunctionEntry (links: LinkResolver) (anchor: string) (sb: StringBuilder) (f: Function) =
         renderDocEntry
