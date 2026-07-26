@@ -163,7 +163,14 @@ it along with `--base`/`--output-base`.
       every internal href against disk (accepting Astro's directory-style pages), and
       fails with a per-link report. Implemented in the existing .NET runner rather
       than a separate Node script, so there is one test entry point.
-      **55 pages scanned, 0 broken.** Verified it fails on an injected bad link.
+      Verified it fails on an injected bad link.
+- [x] **Fragments too** (added after phase 6). A link to a real page with a dead
+      `#anchor` still lands the reader in the wrong place, and nothing checked it - the
+      sidebar drifted that way for three phases. The gate now reads the `id` set of each
+      built page and resolves every fragment against the page it points at, same-page
+      (`#foo`) and cross-page (`/api/x#foo`) alike, reporting "no such page" and "no
+      such anchor" separately. **1579 fragment links checked, 0 broken.** Verified
+      against both forms, including the exact link the old sidebar emitted.
 
 ### Found while fixing: union members were rendered nowhere
 
