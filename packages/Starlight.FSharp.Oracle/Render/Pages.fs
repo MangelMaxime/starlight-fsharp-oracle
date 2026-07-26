@@ -10,6 +10,34 @@ open Entries
 
 module Pages =
 
+    let private renderFunctionsAndValues
+        (sb: StringBuilder)
+        (toc: ResizeArray<TocEntry>)
+        (functions: Function list)
+        (values: Value list)
+        =
+        if not functions.IsEmpty then
+            h2 sb toc "functions" "Functions"
+            sb.WriteLine("<div class=\"collapsible-group\">")
+
+            for f in functions do
+                tocH3 toc f.Name f.Name
+                renderFunctionEntry sb f
+
+            sb.WriteLine("</div>")
+            sb.NewLine()
+
+        if not values.IsEmpty then
+            h2 sb toc "values" "Values"
+            sb.WriteLine("<div class=\"collapsible-group\">")
+
+            for v in values do
+                tocH3 toc v.Name v.Name
+                renderValueEntry sb v
+
+            sb.WriteLine("</div>")
+            sb.NewLine()
+
     let renderDeclaredModules
         (sb: StringBuilder)
         (toc: ResizeArray<TocEntry>)
@@ -36,6 +64,7 @@ module Pages =
         (htmlLinkGen: string -> string -> string)
         (entity: Entity)
         (parentModule: Module)
+        (companionModule: Module option)
         : RenderedPage
         =
 
@@ -97,6 +126,13 @@ module Pages =
                 sb.WriteLine("</div>")
                 sb.NewLine()
         | _ -> ()
+
+        // A generic type (e.g. `Var<'T>`) and its companion module (`Var`) share a
+        // URL slug. Rather than let one page overwrite the other, fold the module's
+        // functions and values into this type page so nothing is lost.
+        match companionModule with
+        | Some cm -> renderFunctionsAndValues sb toc cm.Functions cm.Values
+        | None -> ()
 
         {
             Title = entity.Name
@@ -188,27 +224,7 @@ module Pages =
             sb.WriteLine("</dl>")
             sb.NewLine()
 
-        if not m.Functions.IsEmpty then
-            h2 sb toc "functions" "Functions"
-            sb.WriteLine("<div class=\"collapsible-group\">")
-
-            for f in m.Functions do
-                tocH3 toc f.Name f.Name
-                renderFunctionEntry sb f
-
-            sb.WriteLine("</div>")
-            sb.NewLine()
-
-        if not m.Values.IsEmpty then
-            h2 sb toc "values" "Values"
-            sb.WriteLine("<div class=\"collapsible-group\">")
-
-            for v in m.Values do
-                tocH3 toc v.Name v.Name
-                renderValueEntry sb v
-
-            sb.WriteLine("</div>")
-            sb.NewLine()
+        renderFunctionsAndValues sb toc m.Functions m.Values
 
         {
             Title = m.FullName

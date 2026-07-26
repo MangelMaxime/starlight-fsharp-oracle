@@ -155,11 +155,34 @@ let entityPages (basePath: string) (outputBase: string) (modules: Module list) :
     let htmlLinkGen (name: string) (fullName: string) =
         $"""<a href="{basePath}/{outputBase}/{toSlug fullName}">{name}</a>"""
 
+    let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
+
+    // A generic type and its companion module (e.g. `type Var<'T>` + `module Var`)
+    // collapse to the same slug once the generic arity suffix is stripped. Find that
+    // module so its members can be folded into the type page instead of one silently
+    // overwriting the other on disk.
+    let companionOf (entity: Entity) (parent: Module) =
+        let slug = toSlug entity.FullName
+
+        realModules
+        |> List.tryFind (fun m -> m.FullName <> parent.FullName && toSlug m.FullName = slug)
+
     [
         for m in modules do
             for e in m.Entities do
-                toSlug e.FullName, toMdxPage (Render.renderEntityPage htmlLinkGen e m)
+                toSlug e.FullName, toMdxPage (Render.renderEntityPage htmlLinkGen e m (companionOf e m))
     ]
+
+/// Slugs of modules whose page is merged into a same-slug entity page.
+/// Their standalone module page must be dropped so it does not clobber the merged one.
+let mergedModuleSlugs (modules: Module list) : string list =
+    let realModules = modules |> List.filter (fun m -> not m.IsSynthetic)
+    let entitySlugs = modules |> List.collect (fun m -> m.Entities) |> List.map (fun e -> toSlug e.FullName)
+
+    realModules
+    |> List.map (fun m -> toSlug m.FullName)
+    |> List.filter (fun slug -> List.contains slug entitySlugs)
+    |> List.distinct
 
 let rootIndexPage
     (basePath: string)
@@ -224,6 +247,16 @@ let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
     let syntheticModules = modules |> List.filter (fun m -> m.IsSynthetic)
     let allNamespaces = namespacesOf modules
 
+    // A generic type and its companion module share a slug and are merged onto one
+    // page (see `entityPages`). The module already appears in the tree as a group,
+    // so drop the redundant bare entity link that points to the same page.
+    let realModuleSlugs = realModules |> List.map (fun m -> toSlug m.FullName)
+
+    let entitySidebarItems (entities: Entity list) =
+        entities
+        |> List.filter (fun e -> not (List.contains (toSlug e.FullName) realModuleSlugs))
+        |> List.map (entitySidebarItem outputBase)
+
     let moduleHref (m: Module) = $"/{outputBase}/{toSlug m.FullName}"
 
     let anchorLink (label: string) (href: string) : SidebarItem =
@@ -284,7 +317,7 @@ let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
                     // "global" synthetic modules group bare namespace-level types.
                     // Inline them directly rather than nesting under a "global" sub-group.
                     if sm.Name = "global" then
-                        yield! sm.Entities |> List.map (entitySidebarItem outputBase)
+                        yield! entitySidebarItems sm.Entities
                     else
                         let smShortName =
                             let lastDot = sm.FullName.LastIndexOf('.')
@@ -299,7 +332,7 @@ let sidebarTree (outputBase: string) (label: string) (modules: Module list) =
                                 smShortName
                                 "N"
                                 "namespace"
-                                (sm.Entities |> List.map (entitySidebarItem outputBase))
+                                (entitySidebarItems sm.Entities)
                 yield! directChildNs |> List.map buildNsGroup
             ]
 

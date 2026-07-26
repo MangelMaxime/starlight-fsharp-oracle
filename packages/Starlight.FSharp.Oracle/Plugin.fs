@@ -215,8 +215,19 @@ let private starlightFSharpDoc (pluginOptions: PluginOptions) =
                                     | Error msg -> logger.warn $"Failed to write .gitignore: {msg}"
                                     | Ok() -> ()
 
-                                let modulePages = Generate.modulePages basePath outputBase modules
                                 let namespacePages = Generate.namespacePages basePath outputBase modules
+
+                                // Modules whose page is folded into a same-slug entity page
+                                // (generic type + companion module) must not be written
+                                // standalone, or they clobber the merged page.
+                                let mergedSlugs = Generate.mergedModuleSlugs modules
+
+                                let modulePages =
+                                    Generate.modulePages basePath outputBase modules
+                                    |> List.filter (fun (slug, _) ->
+                                        not (List.contains slug mergedSlugs)
+                                    )
+
                                 let moduleSlugs = modulePages |> List.map fst
 
                                 let dedupedNamespacePages =
