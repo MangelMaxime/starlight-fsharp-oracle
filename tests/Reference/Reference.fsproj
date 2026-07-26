@@ -12,6 +12,7 @@
     <Compile Include="Text.fs" />
     <Compile Include="Objects.fs" />
     <Compile Include="Generics.fs" />
+    <Compile Include="Reactive.fs" />
     <Compile Include="ActivePatterns.fs" />
   </ItemGroup>
 
