@@ -1,0 +1,55 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Avoid stacking redundant runs for the same ref.
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Restore .NET tools
+        run: dotnet tool restore
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Compile every F# project (locked restore is enforced on CI). Debug config
+      # so the Reference fixture lands at tests/Reference/bin/Debug/net10.0, where
+      # the docs' Oracle extractor (docs/astro.config.mjs) reads it from.
+      - name: Build solution
+        run: dotnet build main.slnx
+
+      # End-to-end: compiles the Fable plugin, runs the Oracle extractor against
+      # the Reference fixture and builds the Starlight docs site.
+      - name: Build docs
+        run: ./build.sh docs

@@ -1,0 +1,78 @@
+# Runs after the "test" workflow completes successfully on main.
+on:
+  workflow_run:
+    workflows: ["test"]
+    types:
+      - completed
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+name: EasyBuild ShipIt
+
+# Learn more at https://github.com/easybuild-org/EasyBuild.ShipIt#github-actions-auto-release
+
+jobs:
+  # Open/refresh a "chore: release ..." Pull Request that bumps the version and
+  # updates the changelog based on the conventional commits since the last release.
+  shipit-pr:
+    name: ShipIt - Pull Request
+    runs-on: ubuntu-latest
+    if: "${{ github.event.workflow_run.conclusion == 'success' }}"
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Enough history to build the changelog from the commits since the last release.
+          fetch-depth: 50
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: ShipIt (Pull Request)
+        run: |
+          dotnet tool restore
+          dotnet shipit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Publish to NPM once the release PR is merged (i.e. a "chore: release ..."
+  # commit lands on main). Uses NPM Trusted Publishing (OIDC) - no token needed.
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: "${{ github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_commit.message, 'chore: release ') }}"
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: "https://registry.npmjs.org"
+          cache: pnpm
+
+      - name: Restore .NET tools
+        run: dotnet tool restore
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # `prepack` compiles the Fable plugin into dist/ before packing.
+      # `--provenance` attaches a build-provenance attestation; combined with
+      # `id-token: write` this authenticates via Trusted Publishing (OIDC).
+      - name: Publish to NPM
+        run: pnpm publish --provenance --no-git-checks --access public

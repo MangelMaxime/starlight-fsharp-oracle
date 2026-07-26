@@ -2,6 +2,7 @@
   "name": "starlight-fsharp-oracle",
   "version": "0.3.0",
   "type": "module",
+  "packageManager": "pnpm@10.26.1",
   "exports": {
     ".": "./dist/Plugin.js",
     "./components/DocEntry.astro": "./packages/Starlight.FSharp.Oracle/components/DocEntry.astro",
