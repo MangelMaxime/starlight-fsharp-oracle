@@ -92,10 +92,11 @@ module internal SignatureRendering =
         elif typ.HasTypeDefinition then
             let td = typ.TypeDefinition
 
-            let head =
-                match tryGetFullName td with
-                | Some fullName -> TextNode.TypeRef(td.DisplayName, fullName)
-                | None -> TextNode.Text td.DisplayName
+            // Even when the full name is unavailable this is still a type, and has to
+            // be coloured as one. `int`, `string` and `unit` are abbreviations, and
+            // FullName throws for those, so they used to fall through to plain text
+            // and render uncoloured beside user types.
+            let head = TextNode.TypeRef(td.DisplayName, safeFullName td)
 
             let args = typ.GenericArguments |> Seq.map (renderFSharpType false) |> Seq.toList
 

@@ -516,15 +516,44 @@ Zero content-sensitive matches on tokens remain.
 - [x] `FileOperationResult` is gone; `Result<unit, string>` replaces it, so `Ok` and
       `Error` no longer shadow the built-ins in every file that opens `Helpers`.
 
-## Phase 6 - Syntax highligthing
+## Phase 6 - Syntax highlighting
 
-- [ ] Make a pass on the code generation to improve syntax coloration. The goal is to have as good coloration as in IDE.
+Grounded in `tree-sitter-fsharp`'s `queries/highlights.scm` rather than invented scope
+names, so the colouring follows the grammar's own captures.
 
-    Either you are able to find the information yourself or you can perhaps use tree-sitter from https://github.com/MangelMaxime/tree-sitter-fsharp/ to request tokens color candidates for the differents type of constructions.
+The token model was already fine-grained enough - `Symbol`, `Keyword`, `TypeRef`,
+`TypeVar`, `ParameterName`, `DeclarationName` are distinct. Everything wrong was in the
+mapping from tokens to CSS classes, which collapsed six distinctions into three colours
+plus one hardcoded hex.
 
-    You can clone the repo in a temp folder, and use tree sitter queries to test the different construction we support.
+| Symbol | grammar capture | was | now |
+|---|---|---|---|
+| `:` `,` `;` | `@punctuation.delimiter` | keyword | neutral foreground |
+| `(` `)` `{` `}` | `@punctuation.bracket` | keyword | neutral foreground |
+| `=` `<` `>` `*` `:>` `?` | `@operator` | keyword | `keyword.operator` |
+| `->` `\|` | `@keyword.control` | keyword | keyword - already right |
 
----
+- [x] **Punctuation is no longer keyword-coloured.** This was the loudest mismatch:
+      `new:` and `-> EntityBase` were as red as `type` and `abstract`. Delimiters and
+      brackets now resolve to scopes themes generally leave undefined, so they fall
+      through to the editor foreground - which is what an IDE does.
+- [x] **`->` and `|` keep the keyword colour.** The grammar captures them as
+      `@keyword.control`, not operators. Worth checking rather than assuming: the
+      "obvious" fix would have made them neutral and been wrong.
+- [x] **Primitive types are coloured.** `int`, `string` and `unit` are abbreviations,
+      so `FullName` throws and they fell back to plain `Text` - uncoloured beside user
+      types on the same line. The same abbreviation trap as `obj` and `IEvent<'T>`,
+      now the third time it has bitten.
+- [x] **Parameter names have their own colour.** They were borrowing the type-variable
+      class as a stopgap from phase 3.
+- [x] **Member names are theme-derived.** `.fsharp-doc-property` was a hardcoded
+      `#0a86ff`, ignoring the reader's light/dark theme and the site's Expressive Code
+      theme entirely.
+- [x] **Attributes are theme-derived** rather than a fixed Starlight grey.
+- [x] Dropped `--fsharp-doc-fn`, which was generated but mapped to no token.
+
+Type parameters intentionally still share the type colour: most themes define no
+separate scope for them, and falling back says so honestly rather than inventing one.
 
 ## Phase 7 - Ship
 
@@ -579,7 +608,7 @@ Record choices made during the run so later phases do not relitigate them.
 | 1 | Entity member ordering | kind, then name, then `XmlDocSig` - FCS order is not stable across processes |
 | 2 | External types: plain text vs MS Learn links | Plain text for v1. Linking out needs a per-source URL scheme (MS Learn for BCL, nothing for arbitrary third-party assemblies) - that is an option-surface question, deferred to phase 6 |
 | 2 | Link check location | Inside the .NET runner, not a separate Node script - one test entry point, and it can reuse the page set later |
-| 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `Punctuation of string` rather than a case per mark; `DeclarationName` carries text and anchor separately for overloaded constructors |
+| 3 | Final `TextNode` shape | Token stream, no HTML/urls/space-counts. `DeclarationName` carries text and anchor separately for overloaded constructors. (`Punctuation` was `of string` here; later typed as `Symbol` once it turned out the renderer decides escaping per symbol) |
 | 4 | Colon spacing | Attached to the name, except in the aligned parameter block where padding forms a colon column. Alignment driven by parameter names only |
 | 4 | Layout as a plugin option? | No. 66 of 75 functions were affected, so this is the default's problem, not a preference. An option costs two layouts, two snapshot sets, and permanent API |
 | 4 | Long signatures | Break the constraint clause at `when`/`and`, and scroll rather than wrap |
@@ -587,5 +616,6 @@ Record choices made during the run so later phases do not relitigate them.
 | 4 | Explicit interface implementations | Omitted, not listed. The `interface` line already states it, and they are reachable only through the interface |
 | 4 | `<inheritdoc>` | Out for v1: needs cross-assembly base-member resolution, and nothing uses it |
 | 4 | `<see cref>` transport | Extractor emits a `fsharp-doc:` markdown link; the renderer resolves it. Keeps the IR free of URLs while still recording what was referenced |
-| 5 | Slug collision disambiguation policy | _tbd_ |
-| 6 | Distribution: prebuilt binaries vs dotnet tool vs SDK requirement | _tbd_ |
+| 5 | Slug collision disambiguation policy | Deterministic suffixes: sort the names, first keeps the plain slug, rest get `-2`, `-3`. Types and modules slugged separately so the intentional type+companion-module merge survives |
+| 6 | Syntax colours source | `tree-sitter-fsharp`'s `highlights.scm` captures, mapped to TextMate scopes, rather than invented scope names |
+| 7 | Distribution: prebuilt binaries vs dotnet tool vs SDK requirement | _tbd_ |

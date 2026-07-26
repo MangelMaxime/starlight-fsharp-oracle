@@ -23,6 +23,30 @@ let wrapWithClass cls (text: string) =
 
 let wrapInKeyword text = wrapWithClass "fsharp-doc-kw" text
 
+/// Which class a symbol takes, following the captures in tree-sitter-fsharp's
+/// highlights.scm rather than colouring every symbol as a keyword.
+///
+/// `->` and `|` really are `@keyword.control` there - F# reads them as control
+/// syntax, not as operators - which is why they keep the keyword colour while `:`
+/// and the brackets do not.
+let private symbolClass =
+    function
+    | Symbol.Colon
+    | Symbol.Comma
+    | Symbol.Semicolon -> "fsharp-doc-punct"
+    | Symbol.LeftParen
+    | Symbol.RightParen
+    | Symbol.LeftBrace
+    | Symbol.RightBrace -> "fsharp-doc-bracket"
+    | Symbol.Arrow
+    | Symbol.Bar -> "fsharp-doc-kw"
+    | Symbol.Equals
+    | Symbol.Star
+    | Symbol.LessThan
+    | Symbol.GreaterThan
+    | Symbol.SubtypeOf
+    | Symbol.Question -> "fsharp-doc-op"
+
 /// How wide one level of structural indentation is.
 let private indentWidth = 4
 
@@ -63,14 +87,16 @@ type TextNode with
     member this.ToHtml(links: LinkResolver) : string =
         match this with
         | TextNode.Text s -> escapeText s
-        | TextNode.Punctuation symbol -> wrapInKeyword (symbolText symbol)
+        | TextNode.Punctuation symbol -> wrapWithClass (symbolClass symbol) (symbolText symbol)
         | TextNode.Keyword text -> wrapInKeyword text
         | TextNode.Tick -> "&#x27;"
         | TextNode.Space -> space
         | TextNode.NewLine -> "\n"
         | TextNode.Indent levels -> String.replicate (levels * indentWidth) space
         | TextNode.TypeVar name -> wrapWithClass "fsharp-doc-typevar" name
-        | TextNode.ParameterName name -> wrapWithClass "fsharp-doc-typevar" name
+        // A parameter is not a type variable; it only borrowed that class to keep the
+        // output stable while the token model was being sorted out.
+        | TextNode.ParameterName name -> wrapWithClass "fsharp-doc-param" name
         | TextNode.Attribute text -> $"""<span class="fsharp-doc-attr">{escapeText text}</span>"""
         // Whether a type reference becomes a link is the resolver's call: only it
         // knows which types have a page.

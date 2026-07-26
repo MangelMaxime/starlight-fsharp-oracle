@@ -64,44 +64,49 @@ let generateCss (ecRenderer: obj) : string =
             else
                 ":root"
 
-        let kw =
-            colorFor
-                theme
+        // Scope chains follow the captures in tree-sitter-fsharp's highlights.scm,
+        // most specific first. Anything a theme does not define falls through to the
+        // editor foreground, which is the right answer for punctuation: an IDE leaves
+        // it neutral rather than colouring it like a keyword.
+        let colors =
+            [
+                "kw", [ "keyword"; "keyword.control"; "storage.type"; "storage.modifier" ]
+                "op", [ "keyword.operator"; "operator" ]
+                "punct", [ "punctuation.separator"; "punctuation" ]
+                "bracket", [ "punctuation.section"; "meta.brace"; "punctuation" ]
+                "type", [ "entity.name.type"; "support.type"; "support.class"; "entity.name.class" ]
+                // Most themes have no separate colour for type parameters. Falling back
+                // to the type colour says so honestly, rather than inventing one.
+                "typevar",
                 [
-                    "keyword"
-                    "storage.type"
-                    "keyword.operator"
+                    "entity.name.type.parameter"
+                    "support.type.parameter"
+                    "entity.name.type"
+                    "support.type"
                 ]
-
-        let fn_ =
-            colorFor
-                theme
+                "param", [ "variable.parameter"; "variable.other"; "variable" ]
+                "member",
                 [
+                    "variable.other.property"
+                    "variable.other.member"
+                    "support.variable.property"
+                    "variable.other"
                     "variable"
-                    "entity.name.function"
                 ]
-
-        let type_ =
-            colorFor
-                theme
+                "attr",
                 [
-                    "entity"
-                    "entity.name"
+                    "storage.type.attribute"
+                    "entity.other.attribute-name"
+                    "meta.attribute"
+                    "entity.name.tag"
                 ]
-
-        let tvar =
-            colorFor
-                theme
-                [
-                    "entity"
-                    "entity.name"
-                ]
+            ]
 
         sb.WriteLine($"{selector} {{")
-        sb.WriteLine($"    --fsharp-doc-kw: {kw};")
-        sb.WriteLine($"    --fsharp-doc-fn: {fn_};")
-        sb.WriteLine($"    --fsharp-doc-type: {type_};")
-        sb.WriteLine($"    --fsharp-doc-typevar: {tvar};")
+
+        for name, scopes in colors do
+            sb.WriteLine($"    --fsharp-doc-{name}: {colorFor theme scopes};")
+
         sb.WriteLine("}")
 
     sb.ToString()

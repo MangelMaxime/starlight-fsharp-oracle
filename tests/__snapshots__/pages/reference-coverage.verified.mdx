@@ -76,7 +76,7 @@ import { Aside } from '@astrojs/starlight/components';
 
 <div class="collapsible-group">
 <DocEntry name="tryFirst">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFirst<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFirst<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-type">seq</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-type">option</span></div>
 
 Returns the first element of a sequence, if there is one.
 
@@ -87,7 +87,7 @@ Behaviour by input:
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">items</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
+<span class="fsharp-doc-param">items</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-type">seq</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -112,13 +112,13 @@ The first element, or `None` when the sequence is empty.
 </DocEntry>
 
 <DocEntry name="divide">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;divide<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;numerator&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;denominator&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;divide<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;numerator&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;denominator&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
 
 Divides one number by another.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">numerator</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-param">numerator</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -127,7 +127,7 @@ The number to divide.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">denominator</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int
+<span class="fsharp-doc-param">denominator</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -156,13 +156,13 @@ Thrown when `denominator` is zero.
 </DocEntry>
 
 <DocEntry name="combineWith">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;combineWith<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;combine&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;first&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;second&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;combineWith<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;combine&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;first&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;second&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U</div>
 
 Combines two values using a supplied function.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">combine</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span>
+<span class="fsharp-doc-param">combine</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span>
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -171,7 +171,7 @@ The combining function.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">first</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-param">first</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -180,7 +180,7 @@ The first value.
 
 </div>
 <div class="fs-parameter__signature">
-<span class="fsharp-doc-typevar">second</span><span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+<span class="fsharp-doc-param">second</span><span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;&#x27;T
 </div>
 
 <div class='fs-parameter__documentation'>
@@ -219,14 +219,14 @@ The combined result.
 
 <div class="collapsible-group">
 <DocEntry name="MaxRetries">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;MaxRetries<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;3</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;MaxRetries<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;3</div>
 
 The maximum number of retry attempts.
 
 </DocEntry>
 
 <DocEntry name="DefaultGreeting">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;DefaultGreeting<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;"hello"</div>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;DefaultGreeting<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span>&nbsp;&zwnj;"hello"</div>
 
 The greeting used when none is supplied.
 

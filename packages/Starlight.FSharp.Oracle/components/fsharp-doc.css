@@ -1,8 +1,12 @@
 .fsharp-doc-kw { color: var(--fsharp-doc-kw); }
-.fsharp-doc-fn { color: var(--fsharp-doc-fn); }
+.fsharp-doc-op { color: var(--fsharp-doc-op); }
+.fsharp-doc-punct { color: var(--fsharp-doc-punct); }
+.fsharp-doc-bracket { color: var(--fsharp-doc-bracket); }
 .fsharp-doc-type { color: var(--fsharp-doc-type); }
 .fsharp-doc-typevar { color: var(--fsharp-doc-typevar); }
-.fsharp-doc-property { color: #0a86ff }
+.fsharp-doc-param { color: var(--fsharp-doc-param); }
+/* Was a hardcoded #0a86ff, which ignored the reader's theme entirely. */
+.fsharp-doc-property { color: var(--fsharp-doc-member); }
 
 .fsharp-doc-sig {
     font-family: var(--sl-font-mono, monospace);
@@ -54,7 +58,7 @@
 }
 
 .fsharp-doc-attr {
-    color: var(--sl-color-gray-3);
+    color: var(--fsharp-doc-attr);
     font-size: var(--sl-text-sm);
     /* No display:block here. The signature already emits a line break after an
        attribute, and a block would add a second one plus its margin. */
