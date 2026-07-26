@@ -16,13 +16,51 @@ module Primitives =
             .Replace("{", "&#123;")
             .Replace("}", "&#125;")
 
+    /// Escape MDX-hostile characters in Markdown text while leaving code spans
+    /// (`` `inline` `` and ``` ```fenced``` ```) untouched. MDX never parses `{`
+    /// or `<` as JSX inside code, and HTML entities render verbatim there, so
+    /// escaping code content would turn `` `Var<'T>` `` into a literal
+    /// `Var&lt;'T&gt;`. Only the prose between code spans needs escaping.
+    let escapeMdxMarkdown (text: string) : string =
+        let sb = StringBuilder(text.Length)
+        let n = text.Length
+        let mutable i = 0
+
+        while i < n do
+            if i + 2 < n && text.[i] = '`' && text.[i + 1] = '`' && text.[i + 2] = '`' then
+                // Fenced code block: copy verbatim up to and including the closing fence.
+                let close = text.IndexOf("```", i + 3)
+                let endIdx = if close < 0 then n else close + 3
+                sb.Append(text.Substring(i, endIdx - i)) |> ignore
+                i <- endIdx
+            elif text.[i] = '`' then
+                // Inline code span: copy verbatim up to and including the closing backtick.
+                let close = text.IndexOf("`", i + 1)
+                let endIdx = if close < 0 then n else close + 1
+                sb.Append(text.Substring(i, endIdx - i)) |> ignore
+                i <- endIdx
+            else
+                (match text.[i] with
+                 | '&' -> sb.Append("&amp;")
+                 | '<' -> sb.Append("&lt;")
+                 | '>' -> sb.Append("&gt;")
+                 | '{' -> sb.Append("&#123;")
+                 | '}' -> sb.Append("&#125;")
+                 | c -> sb.Append(c))
+                |> ignore
+
+                i <- i + 1
+
+        sb.ToString()
+
     /// Collapse whitespace runs before escaping, so a blank line can't be read as
     /// a paragraph break that closes an inline element like `<dd>` early.
+    /// Markdown code spans are preserved (see `escapeMdxMarkdown`).
     let escapeMdxInline (text: string) : string =
         let collapsed =
             System.Text.RegularExpressions.Regex.Replace(text, @"\s+", " ").Trim()
 
-        escapeMdxText collapsed
+        escapeMdxMarkdown collapsed
 
     /// MDX reflows multi-line raw HTML as a markdown paragraph, collapsing layout.
     /// Convert newlines to <br/> so the signature block renders verbatim.
@@ -98,11 +136,11 @@ module Primitives =
         | [ single ] ->
             sb.WriteLine("<strong>Example</strong>")
             sb.NewLine()
-            sb.WriteLine(escapeMdxText single)
+            sb.WriteLine(escapeMdxMarkdown single)
             sb.NewLine()
         | multiple ->
             for i, example in List.indexed multiple do
                 sb.WriteLine($"<strong>Example {i + 1}</strong>")
                 sb.NewLine()
-                sb.WriteLine(escapeMdxText example)
+                sb.WriteLine(escapeMdxMarkdown example)
                 sb.NewLine()

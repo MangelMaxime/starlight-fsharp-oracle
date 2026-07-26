@@ -11,7 +11,7 @@ module Documentation =
     let renderSummary (sb: StringBuilder) (xmlDoc: XmlDoc) =
         match xmlDoc.Summary with
         | Some summary ->
-            sb.WriteLine(escapeMdxText summary)
+            sb.WriteLine(escapeMdxMarkdown summary)
             sb.NewLine()
         | None -> ()
 
@@ -34,13 +34,13 @@ module Documentation =
         xmlDoc.Summary
         |> Option.iter (fun summary ->
             h2 sb toc "description" "Description"
-            sb.WriteLine(escapeMdxText summary)
+            sb.WriteLine(escapeMdxMarkdown summary)
             sb.NewLine()
         )
 
         xmlDoc.Remarks
         |> Option.iter (fun remarks ->
-            sb.WriteLine(escapeMdxText remarks)
+            sb.WriteLine(escapeMdxMarkdown remarks)
             sb.NewLine()
         )
 
@@ -70,7 +70,7 @@ module Documentation =
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
                     sb.NewLine()
-                    sb.WriteLine(escapeMdxText paramDoc.Doc)
+                    sb.WriteLine(escapeMdxMarkdown paramDoc.Doc)
                     sb.NewLine()
                     sb.WriteLine "</div>"
                 | None -> sb.WriteLine(parameter.Declaration.Html)
@@ -79,7 +79,7 @@ module Documentation =
         | Some returnDoc ->
             sb.WriteLine("<strong>Returns</strong>")
             sb.NewLine()
-            sb.WriteLine(escapeMdxText returnDoc)
+            sb.WriteLine(escapeMdxMarkdown returnDoc)
             sb.NewLine()
         | None -> ()
 

@@ -36,7 +36,7 @@ module Entries =
 
                     sb.WriteLine "<div class='fs-parameter__documentation'>"
                     sb.NewLine()
-                    sb.WriteLine(escapeMdxText f.XmlDoc.Summary.Value)
+                    sb.WriteLine(escapeMdxMarkdown f.XmlDoc.Summary.Value)
                     sb.NewLine()
                     sb.WriteLine "</div>"
 
