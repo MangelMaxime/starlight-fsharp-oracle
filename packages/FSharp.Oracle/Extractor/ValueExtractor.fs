@@ -28,6 +28,7 @@ module internal ValueExtractor =
             Name = mfv.DisplayName
             FullName = mfv.FullName
             Type = renderFSharpType true mfv.FullType
+            LiteralValue = mfv.LiteralValue |> Option.map literalText
             GenericParameters = renderGenericParams mfv.GenericParameters
             IsInline = isInlineAnnotated mfv
             IsMutable = mfv.IsMutable

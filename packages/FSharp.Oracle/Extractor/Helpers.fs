@@ -144,6 +144,98 @@ module internal Helpers =
     let isMeasure (entity: FSharpEntity) =
         hasAttribute "Microsoft.FSharp.Core.MeasureAttribute" entity
 
+    /// A literal as F# source would write it: strings quoted, chars ticked.
+    /// `val Greeting : string = hello` reads as though the value were an identifier.
+    let literalText (value: obj) =
+        match value with
+        | :? string as text -> "\"" + text + "\""
+        | :? char as c -> "'" + string c + "'"
+        | :? bool as b ->
+            if b then
+                "true"
+            else
+                "false"
+        | value -> string value
+
+    /// Attributes the compiler adds, or that the renderer already shows another way.
+    /// Listing these would bury the ones the author actually wrote.
+    let private hiddenAttributes =
+        Set.ofList
+            [
+                "Microsoft.FSharp.Core.CompilationMappingAttribute"
+                "Microsoft.FSharp.Core.CompilationRepresentationAttribute"
+                "Microsoft.FSharp.Core.CompilationArgumentCountsAttribute"
+                "Microsoft.FSharp.Core.CompiledNameAttribute"
+                // Rendered as part of the declaration itself.
+                "Microsoft.FSharp.Core.StructAttribute"
+                "Microsoft.FSharp.Core.MeasureAttribute"
+                // Rendered as a banner.
+                "System.ObsoleteAttribute"
+            ]
+
+    /// `[<RequireQualifiedAccess>]`, `[<Literal>]`, and anything else the author wrote.
+    let attributesOf (attributes: FSharpAttribute seq) =
+        attributes
+        |> Seq.filter (fun a ->
+            let fullName =
+                try
+                    a.AttributeType.FullName
+                with _ ->
+                    ""
+
+            not (Set.contains fullName hiddenAttributes)
+            && not (fullName.StartsWith "System.Diagnostics.")
+            && not (fullName.StartsWith "System.Runtime.CompilerServices.")
+        )
+        |> Seq.map (fun a ->
+            // FCS reports the class name; F# source writes it without the suffix.
+            let name =
+                let displayName = a.AttributeType.DisplayName
+
+                if displayName.EndsWith "Attribute" then
+                    displayName.Substring(0, displayName.Length - "Attribute".Length)
+                else
+                    displayName
+
+            let args =
+                a.ConstructorArguments
+                |> Seq.map (fun (_, value) ->
+                    literalText value
+                )
+                |> String.concat ", "
+
+            if args = "" then
+                $"[<{name}>]"
+            else
+                $"[<{name}({args})>]"
+        )
+        |> Seq.toList
+
+    /// Interfaces F# derives for records and unions on its own. Listing them as though
+    /// the author wrote them is noise.
+    let private derivedInterfaces =
+        Set.ofList
+            [
+                "System.IEquatable`1"
+                "System.IComparable"
+                "System.IComparable`1"
+                "System.Collections.IStructuralEquatable"
+                "System.Collections.IStructuralComparable"
+            ]
+
+    let isDerivedInterface (typ: FSharpType) =
+        typ.HasTypeDefinition
+        && (match tryGetFullName typ.TypeDefinition with
+            | Some fullName -> Set.contains fullName derivedInterfaces
+            | None -> false)
+
+    /// True when a base type carries no information, i.e. it is `obj`.
+    let isTrivialBaseType (typ: FSharpType) =
+        typ.HasTypeDefinition
+        && (match tryGetFullName typ.TypeDefinition with
+            | Some fullName -> fullName = "System.Object" || fullName = "obj"
+            | None -> false)
+
     let obsoleteOfEntity (entity: FSharpEntity) : ObsoleteInfo =
         entity.Attributes
         |> Seq.tryFind (fun a -> a.AttributeType.FullName = "System.ObsoleteAttribute")

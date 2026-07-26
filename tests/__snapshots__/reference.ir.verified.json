@@ -53,6 +53,10 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [
+                                    "[<RequireQualifiedAccess>]"
+                                ],
+                                "Interfaces": [],
                                 "Cases": [
                                     {
                                         "Name": "Debug",
@@ -147,6 +151,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Cases": [
                                     {
                                         "Name": "Celsius",
@@ -288,6 +294,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Property",
@@ -336,6 +344,18 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [
+                                    "[<AbstractClass>]"
+                                ],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -349,7 +369,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "int"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -444,6 +465,23 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "TypeRef",
+                                        "EntityBase",
+                                        "Reference.Coverage.EntityBase"
+                                    ]
+                                },
+                                "Interfaces": [
+                                    [
+                                        "TypeRef",
+                                        "INamed",
+                                        "Reference.Coverage.INamed"
+                                    ]
+                                ],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -457,14 +495,16 @@
                                                     "Type": [
                                                         "Text",
                                                         "int"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "name",
                                                     "Type": [
                                                         "Text",
                                                         "string"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -582,6 +622,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -625,6 +666,15 @@
                                         ]
                                     ]
                                 },
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -654,7 +704,8 @@
                                                                 "list"
                                                             ]
                                                         ]
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -715,7 +766,8 @@
                                                                 "T"
                                                             ]
                                                         ]
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "second",
@@ -728,7 +780,8 @@
                                                                 "T"
                                                             ]
                                                         ]
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -863,6 +916,16 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -900,14 +963,16 @@
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "digits",
                                                     "Type": [
                                                         "Text",
                                                         "int"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -957,7 +1022,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "int"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -1010,6 +1076,16 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -1047,24 +1123,16 @@
                                                     "Type": [
                                                         "Text",
                                                         "string"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "fallback",
                                                     "Type": [
-                                                        "Node",
-                                                        [
-                                                            [
-                                                                "Text",
-                                                                "int"
-                                                            ],
-                                                            "Space",
-                                                            [
-                                                                "Text",
-                                                                "option"
-                                                            ]
-                                                        ]
-                                                    ]
+                                                        "Text",
+                                                        "int"
+                                                    ],
+                                                    "IsOptional": true
                                                 }
                                             ]
                                         ],
@@ -1114,7 +1182,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "string"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "result",
@@ -1138,7 +1207,8 @@
                                                                 ">"
                                                             ]
                                                         ]
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -1209,7 +1279,8 @@
                                                     "seq"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -1358,7 +1429,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -1373,7 +1445,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -1388,7 +1461,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -1475,6 +1549,11 @@
                                 "Text",
                                 "int"
                             ],
+                            "LiteralValue": {
+                                "$type": "option",
+                                "$case": "some",
+                                "$value": "3"
+                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "XmlDoc": {
@@ -1495,6 +1574,11 @@
                                 "Text",
                                 "string"
                             ],
+                            "LiteralValue": {
+                                "$type": "option",
+                                "$case": "some",
+                                "$value": "\"hello\""
+                            },
                             "IsInline": false,
                             "IsMutable": false,
                             "XmlDoc": {
@@ -1536,6 +1620,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1553,6 +1638,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1570,6 +1656,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "ObsoleteInfo": "Active"
                             }
                         ],
@@ -1587,6 +1674,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -1624,14 +1713,16 @@
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "dy",
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -1703,6 +1794,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -1782,6 +1875,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "Fields": [
                                     {
                                         "Name": "message",
@@ -1823,6 +1917,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "Fields": [
                                     {
                                         "Name": "resourceName",
@@ -1853,6 +1948,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "Parameters": [
                                     [
                                         "Text",
@@ -1880,6 +1976,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -1949,7 +2046,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2028,7 +2126,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2154,7 +2253,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -2210,7 +2310,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2289,7 +2390,8 @@
                                             "TypeRef",
                                             "StructPoint",
                                             "Reference.MissingSyntaxes.StructPoint"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -2344,7 +2446,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2405,6 +2508,8 @@
                                     ],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -2562,7 +2667,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2614,7 +2720,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2656,7 +2763,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2735,7 +2843,8 @@
                                             "TypeRef",
                                             "DateTime",
                                             "System.DateTime"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2804,7 +2913,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -2907,7 +3017,8 @@
                                                     "option"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3043,7 +3154,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3156,7 +3268,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3208,7 +3321,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3260,7 +3374,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3312,7 +3427,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3364,7 +3480,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3416,7 +3533,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3483,7 +3601,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3492,7 +3611,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3548,7 +3668,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3557,7 +3678,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3613,7 +3735,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3622,7 +3745,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3678,7 +3802,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3687,7 +3812,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3743,14 +3869,16 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     },
                                     {
                                         "Name": "max",
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3759,7 +3887,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3819,7 +3948,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -3844,7 +3974,8 @@
                                                     "list"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -3938,7 +4069,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4040,7 +4172,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4174,7 +4307,8 @@
                                                     "seq"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4280,7 +4414,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -4295,7 +4430,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4398,7 +4534,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4505,7 +4642,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4612,7 +4750,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -4691,6 +4830,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -4756,6 +4897,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -4863,6 +5006,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -5013,6 +5158,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -5092,7 +5239,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5204,7 +5352,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5309,7 +5458,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -5342,7 +5492,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5450,7 +5601,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5573,7 +5725,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -5606,7 +5759,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5732,7 +5886,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5820,7 +5975,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -5938,7 +6094,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6193,7 +6350,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -6226,7 +6384,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6334,7 +6493,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6439,7 +6599,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6545,7 +6706,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6661,7 +6823,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -6676,7 +6839,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6771,7 +6935,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -6889,7 +7054,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7015,7 +7181,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -7048,7 +7215,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7192,7 +7360,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7296,7 +7465,8 @@
                                                     "list"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7384,7 +7554,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -7393,7 +7564,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7547,7 +7719,8 @@
                                                     "|}"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7618,7 +7791,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -7643,7 +7817,8 @@
                                                     "list"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7756,7 +7931,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -7781,7 +7957,8 @@
                                                     "seq"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7881,7 +8058,8 @@
                                                     "voption"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -7967,7 +8145,8 @@
                                                     "T"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -8063,7 +8242,8 @@
                                                     "list"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -8206,7 +8386,8 @@
                                                     ")"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -8221,7 +8402,8 @@
                                                     "S"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -8254,7 +8436,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -8366,7 +8549,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -8399,7 +8583,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -8582,6 +8767,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Method",
@@ -8663,6 +8850,16 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -8705,7 +8902,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "string"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -8798,7 +8996,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "int"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -8931,6 +9130,16 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -8944,14 +9153,16 @@
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "y",
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -9040,14 +9251,16 @@
                                                         "TypeRef",
                                                         "Vector2D",
                                                         "Reference.Objects.Vector2D"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "s",
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -9094,7 +9307,8 @@
                                                         "TypeRef",
                                                         "Vector2D",
                                                         "Reference.Objects.Vector2D"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "b",
@@ -9102,7 +9316,8 @@
                                                         "TypeRef",
                                                         "Vector2D",
                                                         "Reference.Objects.Vector2D"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -9149,7 +9364,8 @@
                                                         "TypeRef",
                                                         "Vector2D",
                                                         "Reference.Objects.Vector2D"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 },
                                                 {
                                                     "Name": "b",
@@ -9157,7 +9373,8 @@
                                                         "TypeRef",
                                                         "Vector2D",
                                                         "Reference.Objects.Vector2D"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -9238,7 +9455,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9282,7 +9500,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9337,7 +9556,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9413,7 +9633,8 @@
                                                     ">"
                                                 ]
                                             ]
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9455,7 +9676,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9508,7 +9730,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -9517,7 +9740,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -9527,7 +9751,8 @@
                                             "TypeRef",
                                             "Point",
                                             "Reference.Geometry.Point"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9579,7 +9804,8 @@
                                             "TypeRef",
                                             "Point",
                                             "Reference.Geometry.Point"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -9589,7 +9815,8 @@
                                             "TypeRef",
                                             "Point",
                                             "Reference.Geometry.Point"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9683,6 +9910,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Cases": [
                                     {
                                         "Name": "Circle",
@@ -9813,6 +10042,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "Width",
@@ -9865,7 +10096,8 @@
                                             "TypeRef",
                                             "Shape",
                                             "Reference.Shapes.Shape"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9910,7 +10142,8 @@
                                             "TypeRef",
                                             "Shape",
                                             "Reference.Shapes.Shape"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -9953,7 +10186,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -9963,7 +10197,8 @@
                                             "TypeRef",
                                             "Shape",
                                             "Reference.Shapes.Shape"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10010,7 +10245,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -10019,7 +10255,8 @@
                                         "Type": [
                                             "Text",
                                             "float"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -10029,7 +10266,8 @@
                                             "TypeRef",
                                             "Shape",
                                             "Reference.Shapes.Shape"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10120,6 +10358,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "Name",
@@ -10164,7 +10404,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10199,7 +10440,8 @@
                                         "Type": [
                                             "Text",
                                             "unit"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10238,7 +10480,8 @@
                                         "Type": [
                                             "Text",
                                             "unit"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10278,7 +10521,8 @@
                                         "Type": [
                                             "Text",
                                             "int"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ],
                                 [
@@ -10287,7 +10531,8 @@
                                         "Type": [
                                             "Text",
                                             "string"
-                                        ]
+                                        ],
+                                        "IsOptional": false
                                     }
                                 ]
                             ],
@@ -10388,6 +10633,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "Fields": [
                                     {
                                         "Name": "Clean",
@@ -10474,6 +10720,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "GenericParameters": {
                                     "$type": "option",
                                     "$case": "some",
@@ -10496,6 +10743,15 @@
                                         ]
                                     ]
                                 },
+                                "BaseType": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": [
+                                        "Text",
+                                        "obj"
+                                    ]
+                                },
+                                "Interfaces": [],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
@@ -10515,7 +10771,8 @@
                                                                 "T"
                                                             ]
                                                         ]
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -10622,6 +10879,7 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
                                 "AbbreviatedType": [
                                     "Text",
                                     "float"
@@ -10644,6 +10902,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -10697,6 +10957,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "TopLeft",
@@ -10752,6 +11014,8 @@
                                     "Params": [],
                                     "Examples": []
                                 },
+                                "Attributes": [],
+                                "Interfaces": [],
                                 "Fields": [
                                     {
                                         "Name": "X",
@@ -10800,7 +11064,8 @@
                                                         "TypeRef",
                                                         "Vector",
                                                         "Reference.Geometry.Vector"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],
@@ -10847,7 +11112,8 @@
                                                     "Type": [
                                                         "Text",
                                                         "float"
-                                                    ]
+                                                    ],
+                                                    "IsOptional": false
                                                 }
                                             ]
                                         ],

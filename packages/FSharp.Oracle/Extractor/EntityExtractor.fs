@@ -16,7 +16,7 @@ module internal EntityExtractor =
         {
             Name = field.Name
             Type = renderFSharpType false field.FieldType
-            LiteralValue = field.LiteralValue |> Option.map string
+            LiteralValue = field.LiteralValue |> Option.map literalText
             XmlDoc = xmlDocOf docs field.XmlDocSig
         }
 
@@ -51,6 +51,16 @@ module internal EntityExtractor =
         let obsoleteInfo = obsoleteOfEntity entity
         let generics = genericParametersOf entity
         let isStruct = isStruct entity
+        let attributes = attributesOf entity.Attributes
+
+        /// What a caller may pass this type as. Interfaces F# derives for records and
+        /// unions are excluded: the author did not write them and they crowd out the
+        /// ones who did.
+        let declaredInterfaces () =
+            entity.DeclaredInterfaces
+            |> Seq.filter (isDerivedInterface >> not)
+            |> Seq.map (renderFSharpType false)
+            |> Seq.toList
 
         if isMeasure entity then
             Entity.Measure
@@ -58,6 +68,7 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
                     ObsoleteInfo = obsoleteInfo
                 }
@@ -68,6 +79,7 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     Fields = entity.FSharpFields |> Seq.map (extractField docs) |> Seq.toList
                     ObsoleteInfo = obsoleteInfo
                 }
@@ -93,6 +105,7 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
                     Parameters = parameters
                     ReturnType = returnType
@@ -105,7 +118,9 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
+                    Interfaces = declaredInterfaces ()
                     Cases = entity.UnionCases |> Seq.map (extractUnionCase docs) |> Seq.toList
                     Members = extractMembers docs entity
                     ObsoleteInfo = obsoleteInfo
@@ -118,7 +133,9 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
+                    Interfaces = declaredInterfaces ()
                     Fields = entity.FSharpFields |> Seq.map (extractField docs) |> Seq.toList
                     Members = extractMembers docs entity
                     ObsoleteInfo = obsoleteInfo
@@ -133,6 +150,7 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
                     Fields =
                         entity.FSharpFields
@@ -149,6 +167,7 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
                     AbbreviatedType = renderFSharpType false entity.AbbreviatedType
                     ObsoleteInfo = obsoleteInfo
@@ -161,7 +180,9 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
+                    Interfaces = declaredInterfaces ()
                     Members = extractMembers docs entity
                     ObsoleteInfo = obsoleteInfo
                     IsStruct = isStruct
@@ -173,7 +194,13 @@ module internal EntityExtractor =
                     Name = name
                     FullName = fullName
                     XmlDoc = xmlDoc
+                    Attributes = attributes
                     GenericParameters = generics
+                    BaseType =
+                        entity.BaseType
+                        |> Option.filter (isTrivialBaseType >> not)
+                        |> Option.map (renderFSharpType false)
+                    Interfaces = declaredInterfaces ()
                     Members = extractMembers docs entity
                     ObsoleteInfo = obsoleteInfo
                     IsStruct = isStruct

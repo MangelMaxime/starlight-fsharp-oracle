@@ -6,9 +6,18 @@ open SignatureRendering
 
 module internal ParameterExtractor =
     let extractParameter (param: FSharpParameter) : Parameter =
+        // An optional parameter's type is reported as `int option`, but F# source
+        // writes `?x: int` - the option is what the `?` means.
+        let declaredType =
+            if param.IsOptionalArg && param.Type.HasTypeDefinition && param.Type.GenericArguments.Count = 1 then
+                param.Type.GenericArguments.[0]
+            else
+                param.Type
+
         {
             Name = param.DisplayName
-            Type = renderFSharpType false param.Type
+            Type = renderFSharpType false declaredType
+            IsOptional = param.IsOptionalArg
         }
 
     let curriedParams (mfv: FSharpMemberOrFunctionOrValue) =

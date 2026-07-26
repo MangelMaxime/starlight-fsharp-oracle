@@ -80,12 +80,27 @@ module Declarations =
         else
             TextNode.Node
                 [
+                    if p.IsOptional then
+                        punct "?"
+
                     TextNode.ParameterName p.Name
                     TextNode.Space
                     colon
                     TextNode.Space
                     p.Type
                 ]
+
+    /// Parameters of one curried group, tupled together with `*`.
+    let private parameterGroup (group: Parameter list) : TextNode list =
+        group
+        |> List.map parameterDeclaration
+        |> List.mapi (fun i node ->
+            if i = 0 then
+                [ node ]
+            else
+                [ TextNode.Space; star; TextNode.Space; node ]
+        )
+        |> List.concat
 
     // -----------------------------------------------------------------------
     // Functions and values
@@ -106,7 +121,8 @@ module Declarations =
     /// The column is the longest of the function name and the parameter names, which
     /// is why this has to happen here: the extractor emits names and types, not layout.
     let functionSignature (f: Function) : TextNode =
-        let allParams = f.Parameters |> List.collect id
+        let groups = f.Parameters |> List.filter (List.isEmpty >> not)
+        let allParams = groups |> List.collect id
 
         let column =
             let longestParameter =
@@ -124,14 +140,24 @@ module Declarations =
                 padding (max (column - f.Name.Length) 1)
                 colon
 
-                for p in allParams do
+                for group in groups do
                     TextNode.NewLine
                     TextNode.Indent 1
-                    TextNode.Text p.Name
-                    padding (column - p.Name.Length)
-                    colon
-                    TextNode.Space
-                    p.Type
+
+                    match group with
+                    // The common case: one parameter per curried group, colon aligned.
+                    | [ p ] ->
+                        if p.IsOptional then
+                            punct "?"
+
+                        TextNode.Text p.Name
+                        padding (column - p.Name.Length)
+                        colon
+                        TextNode.Space
+                        p.Type
+                    // A tupled group stays on one line so the `*` between its members
+                    // is not mistaken for currying.
+                    | group -> yield! parameterGroup group
 
                 if allParams.IsEmpty then
                     TextNode.Space
@@ -158,6 +184,13 @@ module Declarations =
                 colon
                 TextNode.Space
                 v.Type
+                match v.LiteralValue with
+                | Some value ->
+                    TextNode.Space
+                    equals
+                    TextNode.Space
+                    TextNode.Text value
+                | None -> ()
                 constraintClause v.GenericParameters
             ]
 
@@ -215,22 +248,25 @@ module Declarations =
 
     /// `: paramA -> paramB -> returnType`, or `: returnType` when there are none.
     let private memberTypeNodes (m: Member) (trailing: TextNode list) : TextNode list =
-        let allParams = m.Parameters |> List.collect id
+        // Curried groups are separated by `->`, parameters within a group by `*`.
+        // Flattening the two together turns a .NET-style `Format(value, digits)` into
+        // a curried signature that is not what the caller writes.
+        let groups = m.Parameters |> List.filter (List.isEmpty >> not)
 
         [
             TextNode.Space
             colon
             TextNode.Space
 
-            for i, p in List.indexed allParams do
+            for i, group in List.indexed groups do
                 if i > 0 then
                     TextNode.Space
                     arrow
                     TextNode.Space
 
-                parameterDeclaration p
+                yield! parameterGroup group
 
-            if not allParams.IsEmpty then
+            if not groups.IsEmpty then
                 TextNode.Space
                 arrow
                 TextNode.Space
@@ -375,11 +411,37 @@ module Declarations =
             | None -> ()
         ]
 
-    let private structAttribute (isStruct: bool) =
+    /// Attributes sit on their own lines above the declaration, as they are written.
+    let private attributeLines (attributes: string list) (isStruct: bool) =
         [
+            for attribute in attributes do
+                TextNode.Attribute attribute
+                TextNode.NewLine
+
             if isStruct then
                 TextNode.Attribute "[<Struct>]"
                 TextNode.NewLine
+        ]
+
+    /// `inherit Base` and `interface IFoo` lines, which say what a caller may pass the
+    /// type as - often the most important fact about it.
+    let private supertypeLines (baseType: TextNode option) (interfaces: TextNode list) =
+        [
+            match baseType with
+            | Some node ->
+                TextNode.NewLine
+                TextNode.Indent 1
+                keyword "inherit"
+                TextNode.Space
+                node
+            | None -> ()
+
+            for node in interfaces do
+                TextNode.NewLine
+                TextNode.Indent 1
+                keyword "interface"
+                TextNode.Space
+                node
         ]
 
     let private memberLines (members: Member list) =
@@ -392,6 +454,7 @@ module Declarations =
         | Entity.Measure e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes false
                     TextNode.Attribute "[<Measure>]"
                     TextNode.NewLine
                     yield! typeHead e.Name e.GenericParameters
@@ -400,6 +463,7 @@ module Declarations =
         | Entity.Exception e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes false
                     keyword "exception"
                     TextNode.Space
                     TextNode.Text e.Name
@@ -412,6 +476,7 @@ module Declarations =
         | Entity.Delegate e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes false
                     yield! typeHead e.Name e.GenericParameters
                     TextNode.Space
                     equals
@@ -441,7 +506,7 @@ module Declarations =
         | Entity.Union e ->
             TextNode.Node
                 [
-                    yield! structAttribute e.IsStruct
+                    yield! attributeLines e.Attributes e.IsStruct
                     yield! typeHead e.Name e.GenericParameters
                     TextNode.Space
                     equals
@@ -458,13 +523,14 @@ module Declarations =
                             TextNode.Space
                             yield! payloadFields true case.Fields
 
+                    yield! supertypeLines None e.Interfaces
                     yield! memberLines e.Members
                 ]
 
         | Entity.Record e ->
             TextNode.Node
                 [
-                    yield! structAttribute e.IsStruct
+                    yield! attributeLines e.Attributes e.IsStruct
                     yield! typeHead e.Name e.GenericParameters
                     TextNode.Space
                     equals
@@ -485,12 +551,14 @@ module Declarations =
                     TextNode.Indent 1
                     punct "}"
 
+                    yield! supertypeLines None e.Interfaces
                     yield! memberLines e.Members
                 ]
 
         | Entity.Enum e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes e.IsStruct
                     yield! typeHead e.Name e.GenericParameters
                     TextNode.Space
                     equals
@@ -514,6 +582,7 @@ module Declarations =
         | Entity.Abbrev e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes e.IsStruct
                     yield! typeHead e.Name e.GenericParameters
                     TextNode.Space
                     equals
@@ -524,14 +593,17 @@ module Declarations =
         | Entity.Interface e ->
             TextNode.Node
                 [
+                    yield! attributeLines e.Attributes false
                     yield! typeHead e.Name e.GenericParameters
+                    yield! supertypeLines None e.Interfaces
                     yield! memberLines e.Members
                 ]
 
         | Entity.Class e ->
             TextNode.Node
                 [
-                    yield! structAttribute e.IsStruct
+                    yield! attributeLines e.Attributes e.IsStruct
                     yield! typeHead e.Name e.GenericParameters
+                    yield! supertypeLines e.BaseType e.Interfaces
                     yield! memberLines e.Members
                 ]

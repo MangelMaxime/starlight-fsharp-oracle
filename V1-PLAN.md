@@ -296,25 +296,51 @@ Ordered by how wrong the output is today.
 
 ### Missing information
 
-- [ ] **Inheritance and interface implementations.** `entity.BaseType` and
-      `entity.DeclaredInterfaces` are never read anywhere in the codebase. A class
-      page never states what it inherits or implements, and interface
-      implementations get mixed into "Methods" unmarked.
-- [ ] **Attributes.** Only `[<Struct>]` and `[<Measure>]` render. Add at minimum
-      `[<RequireQualifiedAccess>]`, `[<AutoOpen>]`, `[<Literal>]`, `[<CLIMutable>]`,
-      `[<Sealed>]`, `[<AbstractClass>]`, `[<Extension>]`. `[<RequireQualifiedAccess>]`
-      matters most - it changes how callers write code.
-- [ ] **Literal values.** `[<Literal>] let X = 42` renders `val X : int`, dropping
-      the value.
+- [x] **Inheritance and interface implementations.** Type heads now carry
+      `inherit Base` and `interface IFoo` lines. `obj` base types are dropped as
+      noise, as are the interfaces F# derives for records and unions
+      (`IEquatable`, `IComparable`, `IStructural*`) - the author did not write those
+      and they would crowd out the ones who did.
+      Explicit interface *implementations* are still unmarked among the methods.
+- [x] **Attributes.** Rendered above the declaration, with constructor arguments.
+      Filtered by denylist rather than allowlist, so user attributes appear without
+      being enumerated: compiler-inserted ones (`CompilationMapping`,
+      `CompilationRepresentation`, `CompiledName`), `System.Diagnostics.*`,
+      `System.Runtime.CompilerServices.*`, and the three already shown another way
+      (`Struct`, `Measure`, `Obsolete`). Verified the fixture emits exactly
+      `[<Measure>]`, `[<Struct>]`, `[<RequireQualifiedAccess>]`, `[<AbstractClass>]`
+      and no noise.
+- [x] **Literal values.** `val MaxRetries : int = 3`, and
+      `val DefaultGreeting : string = "hello"` - strings quoted and chars ticked, since
+      an unquoted literal reads as an identifier.
 - [ ] **Type extensions / extension members.** `type Foo with ...` and `[<Extension>]`
       methods are extracted as ordinary module functions and never attached to the
       extended type.
-- [ ] **Parameter modifiers.** `extractParameter`
-      (`Extractor/ParameterExtractor.fs:8`) ignores `IsOptionalArg` (`?x`),
-      `IsInArg`/`IsOutArg` (byref/inref/outref) and `[<ParamArray>]`.
+- [x] **Parameter modifiers.** Optional parameters render `?fallback : int` rather
+      than `fallback : int option`, the option being what the `?` means. byref already
+      rendered correctly (`result : byref<int>`). `[<ParamArray>]` is still not marked;
+      no fixture covers it.
 - [x] **`inline` on members.** Renders as `member inline Largest : ...`; fixture
       added, since none existed.
 - [ ] **Events, indexed properties (`Item`), explicit interface implementations.**
+
+### Found while fixing: tupled parameters rendered as curried
+
+Not in the plan. `Parameter list list` encodes curried groups (outer) and tupled
+parameters within a group (inner), but every renderer flattened it with
+`List.collect id` and joined the lot with `->`. So a .NET-style
+`Format(value, digits)` was documented as `value : float -> digits : int -> string`,
+which is not what a caller writes and is not valid for that method.
+
+The formatting reference settles it: `ActivePatterns.fsi` has both forms side by side -
+`val (|DivisibleBy|_|): divisor: int -> n: int -> int option` (curried) against
+`val (|InRange|_|): min: int * max: int -> n: int -> int option` (tupled).
+
+- [x] Groups are separated by `->`, parameters within a group by `*`. `Parse` now reads
+      `input : string * ?fallback : int -> int`.
+- [x] In the aligned multi-line function layout, a tupled group stays on one line so
+      its `*` cannot be mistaken for currying. The one-parameter-per-group case, which
+      is nearly all F# functions, is unchanged and still column-aligned.
 
 ### XML documentation
 
