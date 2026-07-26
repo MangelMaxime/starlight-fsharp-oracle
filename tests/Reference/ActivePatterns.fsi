@@ -1,3 +1,11 @@
+// FORMATTING REFERENCE - deliberately not compiled (listed as <None> in Reference.fsproj).
+//
+// This is `dotnet telplin` output formatted with `dotnet fantomas`, kept as the
+// canonical example of how F# renders signatures: parameter names, curried vs tupled
+// groups, parenthesised function types, active-pattern names. Consult it before
+// deciding how the generator should present a declaration, and regenerate it for any
+// construct in doubt rather than inventing a format. See V1-PLAN.md.
+
 /// <summary>Active patterns used to test pattern matching extraction.</summary>
 module Reference.ActivePatterns
 

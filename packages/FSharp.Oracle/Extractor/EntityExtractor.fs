@@ -231,16 +231,10 @@ module internal EntityExtractor =
                     && not m.IsPropertyGetterMethod
                     && not m.IsPropertySetterMethod
                 )
+                // Sort the symbols, not the extracted members: the key needs XmlDocSig
+                // to separate overloads deterministically.
+                |> Seq.sortBy memberSortKey
                 |> Seq.map (extractMember toUrl docs)
-                |> Seq.sortBy (fun m ->
-                    match m.Kind, m.IsStatic with
-                    | MemberKind.Constructor, _ -> 0
-                    | MemberKind.Method, false -> 1
-                    | MemberKind.Property, false -> 2
-                    | MemberKind.Method, true -> 3
-                    | MemberKind.Property, true -> 4
-                    | MemberKind.Operator, _ -> 5
-                )
                 |> Seq.toList
 
             // When there are multiple constructors they all start as Name = "new".

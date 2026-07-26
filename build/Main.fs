@@ -3,6 +3,7 @@ module EasyBuild.Main
 open Spectre.Console.Cli
 open EasyBuild.Commands.Docs
 open EasyBuild.Commands.Serve
+open EasyBuild.Commands.Test
 open SimpleExec
 open EasyBuild.Tools.Husky
 
@@ -20,6 +21,7 @@ let main args =
 
         config.AddCommand<DocsCommand>("docs") |> ignore
         config.AddCommand<ServeCommand>("serve") |> ignore
+        config.AddCommand<TestCommand>("test") |> ignore
 
     )
 

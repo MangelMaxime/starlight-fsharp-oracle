@@ -14,6 +14,16 @@
     <Compile Include="Generics.fs" />
     <Compile Include="Reactive.fs" />
     <Compile Include="ActivePatterns.fs" />
+    <Compile Include="MissingSyntaxes.fs" />
+    <Compile Include="Coverage.fs" />
+  </ItemGroup>
+
+  <!--
+    ActivePatterns.fsi is deliberately NOT compiled. It is telplin+fantomas output kept
+    as a formatting reference for how F# renders signatures. See V1-PLAN.md.
+  -->
+  <ItemGroup>
+    <None Include="ActivePatterns.fsi" />
   </ItemGroup>
 
 </Project>

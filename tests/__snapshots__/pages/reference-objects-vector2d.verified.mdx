@@ -1,0 +1,161 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Vector2D"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "constructors"
+    text: "Constructors"
+  - depth: 3
+    slug: "new"
+    text: "new"
+  - depth: 2
+    slug: "properties"
+    text: "Properties"
+  - depth: 3
+    slug: "X"
+    text: "X"
+  - depth: 3
+    slug: "Y"
+    text: "Y"
+  - depth: 2
+    slug: "operators"
+    text: "Operators"
+  - depth: 3
+    slug: "(*)"
+    text: "(*)"
+  - depth: 3
+    slug: "(+)"
+    text: "(+)"
+  - depth: 3
+    slug: "(-)"
+    text: "(-)"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-objects">Reference.Objects</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Vector2D<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw"><a href="#new">new</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">x</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">y</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#X">X</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Y">Y</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#(*)">(*)</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">v</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">s</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#(+)">(+)</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#(-)">(-)</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A two-dimensional vector with operator overloads.
+
+<h2 id="constructors">Constructors</h2>
+
+<div class="collapsible-group">
+<DocEntry name="new">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">new</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">x</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">y</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span></div>
+
+</DocEntry>
+
+</div>
+
+<h2 id="properties">Properties</h2>
+
+<div class="collapsible-group">
+<DocEntry name="X">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;X&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The x component.
+
+</DocEntry>
+
+<DocEntry name="Y">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;Y&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The y component.
+
+</DocEntry>
+
+</div>
+
+<h2 id="operators">Operators</h2>
+
+<div class="collapsible-group">
+<DocEntry name="(*)">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;(*)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">v</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">s</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span></div>
+
+Scales a vector by a scalar.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">v</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The vector to scale.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">s</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The scalar multiplier.
+
+</div>
+</DocEntry>
+
+<DocEntry name="(+)">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;(+)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span></div>
+
+Adds two vectors component-wise.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Left operand.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Right operand.
+
+</div>
+</DocEntry>
+
+<DocEntry name="(-)">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;(-)&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span></div>
+
+Subtracts two vectors component-wise.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">a</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Left operand.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">b</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-objects-vector2d">Vector2D</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Right operand.
+
+</div>
+</DocEntry>
+
+</div>
+

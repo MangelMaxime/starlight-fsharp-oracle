@@ -1,0 +1,57 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "NodeState"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 3
+    slug: "Clean"
+    text: "Clean"
+  - depth: 3
+    slug: "Check"
+    text: "Check"
+  - depth: 3
+    slug: "Dirty"
+    text: "Dirty"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference-reactive">Reference.Reactive</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-reactive-global">Reference.Reactive.global</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;NodeState&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;0<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;1<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;2</div>
+</div>
+
+<h2 id="description">Description</h2>
+
+Marking state for a reactive node. Ordered Clean &lt; Check &lt; Dirty; an F# enum
+ so it is a plain int at runtime (erased by Fable) - named and type-checked,
+ zero cost vs raw ints.
+
+<div class="collapsible-group">
+<DocEntry name="Clean">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Clean">Clean</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;0</div>
+
+The value is current; nothing downstream needs touching
+
+</DocEntry>
+
+<DocEntry name="Check">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Check">Check</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;1</div>
+
+A transitive dependency *might* have changed (verify before recomputing)
+
+</DocEntry>
+
+<DocEntry name="Dirty">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-property"><a href="#Dirty">Dirty</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span>&nbsp;&zwnj;2</div>
+
+A direct dependency changed
+
+</DocEntry>
+
+</div>
+

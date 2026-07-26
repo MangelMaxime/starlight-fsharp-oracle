@@ -1,0 +1,143 @@
+/// <summary>
+/// Constructs that the generator must render correctly but which no other fixture
+/// module exercises. Added alongside the v1 snapshot tests.
+/// </summary>
+module Reference.Coverage
+
+open System
+
+// ---------------------------------------------------------------------------
+// Literals
+// ---------------------------------------------------------------------------
+
+/// <summary>The maximum number of retry attempts.</summary>
+[<Literal>]
+let MaxRetries = 3
+
+/// <summary>The greeting used when none is supplied.</summary>
+[<Literal>]
+let DefaultGreeting = "hello"
+
+// ---------------------------------------------------------------------------
+// RequireQualifiedAccess union
+// ---------------------------------------------------------------------------
+
+/// <summary>A log severity level. Callers must qualify the case names.</summary>
+[<RequireQualifiedAccess>]
+type Severity =
+    /// <summary>Diagnostic detail, normally hidden.</summary>
+    | Debug
+    /// <summary>Routine progress information.</summary>
+    | Info
+    /// <summary>Something unexpected but recoverable.</summary>
+    | Warning
+    /// <summary>A failure, carrying its numeric code.</summary>
+    | Error of code: int
+
+// ---------------------------------------------------------------------------
+// Interface, base class, inheritance and implementation
+// ---------------------------------------------------------------------------
+
+/// <summary>A contract for things that carry a name.</summary>
+type INamed =
+    /// <summary>The name of this object.</summary>
+    abstract member Name: string
+
+/// <summary>A base class carrying a unique identifier.</summary>
+[<AbstractClass>]
+type EntityBase(id: int) =
+
+    /// <summary>The unique identifier.</summary>
+    member _.Id = id
+
+    /// <summary>Produces a human-readable description.</summary>
+    abstract member Describe: unit -> string
+
+/// <summary>
+/// A user, inheriting <see cref="T:Reference.Coverage.EntityBase"/> and
+/// implementing <see cref="T:Reference.Coverage.INamed"/>.
+/// </summary>
+type User(id: int, name: string) =
+    inherit EntityBase(id)
+
+    let mutable displayName = name
+
+    /// <summary>The display name. Settable.</summary>
+    member _.DisplayName
+        with get () = displayName
+        and set value = displayName <- value
+
+    /// <summary>Whether the user is currently active.</summary>
+    member val IsActive = true with get, set
+
+    override _.Describe() = $"user {name}"
+
+    interface INamed with
+        member _.Name = name
+
+// ---------------------------------------------------------------------------
+// Overloads
+// ---------------------------------------------------------------------------
+
+/// <summary>Formats values in several ways.</summary>
+type Formatter() =
+
+    /// <summary>Formats an integer.</summary>
+    /// <param name="value">The value to format.</param>
+    /// <returns>The value as a string.</returns>
+    member _.Format(value: int) = string value
+
+    /// <summary>Formats a float to a fixed number of digits.</summary>
+    /// <param name="value">The value to format.</param>
+    /// <param name="digits">How many digits to keep.</param>
+    /// <returns>The value as a string.</returns>
+    member _.Format(value: float, digits: int) = value.ToString("F" + string digits)
+
+// ---------------------------------------------------------------------------
+// Optional and byref parameters
+// ---------------------------------------------------------------------------
+
+/// <summary>Parses text into numbers.</summary>
+type Parser() =
+
+    /// <summary>Parses a string, falling back to a supplied value.</summary>
+    /// <param name="input">The text to parse.</param>
+    /// <param name="fallback">Value to use when parsing fails. Defaults to zero.</param>
+    /// <returns>The parsed value, or the fallback.</returns>
+    member _.Parse(input: string, ?fallback: int) =
+        match Int32.TryParse input with
+        | true, value -> value
+        | _ -> defaultArg fallback 0
+
+    /// <summary>Tries to parse a string, writing the result to an out parameter.</summary>
+    /// <param name="input">The text to parse.</param>
+    /// <param name="result">Receives the parsed value.</param>
+    /// <returns>True when parsing succeeded.</returns>
+    member _.TryParse(input: string, result: byref<int>) = Int32.TryParse(input, &result)
+
+// ---------------------------------------------------------------------------
+// XML doc: typeparam and list
+// ---------------------------------------------------------------------------
+
+/// <summary>Returns the first element of a sequence, if there is one.</summary>
+/// <typeparam name="T">The element type.</typeparam>
+/// <param name="items">The sequence to inspect.</param>
+/// <returns>The first element, or <c>None</c> when the sequence is empty.</returns>
+/// <remarks>
+/// Behaviour by input:
+/// <list type="bullet">
+/// <item><description>An empty sequence yields <c>None</c>.</description></item>
+/// <item><description>Any other sequence yields <c>Some first</c>.</description></item>
+/// </list>
+/// </remarks>
+let tryFirst (items: 'T seq) : 'T option = Seq.tryHead items
+
+/// <summary>Combines two values using a supplied function.</summary>
+/// <typeparam name="T">The input type.</typeparam>
+/// <typeparam name="U">The result type.</typeparam>
+/// <param name="combine">The combining function.</param>
+/// <param name="first">The first value.</param>
+/// <param name="second">The second value.</param>
+/// <returns>The combined result.</returns>
+let combineWith (combine: 'T -> 'T -> 'U) (first: 'T) (second: 'T) : 'U =
+    combine first second

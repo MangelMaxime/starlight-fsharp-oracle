@@ -1,0 +1,82 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "StructPoint"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "fields"
+    text: "Fields"
+  - depth: 3
+    slug: "X"
+    text: "X"
+  - depth: 3
+    slug: "Y"
+    text: "Y"
+  - depth: 2
+    slug: "properties"
+    text: "Properties"
+  - depth: 3
+    slug: "DistanceFromOrigin"
+    text: "DistanceFromOrigin"
+  - depth: 2
+    slug: "methods"
+    text: "Methods"
+  - depth: 3
+    slug: "Translate"
+    text: "Translate"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-missingsyntaxes">Reference.MissingSyntaxes</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-attr">[&lt;Struct&gt;]</span><br/><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;StructPoint&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#X">X</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Y">Y</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">&#125;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Translate">Translate</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">dx</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">dy</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-missingsyntaxes-structpoint">StructPoint</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#DistanceFromOrigin">DistanceFromOrigin</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A lightweight 2D point stored on the stack.
+
+<h2 id="fields">Fields</h2>
+
+<div class="collapsible-group">
+<DocEntry name="X">
+<div class="fsharp-doc-sig" slot="signature">X&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float</div>
+
+</DocEntry>
+
+<DocEntry name="Y">
+<div class="fsharp-doc-sig" slot="signature">Y&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float</div>
+
+</DocEntry>
+
+</div>
+
+<h2 id="properties">Properties</h2>
+
+<div class="collapsible-group">
+<DocEntry name="DistanceFromOrigin">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;DistanceFromOrigin&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+Computes the Euclidean distance from the origin.
+
+</DocEntry>
+
+</div>
+
+<h2 id="methods">Methods</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Translate">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;Translate&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">dx</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">dy</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-missingsyntaxes-structpoint">StructPoint</a></span></div>
+
+Translates the point by a given offset.
+
+</DocEntry>
+
+</div>
+

@@ -1,0 +1,131 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference.Coverage"
+headings:
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "tryFirst"
+    text: "tryFirst"
+  - depth: 3
+    slug: "combineWith"
+    text: "combineWith"
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "MaxRetries"
+    text: "MaxRetries"
+  - depth: 3
+    slug: "DefaultGreeting"
+    text: "DefaultGreeting"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/reference-coverage-severity">Severity</a></dt>
+<dd>A log severity level. Callers must qualify the case names.</dd>
+<dt><a href="/api/reference-coverage-inamed">INamed</a></dt>
+<dd>A contract for things that carry a name.</dd>
+<dt><a href="/api/reference-coverage-entitybase">EntityBase</a></dt>
+<dd>A base class carrying a unique identifier.</dd>
+<dt><a href="/api/reference-coverage-user">User</a></dt>
+<dd>A user, inheriting ``Reference.Coverage.EntityBase`` and implementing ``Reference.Coverage.INamed``.</dd>
+<dt><a href="/api/reference-coverage-formatter">Formatter</a></dt>
+<dd>Formats values in several ways.</dd>
+<dt><a href="/api/reference-coverage-parser">Parser</a></dt>
+<dd>Parses text into numbers.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="tryFirst">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;tryFirst&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;items&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;option&nbsp;&zwnj;</div>
+
+Returns the first element of a sequence, if there is one.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">items</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T&nbsp;&zwnj;seq
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The sequence to inspect.
+
+</div>
+<strong>Returns</strong>
+
+The first element, or `None` when the sequence is empty.
+
+</DocEntry>
+
+<DocEntry name="combineWith">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;combineWith&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;combine&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;first&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;second&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U&nbsp;&zwnj;<span class="fsharp-doc-kw">,</span>&nbsp;&zwnj;&#x27;U</div>
+
+Combines two values using a supplied function.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">combine</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">(</span>&#x27;T&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;&#x27;U<span class="fsharp-doc-kw">)</span><span class="fsharp-doc-kw">)</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The combining function.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">first</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The first value.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">second</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;&#x27;T
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The second value.
+
+</div>
+<strong>Returns</strong>
+
+The combined result.
+
+</DocEntry>
+
+</div>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="MaxRetries">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;MaxRetries&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int</div>
+
+The maximum number of retry attempts.
+
+</DocEntry>
+
+<DocEntry name="DefaultGreeting">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;DefaultGreeting&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string</div>
+
+The greeting used when none is supplied.
+
+</DocEntry>
+
+</div>
+

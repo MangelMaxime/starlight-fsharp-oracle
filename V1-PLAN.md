@@ -76,41 +76,61 @@ below is a string-formatting defect, which is exactly what golden files catch.
 
 ### Fixture coverage
 
-- [ ] Add `MissingSyntaxes.fs` to `tests/Reference/Reference.fsproj` (currently
-      written but **not compiled** - measures, structs, exceptions, delegates,
-      type extensions and `<see cref>` are all untested end to end)
-- [ ] Leave `tests/Reference/ActivePatterns.fsi` out of the fsproj on purpose - it is
+- [x] Add `MissingSyntaxes.fs` to `tests/Reference/Reference.fsproj` (was written but
+      **not compiled** - measures, structs, exceptions, delegates, type extensions and
+      `<see cref>` were all untested end to end)
+- [x] Leave `tests/Reference/ActivePatterns.fsi` out of the fsproj on purpose - it is
       a **formatting reference**, not a fixture (see "Formatting reference" above).
-      Add a header comment saying so, so nobody deletes it as dead weight.
-- [ ] Extend fixtures to cover what the report found missing and nothing covers yet:
-      a property with a setter, a `[<Literal>]`, a `[<RequireQualifiedAccess>]` union,
-      a class implementing an interface, a class inheriting a base type, an overloaded
-      method (two `Format` overloads), a function with optional `?x` and a byref param,
-      a `<list>` and a `<typeparam>` in XML doc
+      Listed as `<None>` with a header comment saying so.
+- [x] Extend fixtures to cover what the report found missing and nothing covers yet -
+      added as `tests/Reference/Coverage.fs`: settable property, auto-property with
+      `get, set`, `[<Literal>]`, `[<RequireQualifiedAccess>]` union, class implementing
+      an interface, abstract base class + inheriting class, overloaded `Format`,
+      optional `?fallback` and `byref` parameters, `<list>` and `<typeparam>` XML doc
 
 ### Test harness
 
-- [ ] New `build/Commands/Test.fs`, registered in `build/Main.fs` alongside
-      `DocsCommand`/`ServeCommand` (the `Workspace.fs` type provider picks up new
-      folders automatically)
-- [ ] Snapshot the **JSON IR**: build `tests/Reference`, run the Oracle over the
-      resulting dll, compare against `tests/__snapshots__/reference.ir.json`
-- [ ] Snapshot the **generated `.mdx`**: compare per-page output against
-      `tests/__snapshots__/pages/*.mdx`
-- [ ] `--update` flag to rewrite snapshots, so intentional changes are a reviewable diff
+- [x] New `build/Commands/Test.fs`, registered in `build/Main.fs` alongside
+      `DocsCommand`/`ServeCommand`
+- [x] Snapshot the **JSON IR**: `tests/__snapshots__/reference.ir.verified.json`
+- [x] Snapshot the **generated `.mdx`**: `tests/__snapshots__/pages/*.verified.mdx`
+      (48 pages)
+- [x] `--update` flag to rewrite snapshots, so intentional changes are a reviewable
+      diff. Stale snapshots with no matching output are reported as failures too, so
+      a page that stops being generated cannot pass silently.
 
-**Decision needed in this phase:** how to run the renderer snapshots.
-`Render/*` is plain F# + `System.Text.StringBuilder` and would run under .NET
-directly, but `Plugin.fs` pulls in `Node.Api` and `Fable.Core.JS` imports, so
-referencing `Starlight.FSharp.Oracle.fsproj` from a .NET test project may not
-compile. Two options - pick whichever is cheaper once tried:
+**Decision made:** neither (a) nor (b) was needed. `Starlight.FSharp.Oracle.fsproj`
+builds *and runs* under .NET as-is - the `jsNative` members are only reached by
+`sidebarTree` and the plugin hook, not by page rendering. So the harness is a plain
+.NET console project, `tests/Oracle.Tests`, driving the real extractor and the real
+renderer. No test framework: it uses Verify's `.verified`/`.received` file convention
+(already anticipated in `.editorconfig`) with a ~90-line comparer, which keeps the
+central-package-management lock files untouched.
 
-- (a) Split the Fable/Node-specific surface (`Plugin.fs`, `Helpers.fs`) out from the
-  renderer so the renderer is a plain .NET-testable library. Cleaner, and it helps
-  phase 3 too.
-- (b) Compile with Fable and run the snapshots in Node.
+Not snapshotted: `Generate.sidebarTree`, which constructs `jsNative` POJOs and can
+only run under Fable. Worth covering in Node later; noted under Blocked.
 
-Record the choice here when made.
+- [x] Extracted `Generate.allPages` from `Plugin.fs` so the plugin and the tests
+      assemble pages through the same code path and cannot drift.
+
+### Found while building the harness: output was non-deterministic
+
+Not in the original plan. The first snapshot run failed against itself: entity members
+came out in a different order on nearly every run, so `Counter`, `Vector2D` and `User`
+churned. Cause: FCS gives no stable enumeration order for
+`entity.MembersFunctionsAndValues` - it varies from process to process - and the old
+`Seq.sortBy` only ranked by kind, leaving same-kind members in that unstable order.
+
+This is a shipped bug, not just a test problem: every `astro build` could emit
+different HTML for the same input, so anyone committing generated docs got spurious
+diffs and builds were not reproducible. It also made the gate itself worthless, so it
+had to be fixed here rather than deferred.
+
+- [x] `Helpers.memberSortKey` - rank by kind, then name, then `XmlDocSig` (which
+      encodes parameter types, so overloads order deterministically). Sort the FCS
+      symbols before mapping, since the key needs `XmlDocSig`.
+      (`Extractor/Helpers.fs`, `Extractor/EntityExtractor.fs`)
+- [x] Verified stable across 5 consecutive runs.
 
 ---
 
@@ -319,7 +339,11 @@ Ordered by how wrong the output is today.
 
 Questions that came up mid-run and need a human answer. Keep working around these.
 
-_(none yet)_
+- **Sidebar tree is not snapshotted.** `Generate.sidebarTree` builds `jsNative` POJOs,
+  so it only runs under Fable and the .NET harness cannot cover it. Options: a small
+  Fable-compiled Node harness, or make the sidebar types plain records that Fable
+  erases. Not urgent - the sidebar has had no reported defects - but it is the one
+  untested output. (raised phase 1)
 
 ---
 
@@ -329,7 +353,8 @@ Record choices made during the run so later phases do not relitigate them.
 
 | Phase | Decision | Choice |
 |---|---|---|
-| 1 | Renderer snapshot harness (.NET vs Node) | _tbd_ |
+| 1 | Renderer snapshot harness (.NET vs Node) | .NET console project against the real fsproj; no split needed, no test framework, Verify file convention |
+| 1 | Entity member ordering | kind, then name, then `XmlDocSig` - FCS order is not stable across processes |
 | 2 | External types: plain text vs MS Learn links | _tbd_ |
 | 3 | Final `TextNode` shape | _tbd_ |
 | 4 | Colon spacing: `val name : t` vs Fantomas `val name: t` | _tbd_ |

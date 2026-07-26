@@ -31,3 +31,6 @@ pnpm-debug.log*
 obj/
 bin/
 oracle-bin/
+
+# snapshot test output - transient, only *.verified.* is committed
+*.received.*

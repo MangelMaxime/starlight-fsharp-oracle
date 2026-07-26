@@ -199,6 +199,32 @@ let rootIndexPage
 
     "index", toMdxPage (Render.renderRootIndexPage htmlLinkGen assemblies globalModules)
 
+/// Every page the plugin writes, as (slug, mdx content).
+/// Shared by the plugin and the snapshot tests so the two cannot drift apart.
+let allPages (basePath: string) (outputBase: string) (root: Root) : (string * string) list =
+    let modules = root.Assemblies |> List.collect _.Modules
+
+    // Modules whose page is folded into a same-slug entity page (generic type +
+    // companion module) must not be written standalone, or they clobber it.
+    let mergedSlugs = mergedModuleSlugs modules |> Set.ofList
+
+    let moduleOutputs =
+        modulePages basePath outputBase modules
+        |> List.filter (fun (slug, _) -> not (Set.contains slug mergedSlugs))
+
+    let moduleSlugs = moduleOutputs |> List.map fst |> Set.ofList
+
+    let namespaceOutputs =
+        namespacePages basePath outputBase modules
+        |> List.filter (fun (slug, _) -> not (Set.contains slug moduleSlugs))
+
+    [
+        rootIndexPage basePath outputBase root.Assemblies modules
+        yield! namespaceOutputs
+        yield! moduleOutputs
+        yield! entityPages basePath outputBase modules
+    ]
+
 // ---------------------------------------------------------------------------
 // Sidebar
 // ---------------------------------------------------------------------------

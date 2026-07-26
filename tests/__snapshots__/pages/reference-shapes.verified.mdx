@@ -1,0 +1,177 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference.Shapes"
+headings:
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "area"
+    text: "area"
+  - depth: 3
+    slug: "boundingBox"
+    text: "boundingBox"
+  - depth: 3
+    slug: "scale"
+    text: "scale"
+  - depth: 3
+    slug: "containsPoint"
+    text: "containsPoint"
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "unitCircle"
+    text: "unitCircle"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/reference-shapes-shape">Shape</a></dt>
+<dd>A 2D geometric shape.</dd>
+<dt><a href="/api/reference-shapes-boundingbox">BoundingBox</a></dt>
+<dd>The axis-aligned bounding box of a shape.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="area">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;area&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;shape&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;float</div>
+
+Computes the area of a shape.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">shape</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The shape whose area is computed.
+
+</div>
+<strong>Returns</strong>
+
+Area as a `float`.
+
+<strong>Example</strong>
+
+```fsharp
+ let a = area (Circle 1.0)   // Math.PI
+ let b = area (Rectangle (3.0, 4.0))  // 12.0
+```
+
+</DocEntry>
+
+<DocEntry name="boundingBox">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;boundingBox&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;shape&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-boundingbox">BoundingBox</a></span></div>
+
+Returns the axis-aligned bounding box that encloses `shape`.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">shape</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The shape to bound.
+
+</div>
+<strong>Returns</strong>
+
+A ``BoundingBox`` record.
+
+</DocEntry>
+
+<DocEntry name="scale">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;scale&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;factor&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;shape&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span></div>
+
+Scales a shape by a uniform factor.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">factor</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The scaling factor to apply.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">shape</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The shape to scale.
+
+</div>
+<strong>Returns</strong>
+
+A new ``Shape`` scaled by `factor`.
+
+</DocEntry>
+
+<DocEntry name="containsPoint">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;containsPoint&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;x&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;y&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;shape&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool</div>
+
+Checks whether a point lies inside a shape's bounding box.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">x</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The x coordinate of the point.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">y</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;float
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The y coordinate of the point.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-typevar">shape</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The shape whose bounding box is tested.
+
+</div>
+<strong>Returns</strong>
+
+`true` if the point is inside the bounding box.
+
+</DocEntry>
+
+</div>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="unitCircle">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;unitCircle&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-shapes-shape">Shape</a></span></div>
+
+The unit circle — a ``Circle`` with radius `1.0`.
+
+</DocEntry>
+
+</div>
+

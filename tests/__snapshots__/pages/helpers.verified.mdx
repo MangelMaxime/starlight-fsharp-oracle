@@ -1,0 +1,124 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Helpers"
+headings:
+  - depth: 2
+    slug: "declared-modules"
+    text: "Declared Modules"
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "isNonEmpty"
+    text: "isNonEmpty"
+  - depth: 3
+    slug: "timestamp"
+    text: "timestamp"
+  - depth: 3
+    slug: "epoch"
+    text: "epoch"
+  - depth: 3
+    slug: "padLeft"
+    text: "padLeft"
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "version"
+    text: "version"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="declared-modules">Declared Modules</h2>
+
+<dl>
+<dt><a href="/api/helpers-legacyhelpers">LegacyHelpers</a> <span class="fsharp-doc-obsolete-inline" title="Use HelpersV2 instead.">Deprecated</span></dt>
+<dd>Legacy helper module. Use HelpersV2 instead.</dd>
+</dl>
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/helpers-config">Config</a> <span class="fsharp-doc-obsolete-inline" title="Use ConfigV2 instead.">Deprecated</span></dt>
+<dd>Legacy configuration format. Use ConfigV2 instead.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="isNonEmpty">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;isNonEmpty&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;s&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;bool</div>
+
+Returns true if the given string is non-empty.
+
+<strong>Example 1</strong>
+
+Check a non-empty string:
+ ```fsharp
+ isNonEmpty "hello" // true
+```
+
+<strong>Example 2</strong>
+
+Check an empty string:
+ ```fsharp
+ isNonEmpty "" // false
+```
+
+</DocEntry>
+
+<DocEntry name="timestamp">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;timestamp&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;unit<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
+
+Returns the current UTC time as an ISO-8601 string.
+
+<strong>Returns</strong>
+
+A formatted date-time string, e.g. `"2025-01-01T00:00:00Z"`.
+
+<strong>Example</strong>
+
+```fsharp
+ let now = timestamp ()
+ printfn "Current time: %s" now
+```
+
+</DocEntry>
+
+<DocEntry name="epoch" obsolete obsoleteMessage="Use `timestamp ()` instead.">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;epoch&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;unit<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;int64</div>
+
+Returns the current UTC time as a Unix epoch timestamp.
+
+<strong>Returns</strong>
+
+Seconds since 1970-01-01T00:00:00Z.
+
+</DocEntry>
+
+<DocEntry name="padLeft" obsolete>
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;padLeft&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;width&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;s&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;string</div>
+
+Pads a string on the left to a given width.
+
+</DocEntry>
+
+</div>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="version">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;version&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string</div>
+
+Returns the version string of the library.
+
+</DocEntry>
+
+</div>
+

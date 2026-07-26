@@ -1,0 +1,50 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Rect"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "fields"
+    text: "Fields"
+  - depth: 3
+    slug: "TopLeft"
+    text: "TopLeft"
+  - depth: 3
+    slug: "BottomRight"
+    text: "BottomRight"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference-geometry">Reference.Geometry</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-geometry-global">Reference.Geometry.global</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;Rect&nbsp;&zwnj;<span class="fsharp-doc-kw">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">&#123;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#TopLeft">TopLeft</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-geometry-point">Point</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#BottomRight">BottomRight</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-geometry-point">Point</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">&#125;</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+An axis-aligned 2D rectangle defined by its two corners.
+
+<h2 id="fields">Fields</h2>
+
+<div class="collapsible-group">
+<DocEntry name="TopLeft">
+<div class="fsharp-doc-sig" slot="signature">TopLeft&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-geometry-point">Point</a></span></div>
+
+Top-left corner of the rectangle.
+
+</DocEntry>
+
+<DocEntry name="BottomRight">
+<div class="fsharp-doc-sig" slot="signature">BottomRight&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-geometry-point">Point</a></span></div>
+
+Bottom-right corner of the rectangle.
+
+</DocEntry>
+
+</div>
+

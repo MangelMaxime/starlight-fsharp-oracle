@@ -24,7 +24,7 @@ indent_size = 2
 indent_style = space
 
 # Verify
-[*.{received,verified}.{json,md,txt,yml}]
+[*.{received,verified}.{json,md,mdx,txt,yml}]
 charset = utf-8-bom
 end_of_line = lf
 indent_size = unset

@@ -1,0 +1,27 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Helpers.LegacyHelpers"
+headings:
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "oldValue"
+    text: "oldValue"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="Deprecated">Use HelpersV2 instead.</Aside>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="oldValue">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;oldValue&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int</div>
+
+</DocEntry>
+
+</div>
+

@@ -9,6 +9,7 @@
         <Compile Include="Workspace.fs" />
         <Compile Include="Commands/Docs.fs" />
         <Compile Include="Commands/Serve.fs" />
+        <Compile Include="Commands/Test.fs" />
         <Compile Include="Main.fs" />
     </ItemGroup>
     <ItemGroup>

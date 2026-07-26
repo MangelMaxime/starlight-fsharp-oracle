@@ -1,0 +1,83 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "User"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "constructors"
+    text: "Constructors"
+  - depth: 3
+    slug: "new"
+    text: "new"
+  - depth: 2
+    slug: "properties"
+    text: "Properties"
+  - depth: 3
+    slug: "DisplayName"
+    text: "DisplayName"
+  - depth: 3
+    slug: "IsActive"
+    text: "IsActive"
+  - depth: 2
+    slug: "methods"
+    text: "Methods"
+  - depth: 3
+    slug: "Describe"
+    text: "Describe"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-coverage">Reference.Coverage</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;User<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw"><a href="#new">new</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">id</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">name</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-coverage-user">User</a></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#Describe">Describe</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string<br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#DisplayName">DisplayName</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#IsActive">IsActive</a></span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;bool&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A user, inheriting ``Reference.Coverage.EntityBase`` and
+ implementing ``Reference.Coverage.INamed``.
+
+<h2 id="constructors">Constructors</h2>
+
+<div class="collapsible-group">
+<DocEntry name="new">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">new</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">id</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;int&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">name</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="/api/reference-coverage-user">User</a></span></div>
+
+</DocEntry>
+
+</div>
+
+<h2 id="properties">Properties</h2>
+
+<div class="collapsible-group">
+<DocEntry name="DisplayName">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;DisplayName&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+The display name. Settable.
+
+</DocEntry>
+
+<DocEntry name="IsActive">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">property</span>&nbsp;&zwnj;IsActive&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;bool&nbsp;&zwnj;<span class="fsharp-doc-kw">with</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">get</span></div>
+
+Whether the user is currently active.
+
+</DocEntry>
+
+</div>
+
+<h2 id="methods">Methods</h2>
+
+<div class="collapsible-group">
+<DocEntry name="Describe">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;Describe&nbsp;&zwnj;<span class="fsharp-doc-kw">:</span>&nbsp;&zwnj;string</div>
+
+</DocEntry>
+
+</div>
+

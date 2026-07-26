@@ -1,0 +1,41 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "Reference"
+headings:
+  - depth: 2
+    slug: "namespaces"
+    text: "Namespaces"
+  - depth: 2
+    slug: "declared-modules"
+    text: "Declared Modules"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="namespaces">Namespaces</h2>
+
+<dl>
+<dt><a href="/api/reference-geometry">Geometry</a></dt>
+<dt><a href="/api/reference-reactive">Reactive</a></dt>
+</dl>
+
+<h2 id="declared-modules">Declared Modules</h2>
+
+<dl>
+<dt><a href="/api/reference-coverage">Coverage</a></dt>
+<dd>Constructs that the generator must render correctly but which no other fixture module exercises. Added alongside the v1 snapshot tests.</dd>
+<dt><a href="/api/reference-missingsyntaxes">MissingSyntaxes</a></dt>
+<dd>Demonstrates F# language features not covered by other test modules.</dd>
+<dt><a href="/api/reference-activepatterns">ActivePatterns</a></dt>
+<dd>Active patterns used to test pattern matching extraction.</dd>
+<dt><a href="/api/reference-generics">Generics</a></dt>
+<dd>Generic types and functions used to test generic constraint extraction.</dd>
+<dt><a href="/api/reference-objects">Objects</a></dt>
+<dd>Object-oriented types used as an extractor test fixture.</dd>
+<dt><a href="/api/reference-text">Text</a></dt>
+<dd>String and text-processing utilities.</dd>
+<dt><a href="/api/reference-shapes">Shapes</a></dt>
+<dd>Geometric shape primitives used as an extractor test fixture.</dd>
+</dl>
+

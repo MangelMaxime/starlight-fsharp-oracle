@@ -88,6 +88,25 @@ module internal Helpers =
         else
             MemberKind.Method
 
+    /// Deterministic ordering key for entity members.
+    /// FCS gives no stable enumeration order for `MembersFunctionsAndValues` - it varies
+    /// from one process to the next - so the docs must impose one, or every rebuild
+    /// churns the output. Groups by kind, then alphabetically, with the XML doc
+    /// signature separating overloads (it encodes the parameter types).
+    let memberSortKey (mfv: FSharpMemberOrFunctionOrValue) =
+        let isStatic = mfv.IsModuleValueOrMember && not mfv.IsInstanceMember
+
+        let rank =
+            match memberKindOf mfv, isStatic with
+            | MemberKind.Constructor, _ -> 0
+            | MemberKind.Method, false -> 1
+            | MemberKind.Property, false -> 2
+            | MemberKind.Method, true -> 3
+            | MemberKind.Property, true -> 4
+            | MemberKind.Operator, _ -> 5
+
+        rank, mfv.DisplayName, mfv.XmlDocSig
+
     let obsoleteOf (mfv: FSharpMemberOrFunctionOrValue) : ObsoleteInfo =
         mfv.Attributes
         |> Seq.tryFind (fun a -> a.AttributeType.FullName = "System.ObsoleteAttribute")
