@@ -1,42 +1,39 @@
-namespace Reference.Data
+namespace Reference.Namespaces
 
 /// <summary>A type declared straight into a namespace, with no enclosing module.</summary>
-type Identifier =
+type TypeDeclaredInNamespace =
     {
         /// <summary>The underlying value.</summary>
         Value: string
     }
 
-/// <summary>A mutable cell. Shares its name with the module below.</summary>
-type Var<'T>(initial: 'T) =
-
-    let mutable current = initial
+/// <summary>
+/// A generic type whose companion module below slugs to the same page, so the two are
+/// merged rather than one overwriting the other.
+/// </summary>
+type TypeMergedWithCompanionModule<'T>(initial: 'T) =
 
     /// <summary>The current value.</summary>
     member _.Value
-        with get () = current
-        and set value = current <- value
+        with get (): 'T = failwith "fixture"
+        and set (value: 'T) = failwith "fixture"
 
-/// <summary>
-/// The companion module of <c>Var</c>. It slugs to the same page as the type, so the
-/// two are merged rather than one overwriting the other.
-/// </summary>
-module Var =
+/// <summary>The companion module of the type above.</summary>
+module TypeMergedWithCompanionModule =
 
     /// <summary>Creates a cell holding an initial value.</summary>
     /// <param name="initial">The starting value.</param>
     /// <returns>A new cell.</returns>
-    let create (initial: 'T) = Var<'T>(initial)
+    let create (initial: 'T) : TypeMergedWithCompanionModule<'T> = failwith "fixture"
 
 /// <summary>A module nested one level inside the namespace.</summary>
-module Parsing =
+module NestedModule =
 
-    /// <summary>Parses text into an identifier.</summary>
-    /// <param name="text">The text to parse.</param>
-    let parse (text: string) = { Value = text }
+    /// <summary>A binding inside the nested module.</summary>
+    let functionInNestedModule (text: string) : TypeDeclaredInNamespace = failwith "fixture"
 
-/// <summary>A module whose name contains spaces.</summary>
+/// <summary>A module whose name contains spaces, so its slug cannot be its name.</summary>
 module ``Module With Spaces`` =
 
-    /// <summary>Does nothing in particular.</summary>
-    let noop () = ()
+    /// <summary>A binding inside the backticked module.</summary>
+    let functionInBacktickedModule () : unit = failwith "fixture"

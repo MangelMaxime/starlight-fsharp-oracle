@@ -1,0 +1,41 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "StructUnion"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 3
+    slug: "StructCaseWithField"
+    text: "StructCaseWithField"
+  - depth: 3
+    slug: "StructCaseWithoutField"
+    text: "StructCaseWithoutField"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-types">Reference.Types</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-attr">[&lt;Struct&gt;]</span><br/><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StructUnion</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-typevar">'T</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">=</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#StructCaseWithField">StructCaseWithField</a></span><span class="fsharp-doc-kw"> of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type"><a href="#StructCaseWithoutField">StructCaseWithoutField</a></span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+A union stored on the stack.
+
+<div class="collapsible-group">
+<DocEntry name="StructCaseWithField">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StructCaseWithField</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">of</span>&nbsp;&zwnj;<span class="fsharp-doc-property">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span></div>
+
+</DocEntry>
+
+<DocEntry name="StructCaseWithoutField">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">|</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StructCaseWithoutField</span></div>
+
+</DocEntry>
+
+</div>
+

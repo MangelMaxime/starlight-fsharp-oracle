@@ -3,69 +3,68 @@ module Reference.Members
 
 open System
 
-/// <summary>Overloads, accessors, statics and operators.</summary>
-type Counter(label: string) =
+/// <summary>Overloads, accessors, statics, an operator and an event.</summary>
+type MembersOfEveryKind(label: string) =
 
     let mutable count = 0
-    let ticked = Event<int>()
+    let changed = Event<int>()
 
-    /// <summary>Creates a counter labelled "default".</summary>
-    new() = Counter("default")
+    /// <summary>An overloaded constructor taking no arguments.</summary>
+    new() = MembersOfEveryKind("default")
 
-    /// <summary>The label. Read-only.</summary>
-    member _.Label = label
+    /// <summary>A read-only property.</summary>
+    member _.Label: string = failwith "fixture"
 
-    /// <summary>The current count. Settable.</summary>
+    /// <summary>A property with both accessors.</summary>
     member _.Count
-        with get () = count
-        and set value = count <- value
+        with get (): int = count
+        and set (value: int) = count <- value
 
-    /// <summary>Formats the count.</summary>
-    /// <returns>A string.</returns>
-    member _.Format() = string count
+    /// <summary>An overload taking nothing.</summary>
+    /// <returns>The formatted count.</returns>
+    member _.Format() : string = failwith "fixture"
 
-    /// <summary>Formats the count to a fixed width.</summary>
+    /// <summary>An overload taking a width, so the two share an anchor base.</summary>
     /// <param name="width">The target width.</param>
-    /// <returns>A padded string.</returns>
-    member _.Format(width: int) = (string count).PadLeft(width)
+    /// <returns>The padded count.</returns>
+    member _.Format(width: int) : string = failwith "fixture"
 
-    /// <summary>Raised on each increment.</summary>
+    /// <summary>An event, which also produces add and remove accessors.</summary>
     [<CLIEvent>]
-    member _.Ticked = ticked.Publish
+    member _.Changed = changed.Publish
 
-    /// <summary>Increments the counter.</summary>
-    member _.Increment() =
-        count <- count + 1
-        ticked.Trigger count
+    /// <summary>A method returning unit.</summary>
+    member _.Increment() : unit = failwith "fixture"
 
-    /// <summary>A shared counter.</summary>
-    static member Shared = Counter("shared")
+    /// <summary>A member whose name contains spaces.</summary>
+    member _.``Member With Spaces``() : unit = failwith "fixture"
 
-    /// <summary>Adds two counters' totals.</summary>
-    /// <param name="a">Left operand.</param>
-    /// <param name="b">Right operand.</param>
-    static member (+)(a: Counter, b: Counter) = a.Count + b.Count
+    /// <summary>A static property.</summary>
+    static member Shared: MembersOfEveryKind = failwith "fixture"
+
+    /// <summary>An operator, which anchors on its compiled name.</summary>
+    /// <param name="left">Left operand.</param>
+    /// <param name="right">Right operand.</param>
+    static member (+)(left: MembersOfEveryKind, right: MembersOfEveryKind) : int =
+        failwith "fixture"
 
 /// <summary>An indexed property and an inline member.</summary>
-type Row(values: int list) =
+type IndexedAndInlineMembers(values: int list) =
 
     /// <summary>The value at a position.</summary>
     /// <param name="index">The zero-based position.</param>
     member _.Item
-        with get (index: int) = List.item index values
+        with get (index: int): int = failwith "fixture"
 
-    /// <summary>A member whose name contains spaces.</summary>
-    member _.``Member With Spaces``() = ()
-
-    /// <summary>Returns whichever argument is larger.</summary>
+    /// <summary>An inline member.</summary>
     /// <param name="first">The first value.</param>
     /// <param name="second">The second value.</param>
-    member inline _.Largest(first: 'T, second: 'T) = max first second
+    member inline _.Larger(first: 'T, second: 'T) : 'T = failwith "fixture"
 
 /// <summary>Members added to a type declared elsewhere.</summary>
-module StringExtensions =
+module ExtensionMembers =
 
     type System.String with
 
-        /// <summary>Returns the string in upper case with an exclamation mark.</summary>
-        member this.Shout() = this.ToUpper() + "!"
+        /// <summary>An extension member on a type with no page of its own.</summary>
+        member this.ShoutedCopy() : string = failwith "fixture"

@@ -1,0 +1,103 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "RootModule"
+headings:
+  - depth: 2
+    slug: "declared-modules"
+    text: "Declared Modules"
+  - depth: 2
+    slug: "types"
+    text: "Types"
+  - depth: 2
+    slug: "functions"
+    text: "Functions"
+  - depth: 3
+    slug: "functionWithCurriedParameters"
+    text: "functionWithCurriedParameters"
+  - depth: 3
+    slug: "functionTakingUnit"
+    text: "functionTakingUnit"
+  - depth: 2
+    slug: "values"
+    text: "Values"
+  - depth: 3
+    slug: "valueAtRoot"
+    text: "valueAtRoot"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<h2 id="declared-modules">Declared Modules</h2>
+
+<dl>
+<dt><a href="/api/rootmodule-obsoletenestedmodule">ObsoleteNestedModule</a> <span class="fsharp-doc-obsolete-inline" title="Superseded by RootModule.">Deprecated</span></dt>
+<dd>A module carrying an obsolete attribute.</dd>
+</dl>
+
+<h2 id="types">Types</h2>
+
+<dl>
+<dt><a href="/api/rootmodule-recordinrootmodule">RecordInRootModule</a></dt>
+<dd>A record declared inside the root module.</dd>
+</dl>
+
+<h2 id="functions">Functions</h2>
+
+<div class="collapsible-group">
+<DocEntry name="functionWithCurriedParameters">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">functionWithCurriedParameters</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+
+Two curried parameters, one of them long enough to set the colon column.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">width</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The target width.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">text</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The string to pad.
+
+</div>
+<strong>Returns</strong>
+
+The padded string.
+
+</DocEntry>
+
+<DocEntry name="functionTakingUnit">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">functionTakingUnit</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param"></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">unit</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">DateTime</span></div>
+
+Takes no arguments, so its unit parameter is explicit.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-type">unit</span>
+</div>
+
+</DocEntry>
+
+</div>
+
+<h2 id="values">Values</h2>
+
+<div class="collapsible-group">
+<DocEntry name="valueAtRoot">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">valueAtRoot</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+
+A value bound at the root of the assembly.
+
+</DocEntry>
+
+</div>
+

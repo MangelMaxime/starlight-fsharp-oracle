@@ -487,7 +487,9 @@ Zero content-sensitive matches on tokens remain.
       built once and used for both the pages that get written and the links that point
       at them, so the two cannot disagree. Colliding names are pulled apart
       deterministically (sorted, first keeps the plain slug, rest get `-2`, `-3`), and
-      the collision is reported through the Astro logger.
+      the collision is reported through the Astro logger, naming the URL each type
+      received - knowing there is a clash is much less use than knowing which page
+      moved.
 
       Types and modules are slugged separately, which preserves the one *intentional*
       collision - a generic type and its companion module share a slug and are merged
@@ -598,6 +600,27 @@ rewritten in several files.
       **1407 lines -> 429**, 10 files -> 6, 60 pages -> 35, with **no construct lost**.
 - [x] The report found a real gap on its first run: nothing exercised
       `when 'T : (new : unit -> 'T)`. Now covered.
+- [x] **Bodies are `failwith "fixture"`.** The generator reads signatures and
+      documentation from compiled metadata, so implementations were noise that invited
+      the reader to wonder whether behaviour was under test. It also forces an explicit
+      return type on everything, which turns the fixture into a signature spec.
+
+      Kept where the language requires a value: `[<Literal>]` bindings, enum case
+      values, and class-level `let mutable` initialisers.
+
+      The risk was SRTP: `static member (+)` was previously *inferred* from a
+      `List.fold (+)` body, and a stub would have dropped it. Writing the constraint
+      explicitly keeps it, and the coverage report is what confirms FCS still reports
+      it - exactly the case the report exists for.
+- [x] **Declarations are named for what they cover** - `UnionWithCaseFieldsAndMembers`,
+      `constrainedByDefaultConstructor`, `RecordWithDocumentedFields` - so the fixture
+      reads as a list of what is exercised rather than as a small library.
+
+      Name length is deliberately varied, from `m` (1 character) to
+      `(|MultiCasePositive|MultiCaseNegative|MultiCaseZero|)` (53), because the aligned
+      signature layout is driven by name lengths: uniform names would stop exercising
+      it, and the 38-column river found in phase 4 only showed up because a name was
+      long.
 
 ### Found while adding backticked-name coverage: slugs kept their spaces
 

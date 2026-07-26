@@ -27,7 +27,7 @@ member: extension                              1
 function: plain                                18
 function: active pattern                       4
 function: inline                               1
-function: curried (2+ groups)                  6
+function: curried (2+ groups)                  5
 function: tupled group                         6
 parameter: optional                            1
 parameter: unit                                3

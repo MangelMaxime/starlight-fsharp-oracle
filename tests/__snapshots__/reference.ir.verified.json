@@ -8,20 +8,20 @@
                     "FullName": ""
                 },
                 {
-                    "Name": "Helpers",
-                    "FullName": "Helpers"
-                },
-                {
                     "Name": "Reference",
                     "FullName": "Reference"
                 },
                 {
-                    "Name": "Data",
-                    "FullName": "Reference.Data"
-                },
-                {
                     "Name": "Members",
                     "FullName": "Reference.Members"
+                },
+                {
+                    "Name": "Namespaces",
+                    "FullName": "Reference.Namespaces"
+                },
+                {
+                    "Name": "RootModule",
+                    "FullName": "RootModule"
                 }
             ],
             "Modules": [
@@ -38,13 +38,13 @@
                         [
                             "Class",
                             {
-                                "Name": "Tally",
-                                "FullName": "Reference.Docs.Tally",
+                                "Name": "TypeWithDocumentedValue",
+                                "FullName": "Reference.Docs.TypeWithDocumentedValue",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A counter whose value can be read and written."
+                                        "$value": "A type carrying a documented property value."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -58,15 +58,15 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Docs.Tally",
+                                        "FullName": "Reference.Docs.TypeWithDocumentedValue",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "Tally",
-                                            "Reference.Docs.Tally"
+                                            "TypeWithDocumentedValue",
+                                            "Reference.Docs.TypeWithDocumentedValue"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -86,7 +86,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Record",
-                                        "FullName": "Reference.Docs.Tally.Record",
+                                        "FullName": "Reference.Docs.TypeWithDocumentedValue.Record",
                                         "CompiledName": "Record",
                                         "Parameters": [
                                             []
@@ -101,7 +101,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Records an increment. Refers to [`Tally`](fsharp-doc:Reference.Docs.Tally), which has a\n page, and to [`Console`](fsharp-doc:System.Console), which does not and so must not be\n linked."
+                                                "$value": "Refers to [`TypeWithDocumentedValue`](fsharp-doc:Reference.Docs.TypeWithDocumentedValue), which has a\n page, and to [`Console`](fsharp-doc:System.Console), which does not and so must render\n as plain text."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -119,7 +119,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Total",
-                                        "FullName": "Reference.Docs.Tally.Total",
+                                        "FullName": "Reference.Docs.TypeWithDocumentedValue.Total",
                                         "CompiledName": "get_Total",
                                         "Parameters": [
                                             []
@@ -162,13 +162,13 @@
                         [
                             "Class",
                             {
-                                "Name": "OldTally",
-                                "FullName": "Reference.Docs.OldTally",
+                                "Name": "ObsoleteType",
+                                "FullName": "Reference.Docs.ObsoleteType",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Superseded by [`Tally`](fsharp-doc:Reference.Docs.Tally)."
+                                        "$value": "Superseded by [`TypeWithDocumentedValue`](fsharp-doc:Reference.Docs.TypeWithDocumentedValue)."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -182,15 +182,15 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Docs.OldTally",
+                                        "FullName": "Reference.Docs.ObsoleteType",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "OldTally",
-                                            "Reference.Docs.OldTally"
+                                            "ObsoleteType",
+                                            "Reference.Docs.ObsoleteType"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -209,9 +209,9 @@
                                     },
                                     {
                                         "Kind": "Property",
-                                        "Name": "Nothing",
-                                        "FullName": "Reference.Docs.OldTally.Nothing",
-                                        "CompiledName": "get_Nothing",
+                                        "Name": "Unused",
+                                        "FullName": "Reference.Docs.ObsoleteType.Unused",
+                                        "CompiledName": "get_Unused",
                                         "Parameters": [
                                             []
                                         ],
@@ -225,7 +225,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Does nothing."
+                                                "$value": "An obsolete member of an obsolete type."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -243,7 +243,7 @@
                                 ],
                                 "ObsoleteInfo": [
                                     "DeprecatedWithMessage",
-                                    "Use Tally instead."
+                                    "Use TypeWithDocumentedValue instead."
                                 ],
                                 "IsStruct": false
                             }
@@ -251,13 +251,13 @@
                         [
                             "Record",
                             {
-                                "Name": "Casing",
-                                "FullName": "Reference.Docs.Casing",
+                                "Name": "CaseCollision",
+                                "FullName": "Reference.Docs.CaseCollision",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Collides with `CASING` once slugged to a URL."
+                                        "$value": "Differs from `CASECOLLISION` only by case, so both slug alike."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -269,7 +269,7 @@
                                 "Interfaces": [],
                                 "Fields": [
                                     {
-                                        "Name": "Value",
+                                        "Name": "First",
                                         "Type": [
                                             "TypeRef",
                                             "string",
@@ -292,13 +292,13 @@
                         [
                             "Record",
                             {
-                                "Name": "CASING",
-                                "FullName": "Reference.Docs.CASING",
+                                "Name": "CASECOLLISION",
+                                "FullName": "Reference.Docs.CASECOLLISION",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Collides with `Casing` once slugged to a URL."
+                                        "$value": "Differs from `CaseCollision` only by case, so both slug alike."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -310,7 +310,7 @@
                                 "Interfaces": [],
                                 "Fields": [
                                     {
-                                        "Name": "Other",
+                                        "Name": "Second",
                                         "Type": [
                                             "TypeRef",
                                             "string",
@@ -333,8 +333,8 @@
                     ],
                     "Functions": [
                         {
-                            "Name": "divide",
-                            "FullName": "Reference.Docs.divide",
+                            "Name": "functionWithEveryDocTag",
+                            "FullName": "Reference.Docs.functionWithEveryDocTag",
                             "Parameters": [
                                 [
                                     {
@@ -374,7 +374,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Divides one number by another."
+                                    "$value": "A function documented with every tag at once."
                                 },
                                 "Remarks": {
                                     "$type": "option",
@@ -409,10 +409,10 @@
                                     }
                                 ],
                                 "SeeAlso": [
-                                    "Reference.Docs.Tally"
+                                    "Reference.Docs.TypeWithDocumentedValue"
                                 ],
                                 "Examples": [
-                                    "```fsharp\n let half = divide 10 2\n```"
+                                    "```fsharp\n let half = functionWithEveryDocTag 10 2\n```"
                                 ]
                             },
                             "ObsoleteInfo": "Active"
@@ -430,14 +430,14 @@
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
-                        "$value": "Function shapes, parameter kinds, constraints and active patterns."
+                        "$value": "Function shapes, parameter kinds, generic constraints and active patterns."
                     },
                     "Entities": [
                         [
                             "Class",
                             {
-                                "Name": "Parser",
-                                "FullName": "Reference.Functions.Parser",
+                                "Name": "MembersWithParameterModifiers",
+                                "FullName": "Reference.Functions.MembersWithParameterModifiers",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -456,15 +456,15 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Functions.Parser",
+                                        "FullName": "Reference.Functions.MembersWithParameterModifiers",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "Parser",
-                                            "Reference.Functions.Parser"
+                                            "MembersWithParameterModifiers",
+                                            "Reference.Functions.MembersWithParameterModifiers"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -483,77 +483,9 @@
                                     },
                                     {
                                         "Kind": "Method",
-                                        "Name": "Parse",
-                                        "FullName": "Reference.Functions.Parser.Parse",
-                                        "CompiledName": "Parse",
-                                        "Parameters": [
-                                            [
-                                                {
-                                                    "Name": "input",
-                                                    "Type": [
-                                                        "TypeRef",
-                                                        "string",
-                                                        "Microsoft.FSharp.Core.string"
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                },
-                                                {
-                                                    "Name": "fallback",
-                                                    "Type": [
-                                                        "TypeRef",
-                                                        "int",
-                                                        "Microsoft.FSharp.Core.int"
-                                                    ],
-                                                    "IsOptional": true,
-                                                    "IsUnit": false
-                                                }
-                                            ]
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "int",
-                                            "Microsoft.FSharp.Core.int"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "Parses a string, falling back to a supplied value."
-                                            },
-                                            "Returns": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "The parsed value, or the fallback."
-                                            },
-                                            "Params": [
-                                                {
-                                                    "Name": "input",
-                                                    "Doc": "The text to parse."
-                                                },
-                                                {
-                                                    "Name": "fallback",
-                                                    "Doc": "Used when parsing fails. Defaults to zero."
-                                                }
-                                            ],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": false,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": false,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Method",
-                                        "Name": "TryParse",
-                                        "FullName": "Reference.Functions.Parser.TryParse",
-                                        "CompiledName": "TryParse",
+                                        "Name": "ParseIntoByref",
+                                        "FullName": "Reference.Functions.MembersWithParameterModifiers.ParseIntoByref",
+                                        "CompiledName": "ParseIntoByref",
                                         "Parameters": [
                                             [
                                                 {
@@ -606,7 +538,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Writes its result to an out parameter."
+                                                "$value": "A byref parameter."
                                             },
                                             "Params": [
                                                 {
@@ -629,6 +561,74 @@
                                         "HasGetter": false,
                                         "HasSetter": false,
                                         "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "ParseWithOptional",
+                                        "FullName": "Reference.Functions.MembersWithParameterModifiers.ParseWithOptional",
+                                        "CompiledName": "ParseWithOptional",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "input",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "string",
+                                                        "Microsoft.FSharp.Core.string"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "fallback",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "int",
+                                                        "Microsoft.FSharp.Core.int"
+                                                    ],
+                                                    "IsOptional": true,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "An optional parameter, written `?name` rather than an option."
+                                            },
+                                            "Returns": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The parsed value, or the fallback."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "input",
+                                                    "Doc": "The text to parse."
+                                                },
+                                                {
+                                                    "Name": "fallback",
+                                                    "Doc": "Used when parsing fails."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
                                     }
                                 ],
                                 "ObsoleteInfo": "Active",
@@ -638,8 +638,8 @@
                     ],
                     "Functions": [
                         {
-                            "Name": "scale",
-                            "FullName": "Reference.Functions.scale",
+                            "Name": "functionWithCurriedParameters",
+                            "FullName": "Reference.Functions.functionWithCurriedParameters",
                             "Parameters": [
                                 [
                                     {
@@ -679,7 +679,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Two curried parameter groups."
+                                    "$value": "Two curried parameter groups, separated by arrows."
                                 },
                                 "Returns": {
                                     "$type": "option",
@@ -704,8 +704,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "distance",
-                            "FullName": "Reference.Functions.distance",
+                            "Name": "functionWithTupledParameters",
+                            "FullName": "Reference.Functions.functionWithTupledParameters",
                             "Parameters": [
                                 [
                                     {
@@ -743,7 +743,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A single tupled group, so its parameters are separated by `*`."
+                                    "$value": "A single tupled group, whose parameters are separated by `*`."
                                 },
                                 "Params": [
                                     {
@@ -763,8 +763,53 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "largest",
-                            "FullName": "Reference.Functions.largest",
+                            "Name": "``function with spaces``",
+                            "FullName": "Reference.Functions.``function with spaces``",
+                            "Parameters": [
+                                [
+                                    {
+                                        "Name": "value",
+                                        "Type": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": false
+                                    }
+                                ]
+                            ],
+                            "ReturnType": [
+                                "TypeRef",
+                                "int",
+                                "Microsoft.FSharp.Core.int"
+                            ],
+                            "Constraints": [],
+                            "IsInline": false,
+                            "IsMutable": false,
+                            "IsActivePattern": false,
+                            "XmlDoc": {
+                                "Summary": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "A function whose name contains spaces."
+                                },
+                                "Params": [
+                                    {
+                                        "Name": "value",
+                                        "Doc": "Any value."
+                                    }
+                                ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
+                                "Examples": []
+                            },
+                            "ObsoleteInfo": "Active"
+                        },
+                        {
+                            "Name": "constrainedByComparison",
+                            "FullName": "Reference.Functions.constrainedByComparison",
                             "Parameters": [
                                 [
                                     {
@@ -842,12 +887,12 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "areEqual",
-                            "FullName": "Reference.Functions.areEqual",
+                            "Name": "constrainedByEquality",
+                            "FullName": "Reference.Functions.constrainedByEquality",
                             "Parameters": [
                                 [
                                     {
-                                        "Name": "a",
+                                        "Name": "left",
                                         "Type": [
                                             "TypeVar",
                                             "'T"
@@ -858,7 +903,7 @@
                                 ],
                                 [
                                     {
-                                        "Name": "b",
+                                        "Name": "right",
                                         "Type": [
                                             "TypeVar",
                                             "'T"
@@ -912,8 +957,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "sizeOf",
-                            "FullName": "Reference.Functions.sizeOf",
+                            "Name": "constrainedByUnmanagedStruct",
+                            "FullName": "Reference.Functions.constrainedByUnmanagedStruct",
                             "Parameters": [
                                 [
                                     {
@@ -978,7 +1023,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Requires an unmanaged struct."
+                                    "$value": "Requires an unmanaged struct, so it carries two constraints."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -989,23 +1034,12 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "orDefault",
-                            "FullName": "Reference.Functions.orDefault",
+                            "Name": "constrainedByNull",
+                            "FullName": "Reference.Functions.constrainedByNull",
                             "Parameters": [
                                 [
                                     {
                                         "Name": "value",
-                                        "Type": [
-                                            "TypeVar",
-                                            "'T"
-                                        ],
-                                        "IsOptional": false,
-                                        "IsUnit": false
-                                    }
-                                ],
-                                [
-                                    {
-                                        "Name": "fallback",
                                         "Type": [
                                             "TypeVar",
                                             "'T"
@@ -1058,8 +1092,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "disposeAll",
-                            "FullName": "Reference.Functions.disposeAll",
+                            "Name": "constrainedBySubtype",
+                            "FullName": "Reference.Functions.constrainedBySubtype",
                             "Parameters": [
                                 [
                                     {
@@ -1129,8 +1163,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "create",
-                            "FullName": "Reference.Functions.create",
+                            "Name": "constrainedByDefaultConstructor",
+                            "FullName": "Reference.Functions.constrainedByDefaultConstructor",
                             "Parameters": [
                                 [
                                     {
@@ -1216,8 +1250,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "total",
-                            "FullName": "Reference.Functions.total",
+                            "Name": "constrainedByStaticMembers",
+                            "FullName": "Reference.Functions.constrainedByStaticMembers",
                             "Parameters": [
                                 [
                                     {
@@ -1373,7 +1407,12 @@
                                     "$case": "some",
                                     "$value": "Requires the static members an SRTP constraint names."
                                 },
-                                "Params": [],
+                                "Params": [
+                                    {
+                                        "Name": "items",
+                                        "Doc": "The items to total."
+                                    }
+                                ],
                                 "TypeParams": [
                                     {
                                         "Name": "T",
@@ -1387,53 +1426,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "``function with spaces``",
-                            "FullName": "Reference.Functions.``function with spaces``",
-                            "Parameters": [
-                                [
-                                    {
-                                        "Name": "value",
-                                        "Type": [
-                                            "TypeRef",
-                                            "int",
-                                            "Microsoft.FSharp.Core.int"
-                                        ],
-                                        "IsOptional": false,
-                                        "IsUnit": false
-                                    }
-                                ]
-                            ],
-                            "ReturnType": [
-                                "TypeRef",
-                                "int",
-                                "Microsoft.FSharp.Core.int"
-                            ],
-                            "Constraints": [],
-                            "IsInline": false,
-                            "IsMutable": false,
-                            "IsActivePattern": false,
-                            "XmlDoc": {
-                                "Summary": {
-                                    "$type": "option",
-                                    "$case": "some",
-                                    "$value": "A function whose name contains spaces."
-                                },
-                                "Params": [
-                                    {
-                                        "Name": "value",
-                                        "Doc": "Any value."
-                                    }
-                                ],
-                                "TypeParams": [],
-                                "Exceptions": [],
-                                "SeeAlso": [],
-                                "Examples": []
-                            },
-                            "ObsoleteInfo": "Active"
-                        },
-                        {
-                            "Name": "(|Trimmed|)",
-                            "FullName": "Reference.Functions.(|Trimmed|)",
+                            "Name": "(|SingleCasePattern|)",
+                            "FullName": "Reference.Functions.(|SingleCasePattern|)",
                             "Parameters": [
                                 [
                                     {
@@ -1482,8 +1476,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "(|Positive|Negative|Zero|)",
-                            "FullName": "Reference.Functions.(|Positive|Negative|Zero|)",
+                            "Name": "(|MultiCasePositive|MultiCaseNegative|MultiCaseZero|)",
+                            "FullName": "Reference.Functions.(|MultiCasePositive|MultiCaseNegative|MultiCaseZero|)",
                             "Parameters": [
                                 [
                                     {
@@ -1570,8 +1564,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "(|Integer|_|)",
-                            "FullName": "Reference.Functions.(|Integer|_|)",
+                            "Name": "(|PartialPattern|_|)",
+                            "FullName": "Reference.Functions.(|PartialPattern|_|)",
                             "Parameters": [
                                 [
                                     {
@@ -1610,7 +1604,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A partial active pattern."
+                                    "$value": "A partial active pattern, which returns an option."
                                 },
                                 "Returns": {
                                     "$type": "option",
@@ -1631,8 +1625,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "(|DivisibleBy|_|)",
-                            "FullName": "Reference.Functions.(|DivisibleBy|_|)",
+                            "Name": "(|ParameterisedPattern|_|)",
+                            "FullName": "Reference.Functions.(|ParameterisedPattern|_|)",
                             "Parameters": [
                                 [
                                     {
@@ -1710,8 +1704,8 @@
                     ],
                     "Values": [
                         {
-                            "Name": "MaxRetries",
-                            "FullName": "Reference.Functions.MaxRetries",
+                            "Name": "LiteralInt",
+                            "FullName": "Reference.Functions.LiteralInt",
                             "Type": [
                                 "TypeRef",
                                 "int",
@@ -1729,7 +1723,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "The maximum number of retry attempts."
+                                    "$value": "A literal, whose value is part of its contract."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -1740,8 +1734,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "DefaultGreeting",
-                            "FullName": "Reference.Functions.DefaultGreeting",
+                            "Name": "LiteralString",
+                            "FullName": "Reference.Functions.LiteralString",
                             "Type": [
                                 "TypeRef",
                                 "string",
@@ -1759,7 +1753,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "The greeting used when none is supplied."
+                                    "$value": "A string literal, which renders quoted."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -1770,8 +1764,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "defaultPoint",
-                            "FullName": "Reference.Functions.defaultPoint",
+                            "Name": "valueWithoutParameters",
+                            "FullName": "Reference.Functions.valueWithoutParameters",
                             "Type": [
                                 "Node",
                                 [
@@ -1800,7 +1794,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "A plain value, not a function."
+                                    "$value": "A value with no parameters, so it is not a function."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -1828,13 +1822,13 @@
                         [
                             "Class",
                             {
-                                "Name": "Counter",
-                                "FullName": "Reference.Members.Counter",
+                                "Name": "MembersOfEveryKind",
+                                "FullName": "Reference.Members.MembersOfEveryKind",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Overloads, accessors, statics and operators."
+                                        "$value": "Overloads, accessors, statics, an operator and an event."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -1848,22 +1842,22 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Members.Counter",
+                                        "FullName": "Reference.Members.MembersOfEveryKind",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             []
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "Counter",
-                                            "Reference.Members.Counter"
+                                            "MembersOfEveryKind",
+                                            "Reference.Members.MembersOfEveryKind"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Creates a counter labelled \"default\"."
+                                                "$value": "An overloaded constructor taking no arguments."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -1881,7 +1875,7 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Members.Counter",
+                                        "FullName": "Reference.Members.MembersOfEveryKind",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
@@ -1899,8 +1893,8 @@
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "Counter",
-                                            "Reference.Members.Counter"
+                                            "MembersOfEveryKind",
+                                            "Reference.Members.MembersOfEveryKind"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -1920,7 +1914,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Format",
-                                        "FullName": "Reference.Members.Counter.Format",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Format",
                                         "CompiledName": "Format",
                                         "Parameters": [
                                             []
@@ -1935,12 +1929,12 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Formats the count."
+                                                "$value": "An overload taking nothing."
                                             },
                                             "Returns": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A string."
+                                                "$value": "The formatted count."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -1958,7 +1952,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Format",
-                                        "FullName": "Reference.Members.Counter.Format",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Format",
                                         "CompiledName": "Format",
                                         "Parameters": [
                                             [
@@ -1984,12 +1978,12 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Formats the count to a fixed width."
+                                                "$value": "An overload taking a width, so the two share an anchor base."
                                             },
                                             "Returns": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A padded string."
+                                                "$value": "The padded count."
                                             },
                                             "Params": [
                                                 {
@@ -2012,7 +2006,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Increment",
-                                        "FullName": "Reference.Members.Counter.Increment",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Increment",
                                         "CompiledName": "Increment",
                                         "Parameters": [
                                             []
@@ -2027,7 +2021,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Increments the counter."
+                                                "$value": "A method returning unit."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2038,374 +2032,6 @@
                                         "IsStatic": false,
                                         "IsAbstract": false,
                                         "IsInline": false,
-                                        "HasGetter": false,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Property",
-                                        "Name": "Count",
-                                        "FullName": "Reference.Members.Counter.Count",
-                                        "CompiledName": "get_Count",
-                                        "Parameters": [
-                                            []
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "int",
-                                            "Microsoft.FSharp.Core.int"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "The current count. Settable."
-                                            },
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": false,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": true,
-                                        "HasSetter": true,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Property",
-                                        "Name": "Label",
-                                        "FullName": "Reference.Members.Counter.Label",
-                                        "CompiledName": "get_Label",
-                                        "Parameters": [
-                                            []
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "string",
-                                            "Microsoft.FSharp.Core.string"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "The label. Read-only."
-                                            },
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": false,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": true,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Property",
-                                        "Name": "Shared",
-                                        "FullName": "Reference.Members.Counter.Shared",
-                                        "CompiledName": "get_Shared",
-                                        "Parameters": [
-                                            []
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "Counter",
-                                            "Reference.Members.Counter"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "A shared counter."
-                                            },
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": true,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": true,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Event",
-                                        "Name": "Ticked",
-                                        "FullName": "Reference.Members.Counter.Ticked",
-                                        "CompiledName": "get_Ticked",
-                                        "Parameters": [
-                                            []
-                                        ],
-                                        "ReturnType": [
-                                            "Node",
-                                            [
-                                                [
-                                                    "TypeRef",
-                                                    "IEvent",
-                                                    "Microsoft.FSharp.Control.IEvent"
-                                                ],
-                                                [
-                                                    "Punctuation",
-                                                    "LessThan"
-                                                ],
-                                                [
-                                                    "TypeRef",
-                                                    "int",
-                                                    "Microsoft.FSharp.Core.int"
-                                                ],
-                                                [
-                                                    "Punctuation",
-                                                    "GreaterThan"
-                                                ]
-                                            ]
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "Raised on each increment."
-                                            },
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": false,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": true,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Operator",
-                                        "Name": "(+)",
-                                        "FullName": "Reference.Members.Counter.(+)",
-                                        "CompiledName": "op_Addition",
-                                        "Parameters": [
-                                            [
-                                                {
-                                                    "Name": "a",
-                                                    "Type": [
-                                                        "TypeRef",
-                                                        "Counter",
-                                                        "Reference.Members.Counter"
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                },
-                                                {
-                                                    "Name": "b",
-                                                    "Type": [
-                                                        "TypeRef",
-                                                        "Counter",
-                                                        "Reference.Members.Counter"
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                }
-                                            ]
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "int",
-                                            "Microsoft.FSharp.Core.int"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "Adds two counters' totals."
-                                            },
-                                            "Params": [
-                                                {
-                                                    "Name": "a",
-                                                    "Doc": "Left operand."
-                                                },
-                                                {
-                                                    "Name": "b",
-                                                    "Doc": "Right operand."
-                                                }
-                                            ],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": true,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": false,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    }
-                                ],
-                                "ObsoleteInfo": "Active",
-                                "IsStruct": false
-                            }
-                        ],
-                        [
-                            "Class",
-                            {
-                                "Name": "Row",
-                                "FullName": "Reference.Members.Row",
-                                "XmlDoc": {
-                                    "Summary": {
-                                        "$type": "option",
-                                        "$case": "some",
-                                        "$value": "An indexed property and an inline member."
-                                    },
-                                    "Params": [],
-                                    "TypeParams": [],
-                                    "Exceptions": [],
-                                    "SeeAlso": [],
-                                    "Examples": []
-                                },
-                                "Attributes": [],
-                                "Interfaces": [],
-                                "Members": [
-                                    {
-                                        "Kind": "Constructor",
-                                        "Name": "new",
-                                        "FullName": "Reference.Members.Row",
-                                        "CompiledName": ".ctor",
-                                        "Parameters": [
-                                            [
-                                                {
-                                                    "Name": "values",
-                                                    "Type": [
-                                                        "Node",
-                                                        [
-                                                            [
-                                                                "TypeRef",
-                                                                "int",
-                                                                "Microsoft.FSharp.Core.int"
-                                                            ],
-                                                            "Space",
-                                                            [
-                                                                "TypeRef",
-                                                                "list",
-                                                                "Microsoft.FSharp.Collections.list"
-                                                            ]
-                                                        ]
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                }
-                                            ]
-                                        ],
-                                        "ReturnType": [
-                                            "TypeRef",
-                                            "Row",
-                                            "Reference.Members.Row"
-                                        ],
-                                        "Constraints": [],
-                                        "XmlDoc": {
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": true,
-                                        "IsAbstract": false,
-                                        "IsInline": false,
-                                        "HasGetter": false,
-                                        "HasSetter": false,
-                                        "ObsoleteInfo": "Active"
-                                    },
-                                    {
-                                        "Kind": "Method",
-                                        "Name": "Largest",
-                                        "FullName": "Reference.Members.Row.Largest",
-                                        "CompiledName": "Largest",
-                                        "Parameters": [
-                                            [
-                                                {
-                                                    "Name": "first",
-                                                    "Type": [
-                                                        "TypeVar",
-                                                        "'T"
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                },
-                                                {
-                                                    "Name": "second",
-                                                    "Type": [
-                                                        "TypeVar",
-                                                        "'T"
-                                                    ],
-                                                    "IsOptional": false,
-                                                    "IsUnit": false
-                                                }
-                                            ]
-                                        ],
-                                        "ReturnType": [
-                                            "TypeVar",
-                                            "'T"
-                                        ],
-                                        "Constraints": [
-                                            [
-                                                "Node",
-                                                [
-                                                    [
-                                                        "TypeVar",
-                                                        "'T"
-                                                    ],
-                                                    "Space",
-                                                    [
-                                                        "Punctuation",
-                                                        "Colon"
-                                                    ],
-                                                    "Space",
-                                                    [
-                                                        "Keyword",
-                                                        "comparison"
-                                                    ]
-                                                ]
-                                            ]
-                                        ],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "Returns whichever argument is larger."
-                                            },
-                                            "Params": [
-                                                {
-                                                    "Name": "first",
-                                                    "Doc": "The first value."
-                                                },
-                                                {
-                                                    "Name": "second",
-                                                    "Doc": "The second value."
-                                                }
-                                            ],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        },
-                                        "IsStatic": false,
-                                        "IsAbstract": false,
-                                        "IsInline": true,
                                         "HasGetter": false,
                                         "HasSetter": false,
                                         "ObsoleteInfo": "Active"
@@ -2413,7 +2039,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "``Member With Spaces``",
-                                        "FullName": "Reference.Members.Row.``Member With Spaces``",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.``Member With Spaces``",
                                         "CompiledName": "Member With Spaces",
                                         "Parameters": [
                                             []
@@ -2445,8 +2071,356 @@
                                     },
                                     {
                                         "Kind": "Property",
+                                        "Name": "Count",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Count",
+                                        "CompiledName": "get_Count",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A property with both accessors."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": true,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Label",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Label",
+                                        "CompiledName": "get_Label",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "string",
+                                            "Microsoft.FSharp.Core.string"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A read-only property."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
+                                        "Name": "Shared",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Shared",
+                                        "CompiledName": "get_Shared",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "MembersOfEveryKind",
+                                            "Reference.Members.MembersOfEveryKind"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A static property."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Event",
+                                        "Name": "Changed",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.Changed",
+                                        "CompiledName": "get_Changed",
+                                        "Parameters": [
+                                            []
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "TypeRef",
+                                                    "IEvent",
+                                                    "Microsoft.FSharp.Control.IEvent"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "LessThan"
+                                                ],
+                                                [
+                                                    "TypeRef",
+                                                    "int",
+                                                    "Microsoft.FSharp.Core.int"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "GreaterThan"
+                                                ]
+                                            ]
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "An event, which also produces add and remove accessors."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": true,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Operator",
+                                        "Name": "(+)",
+                                        "FullName": "Reference.Members.MembersOfEveryKind.(+)",
+                                        "CompiledName": "op_Addition",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "left",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "MembersOfEveryKind",
+                                                        "Reference.Members.MembersOfEveryKind"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "right",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "MembersOfEveryKind",
+                                                        "Reference.Members.MembersOfEveryKind"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "An operator, which anchors on its compiled name."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "left",
+                                                    "Doc": "Left operand."
+                                                },
+                                                {
+                                                    "Name": "right",
+                                                    "Doc": "Right operand."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "IndexedAndInlineMembers",
+                                "FullName": "Reference.Members.IndexedAndInlineMembers",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "An indexed property and an inline member."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Constructor",
+                                        "Name": "new",
+                                        "FullName": "Reference.Members.IndexedAndInlineMembers",
+                                        "CompiledName": ".ctor",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "values",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeRef",
+                                                                "int",
+                                                                "Microsoft.FSharp.Core.int"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "list",
+                                                                "Microsoft.FSharp.Collections.list"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "IndexedAndInlineMembers",
+                                            "Reference.Members.IndexedAndInlineMembers"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "Larger",
+                                        "FullName": "Reference.Members.IndexedAndInlineMembers.Larger",
+                                        "CompiledName": "Larger",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "first",
+                                                    "Type": [
+                                                        "TypeVar",
+                                                        "'T"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "second",
+                                                    "Type": [
+                                                        "TypeVar",
+                                                        "'T"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeVar",
+                                            "'T"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "An inline member."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "first",
+                                                    "Doc": "The first value."
+                                                },
+                                                {
+                                                    "Name": "second",
+                                                    "Doc": "The second value."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": false,
+                                        "IsInline": true,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Property",
                                         "Name": "Item",
-                                        "FullName": "Reference.Members.Row.Item",
+                                        "FullName": "Reference.Members.IndexedAndInlineMembers.Item",
                                         "CompiledName": "get_Item",
                                         "Parameters": [
                                             [
@@ -2505,8 +2479,8 @@
                     "ObsoleteInfo": "Active"
                 },
                 {
-                    "Name": "StringExtensions",
-                    "FullName": "Reference.Members.StringExtensions",
+                    "Name": "ExtensionMembers",
+                    "FullName": "Reference.Members.ExtensionMembers",
                     "Namespace": "Reference.Members",
                     "XmlDoc": {
                         "$type": "option",
@@ -2522,9 +2496,9 @@
                             "ExtendedTypeName": "String",
                             "Member": {
                                 "Kind": "Method",
-                                "Name": "Shout",
-                                "FullName": "Reference.Members.StringExtensions.Shout",
-                                "CompiledName": "String.Shout",
+                                "Name": "ShoutedCopy",
+                                "FullName": "Reference.Members.ExtensionMembers.ShoutedCopy",
+                                "CompiledName": "String.ShoutedCopy",
                                 "Parameters": [
                                     [
                                         {
@@ -2549,7 +2523,7 @@
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Returns the string in upper case with an exclamation mark."
+                                        "$value": "An extension member on a type with no page of its own."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -2582,13 +2556,13 @@
                         [
                             "Record",
                             {
-                                "Name": "Point",
-                                "FullName": "Reference.Types.Point",
+                                "Name": "RecordWithDocumentedFields",
+                                "FullName": "Reference.Types.RecordWithDocumentedFields",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A record with documented fields."
+                                        "$value": "A record with documented fields and a member."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -2644,7 +2618,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Magnitude",
-                                        "FullName": "Reference.Types.Point.Magnitude",
+                                        "FullName": "Reference.Types.RecordWithDocumentedFields.Magnitude",
                                         "CompiledName": "get_Magnitude",
                                         "Parameters": [
                                             []
@@ -2682,8 +2656,8 @@
                         [
                             "Record",
                             {
-                                "Name": "StructPoint",
-                                "FullName": "Reference.Types.StructPoint",
+                                "Name": "StructRecord",
+                                "FullName": "Reference.Types.StructRecord",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -2700,7 +2674,7 @@
                                 "Interfaces": [],
                                 "Fields": [
                                     {
-                                        "Name": "Sx",
+                                        "Name": "Width",
                                         "Type": [
                                             "TypeRef",
                                             "float",
@@ -2715,7 +2689,7 @@
                                         }
                                     },
                                     {
-                                        "Name": "Sy",
+                                        "Name": "Height",
                                         "Type": [
                                             "TypeRef",
                                             "float",
@@ -2736,15 +2710,61 @@
                             }
                         ],
                         [
-                            "Union",
+                            "Record",
                             {
-                                "Name": "Shape",
-                                "FullName": "Reference.Types.Shape",
+                                "Name": "Type With Spaces",
+                                "FullName": "Reference.Types.Type With Spaces",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A union whose cases carry named and unnamed fields, plus members."
+                                        "$value": "A type whose name contains spaces, so its slug cannot be its name."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Fields": [
+                                    {
+                                        "Name": "Field With Spaces",
+                                        "Type": [
+                                            "TypeRef",
+                                            "string",
+                                            "Microsoft.FSharp.Core.string"
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A field whose name also contains spaces."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        }
+                                    }
+                                ],
+                                "Members": [],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Union",
+                            {
+                                "Name": "UnionWithCaseFieldsAndMembers",
+                                "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "A union with named and unnamed case fields, plus members."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -2756,8 +2776,8 @@
                                 "Interfaces": [],
                                 "Cases": [
                                     {
-                                        "Name": "Circle",
-                                        "FullName": "Reference.Types.Shape.Circle",
+                                        "Name": "CaseWithNamedField",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.CaseWithNamedField",
                                         "Fields": [
                                             {
                                                 "Name": "radius",
@@ -2770,7 +2790,7 @@
                                                     "Summary": {
                                                         "$type": "option",
                                                         "$case": "some",
-                                                        "$value": "A circle of the given radius."
+                                                        "$value": "A case with one named field."
                                                     },
                                                     "Params": [],
                                                     "TypeParams": [],
@@ -2784,7 +2804,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A circle of the given radius."
+                                                "$value": "A case with one named field."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2794,8 +2814,8 @@
                                         }
                                     },
                                     {
-                                        "Name": "Rectangle",
-                                        "FullName": "Reference.Types.Shape.Rectangle",
+                                        "Name": "CaseWithSeveralFields",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.CaseWithSeveralFields",
                                         "Fields": [
                                             {
                                                 "Name": "width",
@@ -2808,7 +2828,7 @@
                                                     "Summary": {
                                                         "$type": "option",
                                                         "$case": "some",
-                                                        "$value": "A rectangle."
+                                                        "$value": "A case with several named fields."
                                                     },
                                                     "Params": [],
                                                     "TypeParams": [],
@@ -2828,7 +2848,7 @@
                                                     "Summary": {
                                                         "$type": "option",
                                                         "$case": "some",
-                                                        "$value": "A rectangle."
+                                                        "$value": "A case with several named fields."
                                                     },
                                                     "Params": [],
                                                     "TypeParams": [],
@@ -2842,7 +2862,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A rectangle."
+                                                "$value": "A case with several named fields."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2852,14 +2872,52 @@
                                         }
                                     },
                                     {
-                                        "Name": "Empty",
-                                        "FullName": "Reference.Types.Shape.Empty",
+                                        "Name": "CaseWithUnnamedField",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.CaseWithUnnamedField",
+                                        "Fields": [
+                                            {
+                                                "Name": "Item",
+                                                "Type": [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                "XmlDoc": {
+                                                    "Summary": {
+                                                        "$type": "option",
+                                                        "$case": "some",
+                                                        "$value": "A case with an unnamed field."
+                                                    },
+                                                    "Params": [],
+                                                    "TypeParams": [],
+                                                    "Exceptions": [],
+                                                    "SeeAlso": [],
+                                                    "Examples": []
+                                                }
+                                            }
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A case with an unnamed field."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        }
+                                    },
+                                    {
+                                        "Name": "CaseWithoutFields",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.CaseWithoutFields",
                                         "Fields": [],
                                         "XmlDoc": {
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "A shape with no extent."
+                                                "$value": "A case carrying nothing."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2873,7 +2931,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Area",
-                                        "FullName": "Reference.Types.Shape.Area",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.Area",
                                         "CompiledName": "get_Area",
                                         "Parameters": [
                                             []
@@ -2888,7 +2946,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "The area covered."
+                                                "$value": "An instance member on a union."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2906,22 +2964,22 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Nothing",
-                                        "FullName": "Reference.Types.Shape.Nothing",
+                                        "FullName": "Reference.Types.UnionWithCaseFieldsAndMembers.Nothing",
                                         "CompiledName": "get_Nothing",
                                         "Parameters": [
                                             []
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "Shape",
-                                            "Reference.Types.Shape"
+                                            "UnionWithCaseFieldsAndMembers",
+                                            "Reference.Types.UnionWithCaseFieldsAndMembers"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "The shape covering nothing."
+                                                "$value": "A static member on a union."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -2944,8 +3002,8 @@
                         [
                             "Union",
                             {
-                                "Name": "Severity",
-                                "FullName": "Reference.Types.Severity",
+                                "Name": "RequireQualifiedAccessUnion",
+                                "FullName": "Reference.Types.RequireQualifiedAccessUnion",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -2965,7 +3023,7 @@
                                 "Cases": [
                                     {
                                         "Name": "Info",
-                                        "FullName": "Reference.Types.Severity.Info",
+                                        "FullName": "Reference.Types.RequireQualifiedAccessUnion.Info",
                                         "Fields": [],
                                         "XmlDoc": {
                                             "Summary": {
@@ -2982,7 +3040,7 @@
                                     },
                                     {
                                         "Name": "Error",
-                                        "FullName": "Reference.Types.Severity.Error",
+                                        "FullName": "Reference.Types.RequireQualifiedAccessUnion.Error",
                                         "Fields": [
                                             {
                                                 "Name": "code",
@@ -3027,8 +3085,8 @@
                         [
                             "Union",
                             {
-                                "Name": "StructOption",
-                                "FullName": "Reference.Types.StructOption`1",
+                                "Name": "StructUnion",
+                                "FullName": "Reference.Types.StructUnion`1",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -3066,8 +3124,8 @@
                                 },
                                 "Cases": [
                                     {
-                                        "Name": "StructSome",
-                                        "FullName": "Reference.Types.StructOption<_>.StructSome",
+                                        "Name": "StructCaseWithField",
+                                        "FullName": "Reference.Types.StructUnion<_>.StructCaseWithField",
                                         "Fields": [
                                             {
                                                 "Name": "value",
@@ -3093,8 +3151,8 @@
                                         }
                                     },
                                     {
-                                        "Name": "StructNone",
-                                        "FullName": "Reference.Types.StructOption<_>.StructNone",
+                                        "Name": "StructCaseWithoutField",
+                                        "FullName": "Reference.Types.StructUnion<_>.StructCaseWithoutField",
                                         "Fields": [],
                                         "XmlDoc": {
                                             "Params": [],
@@ -3113,8 +3171,8 @@
                         [
                             "Enum",
                             {
-                                "Name": "Level",
-                                "FullName": "Reference.Types.Level",
+                                "Name": "EnumWithExplicitValues",
+                                "FullName": "Reference.Types.EnumWithExplicitValues",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -3133,8 +3191,8 @@
                                         "Name": "Low",
                                         "Type": [
                                             "TypeRef",
-                                            "Level",
-                                            "Reference.Types.Level"
+                                            "EnumWithExplicitValues",
+                                            "Reference.Types.EnumWithExplicitValues"
                                         ],
                                         "LiteralValue": {
                                             "$type": "option",
@@ -3158,8 +3216,8 @@
                                         "Name": "High",
                                         "Type": [
                                             "TypeRef",
-                                            "Level",
-                                            "Reference.Types.Level"
+                                            "EnumWithExplicitValues",
+                                            "Reference.Types.EnumWithExplicitValues"
                                         ],
                                         "LiteralValue": {
                                             "$type": "option",
@@ -3187,13 +3245,13 @@
                         [
                             "Abbrev",
                             {
-                                "Name": "Radius",
-                                "FullName": "Radius",
+                                "Name": "AbbreviationOfPrimitive",
+                                "FullName": "AbbreviationOfPrimitive",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "An abbreviation for a primitive."
+                                        "$value": "An abbreviation for a primitive type."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3220,7 +3278,7 @@
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A unit of length."
+                                        "$value": "A unit of measure. Deliberately one character, to vary name length."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3235,13 +3293,13 @@
                         [
                             "Exception",
                             {
-                                "Name": "ParseError",
-                                "FullName": "Reference.Types.ParseError",
+                                "Name": "ExceptionWithNamedFields",
+                                "FullName": "Reference.Types.ExceptionWithNamedFields",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Raised when parsing fails."
+                                        "$value": "An exception carrying named fields."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3288,13 +3346,13 @@
                         [
                             "Delegate",
                             {
-                                "Name": "Combiner",
-                                "FullName": "Reference.Types.Combiner`1",
+                                "Name": "DelegateWithTupledParameters",
+                                "FullName": "Reference.Types.DelegateWithTupledParameters`1",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A callback that combines two values."
+                                        "$value": "A delegate taking a tupled pair."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3344,13 +3402,13 @@
                         [
                             "Interface",
                             {
-                                "Name": "INamed",
-                                "FullName": "Reference.Types.INamed",
+                                "Name": "InterfaceWithMembers",
+                                "FullName": "Reference.Types.InterfaceWithMembers",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A contract for things that carry a name."
+                                        "$value": "An interface with a property and a method."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3364,7 +3422,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
-                                        "FullName": "Reference.Types.INamed.Describe",
+                                        "FullName": "Reference.Types.InterfaceWithMembers.Describe",
                                         "CompiledName": "Describe",
                                         "Parameters": [
                                             []
@@ -3397,7 +3455,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Name",
-                                        "FullName": "Reference.Types.INamed.Name",
+                                        "FullName": "Reference.Types.InterfaceWithMembers.Name",
                                         "CompiledName": "get_Name",
                                         "Parameters": [
                                             []
@@ -3435,13 +3493,13 @@
                         [
                             "Class",
                             {
-                                "Name": "EntityBase",
-                                "FullName": "Reference.Types.EntityBase",
+                                "Name": "AbstractBaseClass",
+                                "FullName": "Reference.Types.AbstractBaseClass",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A base class carrying an identifier."
+                                        "$value": "An abstract base class."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3457,7 +3515,7 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Types.EntityBase",
+                                        "FullName": "Reference.Types.AbstractBaseClass",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
@@ -3475,8 +3533,8 @@
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "EntityBase",
-                                            "Reference.Types.EntityBase"
+                                            "AbstractBaseClass",
+                                            "Reference.Types.AbstractBaseClass"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -3496,7 +3554,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
-                                        "FullName": "Reference.Types.EntityBase.Describe",
+                                        "FullName": "Reference.Types.AbstractBaseClass.Describe",
                                         "CompiledName": "Describe",
                                         "Parameters": [
                                             []
@@ -3511,7 +3569,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "Produces a human-readable description."
+                                                "$value": "Implemented by subclasses."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -3529,7 +3587,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Id",
-                                        "FullName": "Reference.Types.EntityBase.Id",
+                                        "FullName": "Reference.Types.AbstractBaseClass.Id",
                                         "CompiledName": "get_Id",
                                         "Parameters": [
                                             []
@@ -3567,13 +3625,13 @@
                         [
                             "Class",
                             {
-                                "Name": "User",
-                                "FullName": "Reference.Types.User",
+                                "Name": "ClassInheritingAndImplementing",
+                                "FullName": "Reference.Types.ClassInheritingAndImplementing",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Inherits [`EntityBase`](fsharp-doc:Reference.Types.EntityBase) and implements\n [`INamed`](fsharp-doc:Reference.Types.INamed)."
+                                        "$value": "Inherits [`AbstractBaseClass`](fsharp-doc:Reference.Types.AbstractBaseClass) and implements\n [`InterfaceWithMembers`](fsharp-doc:Reference.Types.InterfaceWithMembers)."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3587,22 +3645,22 @@
                                     "$case": "some",
                                     "$value": [
                                         "TypeRef",
-                                        "EntityBase",
-                                        "Reference.Types.EntityBase"
+                                        "AbstractBaseClass",
+                                        "Reference.Types.AbstractBaseClass"
                                     ]
                                 },
                                 "Interfaces": [
                                     [
                                         "TypeRef",
-                                        "INamed",
-                                        "Reference.Types.INamed"
+                                        "InterfaceWithMembers",
+                                        "Reference.Types.InterfaceWithMembers"
                                     ]
                                 ],
                                 "Members": [
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Types.User",
+                                        "FullName": "Reference.Types.ClassInheritingAndImplementing",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
@@ -3630,8 +3688,8 @@
                                         ],
                                         "ReturnType": [
                                             "TypeRef",
-                                            "User",
-                                            "Reference.Types.User"
+                                            "ClassInheritingAndImplementing",
+                                            "Reference.Types.ClassInheritingAndImplementing"
                                         ],
                                         "Constraints": [],
                                         "XmlDoc": {
@@ -3651,7 +3709,7 @@
                                     {
                                         "Kind": "Method",
                                         "Name": "Describe",
-                                        "FullName": "Reference.Types.User.Describe",
+                                        "FullName": "Reference.Types.ClassInheritingAndImplementing.Describe",
                                         "CompiledName": "Describe",
                                         "Parameters": [
                                             []
@@ -3679,7 +3737,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Name",
-                                        "FullName": "Reference.Types.User.Name",
+                                        "FullName": "Reference.Types.ClassInheritingAndImplementing.Name",
                                         "CompiledName": "get_Name",
                                         "Parameters": [
                                             []
@@ -3694,7 +3752,7 @@
                                             "Summary": {
                                                 "$type": "option",
                                                 "$case": "some",
-                                                "$value": "The user's name."
+                                                "$value": "The name of this object."
                                             },
                                             "Params": [],
                                             "TypeParams": [],
@@ -3717,13 +3775,13 @@
                         [
                             "Class",
                             {
-                                "Name": "SortedBag",
-                                "FullName": "Reference.Types.SortedBag`1",
+                                "Name": "GenericClassWithConstraint",
+                                "FullName": "Reference.Types.GenericClassWithConstraint`1",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A generic type whose constraint is part of its signature."
+                                        "$value": "A generic class whose constraint is part of its signature."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -3778,7 +3836,7 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Types.SortedBag",
+                                        "FullName": "Reference.Types.GenericClassWithConstraint",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
@@ -3809,8 +3867,8 @@
                                             [
                                                 [
                                                     "TypeRef",
-                                                    "SortedBag",
-                                                    "Reference.Types.SortedBag`1"
+                                                    "GenericClassWithConstraint",
+                                                    "Reference.Types.GenericClassWithConstraint`1"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -3843,9 +3901,9 @@
                                     },
                                     {
                                         "Kind": "Property",
-                                        "Name": "Items",
-                                        "FullName": "Reference.Types.SortedBag.Items",
-                                        "CompiledName": "get_Items",
+                                        "Name": "SortedItems",
+                                        "FullName": "Reference.Types.GenericClassWithConstraint.SortedItems",
+                                        "CompiledName": "get_SortedItems",
                                         "Parameters": [
                                             []
                                         ],
@@ -3888,58 +3946,12 @@
                                 "ObsoleteInfo": "Active",
                                 "IsStruct": false
                             }
-                        ],
-                        [
-                            "Record",
-                            {
-                                "Name": "Type With Spaces",
-                                "FullName": "Reference.Types.Type With Spaces",
-                                "XmlDoc": {
-                                    "Summary": {
-                                        "$type": "option",
-                                        "$case": "some",
-                                        "$value": "A type whose name contains spaces, so its slug cannot be its name."
-                                    },
-                                    "Params": [],
-                                    "TypeParams": [],
-                                    "Exceptions": [],
-                                    "SeeAlso": [],
-                                    "Examples": []
-                                },
-                                "Attributes": [],
-                                "Interfaces": [],
-                                "Fields": [
-                                    {
-                                        "Name": "Field With Spaces",
-                                        "Type": [
-                                            "TypeRef",
-                                            "string",
-                                            "Microsoft.FSharp.Core.string"
-                                        ],
-                                        "XmlDoc": {
-                                            "Summary": {
-                                                "$type": "option",
-                                                "$case": "some",
-                                                "$value": "A field whose name also contains spaces."
-                                            },
-                                            "Params": [],
-                                            "TypeParams": [],
-                                            "Exceptions": [],
-                                            "SeeAlso": [],
-                                            "Examples": []
-                                        }
-                                    }
-                                ],
-                                "Members": [],
-                                "ObsoleteInfo": "Active",
-                                "IsStruct": false
-                            }
                         ]
                     ],
                     "Functions": [
                         {
-                            "Name": "metres",
-                            "FullName": "Reference.Types.metres",
+                            "Name": "functionReturningMeasure",
+                            "FullName": "Reference.Types.functionReturningMeasure",
                             "Parameters": [
                                 [
                                     {
@@ -4013,7 +4025,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Converts a raw float to metres."
+                                    "$value": "Returns a value carrying a unit of measure."
                                 },
                                 "Params": [
                                     {
@@ -4035,19 +4047,19 @@
                     "ObsoleteInfo": "Active"
                 },
                 {
-                    "Name": "Var",
-                    "FullName": "Reference.Data.Var",
-                    "Namespace": "Reference.Data",
+                    "Name": "TypeMergedWithCompanionModule",
+                    "FullName": "Reference.Namespaces.TypeMergedWithCompanionModule",
+                    "Namespace": "Reference.Namespaces",
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
-                        "$value": "The companion module of `Var`. It slugs to the same page as the type, so the\n two are merged rather than one overwriting the other."
+                        "$value": "The companion module of the type above."
                     },
                     "Entities": [],
                     "Functions": [
                         {
                             "Name": "create",
-                            "FullName": "Reference.Data.Var.create",
+                            "FullName": "Reference.Namespaces.TypeMergedWithCompanionModule.create",
                             "Parameters": [
                                 [
                                     {
@@ -4066,8 +4078,8 @@
                                 [
                                     [
                                         "TypeRef",
-                                        "Var",
-                                        "Reference.Data.Var`1"
+                                        "TypeMergedWithCompanionModule",
+                                        "Reference.Namespaces.TypeMergedWithCompanionModule`1"
                                     ],
                                     [
                                         "Punctuation",
@@ -4118,9 +4130,9 @@
                     "ObsoleteInfo": "Active"
                 },
                 {
-                    "Name": "Parsing",
-                    "FullName": "Reference.Data.Parsing",
-                    "Namespace": "Reference.Data",
+                    "Name": "NestedModule",
+                    "FullName": "Reference.Namespaces.NestedModule",
+                    "Namespace": "Reference.Namespaces",
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
@@ -4129,8 +4141,8 @@
                     "Entities": [],
                     "Functions": [
                         {
-                            "Name": "parse",
-                            "FullName": "Reference.Data.Parsing.parse",
+                            "Name": "functionInNestedModule",
+                            "FullName": "Reference.Namespaces.NestedModule.functionInNestedModule",
                             "Parameters": [
                                 [
                                     {
@@ -4147,8 +4159,8 @@
                             ],
                             "ReturnType": [
                                 "TypeRef",
-                                "Identifier",
-                                "Reference.Data.Identifier"
+                                "TypeDeclaredInNamespace",
+                                "Reference.Namespaces.TypeDeclaredInNamespace"
                             ],
                             "Constraints": [],
                             "IsInline": false,
@@ -4158,14 +4170,9 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Parses text into an identifier."
+                                    "$value": "A binding inside the nested module."
                                 },
-                                "Params": [
-                                    {
-                                        "Name": "text",
-                                        "Doc": "The text to parse."
-                                    }
-                                ],
+                                "Params": [],
                                 "TypeParams": [],
                                 "Exceptions": [],
                                 "SeeAlso": [],
@@ -4181,18 +4188,18 @@
                 },
                 {
                     "Name": "Module With Spaces",
-                    "FullName": "Reference.Data.Module With Spaces",
-                    "Namespace": "Reference.Data",
+                    "FullName": "Reference.Namespaces.Module With Spaces",
+                    "Namespace": "Reference.Namespaces",
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
-                        "$value": "A module whose name contains spaces."
+                        "$value": "A module whose name contains spaces, so its slug cannot be its name."
                     },
                     "Entities": [],
                     "Functions": [
                         {
-                            "Name": "noop",
-                            "FullName": "Reference.Data.Module With Spaces.noop",
+                            "Name": "functionInBacktickedModule",
+                            "FullName": "Reference.Namespaces.Module With Spaces.functionInBacktickedModule",
                             "Parameters": [
                                 [
                                     {
@@ -4220,7 +4227,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Does nothing in particular."
+                                    "$value": "A binding inside the backticked module."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -4237,8 +4244,8 @@
                     "ObsoleteInfo": "Active"
                 },
                 {
-                    "Name": "Helpers",
-                    "FullName": "Helpers",
+                    "Name": "RootModule",
+                    "FullName": "RootModule",
                     "Namespace": "",
                     "XmlDoc": {
                         "$type": "option",
@@ -4249,13 +4256,13 @@
                         [
                             "Record",
                             {
-                                "Name": "Config",
-                                "FullName": "Helpers.Config",
+                                "Name": "RecordInRootModule",
+                                "FullName": "RootModule.RecordInRootModule",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "Settings for the helpers."
+                                        "$value": "A record declared inside the root module."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -4315,8 +4322,8 @@
                     ],
                     "Functions": [
                         {
-                            "Name": "padLeft",
-                            "FullName": "Helpers.padLeft",
+                            "Name": "functionWithCurriedParameters",
+                            "FullName": "RootModule.functionWithCurriedParameters",
                             "Parameters": [
                                 [
                                     {
@@ -4356,7 +4363,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Pads a string on the left."
+                                    "$value": "Two curried parameters, one of them long enough to set the colon column."
                                 },
                                 "Returns": {
                                     "$type": "option",
@@ -4381,8 +4388,8 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
-                            "Name": "timestamp",
-                            "FullName": "Helpers.timestamp",
+                            "Name": "functionTakingUnit",
+                            "FullName": "RootModule.functionTakingUnit",
                             "Parameters": [
                                 [
                                     {
@@ -4423,8 +4430,8 @@
                     ],
                     "Values": [
                         {
-                            "Name": "version",
-                            "FullName": "Helpers.version",
+                            "Name": "valueAtRoot",
+                            "FullName": "RootModule.valueAtRoot",
                             "Type": [
                                 "TypeRef",
                                 "string",
@@ -4437,7 +4444,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "The library version."
+                                    "$value": "A value bound at the root of the assembly."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -4453,19 +4460,19 @@
                     "ObsoleteInfo": "Active"
                 },
                 {
-                    "Name": "LegacyHelpers",
-                    "FullName": "Helpers.LegacyHelpers",
-                    "Namespace": "Helpers",
+                    "Name": "ObsoleteNestedModule",
+                    "FullName": "RootModule.ObsoleteNestedModule",
+                    "Namespace": "RootModule",
                     "XmlDoc": {
                         "$type": "option",
                         "$case": "some",
-                        "$value": "Superseded by the members above."
+                        "$value": "A module carrying an obsolete attribute."
                     },
                     "Entities": [],
                     "Functions": [
                         {
-                            "Name": "oldPad",
-                            "FullName": "Helpers.LegacyHelpers.oldPad",
+                            "Name": "obsoleteFunction",
+                            "FullName": "RootModule.ObsoleteNestedModule.obsoleteFunction",
                             "Parameters": [
                                 [
                                     {
@@ -4493,7 +4500,7 @@
                                 "Summary": {
                                     "$type": "option",
                                     "$case": "some",
-                                    "$value": "Does nothing useful."
+                                    "$value": "An obsolete binding inside an obsolete module."
                                 },
                                 "Params": [],
                                 "TypeParams": [],
@@ -4509,19 +4516,19 @@
                     "IsSynthetic": false,
                     "ObsoleteInfo": [
                         "DeprecatedWithMessage",
-                        "Use Helpers instead."
+                        "Superseded by RootModule."
                     ]
                 },
                 {
                     "Name": "global",
-                    "FullName": "Reference.Data.global",
-                    "Namespace": "Reference.Data",
+                    "FullName": "Reference.Namespaces.global",
+                    "Namespace": "Reference.Namespaces",
                     "Entities": [
                         [
                             "Record",
                             {
-                                "Name": "Identifier",
-                                "FullName": "Reference.Data.Identifier",
+                                "Name": "TypeDeclaredInNamespace",
+                                "FullName": "Reference.Namespaces.TypeDeclaredInNamespace",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
@@ -4566,13 +4573,13 @@
                         [
                             "Class",
                             {
-                                "Name": "Var",
-                                "FullName": "Reference.Data.Var`1",
+                                "Name": "TypeMergedWithCompanionModule",
+                                "FullName": "Reference.Namespaces.TypeMergedWithCompanionModule`1",
                                 "XmlDoc": {
                                     "Summary": {
                                         "$type": "option",
                                         "$case": "some",
-                                        "$value": "A mutable cell. Shares its name with the module below."
+                                        "$value": "A generic type whose companion module below slugs to the same page, so the two are\n merged rather than one overwriting the other."
                                     },
                                     "Params": [],
                                     "TypeParams": [],
@@ -4607,7 +4614,7 @@
                                     {
                                         "Kind": "Constructor",
                                         "Name": "new",
-                                        "FullName": "Reference.Data.Var",
+                                        "FullName": "Reference.Namespaces.TypeMergedWithCompanionModule",
                                         "CompiledName": ".ctor",
                                         "Parameters": [
                                             [
@@ -4627,8 +4634,8 @@
                                             [
                                                 [
                                                     "TypeRef",
-                                                    "Var",
-                                                    "Reference.Data.Var`1"
+                                                    "TypeMergedWithCompanionModule",
+                                                    "Reference.Namespaces.TypeMergedWithCompanionModule`1"
                                                 ],
                                                 [
                                                     "Punctuation",
@@ -4662,7 +4669,7 @@
                                     {
                                         "Kind": "Property",
                                         "Name": "Value",
-                                        "FullName": "Reference.Data.Var.Value",
+                                        "FullName": "Reference.Namespaces.TypeMergedWithCompanionModule.Value",
                                         "CompiledName": "get_Value",
                                         "Parameters": [
                                             []

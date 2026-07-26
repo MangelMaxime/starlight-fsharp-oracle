@@ -9,8 +9,8 @@ headings:
     slug: "functions"
     text: "Functions"
   - depth: 3
-    slug: "metres"
-    text: "metres"
+    slug: "functionReturningMeasure"
+    text: "functionReturningMeasure"
 ---
 
 import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
@@ -19,45 +19,45 @@ import { Aside } from '@astrojs/starlight/components';
 <h2 id="types">Types</h2>
 
 <dl>
-<dt><a href="/api/reference-types-point">Point</a></dt>
-<dd>A record with documented fields.</dd>
-<dt><a href="/api/reference-types-structpoint">StructPoint</a></dt>
+<dt><a href="/api/reference-types-recordwithdocumentedfields">RecordWithDocumentedFields</a></dt>
+<dd>A record with documented fields and a member.</dd>
+<dt><a href="/api/reference-types-structrecord">StructRecord</a></dt>
 <dd>A record stored on the stack.</dd>
-<dt><a href="/api/reference-types-shape">Shape</a></dt>
-<dd>A union whose cases carry named and unnamed fields, plus members.</dd>
-<dt><a href="/api/reference-types-severity">Severity</a></dt>
-<dd>Callers must qualify these case names.</dd>
-<dt><a href="/api/reference-types-structoption">StructOption</a></dt>
-<dd>A union stored on the stack.</dd>
-<dt><a href="/api/reference-types-level">Level</a></dt>
-<dd>An enumeration with explicit values.</dd>
-<dt><a href="/api/radius">Radius</a></dt>
-<dd>An abbreviation for a primitive.</dd>
-<dt><a href="/api/reference-types-m">m</a></dt>
-<dd>A unit of length.</dd>
-<dt><a href="/api/reference-types-parseerror">ParseError</a></dt>
-<dd>Raised when parsing fails.</dd>
-<dt><a href="/api/reference-types-combiner">Combiner</a></dt>
-<dd>A callback that combines two values.</dd>
-<dt><a href="/api/reference-types-inamed">INamed</a></dt>
-<dd>A contract for things that carry a name.</dd>
-<dt><a href="/api/reference-types-entitybase">EntityBase</a></dt>
-<dd>A base class carrying an identifier.</dd>
-<dt><a href="/api/reference-types-user">User</a></dt>
-<dd>Inherits [`EntityBase`](/api/reference-types-entitybase) and implements [`INamed`](/api/reference-types-inamed).</dd>
-<dt><a href="/api/reference-types-sortedbag">SortedBag</a></dt>
-<dd>A generic type whose constraint is part of its signature.</dd>
 <dt><a href="/api/reference-types-type-with-spaces">Type With Spaces</a></dt>
 <dd>A type whose name contains spaces, so its slug cannot be its name.</dd>
+<dt><a href="/api/reference-types-unionwithcasefieldsandmembers">UnionWithCaseFieldsAndMembers</a></dt>
+<dd>A union with named and unnamed case fields, plus members.</dd>
+<dt><a href="/api/reference-types-requirequalifiedaccessunion">RequireQualifiedAccessUnion</a></dt>
+<dd>Callers must qualify these case names.</dd>
+<dt><a href="/api/reference-types-structunion">StructUnion</a></dt>
+<dd>A union stored on the stack.</dd>
+<dt><a href="/api/reference-types-enumwithexplicitvalues">EnumWithExplicitValues</a></dt>
+<dd>An enumeration with explicit values.</dd>
+<dt><a href="/api/abbreviationofprimitive">AbbreviationOfPrimitive</a></dt>
+<dd>An abbreviation for a primitive type.</dd>
+<dt><a href="/api/reference-types-m">m</a></dt>
+<dd>A unit of measure. Deliberately one character, to vary name length.</dd>
+<dt><a href="/api/reference-types-exceptionwithnamedfields">ExceptionWithNamedFields</a></dt>
+<dd>An exception carrying named fields.</dd>
+<dt><a href="/api/reference-types-delegatewithtupledparameters">DelegateWithTupledParameters</a></dt>
+<dd>A delegate taking a tupled pair.</dd>
+<dt><a href="/api/reference-types-interfacewithmembers">InterfaceWithMembers</a></dt>
+<dd>An interface with a property and a method.</dd>
+<dt><a href="/api/reference-types-abstractbaseclass">AbstractBaseClass</a></dt>
+<dd>An abstract base class.</dd>
+<dt><a href="/api/reference-types-classinheritingandimplementing">ClassInheritingAndImplementing</a></dt>
+<dd>Inherits [`AbstractBaseClass`](/api/reference-types-abstractbaseclass) and implements [`InterfaceWithMembers`](/api/reference-types-interfacewithmembers).</dd>
+<dt><a href="/api/reference-types-genericclasswithconstraint">GenericClassWithConstraint</a></dt>
+<dd>A generic class whose constraint is part of its signature.</dd>
 </dl>
 
 <h2 id="functions">Functions</h2>
 
 <div class="collapsible-group">
-<DocEntry name="metres">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">metres</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">MeasureProduct</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-types-m">m</a></span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">MeasureOne</span><span class="fsharp-doc-op">&gt;</span><span class="fsharp-doc-op">&gt;</span></div>
+<DocEntry name="functionReturningMeasure">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">functionReturningMeasure</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">float</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">MeasureProduct</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type"><a href="/api/reference-types-m">m</a></span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">MeasureOne</span><span class="fsharp-doc-op">&gt;</span><span class="fsharp-doc-op">&gt;</span></div>
 
-Converts a raw float to metres.
+Returns a value carrying a unit of measure.
 
 <strong>Parameters</strong>
 <div class="fs-parameter__signature">

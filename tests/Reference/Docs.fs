@@ -5,7 +5,7 @@
 /// </remarks>
 module Reference.Docs
 
-/// <summary>Divides one number by another.</summary>
+/// <summary>A function documented with every tag at once.</summary>
 /// <remarks>
 /// Behaviour by input:
 /// <list type="bullet">
@@ -20,40 +20,38 @@ module Reference.Docs
 /// <exception cref="T:System.DivideByZeroException">
 /// Thrown when <paramref name="denominator"/> is zero.
 /// </exception>
-/// <seealso cref="T:Reference.Docs.Tally"/>
+/// <seealso cref="T:Reference.Docs.TypeWithDocumentedValue"/>
 /// <example>
 /// <code>
-/// let half = divide 10 2
+/// let half = functionWithEveryDocTag 10 2
 /// </code>
 /// </example>
-let divide<'T> (numerator: int) (denominator: int) : int = numerator / denominator
+let functionWithEveryDocTag<'T> (numerator: int) (denominator: int) : int = failwith "fixture"
 
-/// <summary>A counter whose value can be read and written.</summary>
-type Tally() =
-
-    let mutable total = 0
+/// <summary>A type carrying a documented property value.</summary>
+type TypeWithDocumentedValue() =
 
     /// <summary>The running total.</summary>
     /// <value>The number of increments recorded so far.</value>
     member _.Total
-        with get () = total
-        and set value = total <- value
+        with get (): int = failwith "fixture"
+        and set (value: int) = failwith "fixture"
 
     /// <summary>
-    /// Records an increment. Refers to <see cref="T:Reference.Docs.Tally"/>, which has a
-    /// page, and to <see cref="T:System.Console"/>, which does not and so must not be
-    /// linked.
+    /// Refers to <see cref="T:Reference.Docs.TypeWithDocumentedValue"/>, which has a
+    /// page, and to <see cref="T:System.Console"/>, which does not and so must render
+    /// as plain text.
     /// </summary>
-    member _.Record() = total <- total + 1
+    member _.Record() : unit = failwith "fixture"
 
-/// <summary>Superseded by <see cref="T:Reference.Docs.Tally"/>.</summary>
-[<System.Obsolete("Use Tally instead.")>]
-type OldTally() =
-    /// <summary>Does nothing.</summary>
-    member _.Nothing = ()
+/// <summary>Superseded by <see cref="T:Reference.Docs.TypeWithDocumentedValue"/>.</summary>
+[<System.Obsolete("Use TypeWithDocumentedValue instead.")>]
+type ObsoleteType() =
+    /// <summary>An obsolete member of an obsolete type.</summary>
+    member _.Unused: unit = failwith "fixture"
 
-/// <summary>Collides with <c>CASING</c> once slugged to a URL.</summary>
-type Casing = { Value: string }
+/// <summary>Differs from <c>CASECOLLISION</c> only by case, so both slug alike.</summary>
+type CaseCollision = { First: string }
 
-/// <summary>Collides with <c>Casing</c> once slugged to a URL.</summary>
-type CASING = { Other: string }
+/// <summary>Differs from <c>CaseCollision</c> only by case, so both slug alike.</summary>
+type CASECOLLISION = { Second: string }

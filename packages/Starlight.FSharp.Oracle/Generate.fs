@@ -156,18 +156,27 @@ let private assignSlugs (names: string list) =
     )
 
 /// Names of one kind that collapse to the same slug, as warning lines.
+/// Reports the URL each name actually received: knowing there is a clash is much less
+/// use than knowing which page moved.
 let private collisionsIn (kind: string) (names: string list) =
+    let assigned = assignSlugs names |> Map.ofList
+
     names
     |> List.distinct
     |> List.sort
     |> List.groupBy toSlug
     |> List.filter (fun (_, group) -> group.Length > 1)
     |> List.map (fun (baseSlug, group) ->
-        let names = String.concat ", " group
+        let assignments =
+            group
+            |> List.map (fun name ->
+                let slug = assigned |> Map.tryFind name |> Option.defaultValue baseSlug
+                $"{name} -> /{slug}"
+            )
+            |> String.concat ", "
 
-        $"two or more {kind} share the slug '{baseSlug}': {names}. Only the first keeps "
-        + "that URL; the rest are suffixed. Rename one, or they will keep moving as "
-        + "names change."
+        $"{kind} collapse to the same URL: {assignments}. Renaming one is the only way "
+        + "to keep these stable - the suffixes shift as names are added or removed."
     )
 
 /// Slug collisions worth telling the user about.

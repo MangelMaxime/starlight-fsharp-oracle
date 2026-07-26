@@ -1,20 +1,24 @@
 /// <summary>A module at the root of the assembly, with no enclosing namespace.</summary>
-module Helpers
+/// <remarks>
+/// Bodies throughout this fixture are <c>failwith</c>: the generator reads signatures
+/// and documentation from compiled metadata, so an implementation would be noise.
+/// </remarks>
+module RootModule
 
-/// <summary>The library version.</summary>
-let version = "1.0.0"
+/// <summary>A value bound at the root of the assembly.</summary>
+let valueAtRoot: string = failwith "fixture"
 
-/// <summary>Pads a string on the left.</summary>
+/// <summary>Two curried parameters, one of them long enough to set the colon column.</summary>
 /// <param name="width">The target width.</param>
 /// <param name="text">The string to pad.</param>
 /// <returns>The padded string.</returns>
-let padLeft (width: int) (text: string) = text.PadLeft(width)
+let functionWithCurriedParameters (width: int) (text: string) : string = failwith "fixture"
 
 /// <summary>Takes no arguments, so its unit parameter is explicit.</summary>
-let timestamp () = System.DateTime.UtcNow
+let functionTakingUnit () : System.DateTime = failwith "fixture"
 
-/// <summary>Settings for the helpers.</summary>
-type Config =
+/// <summary>A record declared inside the root module.</summary>
+type RecordInRootModule =
     {
         /// <summary>How many times to retry.</summary>
         Retries: int
@@ -22,10 +26,10 @@ type Config =
         Verbose: bool
     }
 
-/// <summary>Superseded by the members above.</summary>
-[<System.Obsolete("Use Helpers instead.")>]
-module LegacyHelpers =
+/// <summary>A module carrying an obsolete attribute.</summary>
+[<System.Obsolete("Superseded by RootModule.")>]
+module ObsoleteNestedModule =
 
-    /// <summary>Does nothing useful.</summary>
+    /// <summary>An obsolete binding inside an obsolete module.</summary>
     [<System.Obsolete>]
-    let oldPad (text: string) = text
+    let obsoleteFunction (text: string) : string = failwith "fixture"

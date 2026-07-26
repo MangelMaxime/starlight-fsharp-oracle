@@ -9,8 +9,8 @@ headings:
     slug: "functions"
     text: "Functions"
   - depth: 3
-    slug: "divide"
-    text: "divide"
+    slug: "functionWithEveryDocTag"
+    text: "functionWithEveryDocTag"
 ---
 
 import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
@@ -19,23 +19,23 @@ import { Aside } from '@astrojs/starlight/components';
 <h2 id="types">Types</h2>
 
 <dl>
-<dt><a href="/api/reference-docs-tally">Tally</a></dt>
-<dd>A counter whose value can be read and written.</dd>
-<dt><a href="/api/reference-docs-oldtally">OldTally</a> <span class="fsharp-doc-obsolete-inline" title="Use Tally instead.">Deprecated</span></dt>
-<dd>Superseded by [`Tally`](/api/reference-docs-tally).</dd>
-<dt><a href="/api/reference-docs-casing-2">Casing</a></dt>
-<dd>Collides with `CASING` once slugged to a URL.</dd>
-<dt><a href="/api/reference-docs-casing">CASING</a></dt>
-<dd>Collides with `Casing` once slugged to a URL.</dd>
+<dt><a href="/api/reference-docs-typewithdocumentedvalue">TypeWithDocumentedValue</a></dt>
+<dd>A type carrying a documented property value.</dd>
+<dt><a href="/api/reference-docs-obsoletetype">ObsoleteType</a> <span class="fsharp-doc-obsolete-inline" title="Use TypeWithDocumentedValue instead.">Deprecated</span></dt>
+<dd>Superseded by [`TypeWithDocumentedValue`](/api/reference-docs-typewithdocumentedvalue).</dd>
+<dt><a href="/api/reference-docs-casecollision-2">CaseCollision</a></dt>
+<dd>Differs from `CASECOLLISION` only by case, so both slug alike.</dd>
+<dt><a href="/api/reference-docs-casecollision">CASECOLLISION</a></dt>
+<dd>Differs from `CaseCollision` only by case, so both slug alike.</dd>
 </dl>
 
 <h2 id="functions">Functions</h2>
 
 <div class="collapsible-group">
-<DocEntry name="divide">
-<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">divide</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">numerator</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">denominator</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
+<DocEntry name="functionWithEveryDocTag">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">functionWithEveryDocTag</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">numerator</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">denominator</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span></div>
 
-Divides one number by another.
+A function documented with every tag at once.
 
 Behaviour by input:
  
@@ -88,12 +88,12 @@ Thrown when `denominator` is zero.
 <strong>Example</strong>
 
 ```fsharp
- let half = divide 10 2
+ let half = functionWithEveryDocTag 10 2
 ```
 
 <strong>See also</strong>
 
-<a href="/api/reference-docs-tally">Tally</a>
+<a href="/api/reference-docs-typewithdocumentedvalue">TypeWithDocumentedValue</a>
 
 </DocEntry>
 

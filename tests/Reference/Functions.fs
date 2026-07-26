@@ -1,113 +1,104 @@
-/// <summary>Function shapes, parameter kinds, constraints and active patterns.</summary>
+/// <summary>Function shapes, parameter kinds, generic constraints and active patterns.</summary>
 module Reference.Functions
 
 open System
 
 // -- values -----------------------------------------------------------------
 
-/// <summary>The maximum number of retry attempts.</summary>
+/// <summary>A literal, whose value is part of its contract.</summary>
 [<Literal>]
-let MaxRetries = 3
+let LiteralInt = 3
 
-/// <summary>The greeting used when none is supplied.</summary>
+/// <summary>A string literal, which renders quoted.</summary>
 [<Literal>]
-let DefaultGreeting = "hello"
+let LiteralString = "hello"
 
-/// <summary>A plain value, not a function.</summary>
-let defaultPoint = 0.0, 0.0
+/// <summary>A value with no parameters, so it is not a function.</summary>
+let valueWithoutParameters: float * float = failwith "fixture"
 
 // -- parameter shapes -------------------------------------------------------
 
-/// <summary>Two curried parameter groups.</summary>
+/// <summary>Two curried parameter groups, separated by arrows.</summary>
 /// <param name="factor">What to multiply by.</param>
 /// <param name="value">The value to scale.</param>
 /// <returns>The scaled value.</returns>
-let scale (factor: float) (value: float) = factor * value
+let functionWithCurriedParameters (factor: float) (value: float) : float = failwith "fixture"
 
-/// <summary>A single tupled group, so its parameters are separated by <c>*</c>.</summary>
+/// <summary>A single tupled group, whose parameters are separated by <c>*</c>.</summary>
 /// <param name="x">The x coordinate.</param>
 /// <param name="y">The y coordinate.</param>
-let distance (x: float, y: float) = sqrt (x * x + y * y)
+let functionWithTupledParameters (x: float, y: float) : float = failwith "fixture"
+
+/// <summary>A function whose name contains spaces.</summary>
+/// <param name="value">Any value.</param>
+let ``function with spaces`` (value: int) : int = failwith "fixture"
 
 /// <summary>Optional and byref parameters.</summary>
-type Parser() =
+type MembersWithParameterModifiers() =
 
-    /// <summary>Parses a string, falling back to a supplied value.</summary>
+    /// <summary>An optional parameter, written <c>?name</c> rather than an option.</summary>
     /// <param name="input">The text to parse.</param>
-    /// <param name="fallback">Used when parsing fails. Defaults to zero.</param>
+    /// <param name="fallback">Used when parsing fails.</param>
     /// <returns>The parsed value, or the fallback.</returns>
-    member _.Parse(input: string, ?fallback: int) =
-        match Int32.TryParse input with
-        | true, value -> value
-        | _ -> defaultArg fallback 0
+    member _.ParseWithOptional(input: string, ?fallback: int) : int = failwith "fixture"
 
-    /// <summary>Writes its result to an out parameter.</summary>
+    /// <summary>A byref parameter.</summary>
     /// <param name="input">The text to parse.</param>
     /// <param name="result">Receives the parsed value.</param>
-    member _.TryParse(input: string, result: byref<int>) = Int32.TryParse(input, &result)
+    member _.ParseIntoByref(input: string, result: byref<int>) : bool = failwith "fixture"
 
 // -- generic constraints ----------------------------------------------------
 
 /// <summary>Requires comparison.</summary>
 /// <typeparam name="T">The element type.</typeparam>
 /// <param name="items">The items to search.</param>
-let largest<'T when 'T: comparison> (items: 'T list) = List.max items
+let constrainedByComparison<'T when 'T: comparison> (items: 'T list) : 'T = failwith "fixture"
 
 /// <summary>Requires equality.</summary>
-let areEqual<'T when 'T: equality> (a: 'T) (b: 'T) = a = b
+let constrainedByEquality<'T when 'T: equality> (left: 'T) (right: 'T) : bool = failwith "fixture"
 
-/// <summary>Requires an unmanaged struct.</summary>
-let sizeOf<'T when 'T: unmanaged and 'T: struct> (value: 'T) = value
+/// <summary>Requires an unmanaged struct, so it carries two constraints.</summary>
+let constrainedByUnmanagedStruct<'T when 'T: unmanaged and 'T: struct> (value: 'T) : 'T =
+    failwith "fixture"
 
 /// <summary>Requires a nullable reference.</summary>
-let orDefault<'T when 'T: null> (value: 'T) (fallback: 'T) =
-    if isNull (box value) then fallback else value
+let constrainedByNull<'T when 'T: null> (value: 'T) : 'T = failwith "fixture"
 
 /// <summary>Requires a subtype.</summary>
-let disposeAll<'T when 'T :> IDisposable> (items: 'T list) =
-    for item in items do
-        item.Dispose()
+let constrainedBySubtype<'T when 'T :> IDisposable> (items: 'T list) : unit = failwith "fixture"
 
 /// <summary>Requires a parameterless constructor.</summary>
-let create<'T when 'T: (new: unit -> 'T)> () = new 'T()
+let constrainedByDefaultConstructor<'T when 'T: (new: unit -> 'T)> () : 'T = failwith "fixture"
 
 /// <summary>Requires the static members an SRTP constraint names.</summary>
 /// <typeparam name="T">A type supporting addition and a zero.</typeparam>
-let inline total< ^T when ^T: (static member (+): ^T * ^T -> ^T) and ^T: (static member Zero: ^T)>
+/// <param name="items">The items to total.</param>
+let inline constrainedByStaticMembers< ^T
+    when ^T: (static member (+): ^T * ^T -> ^T) and ^T: (static member Zero: ^T)>
     (items: ^T list)
-    =
-    List.fold (+) LanguagePrimitives.GenericZero items
-
-/// <summary>A function whose name contains spaces.</summary>
-/// <param name="value">Any value.</param>
-let ``function with spaces`` (value: int) = value
+    : ^T =
+    failwith "fixture"
 
 // -- active patterns --------------------------------------------------------
 
 /// <summary>A single-case active pattern.</summary>
 /// <param name="text">The string to normalize.</param>
 /// <returns>The trimmed string.</returns>
-let (|Trimmed|) (text: string) = text.Trim()
+let (|SingleCasePattern|) (text: string) : string = failwith "fixture"
 
 /// <summary>A multi-case active pattern.</summary>
 /// <param name="value">The number to classify.</param>
 /// <returns>Its sign.</returns>
-let (|Positive|Negative|Zero|) (value: float) =
-    if value > 0.0 then Positive
-    elif value < 0.0 then Negative
-    else Zero
+let (|MultiCasePositive|MultiCaseNegative|MultiCaseZero|) (value: float) : Choice<unit, unit, unit> =
+    failwith "fixture"
 
-/// <summary>A partial active pattern.</summary>
+/// <summary>A partial active pattern, which returns an option.</summary>
 /// <param name="text">The text to parse.</param>
 /// <returns>The integer, when the text is one.</returns>
-let (|Integer|_|) (text: string) =
-    match Int32.TryParse text with
-    | true, value -> Some value
-    | _ -> None
+let (|PartialPattern|_|) (text: string) : int option = failwith "fixture"
 
 /// <summary>A parameterised partial pattern, so it takes two curried groups.</summary>
 /// <param name="divisor">The number to divide by.</param>
 /// <param name="value">The number to test.</param>
 /// <returns>The quotient, when it divides exactly.</returns>
-let (|DivisibleBy|_|) (divisor: int) (value: int) =
-    if value % divisor = 0 then Some(value / divisor) else None
+let (|ParameterisedPattern|_|) (divisor: int) (value: int) : int option = failwith "fixture"
