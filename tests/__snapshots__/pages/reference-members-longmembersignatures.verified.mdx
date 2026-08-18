@@ -1,0 +1,158 @@
+---
+layout: 'starlight-fsharp-oracle/layouts/FSharpDocLayout.astro'
+title: "LongMemberSignatures"
+headings:
+  - depth: 2
+    slug: "description"
+    text: "Description"
+  - depth: 2
+    slug: "methods"
+    text: "Methods"
+  - depth: 3
+    slug: "EncodeWithOptions"
+    text: "EncodeWithOptions"
+  - depth: 3
+    slug: "MergeDocuments"
+    text: "MergeDocuments"
+  - depth: 3
+    slug: "SelectLargest"
+    text: "SelectLargest"
+---
+
+import DocEntry from 'starlight-fsharp-oracle/components/DocEntry.astro';
+import { Aside } from '@astrojs/starlight/components';
+
+<p><strong>Namespace:</strong> <a href="/api/reference">Reference</a>&nbsp;&nbsp;<strong>Parent:</strong> <a href="/api/reference-members">Reference.Members</a></p>
+
+<div class="not-content">
+<div class="fsharp-doc-sig"><span class="fsharp-doc-kw">type</span>&nbsp;&zwnj;<span class="fsharp-doc-type">LongMemberSignatures</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#EncodeWithOptions">EncodeWithOptions</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">obj</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">caseStrategy</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StringComparison</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">extraCoders</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">skipNullField</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#MergeDocuments">MergeDocuments</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">firstDocument</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">secondDocument</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">conflictResolver</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">inline</span>&nbsp;&zwnj;<span class="fsharp-doc-property"><a href="#SelectLargest">SelectLargest</a></span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">candidateValues</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">comparisonStrategy</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span></div>
+</div>
+
+<h2 id="description">Description</h2>
+
+Members too wide for the content column, which break across lines.
+
+<h2 id="methods">Methods</h2>
+
+<div class="collapsible-group">
+<DocEntry name="EncodeWithOptions">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property">EncodeWithOptions</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">obj</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">caseStrategy</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StringComparison</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">extraCoders</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">skipNullField</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span></div>
+
+A tupled group of named and optional parameters, too wide for one line.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">obj</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The value to encode.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">caseStrategy</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">StringComparison</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+How case names are written.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">extraCoders</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Coders applied before the built-in ones.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-op">?</span><span class="fsharp-doc-param">skipNullField</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Whether null fields are left out.
+
+</div>
+<strong>Returns</strong>
+
+The encoded value.
+
+</DocEntry>
+
+<DocEntry name="MergeDocuments">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-property">MergeDocuments</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">firstDocument</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">secondDocument</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">conflictResolver</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span></div>
+
+Curried groups, so the break has to keep the arrow that separates them.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">firstDocument</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The document merged into.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">secondDocument</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">Map</span><span class="fsharp-doc-op">&lt;</span><span class="fsharp-doc-type">string</span><span class="fsharp-doc-punct">,</span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-op">&gt;</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The document merged in.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">conflictResolver</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Called for every key present in both.
+
+</div>
+</DocEntry>
+
+<DocEntry name="SelectLargest">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">static</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">member</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">inline</span>&nbsp;&zwnj;<span class="fsharp-doc-property">SelectLargest</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">candidateValues</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>&nbsp;&zwnj;<span class="fsharp-doc-op">&#42;</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">comparisonStrategy</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">when</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">comparison</span></div>
+
+A wide signature carrying a constraint, which hangs under the arrow.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">candidateValues</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-type">list</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The values to choose from.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">comparisonStrategy</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-typevar">'T</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><span class="fsharp-doc-bracket">)</span><span class="fsharp-doc-bracket">)</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+How two candidates are ordered.
+
+</div>
+<strong>Type parameters</strong>
+<div class="fs-parameter__signature">
+&#x27;<span class="fsharp-doc-typevar">T</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The element type.
+
+</div>
+</DocEntry>
+
+</div>
+

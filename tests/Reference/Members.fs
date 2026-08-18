@@ -68,3 +68,51 @@ module ExtensionMembers =
 
         /// <summary>An extension member on a type with no page of its own.</summary>
         member this.ShoutedCopy() : string = failwith "fixture"
+
+/// <summary>Members too wide for the content column, which break across lines.</summary>
+type LongMemberSignatures =
+
+    /// <summary>A tupled group of named and optional parameters, too wide for one line.</summary>
+    /// <param name="value">The value to encode.</param>
+    /// <param name="caseStrategy">How case names are written.</param>
+    /// <param name="extraCoders">Coders applied before the built-in ones.</param>
+    /// <param name="skipNullField">Whether null fields are left out.</param>
+    /// <returns>The encoded value.</returns>
+    static member EncodeWithOptions
+        (
+            value: obj,
+            ?caseStrategy: StringComparison,
+            ?extraCoders: Map<string, string>,
+            ?skipNullField: bool
+        )
+        : string
+        =
+        failwith "fixture"
+
+    /// <summary>Curried groups, so the break has to keep the arrow that separates them.</summary>
+    /// <param name="firstDocument">The document merged into.</param>
+    /// <param name="secondDocument">The document merged in.</param>
+    /// <param name="conflictResolver">Called for every key present in both.</param>
+    static member MergeDocuments
+        (firstDocument: Map<string, string>)
+        (secondDocument: Map<string, string>)
+        (conflictResolver: string -> string -> string)
+        : Map<string, string>
+        =
+        failwith "fixture"
+
+    /// <summary>A wide signature carrying a constraint, which hangs under the arrow.</summary>
+    /// <typeparam name="T">The element type.</typeparam>
+    /// <param name="candidateValues">The values to choose from.</param>
+    /// <param name="comparisonStrategy">How two candidates are ordered.</param>
+    static member inline SelectLargest<'T when 'T: comparison>
+        (candidateValues: 'T list, comparisonStrategy: 'T -> 'T -> int)
+        : 'T
+        =
+        failwith "fixture"
+
+/// <summary>An abstract member wide enough to break, whose parameters have no names.</summary>
+type ILongAbstractMember =
+
+    /// <summary>Rewrites a document, with no parameter names to align.</summary>
+    abstract TransformDocument: Map<string, string> * StringComparison * bool -> Map<string, string>

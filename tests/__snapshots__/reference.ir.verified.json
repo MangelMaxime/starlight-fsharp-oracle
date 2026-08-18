@@ -2470,6 +2470,656 @@
                                 "ObsoleteInfo": "Active",
                                 "IsStruct": false
                             }
+                        ],
+                        [
+                            "Class",
+                            {
+                                "Name": "LongMemberSignatures",
+                                "FullName": "Reference.Members.LongMemberSignatures",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "Members too wide for the content column, which break across lines."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "EncodeWithOptions",
+                                        "FullName": "Reference.Members.LongMemberSignatures.EncodeWithOptions",
+                                        "CompiledName": "EncodeWithOptions",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "value",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "obj",
+                                                        "Microsoft.FSharp.Core.obj"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "caseStrategy",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "StringComparison",
+                                                        "System.StringComparison"
+                                                    ],
+                                                    "IsOptional": true,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "extraCoders",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeRef",
+                                                                "Map",
+                                                                "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "LessThan"
+                                                            ],
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "Comma"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "GreaterThan"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": true,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "skipNullField",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "bool",
+                                                        "Microsoft.FSharp.Core.bool"
+                                                    ],
+                                                    "IsOptional": true,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeRef",
+                                            "string",
+                                            "Microsoft.FSharp.Core.string"
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A tupled group of named and optional parameters, too wide for one line."
+                                            },
+                                            "Returns": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "The encoded value."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "value",
+                                                    "Doc": "The value to encode."
+                                                },
+                                                {
+                                                    "Name": "caseStrategy",
+                                                    "Doc": "How case names are written."
+                                                },
+                                                {
+                                                    "Name": "extraCoders",
+                                                    "Doc": "Coders applied before the built-in ones."
+                                                },
+                                                {
+                                                    "Name": "skipNullField",
+                                                    "Doc": "Whether null fields are left out."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "MergeDocuments",
+                                        "FullName": "Reference.Members.LongMemberSignatures.MergeDocuments",
+                                        "CompiledName": "MergeDocuments",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "firstDocument",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeRef",
+                                                                "Map",
+                                                                "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "LessThan"
+                                                            ],
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "Comma"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "GreaterThan"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ],
+                                            [
+                                                {
+                                                    "Name": "secondDocument",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeRef",
+                                                                "Map",
+                                                                "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "LessThan"
+                                                            ],
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "Comma"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "GreaterThan"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ],
+                                            [
+                                                {
+                                                    "Name": "conflictResolver",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "Punctuation",
+                                                                "LeftParen"
+                                                            ],
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Punctuation",
+                                                                "Arrow"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Node",
+                                                                [
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "LeftParen"
+                                                                    ],
+                                                                    [
+                                                                        "TypeRef",
+                                                                        "string",
+                                                                        "Microsoft.FSharp.Core.string"
+                                                                    ],
+                                                                    "Space",
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "Arrow"
+                                                                    ],
+                                                                    "Space",
+                                                                    [
+                                                                        "TypeRef",
+                                                                        "string",
+                                                                        "Microsoft.FSharp.Core.string"
+                                                                    ],
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "RightParen"
+                                                                    ]
+                                                                ]
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "RightParen"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "TypeRef",
+                                                    "Map",
+                                                    "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "LessThan"
+                                                ],
+                                                [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "Comma"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "GreaterThan"
+                                                ]
+                                            ]
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Curried groups, so the break has to keep the arrow that separates them."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "firstDocument",
+                                                    "Doc": "The document merged into."
+                                                },
+                                                {
+                                                    "Name": "secondDocument",
+                                                    "Doc": "The document merged in."
+                                                },
+                                                {
+                                                    "Name": "conflictResolver",
+                                                    "Doc": "Called for every key present in both."
+                                                }
+                                            ],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    },
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "SelectLargest",
+                                        "FullName": "Reference.Members.LongMemberSignatures.SelectLargest",
+                                        "CompiledName": "SelectLargest",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "candidateValues",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeVar",
+                                                                "'T"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "list",
+                                                                "Microsoft.FSharp.Collections.list"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "comparisonStrategy",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "Punctuation",
+                                                                "LeftParen"
+                                                            ],
+                                                            [
+                                                                "TypeVar",
+                                                                "'T"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Punctuation",
+                                                                "Arrow"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "Node",
+                                                                [
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "LeftParen"
+                                                                    ],
+                                                                    [
+                                                                        "TypeVar",
+                                                                        "'T"
+                                                                    ],
+                                                                    "Space",
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "Arrow"
+                                                                    ],
+                                                                    "Space",
+                                                                    [
+                                                                        "TypeRef",
+                                                                        "int",
+                                                                        "Microsoft.FSharp.Core.int"
+                                                                    ],
+                                                                    [
+                                                                        "Punctuation",
+                                                                        "RightParen"
+                                                                    ]
+                                                                ]
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "RightParen"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "TypeVar",
+                                            "'T"
+                                        ],
+                                        "Constraints": [
+                                            [
+                                                "Node",
+                                                [
+                                                    [
+                                                        "TypeVar",
+                                                        "'T"
+                                                    ],
+                                                    "Space",
+                                                    [
+                                                        "Punctuation",
+                                                        "Colon"
+                                                    ],
+                                                    "Space",
+                                                    [
+                                                        "Keyword",
+                                                        "comparison"
+                                                    ]
+                                                ]
+                                            ]
+                                        ],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "A wide signature carrying a constraint, which hangs under the arrow."
+                                            },
+                                            "Params": [
+                                                {
+                                                    "Name": "candidateValues",
+                                                    "Doc": "The values to choose from."
+                                                },
+                                                {
+                                                    "Name": "comparisonStrategy",
+                                                    "Doc": "How two candidates are ordered."
+                                                }
+                                            ],
+                                            "TypeParams": [
+                                                {
+                                                    "Name": "T",
+                                                    "Doc": "The element type."
+                                                }
+                                            ],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": true,
+                                        "IsAbstract": false,
+                                        "IsInline": true,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
+                        ],
+                        [
+                            "Interface",
+                            {
+                                "Name": "ILongAbstractMember",
+                                "FullName": "Reference.Members.ILongAbstractMember",
+                                "XmlDoc": {
+                                    "Summary": {
+                                        "$type": "option",
+                                        "$case": "some",
+                                        "$value": "An abstract member wide enough to break, whose parameters have no names."
+                                    },
+                                    "Params": [],
+                                    "TypeParams": [],
+                                    "Exceptions": [],
+                                    "SeeAlso": [],
+                                    "Examples": []
+                                },
+                                "Attributes": [],
+                                "Interfaces": [],
+                                "Members": [
+                                    {
+                                        "Kind": "Method",
+                                        "Name": "TransformDocument",
+                                        "FullName": "Reference.Members.ILongAbstractMember.TransformDocument",
+                                        "CompiledName": "TransformDocument",
+                                        "Parameters": [
+                                            [
+                                                {
+                                                    "Name": "",
+                                                    "Type": [
+                                                        "Node",
+                                                        [
+                                                            [
+                                                                "TypeRef",
+                                                                "Map",
+                                                                "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "LessThan"
+                                                            ],
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "Comma"
+                                                            ],
+                                                            "Space",
+                                                            [
+                                                                "TypeRef",
+                                                                "string",
+                                                                "Microsoft.FSharp.Core.string"
+                                                            ],
+                                                            [
+                                                                "Punctuation",
+                                                                "GreaterThan"
+                                                            ]
+                                                        ]
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "StringComparison",
+                                                        "System.StringComparison"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                },
+                                                {
+                                                    "Name": "",
+                                                    "Type": [
+                                                        "TypeRef",
+                                                        "bool",
+                                                        "Microsoft.FSharp.Core.bool"
+                                                    ],
+                                                    "IsOptional": false,
+                                                    "IsUnit": false
+                                                }
+                                            ]
+                                        ],
+                                        "ReturnType": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "TypeRef",
+                                                    "Map",
+                                                    "Microsoft.FSharp.Collections.FSharpMap`2"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "LessThan"
+                                                ],
+                                                [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "Comma"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "GreaterThan"
+                                                ]
+                                            ]
+                                        ],
+                                        "Constraints": [],
+                                        "XmlDoc": {
+                                            "Summary": {
+                                                "$type": "option",
+                                                "$case": "some",
+                                                "$value": "Rewrites a document, with no parameter names to align."
+                                            },
+                                            "Params": [],
+                                            "TypeParams": [],
+                                            "Exceptions": [],
+                                            "SeeAlso": [],
+                                            "Examples": []
+                                        },
+                                        "IsStatic": false,
+                                        "IsAbstract": true,
+                                        "IsInline": false,
+                                        "HasGetter": false,
+                                        "HasSetter": false,
+                                        "ObsoleteInfo": "Active"
+                                    }
+                                ],
+                                "ObsoleteInfo": "Active",
+                                "IsStruct": false
+                            }
                         ]
                     ],
                     "Functions": [],

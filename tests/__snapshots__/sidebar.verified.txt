@@ -41,6 +41,8 @@ API Reference/
       Overview -> /api/reference-members
       MembersOfEveryKind -> /api/reference-members-membersofeverykind
       IndexedAndInlineMembers -> /api/reference-members-indexedandinlinemembers
+      LongMemberSignatures -> /api/reference-members-longmembersignatures
+      ILongAbstractMember -> /api/reference-members-ilongabstractmember
       ExtensionMembers/
         Overview -> /api/reference-members-extensionmembers
     Types/

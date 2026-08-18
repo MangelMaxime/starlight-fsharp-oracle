@@ -77,6 +77,27 @@ let private symbolText =
     | Symbol.LeftBrace -> "{"
     | Symbol.RightBrace -> "}"
 
+/// The width a symbol takes on screen, which is not the length of `symbolText`: an
+/// escaped `*` is six characters of HTML and one character to the reader. Exhaustive
+/// for the same reason `symbolText` is - a new symbol has to be measured, not guessed.
+let private symbolWidth =
+    function
+    | Symbol.Arrow
+    | Symbol.SubtypeOf -> 2
+    | Symbol.Colon
+    | Symbol.Equals
+    | Symbol.Comma
+    | Symbol.Semicolon
+    | Symbol.Star
+    | Symbol.Bar
+    | Symbol.Question
+    | Symbol.LessThan
+    | Symbol.GreaterThan
+    | Symbol.LeftParen
+    | Symbol.RightParen
+    | Symbol.LeftBrace
+    | Symbol.RightBrace -> 1
+
 let private anchored (href: string) (text: string) = $"""<a href="{href}">{text}</a>"""
 
 /// The class a declared name takes. A name is coloured the same whether it is being
@@ -121,3 +142,34 @@ type TextNode with
             wrapWithClass (declarationClass role) (escapeText text)
         | TextNode.Node nodes ->
             nodes |> List.map (fun node -> node.ToHtml(links)) |> String.concat ""
+
+    /// How many characters wide the widest line of this node is.
+    ///
+    /// Layout decisions - does this member still fit on one line - need the width the
+    /// reader sees, and the HTML cannot be measured for it: one space is `&nbsp;&zwnj;`,
+    /// and a type reference may be wrapped in an `<a>`.
+    member this.Width: int =
+        // Carries (width of the current line, widest line closed so far), so a node
+        // holding newlines measures as its widest line rather than its total length.
+        let rec measure (current: int, widest: int) (node: TextNode) =
+            match node with
+            | TextNode.Text s
+            | TextNode.Keyword s
+            | TextNode.Literal s
+            | TextNode.TypeVar s
+            | TextNode.ParameterName s
+            | TextNode.Attribute s
+            | TextNode.TypeRef(s, _)
+            | TextNode.DeclaredName(s, _)
+            | TextNode.DeclarationName(s, _, _) -> current + s.Length, widest
+            | TextNode.Tick
+            | TextNode.Space -> current + 1, widest
+            | TextNode.Punctuation symbol -> current + symbolWidth symbol, widest
+            | TextNode.Indent levels -> current + levels * indentWidth, widest
+            | TextNode.NewLine -> 0, max widest current
+            | TextNode.Node nodes -> List.fold measure (current, widest) nodes
+
+        let current, widest = measure (0, 0) this
+        max widest current
+
+    static member Width(nodes: TextNode list) : int = (TextNode.Node nodes).Width

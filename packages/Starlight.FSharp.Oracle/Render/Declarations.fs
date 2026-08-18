@@ -1,5 +1,6 @@
 namespace Starlight.FSharp.RenderImpl
 
+open TextNode.Extensions
 open FSharp.Oracle.Schema
 
 /// Builds the token stream for every kind of declaration.
@@ -16,6 +17,14 @@ module Declarations =
     let private star = punct Symbol.Star
 
     let private keyword k = TextNode.Keyword k
+
+    /// How wide a signature line may get before it is broken across lines.
+    ///
+    /// Starlight's content column is 45rem, which holds roughly 80 characters of the
+    /// mono font the signature block is set in. Past that the line is clipped by its
+    /// container, and the box gives the reader no sign that it has more to show.
+    [<Literal>]
+    let private maxSignatureWidth = 80
 
     /// n spaces, used for column alignment (as opposed to structural indentation).
     let private padding n =
@@ -49,11 +58,11 @@ module Declarations =
     /// SRTP constraints are long - the widest line in the reference fixture was a
     /// 110-character constraint, not a type - and a wrapped line restarts at column 0,
     /// which destroys the alignment. Breaking where F# would breaks it deliberately.
-    let constraintLines (column: int) (constraints: TextNode list) : TextNode list =
+    let constraintLines (indent: int) (column: int) (constraints: TextNode list) : TextNode list =
         [
             for i, constraint' in List.indexed constraints do
                 TextNode.NewLine
-                TextNode.Indent 1
+                TextNode.Indent(indent + 1)
                 padding column
 
                 if i = 0 then
@@ -183,7 +192,7 @@ module Declarations =
                     arrow
                     TextNode.Space
                     f.ReturnType
-                    yield! constraintLines column f.Constraints
+                    yield! constraintLines 0 column f.Constraints
             ]
 
     let valueDeclaration (v: Value) : TextNode =
@@ -259,13 +268,42 @@ module Declarations =
                 keyword name
         ]
 
+    /// The accessors a property advertises, or nothing for anything else.
+    let private memberAccessors (m: Member) =
+        if m.Kind = MemberKind.Property then
+            match m.HasGetter, m.HasSetter with
+            | true, true -> accessors [ "get"; "set" ]
+            | false, true -> accessors [ "set" ]
+            // A property with neither accessor reported is still readable: FCS
+            // leaves both false for some abstract and interface properties.
+            | _ -> accessors [ "get" ]
+        else
+            []
+
+    /// How wide a parameter's name is as written, the `?` of an optional one included.
+    /// Alignment is against what the reader sees, so the `?` cannot be left out of the
+    /// measurement without pushing that one line a character off the column.
+    let private parameterNameWidth (p: Parameter) =
+        if p.Name = "" then 0
+        elif p.IsOptional then p.Name.Length + 1
+        else p.Name.Length
+
+    /// The column the colons line up in: one past the longest parameter name. Zero when
+    /// nothing is named - an abstract member written `abstract F: int * string -> unit`
+    /// has no names to align, so its types start where the others' would.
+    let private alignmentColumn (groups: Parameter list list) =
+        match groups |> List.collect id |> List.map parameterNameWidth with
+        | [] -> 0
+        | widths ->
+            match List.max widths with
+            | 0 -> 0
+            | longest -> longest + 1
+
     /// `: paramA -> paramB -> returnType`, or `: returnType` when there are none.
-    let private memberTypeNodes (m: Member) (trailing: TextNode list) : TextNode list =
+    let private inlineTypeNodes (groups: Parameter list list) (m: Member) : TextNode list =
         // Curried groups are separated by `->`, parameters within a group by `*`.
         // Flattening the two together turns a .NET-style `Format(value, digits)` into
         // a curried signature that is not what the caller writes.
-        let groups = m.Parameters |> List.filter (List.isEmpty >> not)
-
         [
             TextNode.Space
             colon
@@ -285,16 +323,104 @@ module Declarations =
                 TextNode.Space
 
             m.ReturnType
-            yield! trailing
-
-            if m.Kind = MemberKind.Property then
-                match m.HasGetter, m.HasSetter with
-                | true, true -> yield! accessors [ "get"; "set" ]
-                | false, true -> yield! accessors [ "set" ]
-                // A property with neither accessor reported is still readable: FCS
-                // leaves both false for some abstract and interface properties.
-                | _ -> yield! accessors [ "get" ]
         ]
+
+    /// The same signature with one parameter per line and the colons in one column, the
+    /// way a long `val` is already laid out:
+    ///
+    ///     static member generateBoxedEncoder :
+    ///         t              : Type *
+    ///         ?caseStrategy  : CaseStrategy *
+    ///         ?skipNullField : bool
+    ///                        -> BoxedEncoder
+    ///
+    /// The separator that would have joined a parameter to the next trails the line it
+    /// ends - `*` inside a tupled group, `->` between curried groups - so the difference
+    /// between a tuple and currying survives the break instead of being implied by it.
+    ///
+    /// `indent` is the level the declaration itself sits at: 0 for a standalone entry,
+    /// 1 for a line inside a type's header block.
+    let private wrappedTypeNodes
+        (indent: int)
+        (groups: Parameter list list)
+        (m: Member)
+        : TextNode list
+        =
+        let column = alignmentColumn groups
+        let lastGroup = List.length groups - 1
+
+        [
+            TextNode.Space
+            colon
+
+            for g, group in List.indexed groups do
+                let lastParameter = List.length group - 1
+
+                for i, p in List.indexed group do
+                    TextNode.NewLine
+                    TextNode.Indent(indent + 1)
+
+                    // An unnamed parameter has no colon to align, so it starts where the
+                    // types of the named ones do rather than where their names do.
+                    if p.Name = "" then
+                        padding (column + 2)
+                    else
+                        if p.IsOptional then
+                            punct Symbol.Question
+
+                        TextNode.ParameterName p.Name
+                        padding (column - parameterNameWidth p)
+                        colon
+                        TextNode.Space
+
+                    p.Type
+
+                    if i < lastParameter then
+                        TextNode.Space
+                        star
+                    elif g < lastGroup then
+                        TextNode.Space
+                        arrow
+
+            // The arrow lines up under the column of colons above.
+            TextNode.NewLine
+            TextNode.Indent(indent + 1)
+            padding column
+            arrow
+            TextNode.Space
+            m.ReturnType
+        ]
+
+    /// A member's signature, on one line while that line still fits the content column
+    /// and broken across lines once it does not.
+    ///
+    /// A parameterless member is never broken: there is nothing to break it on, and its
+    /// one line is as short as it can be made.
+    let private memberNodes
+        (indent: int)
+        (prefix: TextNode list)
+        (constraints: TextNode list)
+        (m: Member)
+        =
+        let groups = m.Parameters |> List.filter (List.isEmpty >> not)
+
+        let singleLine =
+            [
+                yield! prefix
+                yield! inlineTypeNodes groups m
+                constraintClause constraints
+                yield! memberAccessors m
+            ]
+
+        if groups.IsEmpty || TextNode.Width singleLine <= maxSignatureWidth then
+            singleLine
+        else
+            [
+                yield! prefix
+                yield! wrappedTypeNodes indent groups m
+                yield! constraintLines indent (alignmentColumn groups) constraints
+                yield! memberAccessors m
+            ]
 
     /// A member as its own documented entry.
     let memberDeclaration (m: Member) : TextNode =
@@ -303,11 +429,7 @@ module Declarations =
             | MemberKind.Constructor -> [ keyword Keyword.New ]
             | _ -> [ TextNode.DeclaredName(m.Name, DeclarationRole.Member) ]
 
-        TextNode.Node
-            [
-                yield! memberPrefix m nameNode
-                yield! memberTypeNodes m [ constraintClause m.Constraints ]
-            ]
+        TextNode.Node(memberNodes 0 (memberPrefix m nameNode) m.Constraints m)
 
     /// The anchor slug of a member. Operators anchor on their compiled name, because
     /// `(+)` cannot go into a URL fragment.
@@ -356,12 +478,16 @@ module Declarations =
                 [ TextNode.DeclarationName("new", anchor, DeclarationRole.Constructor) ]
             | _ -> [ TextNode.DeclarationName(m.Name, anchor, DeclarationRole.Member) ]
 
-        [
-            TextNode.NewLine
-            TextNode.Indent 1
-            yield! memberPrefix m nameNode
-            yield! memberTypeNodes m []
-        ]
+        let prefix =
+            [
+                TextNode.NewLine
+                TextNode.Indent 1
+                yield! memberPrefix m nameNode
+            ]
+
+        // Constraints are left off a header line: the entry below carries them, and the
+        // header is meant to fit a member on a line, not to restate its whole contract.
+        memberNodes 1 prefix [] m
 
     // -----------------------------------------------------------------------
     // Fields, union cases
