@@ -38,17 +38,27 @@ module internal SignatureRendering =
         )
         |> List.concat
 
-    let rec renderFSharpType (isTopLevel: bool) (typ: FSharpType) : TextNode =
+    /// `isDelimited` says whether a bare `->` written here could run into whatever
+    /// surrounds it. It is false almost everywhere - a parameter type, a tuple element,
+    /// a generic argument all sit next to something a stray arrow would swallow - and
+    /// true where the type stands alone or is already inside parentheses.
+    let rec renderFSharpType (isDelimited: bool) (typ: FSharpType) : TextNode =
         if typ.IsGenericParameter then
             TextNode.TypeVar(typeVarName typ.GenericParameter)
         elif typ.IsFunctionType then
+            // `->` is right-associative, so only the domain of an arrow can need
+            // parentheses: `a -> b -> c` already reads as `a -> (b -> c)`. Parenthesising
+            // the range as well turned every function-typed parameter into
+            // `(string -> (string -> string))`, which is not how anyone writes it.
+            let arguments = typ.GenericArguments |> Seq.toList
+            let range = arguments.Length - 1
+
             let parts =
-                typ.GenericArguments
-                |> Seq.map (renderFSharpType false)
-                |> Seq.toList
+                arguments
+                |> List.mapi (fun i argument -> renderFSharpType (i = range) argument)
                 |> separated [ TextNode.Space; arrow; TextNode.Space ]
 
-            if isTopLevel then
+            if isDelimited then
                 TextNode.Node parts
             else
                 TextNode.Node

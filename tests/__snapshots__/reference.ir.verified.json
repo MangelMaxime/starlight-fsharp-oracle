@@ -808,6 +808,171 @@
                             "ObsoleteInfo": "Active"
                         },
                         {
+                            "Name": "functionWithFunctionParameters",
+                            "FullName": "Reference.Functions.functionWithFunctionParameters",
+                            "Parameters": [
+                                [
+                                    {
+                                        "Name": "project",
+                                        "Type": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Punctuation",
+                                                    "LeftParen"
+                                                ],
+                                                [
+                                                    "TypeRef",
+                                                    "int",
+                                                    "Microsoft.FSharp.Core.int"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Punctuation",
+                                                    "Arrow"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "TypeRef",
+                                                    "string",
+                                                    "Microsoft.FSharp.Core.string"
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "RightParen"
+                                                ]
+                                            ]
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": false
+                                    }
+                                ],
+                                [
+                                    {
+                                        "Name": "accept",
+                                        "Type": [
+                                            "Node",
+                                            [
+                                                [
+                                                    "Punctuation",
+                                                    "LeftParen"
+                                                ],
+                                                [
+                                                    "Node",
+                                                    [
+                                                        [
+                                                            "Punctuation",
+                                                            "LeftParen"
+                                                        ],
+                                                        [
+                                                            "TypeRef",
+                                                            "int",
+                                                            "Microsoft.FSharp.Core.int"
+                                                        ],
+                                                        "Space",
+                                                        [
+                                                            "Punctuation",
+                                                            "Arrow"
+                                                        ],
+                                                        "Space",
+                                                        [
+                                                            "TypeRef",
+                                                            "string",
+                                                            "Microsoft.FSharp.Core.string"
+                                                        ],
+                                                        [
+                                                            "Punctuation",
+                                                            "RightParen"
+                                                        ]
+                                                    ]
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Punctuation",
+                                                    "Arrow"
+                                                ],
+                                                "Space",
+                                                [
+                                                    "Node",
+                                                    [
+                                                        [
+                                                            "TypeRef",
+                                                            "string",
+                                                            "Microsoft.FSharp.Core.string"
+                                                        ],
+                                                        "Space",
+                                                        [
+                                                            "Punctuation",
+                                                            "Arrow"
+                                                        ],
+                                                        "Space",
+                                                        [
+                                                            "TypeRef",
+                                                            "bool",
+                                                            "Microsoft.FSharp.Core.bool"
+                                                        ]
+                                                    ]
+                                                ],
+                                                [
+                                                    "Punctuation",
+                                                    "RightParen"
+                                                ]
+                                            ]
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": false
+                                    }
+                                ],
+                                [
+                                    {
+                                        "Name": "value",
+                                        "Type": [
+                                            "TypeRef",
+                                            "int",
+                                            "Microsoft.FSharp.Core.int"
+                                        ],
+                                        "IsOptional": false,
+                                        "IsUnit": false
+                                    }
+                                ]
+                            ],
+                            "ReturnType": [
+                                "TypeRef",
+                                "bool",
+                                "Microsoft.FSharp.Core.bool"
+                            ],
+                            "Constraints": [],
+                            "IsInline": false,
+                            "IsMutable": false,
+                            "IsActivePattern": false,
+                            "XmlDoc": {
+                                "Summary": {
+                                    "$type": "option",
+                                    "$case": "some",
+                                    "$value": "Function-typed parameters, whose arrows nest."
+                                },
+                                "Params": [
+                                    {
+                                        "Name": "project",
+                                        "Doc": "Turns a value into text."
+                                    },
+                                    {
+                                        "Name": "accept",
+                                        "Doc": "Decides on the text, given a label."
+                                    },
+                                    {
+                                        "Name": "value",
+                                        "Doc": "The value to test."
+                                    }
+                                ],
+                                "TypeParams": [],
+                                "Exceptions": [],
+                                "SeeAlso": [],
+                                "Examples": []
+                            },
+                            "ObsoleteInfo": "Active"
+                        },
+                        {
                             "Name": "constrainedByComparison",
                             "FullName": "Reference.Functions.constrainedByComparison",
                             "Parameters": [
@@ -2726,10 +2891,6 @@
                                                                 "Node",
                                                                 [
                                                                     [
-                                                                        "Punctuation",
-                                                                        "LeftParen"
-                                                                    ],
-                                                                    [
                                                                         "TypeRef",
                                                                         "string",
                                                                         "Microsoft.FSharp.Core.string"
@@ -2744,10 +2905,6 @@
                                                                         "TypeRef",
                                                                         "string",
                                                                         "Microsoft.FSharp.Core.string"
-                                                                    ],
-                                                                    [
-                                                                        "Punctuation",
-                                                                        "RightParen"
                                                                     ]
                                                                 ]
                                                             ],
@@ -2878,10 +3035,6 @@
                                                                 "Node",
                                                                 [
                                                                     [
-                                                                        "Punctuation",
-                                                                        "LeftParen"
-                                                                    ],
-                                                                    [
                                                                         "TypeVar",
                                                                         "'T"
                                                                     ],
@@ -2895,10 +3048,6 @@
                                                                         "TypeRef",
                                                                         "int",
                                                                         "Microsoft.FSharp.Core.int"
-                                                                    ],
-                                                                    [
-                                                                        "Punctuation",
-                                                                        "RightParen"
                                                                     ]
                                                                 ]
                                                             ],

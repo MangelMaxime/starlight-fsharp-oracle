@@ -23,6 +23,7 @@ API Reference/
       functionWithCurriedParameters -> /api/reference-functions#functionWithCurriedParameters
       functionWithTupledParameters -> /api/reference-functions#functionWithTupledParameters
       ``function with spaces`` -> /api/reference-functions#function-with-spaces
+      functionWithFunctionParameters -> /api/reference-functions#functionWithFunctionParameters
       constrainedByComparison -> /api/reference-functions#constrainedByComparison
       constrainedByEquality -> /api/reference-functions#constrainedByEquality
       constrainedByUnmanagedStruct -> /api/reference-functions#constrainedByUnmanagedStruct

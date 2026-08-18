@@ -24,10 +24,10 @@ member: inline                                 2
 member: settable                               3
 member: overloaded                             2
 member: extension                              1
-function: plain                                18
+function: plain                                19
 function: active pattern                       4
 function: inline                               1
-function: curried (2+ groups)                  5
+function: curried (2+ groups)                  6
 function: tupled group                         9
 parameter: optional                            4
 parameter: unit                                3
@@ -41,10 +41,10 @@ constraint: null                               1
 constraint: subtype                            1
 constraint: srtp member                        1
 constraint: default constructor                1
-doc: summary                                   84
+doc: summary                                   85
 doc: remarks                                   1
 doc: returns                                   12
-doc: param                                     22
+doc: param                                     23
 doc: typeparam                                 4
 doc: exception                                 1
 doc: value                                     1

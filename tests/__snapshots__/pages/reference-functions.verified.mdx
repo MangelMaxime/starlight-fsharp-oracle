@@ -18,6 +18,9 @@ headings:
     slug: "function-with-spaces"
     text: "``function with spaces``"
   - depth: 3
+    slug: "functionWithFunctionParameters"
+    text: "functionWithFunctionParameters"
+  - depth: 3
     slug: "constrainedByComparison"
     text: "constrainedByComparison"
   - depth: 3
@@ -149,6 +152,41 @@ A function whose name contains spaces.
 <div class='fs-parameter__documentation'>
 
 Any value.
+
+</div>
+</DocEntry>
+
+<DocEntry name="functionWithFunctionParameters">
+<div class="fsharp-doc-sig" slot="signature"><span class="fsharp-doc-kw">val</span>&nbsp;&zwnj;<span class="fsharp-doc-fn">functionWithFunctionParameters</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">project</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">accept</span>&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><span class="fsharp-doc-bracket">)</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span><br/>&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span></div>
+
+Function-typed parameters, whose arrows nest.
+
+<strong>Parameters</strong>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">project</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Turns a value into text.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">accept</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-bracket">(</span><span class="fsharp-doc-type">int</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span><span class="fsharp-doc-bracket">)</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">string</span>&nbsp;&zwnj;<span class="fsharp-doc-kw">-></span>&nbsp;&zwnj;<span class="fsharp-doc-type">bool</span><span class="fsharp-doc-bracket">)</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+Decides on the text, given a label.
+
+</div>
+<div class="fs-parameter__signature">
+<span class="fsharp-doc-param">value</span>&nbsp;&zwnj;<span class="fsharp-doc-punct">:</span>&nbsp;&zwnj;<span class="fsharp-doc-type">int</span>
+</div>
+
+<div class='fs-parameter__documentation'>
+
+The value to test.
 
 </div>
 </DocEntry>

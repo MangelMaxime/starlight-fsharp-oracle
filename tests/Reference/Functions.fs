@@ -33,6 +33,17 @@ let functionWithTupledParameters (x: float, y: float) : float = failwith "fixtur
 /// <param name="value">Any value.</param>
 let ``function with spaces`` (value: int) : int = failwith "fixture"
 
+/// <summary>Function-typed parameters, whose arrows nest.</summary>
+/// <param name="project">Turns a value into text.</param>
+/// <param name="accept">Decides on the text, given a label.</param>
+/// <param name="value">The value to test.</param>
+let functionWithFunctionParameters
+    (project: int -> string)
+    (accept: (int -> string) -> string -> bool)
+    (value: int)
+    : bool =
+    failwith "fixture"
+
 /// <summary>Optional and byref parameters.</summary>
 type MembersWithParameterModifiers() =
 
