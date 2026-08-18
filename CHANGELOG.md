@@ -1,5 +1,5 @@
 ---
-last_commit_released: cec2951b273604c3a65edbdbd9874b007aaabbab
+last_commit_released: 567877550ac3b53142a7c678879ab94817f87743
 name: starlight-fsharp-oracle
 updaters:
   - package.json:
@@ -15,6 +15,27 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 This changelog is generated using [EasyBuild.ShipIt](https://github.com/easybuild-org/EasyBuild.ShipIt).
 
 ⚠ Only edit the front matter metadata at the top of this file. All other changes will be overwritten when a new release is created.
+
+## 0.4.0 - 2026-08-18
+
+### 🚀 Features
+
+* *(oracle)* Surface inheritance, attributes, literals and parameter modifiers ([8a42add](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/8a42add1a5a4e34de25acc0489ebf3b043dc9cad))
+* *(oracle)* Make XML doc comments carry their full content ([cc947ad](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/cc947ad98d816171ac3ad04d33d7961cb486ac41))
+* *(oracle)* Document events and optional type extensions ([847f659](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/847f659a1ba44f29c01c7d3a18d15671e0b0cf18))
+* *(render)* Colour signatures from the tree-sitter grammar's captures ([1d968ed](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/1d968edf6dacca834393e179a969de136490e36b))
+
+### 🐞 Bug Fixes
+
+* *(oracle)* Make slug collisions visible and extraction resilient ([23e51de](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/23e51de0f694f47e965ab9c969a973f01c643c18))
+* *(plugin)* Derive sidebar links from the same slugs and anchors as pages ([3789146](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/3789146a89168b1ec4f5a161a821c1b4b6584597))
+* *(render)* Only link types that have a page ([5b9fdf0](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/5b9fdf03c927e4133a79a0cdada7cd1d2f1cd444))
+* *(render)* Correct anchors, accessors and constraints ([3270906](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/3270906c62509de67dca5d7788f1db404059de2e))
+* *(render)* Remove attribute double-spacing, show extension type blocks ([868723a](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/868723a91561da24b10473192157a8ea1d946529))
+* *(render)* Colour declared names, not just referenced ones ([b4b0ae3](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/b4b0ae3ab37230bd6cdb91852e51eb30dd2fbaa7))
+* *(render)* Collapse non-identifier characters in page slugs ([ba3bfa9](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/ba3bfa9c289667ff0fb22159fe1eb9ba23dc05a8))
+
+<strong><small>[View changes on Github](https://github.com/MangelMaxime/starlight-fsharp-oracle/compare/cec2951b273604c3a65edbdbd9874b007aaabbab..567877550ac3b53142a7c678879ab94817f87743)</small></strong>
 
 ## 0.3.0 - 2026-07-26
 
