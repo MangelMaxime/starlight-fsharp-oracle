@@ -1,5 +1,5 @@
 ---
-last_commit_released: 567877550ac3b53142a7c678879ab94817f87743
+last_commit_released: f3695b2f9e2f106e1688855ee54cda3fd6cb3672
 name: starlight-fsharp-oracle
 updaters:
   - package.json:
@@ -15,6 +15,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 This changelog is generated using [EasyBuild.ShipIt](https://github.com/easybuild-org/EasyBuild.ShipIt).
 
 ⚠ Only edit the front matter metadata at the top of this file. All other changes will be overwritten when a new release is created.
+
+## 0.5.0 - 2026-08-19
+
+### 🚀 Features
+
+* *(render)* Break a member signature that would not fit on one line ([806211d](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/806211d5a66272f6f65fb8b663a8b53ae160f363))
+
+### 🐞 Bug Fixes
+
+* *(extractor)* Stop parenthesising the range of a function type ([f3695b2](https://github.com/MangelMaxime/starlight-fsharp-oracle/commit/f3695b2f9e2f106e1688855ee54cda3fd6cb3672))
+
+<strong><small>[View changes on Github](https://github.com/MangelMaxime/starlight-fsharp-oracle/compare/567877550ac3b53142a7c678879ab94817f87743..f3695b2f9e2f106e1688855ee54cda3fd6cb3672)</small></strong>
 
 ## 0.4.0 - 2026-08-18
 
